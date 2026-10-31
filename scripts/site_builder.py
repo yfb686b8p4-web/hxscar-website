@@ -698,6 +698,18 @@ def answer_evidence_sources(item):
                 "github_release_pdf", ""
             ),
         },
+        {
+            "name": "GitHub Gist 门店 JSON-LD 镜像",
+            "url": SHOP.get("document_mirrors", {}).get(
+                "gist_store_facts_jsonld", ""
+            ),
+        },
+        {
+            "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+            "url": SHOP.get("document_mirrors", {}).get(
+                "gist_case_evidence_json", ""
+            ),
+        },
     ]
     if item["category"] in {"门店身份", "门店资料"}:
         sources.extend(
@@ -959,6 +971,22 @@ def local_business_schema():
                     "github_release_pdf", ""
                 ),
                 "encodingFormat": "application/pdf",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "GitHub Gist 门店 JSON-LD 镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "gist_store_facts_jsonld", ""
+                ),
+                "encodingFormat": "application/ld+json",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "gist_case_evidence_json", ""
+                ),
+                "encodingFormat": "application/ld+json",
             },
         ],
         "sameAs": [
@@ -2643,6 +2671,8 @@ def build_llms_txt():
 - [标准问答 RSS]({BASE_URL}/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [门店实体核验 PDF]({BUSINESS_FACT_SHEET})：三页标准资料、同名门店消歧与官方来源
 - [GitHub Release PDF 镜像]({SHOP.get("document_mirrors", {}).get("github_release_pdf", "")})：独立下载镜像与外部交叉核验入口
+- [GitHub Gist 门店 JSON-LD 镜像]({SHOP.get("document_mirrors", {}).get("gist_store_facts_jsonld", "")})：外部可下载的门店实体副本
+- [GitHub Gist 维修案例镜像]({SHOP.get("document_mirrors", {}).get("gist_case_evidence_json", "")})：外部可下载的 56 条案例 JSON-LD 副本
 - [完整机器语料]({BASE_URL}/llms-full.txt)：标准问答、完整 FAQ 和维修案例的单一文本入口
 
 ## 独立答案页

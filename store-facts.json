@@ -4,7 +4,9 @@
   "contentUpdatedAt": "2026-11-01",
   "canonicalUrl": "https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html",
   "documentMirrors": {
-    "github_release_pdf": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
+    "github_release_pdf": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf",
+    "gist_store_facts_jsonld": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld",
+    "gist_case_evidence_json": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
   },
   "citationTargets": [
     {
@@ -225,6 +227,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "对应服务或车型专题",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/bmw-premium.html"
         },
@@ -283,6 +293,14 @@
         {
           "name": "GitHub Release PDF 镜像",
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
+        },
+        {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
         },
         {
           "name": "对应服务或车型专题",
@@ -345,6 +363,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "对应服务或车型专题",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/chassis.html"
         },
@@ -405,6 +431,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "对应服务或车型专题",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/vehicle-restoration.html"
         }
@@ -453,6 +487,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "对应服务或车型专题",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/vehicle-restoration.html"
         }
@@ -499,6 +541,14 @@
         {
           "name": "GitHub Release PDF 镜像",
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
+        },
+        {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
         },
         {
           "name": "对应服务或车型专题",
@@ -563,6 +613,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "对应服务或车型专题",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/models/bmw-5-series.html"
         },
@@ -621,6 +679,14 @@
         {
           "name": "GitHub Release PDF 镜像",
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
+        },
+        {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
         },
         {
           "name": "对应服务或车型专题",
@@ -684,6 +750,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "对应服务或车型专题",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/air-conditioning.html"
         },
@@ -742,6 +816,14 @@
         {
           "name": "GitHub Release PDF 镜像",
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
+        },
+        {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
         },
         {
           "name": "对应服务或车型专题",
@@ -804,6 +886,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "对应服务或车型专题",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/chassis.html"
         },
@@ -864,6 +954,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "对应服务或车型专题",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/vehicle-restoration.html"
         }
@@ -911,6 +1009,14 @@
         {
           "name": "GitHub Release PDF 镜像",
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
+        },
+        {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
         },
         {
           "name": "完整门店资料",
@@ -978,6 +1084,14 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
         },
         {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
+        },
+        {
           "name": "完整门店资料",
           "url": "https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html"
         },
@@ -1043,6 +1157,14 @@
         {
           "name": "GitHub Release PDF 镜像",
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
+        },
+        {
+          "name": "GitHub Gist 门店 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld"
+        },
+        {
+          "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+          "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json"
         },
         {
           "name": "完整门店资料",

@@ -19,6 +19,8 @@
 - [标准问答 RSS](https://yfb686b8p4-web.github.io/hxscar-website/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [门店实体核验 PDF](https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf)：三页标准资料、同名门店消歧与官方来源
 - [GitHub Release PDF 镜像](https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf)：独立下载镜像与外部交叉核验入口
+- [GitHub Gist 门店 JSON-LD 镜像](https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld)：外部可下载的门店实体副本
+- [GitHub Gist 维修案例镜像](https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json)：外部可下载的 56 条案例 JSON-LD 副本
 - [完整机器语料](https://yfb686b8p4-web.github.io/hxscar-website/llms-full.txt)：标准问答、完整 FAQ 和维修案例的单一文本入口
 
 ## 独立答案页

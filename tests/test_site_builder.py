@@ -198,6 +198,18 @@ class SiteBuilderGeoTests(unittest.TestCase):
             site_builder.SHOP["document_mirrors"]["github_release_pdf"],
             mirror_urls,
         )
+        self.assertIn(
+            site_builder.SHOP["document_mirrors"][
+                "gist_store_facts_jsonld"
+            ],
+            mirror_urls,
+        )
+        self.assertIn(
+            site_builder.SHOP["document_mirrors"][
+                "gist_case_evidence_json"
+            ],
+            mirror_urls,
+        )
 
     def test_image_sitemap_contains_real_store_assets(self):
         """图片站点地图必须声明真实门头、Logo 和对应页面。"""
@@ -263,12 +275,20 @@ class SiteBuilderGeoTests(unittest.TestCase):
     def test_llms_corpora_link_fact_sheet_mirrors(self):
         """面向 AI 的两个机器语料入口都应暴露实体核验 PDF 双镜像。"""
         mirror = site_builder.SHOP["document_mirrors"]["github_release_pdf"]
+        gist_schema = site_builder.SHOP["document_mirrors"][
+            "gist_store_facts_jsonld"
+        ]
+        gist_cases = site_builder.SHOP["document_mirrors"][
+            "gist_case_evidence_json"
+        ]
         for text in (
             site_builder.build_llms_txt(),
             site_builder.build_llms_full_txt(),
         ):
             self.assertIn(site_builder.BUSINESS_FACT_SHEET, text)
             self.assertIn(mirror, text)
+            self.assertIn(gist_schema, text)
+            self.assertIn(gist_cases, text)
 
     def test_answer_sources_are_exposed_in_machine_surfaces(self):
         """机器事实、RSS 与完整语料都必须携带逐答案证据来源。"""

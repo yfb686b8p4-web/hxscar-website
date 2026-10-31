@@ -36,6 +36,18 @@
     },
     {
       "@type": "DataFeed",
+      "name": "GitHub Gist 门店 JSON-LD 镜像",
+      "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld",
+      "encodingFormat": "application/ld+json"
+    },
+    {
+      "@type": "DataFeed",
+      "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+      "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json",
+      "encodingFormat": "application/ld+json"
+    },
+    {
+      "@type": "DataFeed",
       "name": "机器可读门店事实",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json",
       "encodingFormat": "application/json"

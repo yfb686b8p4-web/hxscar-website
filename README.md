@@ -37,6 +37,8 @@
 - [标准问答 RSS](https://yfb686b8p4-web.github.io/hxscar-website/feed.xml)
 - [GitHub 实体核验资料发布](https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/store-facts-2026-10-31)
 - [GitHub Gist 实体事实副本](https://gist.github.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b)
+- [Gist 门店 JSON-LD 镜像](https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld)
+- [Gist 维修案例 JSON-LD 镜像](https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json)
 - [抖音“深圳华信松老周修车”](https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc)（抖音号 `SZ2018080808`）
 - [门店实体核验资料 PDF](https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf)
 - [GitHub Release PDF 镜像](https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf)
