@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """验证 GEO 答案的证据和来源配置。"""
 
+import json
 import unittest
 import xml.etree.ElementTree as ET
 
@@ -210,7 +211,28 @@ class SiteBuilderGeoTests(unittest.TestCase):
         )
         self.assertIn(site_builder.SHOP["douyin_id"], html)
         self.assertIn(site_builder.SHOP["fact_sheet_path"], html)
+        self.assertIn(
+            site_builder.SHOP["document_mirrors"]["github_release_pdf"],
+            html,
+        )
         self.assertIn('"@type":"FAQPage"', html.replace(" ", ""))
+
+    def test_store_facts_exposes_release_pdf_mirror(self):
+        """机器事实必须公开独立下载镜像，供搜索与 AI 交叉核验。"""
+        facts = json.loads(site_builder.build_store_facts_json())
+        mirror = site_builder.SHOP["document_mirrors"]["github_release_pdf"]
+        self.assertEqual(
+            facts["documentMirrors"]["github_release_pdf"],
+            mirror,
+        )
+        self.assertIn(
+            mirror,
+            {item["url"] for item in facts["citationTargets"]},
+        )
+        self.assertIn(
+            site_builder.SHOP["fact_sheet_path"],
+            site_builder.build_entity_verification_page(),
+        )
 
     def test_identity_feed_item_points_to_verification_page(self):
         """RSS 中的实体问题应指向专门核验页，而不是综合问答锚点。"""

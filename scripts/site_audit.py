@@ -319,6 +319,14 @@ def audit():
     for fact in required_profile_facts:
         if fact not in profile_html:
             errors.append(f"store-profile.html 缺少标准资料: {fact}")
+    entity_html = read_text("entity-verification.html")
+    release_pdf_mirror = (
+        "https://github.com/yfb686b8p4-web/hxscar-website/"
+        "releases/download/store-facts-2026-10-31/"
+        "huaxinsong-store-facts-2026-10-31.pdf"
+    )
+    if release_pdf_mirror not in entity_html:
+        errors.append("entity-verification.html 缺少 GitHub Release PDF 镜像")
     facts_path = ROOT / "store-facts.json"
     try:
         facts = json.loads(facts_path.read_text(encoding="utf-8"))
@@ -336,6 +344,11 @@ def audit():
             errors.append("store-facts.json 标准坐标不正确")
         if len(facts.get("answers", [])) < 13:
             errors.append("store-facts.json 搜索答案数量不足")
+        if (
+            facts.get("documentMirrors", {}).get("github_release_pdf")
+            != release_pdf_mirror
+        ):
+            errors.append("store-facts.json 缺少 GitHub Release PDF 镜像")
         for item in facts.get("answers", []):
             if not item.get("queryVariants"):
                 errors.append(f"store-facts.json 答案缺少常见问法: {item.get('anchor', '')}")

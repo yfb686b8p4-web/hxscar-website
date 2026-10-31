@@ -10,9 +10,9 @@
   },
   "pages": {
     "index.html": {
-      "bytes": 49130,
-      "han_chars": 7308,
-      "visible_han_chars": 4775,
+      "bytes": 49331,
+      "han_chars": 7310,
+      "visible_han_chars": 4777,
       "json_ld_blocks": 2,
       "schema_types": [
         "AutoRepair",
@@ -51,9 +51,9 @@
       ]
     },
     "entity-verification.html": {
-      "bytes": 23368,
-      "han_chars": 2876,
-      "visible_han_chars": 1246,
+      "bytes": 23547,
+      "han_chars": 2878,
+      "visible_han_chars": 1248,
       "json_ld_blocks": 4,
       "schema_types": [
         "AutoRepair",

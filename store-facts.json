@@ -3,6 +3,9 @@
   "verifiedAt": "2026-10-31",
   "contentUpdatedAt": "2026-10-31",
   "canonicalUrl": "https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html",
+  "documentMirrors": {
+    "github_release_pdf": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
+  },
   "citationTargets": [
     {
       "name": "门店标准资料",
@@ -15,6 +18,10 @@
     {
       "name": "门店实体核验 PDF",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf"
+    },
+    {
+      "name": "GitHub Release PDF 镜像",
+      "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf"
     },
     {
       "name": "搜索直接答案",

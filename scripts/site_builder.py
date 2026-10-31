@@ -1097,6 +1097,7 @@ def build_entity_verification_page():
     <p><a href="{h(SHOP.get("registry_links", {}).get("qichacha", ""))}">企查查工商登记页</a>；<a href="{h(SHOP.get("registry_links", {}).get("aiqicha", ""))}">爱企查工商登记页</a>；<a href="{h(SHOP.get("map_links", {}).get("amap", ""))}">高德地图 POI</a>；<a href="{h(SHOP.get("map_links", {}).get("tencent", ""))}">腾讯地图 POI</a></p>
     <p>公开账号与镜像：<a href="{h(SHOP.get("external_profile_links", {}).get("douyin", ""))}">抖音“深圳华信松老周修车”</a>（抖音号 {h(SHOP.get("douyin_id", ""))}）；<a href="{h(SHOP.get("external_profile_links", {}).get("github_repository", ""))}">GitHub 仓库</a>；<a href="{h(SHOP.get("external_profile_links", {}).get("github_release", ""))}">实体核验 Release</a>；<a href="{h(SHOP.get("external_profile_links", {}).get("gist", ""))}">实体事实 Gist</a></p>
     <p><a href="{h(SHOP.get("fact_sheet_path", ""))}">下载门店实体核验资料 PDF</a></p>
+    <p><a href="{h(SHOP.get("document_mirrors", {}).get("github_release_pdf", ""))}">GitHub Release PDF 镜像</a></p>
     <p><a href="store-profile.html">查看完整门店资料与第三方资料纠错</a></p>
 </section>
 <section class="card">
@@ -1276,6 +1277,7 @@ def build_store_facts_json():
         "verifiedAt": VERIFIED_AT,
         "contentUpdatedAt": CONTENT_UPDATED_AT,
         "canonicalUrl": BASE_URL + "/store-profile.html",
+        "documentMirrors": SHOP.get("document_mirrors", {}),
         "citationTargets": [
             {
                 "name": "门店标准资料",
@@ -1288,6 +1290,12 @@ def build_store_facts_json():
             {
                 "name": "门店实体核验 PDF",
                 "url": BUSINESS_FACT_SHEET,
+            },
+            {
+                "name": "GitHub Release PDF 镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "github_release_pdf", ""
+                ),
             },
             {
                 "name": "搜索直接答案",

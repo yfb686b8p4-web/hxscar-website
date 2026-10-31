@@ -32,6 +32,10 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("宝源南路276号", readme)
         self.assertIn(shop["external_profile_links"]["douyin"], readme)
         self.assertIn(shop["douyin_id"], readme)
+        self.assertIn(
+            shop["document_mirrors"]["github_release_pdf"],
+            readme,
+        )
 
     def test_entity_facts_contains_current_store_facts(self):
         text = (ROOT / "ENTITY_FACTS.md").read_text(encoding="utf-8")
@@ -46,6 +50,10 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn(shop["hours"], text)
         self.assertIn("13923454895", text)
         self.assertIn("宝源南路276号", text)
+        self.assertIn(
+            shop["document_mirrors"]["github_release_pdf"],
+            text,
+        )
 
     def test_homepage_contains_current_entity_signals(self):
         """周更首页必须保留真实图片、工商、抖音和实体核验信号。"""
@@ -59,6 +67,10 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("entity-verification.html", home)
         self.assertIn("application/rss+xml", home)
         self.assertIn(shop["fact_sheet_path"], home)
+        self.assertIn(
+            shop["document_mirrors"]["github_release_pdf"],
+            home,
+        )
 
 
 if __name__ == "__main__":

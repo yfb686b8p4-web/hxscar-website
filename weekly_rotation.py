@@ -404,6 +404,7 @@ def build_page(config, selected_cases, selected_reviews, week_num):
             <a class="section-link" href="answers.html">查看宝马、空调、底盘和老车整备问答</a>
             <a class="section-link" href="entity-verification.html">查看独立实体核验页</a>
             <a class="section-link" href="downloads/huaxinsong-store-facts-2026-10-31.pdf">下载门店实体核验资料 PDF</a>
+            <a class="section-link" href="{SHOP_INFO.get("document_mirrors", {}).get("github_release_pdf", "")}">GitHub Release PDF 镜像</a>
         </div>
 
         <!-- INFO -->
