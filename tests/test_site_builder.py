@@ -42,6 +42,29 @@ class SiteBuilderGeoTests(unittest.TestCase):
             normalized_answer,
         )
 
+    def test_identity_answer_contains_complete_store_facts(self):
+        """实体关系答案必须在同一段内给出完整资料，减少 AI 只答部分事实。"""
+        item = next(
+            answer
+            for answer in site_builder.SEARCH_ANSWERS
+            if answer["anchor"] == "identity"
+        )
+        normalized_answer = item["answer"].replace(" ", "")
+        self.assertIn(
+            "深圳市华信松汽车服务有限公司幸福海岸分公司",
+            item["answer"],
+        )
+        self.assertIn(
+            site_builder.SHOP["address"].replace(" ", ""),
+            normalized_answer,
+        )
+        self.assertIn(site_builder.SHOP["phone"], item["answer"])
+        self.assertIn(site_builder.SHOP["landline"], item["answer"])
+        self.assertIn(
+            site_builder.SHOP["hours"].replace(" ", ""),
+            normalized_answer,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
