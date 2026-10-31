@@ -3,6 +3,7 @@
 """验证 GEO 答案的证据和来源配置。"""
 
 import unittest
+import xml.etree.ElementTree as ET
 
 from scripts import site_builder
 
@@ -106,6 +107,34 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn("2021-08-26", html)
         self.assertIn(site_builder.SHOP["registry_links"]["qichacha"], html)
         self.assertIn(site_builder.SHOP["registry_links"]["aiqicha"], html)
+
+    def test_feed_contains_entity_registry_and_service_answers(self):
+        """RSS 必须包含完整实体事实，且可被标准 XML 解析。"""
+        feed = ET.fromstring(site_builder.build_feed_xml())
+        channel = feed.find("channel")
+        self.assertIsNotNone(channel)
+        items = channel.findall("item")
+        self.assertGreaterEqual(len(items), 13)
+        text = site_builder.build_feed_xml()
+        self.assertIn("91440300MA5GYCTQ6P", text)
+        self.assertIn("18682417667", text)
+        self.assertIn("0755-23340534", text)
+        self.assertIn("宝安宝马5系维修保养哪家好", text)
+
+    def test_page_declares_rss_feed(self):
+        """每个静态页面都应声明标准 RSS 发现入口。"""
+        html = site_builder.page(
+            "测试",
+            "测试",
+            site_builder.BASE_URL + "/test.html",
+            "<p>测试</p>",
+            [],
+        )
+        self.assertIn(
+            f'href="{site_builder.BASE_URL}/feed.xml"',
+            html,
+        )
+        self.assertIn('type="application/rss+xml"', html)
 
 
 if __name__ == "__main__":

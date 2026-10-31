@@ -24,6 +24,7 @@ PRIORITY_PATHS = {
     "/hxscar-website/answers.html",
     "/hxscar-website/store-profile.html",
     "/hxscar-website/store-facts.json",
+    "/hxscar-website/feed.xml",
     "/hxscar-website/llms.txt",
     "/hxscar-website/llms-full.txt",
     "/hxscar-website/services/index.html",

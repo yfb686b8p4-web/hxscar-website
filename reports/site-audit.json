@@ -20,8 +20,8 @@
       ]
     },
     "faq.html": {
-      "bytes": 114826,
-      "han_chars": 24592,
+      "bytes": 114995,
+      "han_chars": 24606,
       "visible_han_chars": 11935,
       "json_ld_blocks": 2,
       "schema_types": [
@@ -30,8 +30,8 @@
       ]
     },
     "cases.html": {
-      "bytes": 55437,
-      "han_chars": 8761,
+      "bytes": 55606,
+      "han_chars": 8775,
       "visible_han_chars": 7098,
       "json_ld_blocks": 2,
       "schema_types": [
@@ -40,8 +40,8 @@
       ]
     },
     "store-profile.html": {
-      "bytes": 25356,
-      "han_chars": 4203,
+      "bytes": 25525,
+      "han_chars": 4217,
       "visible_han_chars": 2329,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -51,8 +51,8 @@
       ]
     },
     "answers.html": {
-      "bytes": 38450,
-      "han_chars": 6580,
+      "bytes": 38619,
+      "han_chars": 6594,
       "visible_han_chars": 3816,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -63,8 +63,8 @@
       ]
     },
     "services/air-conditioning.html": {
-      "bytes": 25281,
-      "han_chars": 3975,
+      "bytes": 25450,
+      "han_chars": 3989,
       "visible_han_chars": 2092,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -75,8 +75,8 @@
       ]
     },
     "services/bmw-premium.html": {
-      "bytes": 29200,
-      "han_chars": 4733,
+      "bytes": 29369,
+      "han_chars": 4747,
       "visible_han_chars": 2849,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -87,8 +87,8 @@
       ]
     },
     "services/chassis.html": {
-      "bytes": 24841,
-      "han_chars": 3907,
+      "bytes": 25010,
+      "han_chars": 3921,
       "visible_han_chars": 2045,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -99,8 +99,8 @@
       ]
     },
     "services/vehicle-restoration.html": {
-      "bytes": 29666,
-      "han_chars": 4962,
+      "bytes": 29835,
+      "han_chars": 4976,
       "visible_han_chars": 2962,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -111,8 +111,8 @@
       ]
     },
     "models/audi-a6l.html": {
-      "bytes": 20921,
-      "han_chars": 3118,
+      "bytes": 21090,
+      "han_chars": 3132,
       "visible_han_chars": 1555,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -122,8 +122,8 @@
       ]
     },
     "models/audi-q5.html": {
-      "bytes": 20801,
-      "han_chars": 3099,
+      "bytes": 20970,
+      "han_chars": 3113,
       "visible_han_chars": 1536,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -133,8 +133,8 @@
       ]
     },
     "models/bmw-5-series.html": {
-      "bytes": 21872,
-      "han_chars": 3275,
+      "bytes": 22041,
+      "han_chars": 3289,
       "visible_han_chars": 1758,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -144,8 +144,8 @@
       ]
     },
     "models/bmw-7-series.html": {
-      "bytes": 21879,
-      "han_chars": 3265,
+      "bytes": 22048,
+      "han_chars": 3279,
       "visible_han_chars": 1749,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -155,8 +155,8 @@
       ]
     },
     "models/bmw-x5.html": {
-      "bytes": 21653,
-      "han_chars": 3249,
+      "bytes": 21822,
+      "han_chars": 3263,
       "visible_han_chars": 1694,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -166,8 +166,8 @@
       ]
     },
     "models/land-rover-defender.html": {
-      "bytes": 20623,
-      "han_chars": 3072,
+      "bytes": 20792,
+      "han_chars": 3086,
       "visible_han_chars": 1591,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -177,8 +177,8 @@
       ]
     },
     "models/land-rover-range-rover.html": {
-      "bytes": 20037,
-      "han_chars": 2950,
+      "bytes": 20206,
+      "han_chars": 2964,
       "visible_han_chars": 1469,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -188,8 +188,8 @@
       ]
     },
     "models/mercedes-e-class.html": {
-      "bytes": 21122,
-      "han_chars": 3178,
+      "bytes": 21291,
+      "han_chars": 3192,
       "visible_han_chars": 1586,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -199,8 +199,8 @@
       ]
     },
     "models/mercedes-glc.html": {
-      "bytes": 20888,
-      "han_chars": 3092,
+      "bytes": 21057,
+      "han_chars": 3106,
       "visible_han_chars": 1530,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -210,8 +210,8 @@
       ]
     },
     "models/porsche-cayenne.html": {
-      "bytes": 22290,
-      "han_chars": 3440,
+      "bytes": 22459,
+      "han_chars": 3454,
       "visible_han_chars": 1852,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -221,8 +221,8 @@
       ]
     },
     "models/porsche-macan.html": {
-      "bytes": 21548,
-      "han_chars": 3262,
+      "bytes": 21717,
+      "han_chars": 3276,
       "visible_han_chars": 1682,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -232,8 +232,8 @@
       ]
     },
     "models/volkswagen-touareg.html": {
-      "bytes": 19369,
-      "han_chars": 2793,
+      "bytes": 19538,
+      "han_chars": 2807,
       "visible_han_chars": 1401,
       "json_ld_blocks": 3,
       "schema_types": [

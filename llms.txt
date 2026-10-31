@@ -12,6 +12,7 @@
 - [车型专题](https://yfb686b8p4-web.github.io/hxscar-website/models/index.html)：主要车型维修与故障内容
 - [门店资料与名称对照](https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html)：标准门店信息与实体消歧
 - [机器可读门店事实](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
+- [标准问答 RSS](https://yfb686b8p4-web.github.io/hxscar-website/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [完整机器语料](https://yfb686b8p4-web.github.io/hxscar-website/llms-full.txt)：标准问答、完整 FAQ 和维修案例的单一文本入口
 
 ## 门店信息

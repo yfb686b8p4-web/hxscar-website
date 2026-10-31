@@ -15,6 +15,10 @@
     {
       "name": "完整机器语料",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/llms-full.txt"
+    },
+    {
+      "name": "标准问答 RSS",
+      "url": "https://yfb686b8p4-web.github.io/hxscar-website/feed.xml"
     }
   ],
   "entity": {

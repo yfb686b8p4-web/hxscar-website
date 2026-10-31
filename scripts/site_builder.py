@@ -6,6 +6,7 @@ import html
 import json
 import os
 from datetime import datetime, timedelta, timezone
+from email.utils import format_datetime
 from pathlib import Path
 
 
@@ -492,6 +493,7 @@ def page(title, description, canonical, body, schemas, current=None):
     <meta property="og:locale" content="zh_CN">
     <meta property="og:site_name" content="{h(SHOP["shop_names"][0])}">
     <link rel="alternate" type="application/json" href="{h(BASE_URL)}/store-facts.json">
+    <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{h(BASE_URL)}/feed.xml">
     {schema_html}
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
@@ -1067,6 +1069,10 @@ def build_store_facts_json():
                 "name": "完整机器语料",
                 "url": BASE_URL + "/llms-full.txt",
             },
+            {
+                "name": "标准问答 RSS",
+                "url": BASE_URL + "/feed.xml",
+            },
         ],
         "entity": {
             "canonicalName": SHOP["shop_names"][0],
@@ -1116,6 +1122,47 @@ def build_store_facts_json():
     return json.dumps(facts, ensure_ascii=False, indent=2) + "\n"
 
 
+def build_feed_xml():
+    """生成门店问答与工商事实的 RSS 订阅源。"""
+    updated = datetime.fromisoformat(CONTENT_UPDATED_AT).replace(tzinfo=TZ)
+    pub_date = format_datetime(updated)
+    facts = (
+        f"门店：{SHOP['shop_names'][0]}；"
+        f"工商登记：{SHOP.get('registered_name', '')}；"
+        f"统一社会信用代码：{SHOP.get('unified_social_credit_code', '')}；"
+        f"标准地址：{SHOP['address']}；"
+        f"手机：{SHOP['phone']}；座机：{SHOP.get('landline', '')}；"
+        f"营业时间：{SHOP.get('hours', '')}。"
+    )
+    items = []
+    for item in SEARCH_ANSWERS:
+        link = f"{BASE_URL}/answers.html#{item['anchor']}"
+        description = f"{item['answer']}\n\n门店事实：{facts}"
+        items.append(
+            f"""  <item>
+    <title>{h(item["question"])}</title>
+    <link>{h(link)}</link>
+    <guid isPermaLink="true">{h(link)}</guid>
+    <category>{h(item["category"])}</category>
+    <pubDate>{h(pub_date)}</pubDate>
+    <description>{h(description)}</description>
+  </item>"""
+        )
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>华信松汽车门店资料与维修问答</title>
+  <link>{h(BASE_URL)}/</link>
+  <description>深圳宝安华信松汽车幸福海岸分公司的标准门店资料、维修问答和工商核验事实。</description>
+  <language>zh-CN</language>
+  <lastBuildDate>{h(pub_date)}</lastBuildDate>
+  <atom:link href="{h(BASE_URL)}/feed.xml" rel="self" type="application/rss+xml" />
+{chr(10).join(items)}
+</channel>
+</rss>
+"""
+
+
 def build_sitemap():
     """生成站点地图。"""
     lastmod = datetime.now(TZ).date().isoformat()
@@ -1126,6 +1173,7 @@ def build_sitemap():
         (BASE_URL + "/store-profile.html", "1.0"),
         (BASE_URL + "/answers.html", "1.0"),
         (BASE_URL + "/store-facts.json", "0.6"),
+        (BASE_URL + "/feed.xml", "0.6"),
         (BASE_URL + "/llms.txt", "0.5"),
         (BASE_URL + "/llms-full.txt", "0.6"),
     ]
@@ -1173,6 +1221,7 @@ def build_llms_txt():
 - [车型专题]({BASE_URL}/models/index.html)：主要车型维修与故障内容
 - [门店资料与名称对照]({BASE_URL}/store-profile.html)：标准门店信息与实体消歧
 - [机器可读门店事实]({BASE_URL}/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
+- [标准问答 RSS]({BASE_URL}/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [完整机器语料]({BASE_URL}/llms-full.txt)：标准问答、完整 FAQ 和维修案例的单一文本入口
 
 ## 门店信息
@@ -1371,6 +1420,7 @@ Sitemap: {BASE_URL}/sitemap.xml
         ROOT / "cases.html": cases_html,
         ROOT / "store-profile.html": store_profile_html,
         ROOT / "store-facts.json": build_store_facts_json(),
+        ROOT / "feed.xml": build_feed_xml(),
         ROOT / "sitemap.xml": sitemap,
         ROOT / "robots.txt": robots,
         ROOT / "llms.txt": build_llms_txt(),
