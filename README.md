@@ -83,6 +83,7 @@ python3 scripts/site_builder.py
 python3 scripts/content_matrix_builder.py
 python3 scripts/site_audit.py
 python3 -m unittest discover -s tests -v
+python3 scripts/final_summary.py
 ```
 
 ### 每日搜索检查
