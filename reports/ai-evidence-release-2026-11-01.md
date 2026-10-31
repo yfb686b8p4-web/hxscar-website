@@ -22,6 +22,7 @@
 - Gist 的 `store-facts.jsonld` 已加入 Release 页面地址，并通过 `subjectOf` 关联 3 个 Release 数据附件。
 - Gist 的 `ENTITY_FACTS.md` 已加入 Release 入口。
 - GitHub Profile README 已加入 Release 入口，远端提交为 `e46099b`。
+- 结构化实体已拆分身份与文档关系：`sameAs` 只保留官网仓库、GitHub Profile、抖音、地图和工商页；Gist、Release 页面与附件改放到 `subjectOf`。
 
 ## 验证结果
 
