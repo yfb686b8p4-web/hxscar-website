@@ -40,14 +40,14 @@ HTTP_CHECKS = [
     ("答案索引", "/answers/index.html", "全部独立答案"),
     ("独立答案页", "/answers/bmw.html", "深圳宝安宝马专修、豪车保养推荐去哪里？"),
     ("门店事实", "/store-facts.json", "verifiedAt"),
-    ("标准问答RSS", "/feed.xml", "91440300MA5GYCTQ6P"),
-    ("门店品牌图", "/assets/store-avatar-300.jpg", "JFIF"),
-    ("门店外观图", "/assets/store-banner.jpg", "JFIF"),
+    ("标准问答RSS", "/feed.xml", "91440300MA5GYCTQ6P", 45),
+    ("门店品牌图", "/assets/store-avatar-300.jpg", "JFIF", 30),
+    ("门店外观图", "/assets/store-banner.jpg", "JFIF", 60),
     (
         "门店事实PDF",
         "/downloads/huaxinsong-store-facts-2026-10-31.pdf",
         "%PDF",
-        45,
+        90,
     ),
     ("IndexNow验证", "/hxscar20261024geoindexkey.txt", "hxscar20261024geoindexkey"),
     ("服务专题", "/services/index.html", "服务专题"),
@@ -198,7 +198,7 @@ def parse_curl_response(output, expected):
     }
 
 
-def fetch_url(url, expected, timeout=15):
+def fetch_url(url, expected, timeout=30):
     """访问 URL，优先用 curl，失败时尝试本机代理。"""
     attempts = [
         ("直连", None),

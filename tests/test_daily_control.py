@@ -53,6 +53,24 @@ class DailyControlTests(unittest.TestCase):
         )
         self.assertFalse(missing["ok"])
 
+    def test_large_assets_use_network_tolerant_timeouts(self):
+        """大图片和 PDF 不应沿用短页面超时，避免慢网误报线上故障。"""
+        checks = {item[1]: item for item in daily_control.HTTP_CHECKS}
+        self.assertEqual(
+            checks["/assets/store-banner.jpg"][3],
+            60,
+        )
+        self.assertEqual(
+            checks["/feed.xml"][3],
+            45,
+        )
+        self.assertEqual(
+            checks[
+                "/downloads/huaxinsong-store-facts-2026-10-31.pdf"
+            ][3],
+            90,
+        )
+
     def test_effective_hit_requires_complete_identity(self):
         self.assertTrue(daily_control.evaluate_effective_hit(record()))
         self.assertFalse(
