@@ -1,11 +1,11 @@
 {
   "version": 1,
   "date": "2026-11-01",
-  "generated_at": "2026-11-01T00:34:30.167962+08:00",
+  "generated_at": "2026-11-01T00:36:33.186774+08:00",
   "metrics": {
     "total": 12,
-    "completed": 1,
-    "pending": 11,
+    "completed": 2,
+    "pending": 10,
     "mentioned": 0,
     "effective_hits": 0,
     "effective_hit_rate": 0.0,
@@ -15,7 +15,7 @@
     "entity_correct_rate": 0.0,
     "full_info_correct": 0,
     "full_info_correct_rate": 0.0,
-    "service_completed": 1,
+    "service_completed": 2,
     "service_hits": 0,
     "service_hit_rate": 0.0,
     "service_citation_rate": 100.0,
@@ -48,8 +48,8 @@
   },
   "rotating_metrics": {
     "total": 4,
-    "completed": 1,
-    "pending": 3,
+    "completed": 2,
+    "pending": 2,
     "mentioned": 0,
     "effective_hits": 0,
     "effective_hit_rate": 0.0,
@@ -59,7 +59,7 @@
     "entity_correct_rate": 0.0,
     "full_info_correct": 0,
     "full_info_correct_rate": 0.0,
-    "service_completed": 1,
+    "service_completed": 2,
     "service_hits": 0,
     "service_hit_rate": 0.0,
     "service_citation_rate": 100.0,
@@ -77,14 +77,14 @@
     "new_errors": []
   },
   "status": {
-    "checked_at": "2026-11-01T00:34:30.077275+08:00",
+    "checked_at": "2026-11-01T00:36:33.096767+08:00",
     "source_repo": {
       "available": true,
       "path": "/Users/pingguo2019/Documents/豆包等ai 搜索排名提升方案/live-site",
       "branch": "codex/optimization-plans",
-      "clean": true,
-      "change_count": 0,
-      "head": "bccb0ba\t修复未完成检查导致任务误关闭",
+      "clean": false,
+      "change_count": 1,
+      "head": "2a96be7\t刷新11月1日首项实测后的日报",
       "error": ""
     },
     "deploy_repo": {
@@ -93,7 +93,7 @@
       "branch": "main",
       "clean": true,
       "change_count": 0,
-      "head": "bccb0ba\t修复未完成检查导致任务误关闭",
+      "head": "2a96be7\t刷新11月1日首项实测后的日报",
       "error": ""
     },
     "launch_agent": {
@@ -118,7 +118,7 @@
           "status": 200,
           "marker": "华信松汽车",
           "via": "直连",
-          "seconds": 1.22,
+          "seconds": 1.48,
           "error": ""
         },
         {
@@ -128,7 +128,7 @@
           "status": 200,
           "marker": "FAQPage",
           "via": "直连",
-          "seconds": 1.46,
+          "seconds": 1.33,
           "error": ""
         },
         {
@@ -138,7 +138,7 @@
           "status": 200,
           "marker": "维修案例",
           "via": "直连",
-          "seconds": 1.8,
+          "seconds": 1.32,
           "error": ""
         },
         {
@@ -148,7 +148,7 @@
           "status": 200,
           "marker": "同一实体门店",
           "via": "直连",
-          "seconds": 1.83,
+          "seconds": 1.14,
           "error": ""
         },
         {
@@ -158,7 +158,7 @@
           "status": 200,
           "marker": "四项实体核验",
           "via": "直连",
-          "seconds": 1.1,
+          "seconds": 0.97,
           "error": ""
         },
         {
@@ -168,7 +168,7 @@
           "status": 200,
           "marker": "直接回答",
           "via": "直连",
-          "seconds": 1.41,
+          "seconds": 1.28,
           "error": ""
         },
         {
@@ -178,7 +178,7 @@
           "status": 200,
           "marker": "全部独立答案",
           "via": "直连",
-          "seconds": 1.22,
+          "seconds": 0.85,
           "error": ""
         },
         {
@@ -188,7 +188,7 @@
           "status": 200,
           "marker": "深圳宝安宝马专修、豪车保养推荐去哪里？",
           "via": "直连",
-          "seconds": 1.31,
+          "seconds": 1.26,
           "error": ""
         },
         {
@@ -198,7 +198,7 @@
           "status": 200,
           "marker": "verifiedAt",
           "via": "直连",
-          "seconds": 1.07,
+          "seconds": 3.12,
           "error": ""
         },
         {
@@ -208,7 +208,7 @@
           "status": 200,
           "marker": "91440300MA5GYCTQ6P",
           "via": "直连",
-          "seconds": 0.98,
+          "seconds": 0.95,
           "error": ""
         },
         {
@@ -218,7 +218,7 @@
           "status": 200,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 0.99,
+          "seconds": 2.38,
           "error": ""
         },
         {
@@ -228,7 +228,7 @@
           "status": 200,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 2.31,
+          "seconds": 10.79,
           "error": ""
         },
         {
@@ -238,7 +238,7 @@
           "status": 200,
           "marker": "%PDF",
           "via": "直连",
-          "seconds": 42.4,
+          "seconds": 10.17,
           "error": ""
         },
         {
@@ -248,7 +248,7 @@
           "status": 200,
           "marker": "hxscar20261024geoindexkey",
           "via": "直连",
-          "seconds": 0.94,
+          "seconds": 0.76,
           "error": ""
         },
         {
@@ -258,7 +258,7 @@
           "status": 200,
           "marker": "服务专题",
           "via": "直连",
-          "seconds": 1.42,
+          "seconds": 0.95,
           "error": ""
         },
         {
@@ -268,7 +268,7 @@
           "status": 200,
           "marker": "车型维修",
           "via": "直连",
-          "seconds": 1.39,
+          "seconds": 0.72,
           "error": ""
         },
         {
@@ -278,7 +278,7 @@
           "status": 200,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 2.48,
+          "seconds": 0.44,
           "error": ""
         },
         {
@@ -288,7 +288,7 @@
           "status": 200,
           "marker": "store-profile.html",
           "via": "直连",
-          "seconds": 0.78,
+          "seconds": 2.66,
           "error": ""
         },
         {
@@ -298,7 +298,7 @@
           "status": 200,
           "marker": "store-banner.jpg",
           "via": "直连",
-          "seconds": 1.01,
+          "seconds": 0.39,
           "error": ""
         },
         {
@@ -308,7 +308,7 @@
           "status": 200,
           "marker": "门店实体关系",
           "via": "直连",
-          "seconds": 0.97,
+          "seconds": 1.63,
           "error": ""
         },
         {
@@ -318,7 +318,7 @@
           "status": 200,
           "marker": "完整常见问题",
           "via": "直连",
-          "seconds": 1.47,
+          "seconds": 1.68,
           "error": ""
         }
       ],
@@ -522,9 +522,11 @@
       "action": "补充“空调诊断维修”真实案例和可引用内容，使本店进入推荐候选。",
       "category": "空调诊断维修",
       "platforms": [
+        "元宝",
         "豆包"
       ],
       "sources": [
+        "20篇资料",
         "22篇资料"
       ],
       "check_ids": [
@@ -774,17 +776,17 @@
       "query": "汽车空调一边冷一边热怎么修",
       "category": "空调诊断维修",
       "rotating": true,
-      "status": "pending",
-      "mentioned": null,
+      "status": "completed",
+      "mentioned": false,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
       "position": null,
-      "cited_source": "",
-      "sentiment": "",
-      "answer_summary": "",
-      "notes": "",
+      "cited_source": "20篇资料",
+      "sentiment": "中性",
+      "answer_summary": "回答先排查风门电机并按高低压和暖风水阀诊断，推荐华胜洪浪北店或途辉但未提及本店",
+      "notes": "未提及本店",
       "effective_hit": false
     }
   ]
