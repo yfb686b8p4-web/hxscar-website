@@ -13,20 +13,20 @@
 | store-profile.html | 2676 | 3 | AutoRepair, FAQPage, BreadcrumbList |
 | entity-verification.html | 1248 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers.html | 4792 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/air-conditioning.html | 576 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/aircon-diagnosis.html | 571 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/aircon-left-right.html | 565 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/bmw-5-series.html | 690 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/bmw-selection.html | 567 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/bmw.html | 593 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/chassis-bushing.html | 567 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/chassis-repair.html | 570 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/chassis.html | 567 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/contact.html | 464 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/identity.html | 636 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/restoration-order.html | 496 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/restoration-selection.html | 525 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/restoration.html | 503 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/air-conditioning.html | 608 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/aircon-diagnosis.html | 612 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/aircon-left-right.html | 605 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/bmw-5-series.html | 741 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/bmw-selection.html | 603 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/bmw.html | 624 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/chassis-bushing.html | 599 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/chassis-repair.html | 607 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/chassis.html | 597 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/contact.html | 513 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/identity.html | 705 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/restoration-order.html | 528 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/restoration-selection.html | 558 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/restoration.html | 532 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/index.html | 2018 | 3 | AutoRepair, CollectionPage, BreadcrumbList |
 | services/air-conditioning.html | 2280 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
 | services/bmw-premium.html | 3132 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |

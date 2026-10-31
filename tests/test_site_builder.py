@@ -321,6 +321,10 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 web_page["speakable"]["cssSelector"],
                 ["#direct-answer"],
             )
+            for query_variant in site_builder.answer_geo_meta(item)[
+                "queryVariants"
+            ]:
+                self.assertIn(query_variant, html)
             self.assertIn(item["question"], html)
             self.assertIn(item["answer"], html)
 

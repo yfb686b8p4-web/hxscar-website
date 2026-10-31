@@ -1435,6 +1435,7 @@ def build_answer_pages():
     <div class="direct-answer"><p>{h(item["answer"])}</p></div>
     <h3>事实依据</h3>
     <ul class="evidence-list">{evidence}</ul>
+    <p class="answer-meta"><strong>常见问法：</strong>{h("；".join(meta["queryVariants"]))}</p>
 </section>
 <section class="card">
     <h2>标准门店资料</h2>
