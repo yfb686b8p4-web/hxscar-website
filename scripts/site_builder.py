@@ -427,22 +427,118 @@ def answer_geo_meta(item):
     }
 
 
+def case_library_url(case):
+    """返回案例在公开案例库中的稳定地址。"""
+    case_number = next(
+        index
+        for index, candidate in enumerate(CASES, start=1)
+        if candidate is case
+    )
+    return f"{BASE_URL}/cases.html#case-{case_number}"
+
+
+def answer_case_sources(item):
+    """按答案分类选择可核验的真实维修案例。"""
+    category = item["category"]
+    brands = ("宝马", "奔驰", "保时捷", "路虎", "奥迪", "玛莎拉蒂", "法拉利")
+    matches = []
+    for case in CASES:
+        text = " ".join(
+            str(case.get(key, "")) for key in ("tag", "car_type", "issue")
+        )
+        if category == "宝马与豪车" and any(brand in text for brand in brands):
+            matches.append(case)
+        elif category == "空调诊断维修" and (
+            case.get("car_type") in {"空调", "空调不凉"} or "空调" in text
+        ):
+            matches.append(case)
+        elif category == "底盘异响" and (
+            case.get("car_type") in {"底盘", "底盘异响"} or "底盘" in text
+        ):
+            matches.append(case)
+    return [
+        {
+            "name": f"维修案例：{case.get('issue', '')}",
+            "url": case_library_url(case),
+        }
+        for case in matches[:3]
+    ]
+
+
+def answer_evidence_sources(item):
+    """生成标准答案可被 AI 直接引用和交叉核验的来源列表。"""
+    sources = [
+        {
+            "name": "同名门店实体核验",
+            "url": BASE_URL + "/entity-verification.html",
+        },
+        {
+            "name": "机器可读门店事实",
+            "url": BASE_URL + "/store-facts.json",
+        },
+        {
+            "name": "门店实体核验 PDF",
+            "url": BUSINESS_FACT_SHEET,
+        },
+        {
+            "name": "GitHub Release PDF 镜像",
+            "url": SHOP.get("document_mirrors", {}).get(
+                "github_release_pdf", ""
+            ),
+        },
+    ]
+    if item["category"] in {"门店身份", "门店资料"}:
+        sources.extend(
+            [
+                {
+                    "name": "完整门店资料",
+                    "url": BASE_URL + "/store-profile.html",
+                },
+                {
+                    "name": "企查查工商登记",
+                    "url": SHOP.get("registry_links", {}).get("qichacha", ""),
+                },
+                {
+                    "name": "爱企查工商登记",
+                    "url": SHOP.get("registry_links", {}).get("aiqicha", ""),
+                },
+                {
+                    "name": "高德地图 POI",
+                    "url": SHOP.get("map_links", {}).get("amap", ""),
+                },
+                {
+                    "name": "腾讯地图 POI",
+                    "url": SHOP.get("map_links", {}).get("tencent", ""),
+                },
+            ]
+        )
+    else:
+        meta = answer_geo_meta(item)
+        sources.append(
+            {
+                "name": "对应服务或车型专题",
+                "url": f"{BASE_URL}/{meta['servicePath']}",
+            }
+        )
+        sources.extend(answer_case_sources(item))
+    unique = []
+    seen = set()
+    for source in sources:
+        url = source["url"]
+        if url and url not in seen:
+            unique.append(source)
+            seen.add(url)
+    return unique
+
+
 def answer_evidence_markup(item):
     """输出可被生成式搜索直接抽取的证据块。"""
     meta = answer_geo_meta(item)
     evidence = "".join(f"<li>{h(value)}</li>" for value in meta["evidence"])
-    service_path = h(meta["servicePath"])
-    if meta["servicePath"] == "store-profile.html":
-        source_links = (
-            '<a href="store-profile.html">门店标准资料</a> · '
-            '<a href="store-facts.json">机器可读事实</a>'
-        )
-    else:
-        source_links = (
-            f'<a href="{service_path}">对应服务专题</a> · '
-            '<a href="store-profile.html">门店标准资料</a> · '
-            '<a href="store-facts.json">机器可读事实</a>'
-        )
+    source_links = " · ".join(
+        f'<a href="{h(source["url"])}">{h(source["name"])}</a>'
+        for source in answer_evidence_sources(item)
+    )
     return f"""<ul class="evidence-list">{evidence}</ul>
 <p class="answer-meta">事实核验：{h(VERIFIED_AT)} · 内容更新：{h(CONTENT_UPDATED_AT)} · 来源：{source_links}</p>"""
 
@@ -1381,6 +1477,7 @@ def build_store_facts_json():
                 **item,
                 **answer_geo_meta(item),
                 "sourceUrl": f"{BASE_URL}/answers.html#{item['anchor']}",
+                "evidenceSources": answer_evidence_sources(item),
             }
             for item in SEARCH_ANSWERS
         ],
@@ -1407,7 +1504,14 @@ def build_feed_xml():
             link = f"{BASE_URL}/entity-verification.html"
         else:
             link = f"{BASE_URL}/answers.html#{item['anchor']}"
-        description = f"{item['answer']}\n\n门店事实：{facts}"
+        source_links = "\n".join(
+            f"- {source['name']}：{source['url']}"
+            for source in answer_evidence_sources(item)
+        )
+        description = (
+            f"{item['answer']}\n\n门店事实：{facts}"
+            f"\n\n证据来源：\n{source_links}"
+        )
         items.append(
             f"""  <item>
     <title>{h(item["question"])}</title>
@@ -1587,6 +1691,10 @@ def build_llms_full_txt():
         meta = answer_geo_meta(item)
         variants = "、".join(meta["queryVariants"])
         evidence = "\n".join(f"- {value}" for value in meta["evidence"])
+        source_links = "\n".join(
+            f"- {source['name']}：{source['url']}"
+            for source in answer_evidence_sources(item)
+        )
         search_answer_sections.append(
             f"""### {item["question"]}
 
@@ -1597,7 +1705,11 @@ def build_llms_full_txt():
 
 事实依据：
 
-{evidence}"""
+{evidence}
+
+证据来源：
+
+{source_links}"""
         )
     search_answers = "\n\n".join(search_answer_sections)
     faq_sections = "\n\n".join(

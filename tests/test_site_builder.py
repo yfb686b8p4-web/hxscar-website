@@ -24,6 +24,43 @@ class SiteBuilderGeoTests(unittest.TestCase):
         anchors = {item["anchor"] for item in site_builder.SEARCH_ANSWERS}
         self.assertEqual(anchors, set(site_builder.GEO_ANSWER_META))
 
+    def test_every_answer_has_directly_citable_sources(self):
+        """每条标准答案必须给出至少四个可直接核验的 HTTPS 来源。"""
+        for item in site_builder.SEARCH_ANSWERS:
+            sources = site_builder.answer_evidence_sources(item)
+            self.assertGreaterEqual(len(sources), 4, item["anchor"])
+            urls = {source["url"] for source in sources}
+            self.assertTrue(
+                all(url.startswith("https://") for url in urls),
+                item["anchor"],
+            )
+            self.assertIn(
+                site_builder.BASE_URL + "/entity-verification.html",
+                urls,
+            )
+            self.assertIn(
+                site_builder.BASE_URL + "/store-facts.json",
+                urls,
+            )
+
+    def test_service_answer_sources_include_real_cases(self):
+        """服务答案必须能回链到对应真实案例，而不是只有自述证据。"""
+        for item in site_builder.SEARCH_ANSWERS:
+            if item["category"] not in {
+                "宝马与豪车",
+                "空调诊断维修",
+                "底盘异响",
+            }:
+                continue
+            urls = {
+                source["url"]
+                for source in site_builder.answer_evidence_sources(item)
+            }
+            self.assertTrue(
+                any("/cases.html#case-" in url for url in urls),
+                item["anchor"],
+            )
+
     def test_bmw_5_series_answer_contains_complete_store_facts(self):
         """宝马5系高意图答案必须包含可核验的完整门店资料。"""
         item = next(
@@ -181,6 +218,18 @@ class SiteBuilderGeoTests(unittest.TestCase):
         ):
             self.assertIn(site_builder.BUSINESS_FACT_SHEET, text)
             self.assertIn(mirror, text)
+
+    def test_answer_sources_are_exposed_in_machine_surfaces(self):
+        """机器事实、RSS 与完整语料都必须携带逐答案证据来源。"""
+        facts = json.loads(site_builder.build_store_facts_json())
+        self.assertTrue(
+            all(item.get("evidenceSources") for item in facts["answers"])
+        )
+        feed = site_builder.build_feed_xml()
+        llms_full = site_builder.build_llms_full_txt()
+        self.assertIn("证据来源：", feed)
+        self.assertIn("证据来源：", llms_full)
+        self.assertIn("/cases.html#case-", llms_full)
 
     def test_page_declares_rss_feed(self):
         """每个静态页面都应声明标准 RSS 发现入口。"""

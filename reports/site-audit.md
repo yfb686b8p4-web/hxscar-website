@@ -12,7 +12,7 @@
 | cases.html | 7102 | 2 | AutoRepair, ItemList |
 | store-profile.html | 2676 | 3 | AutoRepair, FAQPage, BreadcrumbList |
 | entity-verification.html | 1248 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers.html | 3825 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers.html | 4604 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | services/air-conditioning.html | 2280 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
 | services/bmw-premium.html | 3132 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
 | services/chassis.html | 2246 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |

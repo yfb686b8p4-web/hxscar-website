@@ -63,9 +63,9 @@
       ]
     },
     "answers.html": {
-      "bytes": 42206,
-      "han_chars": 6814,
-      "visible_han_chars": 3825,
+      "bytes": 53936,
+      "han_chars": 7593,
+      "visible_han_chars": 4604,
       "json_ld_blocks": 4,
       "schema_types": [
         "AutoRepair",

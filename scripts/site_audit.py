@@ -359,6 +359,22 @@ def audit():
             if not item.get("sourceUrl"):
                 errors.append(f"store-facts.json 答案缺少来源地址: {item.get('anchor', '')}")
                 break
+            evidence_sources = item.get("evidenceSources", [])
+            if len(evidence_sources) < 4:
+                errors.append(
+                    "store-facts.json 答案证据来源不足: "
+                    f"{item.get('anchor', '')}"
+                )
+                break
+            if any(
+                not str(source.get("url", "")).startswith("https://")
+                for source in evidence_sources
+            ):
+                errors.append(
+                    "store-facts.json 答案证据来源不是 HTTPS: "
+                    f"{item.get('anchor', '')}"
+                )
+                break
     if not queue_manifest.exists():
         errors.append(f"缺少 W{week} 站外发布队列")
 
