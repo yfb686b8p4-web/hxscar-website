@@ -60,6 +60,20 @@
     "requires_confirmation": true
   },
   {
+    "id": "platform-business-directories",
+    "priority": "P0",
+    "action": "2026-11-01 05:31复核元宝34篇引用来源：企查查、启信宝、水滴信用、企百科、天眼查等工商聚合页权重高，其中企查查页面更新时间和2024年报电话仍可能被用于推断当前联系方式。已准备目录纠错说明；需企业账号所有人登录各平台提交“旧年报号码不作为当前预约电话”的纠错，并附官网实体核验、机器事实和纠错JSON。不得修改或伪造法定登记、年报或信用代码。",
+    "category": "站外权威资料",
+    "platforms": [
+      "工商聚合资料纠错"
+    ],
+    "sources": [
+      "publishing/status.json"
+    ],
+    "check_ids": [],
+    "requires_confirmation": true
+  },
+  {
     "id": "platform-dianping",
     "priority": "P0",
     "action": "更新门店介绍、服务项目、真实案例和评价回复",

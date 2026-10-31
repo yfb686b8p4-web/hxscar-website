@@ -1,7 +1,7 @@
 {
   "version": 1,
   "date": "2026-11-01",
-  "generated_at": "2026-11-01T05:29:34.008633+08:00",
+  "generated_at": "2026-11-01T05:31:09.747638+08:00",
   "metrics": {
     "total": 12,
     "completed": 12,
@@ -90,14 +90,14 @@
     "new_errors": []
   },
   "status": {
-    "checked_at": "2026-11-01T05:29:33.902308+08:00",
+    "checked_at": "2026-11-01T05:31:09.651869+08:00",
     "source_repo": {
       "available": true,
       "path": "/Users/pingguo2019/Documents/豆包等ai 搜索排名提升方案/live-site",
       "branch": "codex/optimization-plans",
       "clean": true,
       "change_count": 0,
-      "head": "59283be\t依据元宝引用源新增微信公众号实体纠错任务",
+      "head": "b56bed0\t新增工商聚合资料旧电话纠错任务",
       "error": ""
     },
     "deploy_repo": {
@@ -106,7 +106,7 @@
       "branch": "main",
       "clean": true,
       "change_count": 0,
-      "head": "59283be\t依据元宝引用源新增微信公众号实体纠错任务",
+      "head": "b56bed0\t新增工商聚合资料旧电话纠错任务",
       "error": ""
     },
     "launch_agent": {
@@ -131,7 +131,7 @@
           "status": 200,
           "marker": "华信松汽车",
           "via": "直连",
-          "seconds": 0.98,
+          "seconds": 0.97,
           "error": ""
         },
         {
@@ -151,7 +151,7 @@
           "status": 200,
           "marker": "维修案例",
           "via": "直连",
-          "seconds": 0.98,
+          "seconds": 0.97,
           "error": ""
         },
         {
@@ -161,7 +161,7 @@
           "status": 200,
           "marker": "同一实体门店",
           "via": "直连",
-          "seconds": 0.95,
+          "seconds": 0.94,
           "error": ""
         },
         {
@@ -171,7 +171,7 @@
           "status": 200,
           "marker": "四项实体核验",
           "via": "直连",
-          "seconds": 0.84,
+          "seconds": 0.81,
           "error": ""
         },
         {
@@ -191,7 +191,7 @@
           "status": 200,
           "marker": "全部独立答案",
           "via": "直连",
-          "seconds": 0.72,
+          "seconds": 0.83,
           "error": ""
         },
         {
@@ -201,7 +201,7 @@
           "status": 200,
           "marker": "深圳宝安宝马专修、豪车保养推荐去哪里？",
           "via": "直连",
-          "seconds": 0.78,
+          "seconds": 0.77,
           "error": ""
         },
         {
@@ -211,7 +211,7 @@
           "status": 200,
           "marker": "verifiedAt",
           "via": "直连",
-          "seconds": 0.89,
+          "seconds": 0.88,
           "error": ""
         },
         {
@@ -221,7 +221,7 @@
           "status": 200,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 0.7,
+          "seconds": 0.68,
           "error": ""
         },
         {
@@ -231,7 +231,7 @@
           "status": 200,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 0.85,
+          "seconds": 0.88,
           "error": ""
         },
         {
@@ -241,7 +241,7 @@
           "status": 200,
           "marker": "91440300MA5GYCTQ6P",
           "via": "直连",
-          "seconds": 0.9,
+          "seconds": 0.86,
           "error": ""
         },
         {
@@ -251,7 +251,7 @@
           "status": 200,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 0.8,
+          "seconds": 0.69,
           "error": ""
         },
         {
@@ -261,7 +261,7 @@
           "status": 200,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 1.24,
+          "seconds": 1.26,
           "error": ""
         },
         {
@@ -271,7 +271,7 @@
           "status": 200,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 1.16,
+          "seconds": 1.14,
           "error": ""
         },
         {
@@ -281,7 +281,7 @@
           "status": 200,
           "marker": "WEBP",
           "via": "直连",
-          "seconds": 0.96,
+          "seconds": 0.95,
           "error": ""
         },
         {
@@ -291,7 +291,7 @@
           "status": 200,
           "marker": "%PDF",
           "via": "直连",
-          "seconds": 1.39,
+          "seconds": 1.52,
           "error": ""
         },
         {
@@ -301,7 +301,7 @@
           "status": 200,
           "marker": "hxscar20261024geoindexkey",
           "via": "直连",
-          "seconds": 0.7,
+          "seconds": 0.76,
           "error": ""
         },
         {
@@ -311,7 +311,7 @@
           "status": 200,
           "marker": "服务专题",
           "via": "直连",
-          "seconds": 0.41,
+          "seconds": 0.94,
           "error": ""
         },
         {
@@ -321,7 +321,7 @@
           "status": 200,
           "marker": "车型维修",
           "via": "直连",
-          "seconds": 0.5,
+          "seconds": 0.39,
           "error": ""
         },
         {
@@ -331,7 +331,7 @@
           "status": 200,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 0.38,
+          "seconds": 0.95,
           "error": ""
         },
         {
@@ -341,7 +341,7 @@
           "status": 200,
           "marker": "store-profile.html",
           "via": "直连",
-          "seconds": 0.97,
+          "seconds": 0.42,
           "error": ""
         },
         {
@@ -351,7 +351,7 @@
           "status": 200,
           "marker": "store-banner.jpg",
           "via": "直连",
-          "seconds": 0.38,
+          "seconds": 0.92,
           "error": ""
         },
         {
@@ -361,7 +361,7 @@
           "status": 200,
           "marker": "门店实体关系",
           "via": "直连",
-          "seconds": 1.03,
+          "seconds": 0.38,
           "error": ""
         },
         {
@@ -371,7 +371,7 @@
           "status": 200,
           "marker": "证据边界内常见问题",
           "via": "直连",
-          "seconds": 0.91,
+          "seconds": 0.9,
           "error": ""
         },
         {
@@ -381,7 +381,7 @@
           "status": 200,
           "marker": "深圳华信松老周修车",
           "via": "直连",
-          "seconds": 0.79,
+          "seconds": 0.82,
           "error": ""
         },
         {
@@ -391,7 +391,7 @@
           "status": 200,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 0.68,
+          "seconds": 0.72,
           "error": ""
         },
         {
@@ -401,7 +401,7 @@
           "status": 200,
           "marker": "<loc>https://yfb686b8p4-web.github.io/yfb686b8p4-web/</loc>",
           "via": "直连",
-          "seconds": 0.68,
+          "seconds": 0.67,
           "error": ""
         },
         {
@@ -411,7 +411,7 @@
           "status": 200,
           "marker": "store-banner.jpg",
           "via": "直连",
-          "seconds": 0.69,
+          "seconds": 0.72,
           "error": ""
         },
         {
@@ -421,7 +421,7 @@
           "status": 200,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 0.72,
+          "seconds": 0.77,
           "error": ""
         },
         {
@@ -431,7 +431,7 @@
           "status": 200,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 1.24,
+          "seconds": 1.21,
           "error": ""
         },
         {
@@ -441,7 +441,7 @@
           "status": 200,
           "marker": "统一社会信用代码",
           "via": "直连",
-          "seconds": 0.69,
+          "seconds": 0.67,
           "error": ""
         },
         {
@@ -451,7 +451,7 @@
           "status": 200,
           "marker": "七个直接答案",
           "via": "直连",
-          "seconds": 0.69,
+          "seconds": 0.68,
           "error": ""
         },
         {
@@ -461,7 +461,7 @@
           "status": 200,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 0.99,
+          "seconds": 0.85,
           "error": ""
         },
         {
@@ -471,7 +471,7 @@
           "status": 200,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 1.41,
+          "seconds": 31.78,
           "error": ""
         },
         {
@@ -481,7 +481,7 @@
           "status": 200,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 31.51,
+          "seconds": 31.31,
           "error": ""
         },
         {
@@ -491,7 +491,7 @@
           "status": 200,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 0.31,
+          "seconds": 1.2,
           "error": ""
         },
         {
@@ -501,7 +501,7 @@
           "status": 200,
           "marker": "hxscarprofile20261101geo",
           "via": "直连",
-          "seconds": 0.69,
+          "seconds": 0.68,
           "error": ""
         }
       ],
@@ -523,7 +523,7 @@
       "counts": {
         "review": 1,
         "pending": 5,
-        "blocked": 5
+        "blocked": 6
       },
       "platforms": {
         "amap": {
@@ -579,6 +579,15 @@
           "url": "https://mp.weixin.qq.com/",
           "notes": "2026-11-01 05:29复核元宝实体问题引用来源，出现“公众号·老周在修车”的《换胶套,修减震就找老周》等内容，但当前无法确认该公众号是否由门店账号所有。已准备实体关系纠错文章；需账号所有人登录微信公众号后台，先核对账号主体，再在资料与文章中补齐登记全称、信用代码、标准地址、双电话、分时营业时间和官网核验链接。",
           "updated_at": "2026-11-01T05:29:00+08:00"
+        },
+        "business-directories": {
+          "name": "工商聚合资料纠错",
+          "priority": "P0",
+          "objective": "在企查查、启信宝、水滴信用等聚合页提交门店当前联系方式纠错，保留法定登记事实并说明旧年报号码不作为当前预约电话",
+          "status": "blocked",
+          "url": "https://www.qcc.com/firm/8ed6b923472b38c0bf3801b468b2d37e.html",
+          "notes": "2026-11-01 05:31复核元宝34篇引用来源：企查查、启信宝、水滴信用、企百科、天眼查等工商聚合页权重高，其中企查查页面更新时间和2024年报电话仍可能被用于推断当前联系方式。已准备目录纠错说明；需企业账号所有人登录各平台提交“旧年报号码不作为当前预约电话”的纠错，并附官网实体核验、机器事实和纠错JSON。不得修改或伪造法定登记、年报或信用代码。",
+          "updated_at": "2026-11-01T05:31:00+08:00"
         },
         "dianping": {
           "name": "大众点评",
@@ -682,6 +691,20 @@
       "category": "站外权威资料",
       "platforms": [
         "百度地图"
+      ],
+      "sources": [
+        "publishing/status.json"
+      ],
+      "check_ids": [],
+      "requires_confirmation": true
+    },
+    {
+      "id": "platform-business-directories",
+      "priority": "P0",
+      "action": "2026-11-01 05:31复核元宝34篇引用来源：企查查、启信宝、水滴信用、企百科、天眼查等工商聚合页权重高，其中企查查页面更新时间和2024年报电话仍可能被用于推断当前联系方式。已准备目录纠错说明；需企业账号所有人登录各平台提交“旧年报号码不作为当前预约电话”的纠错，并附官网实体核验、机器事实和纠错JSON。不得修改或伪造法定登记、年报或信用代码。",
+      "category": "站外权威资料",
+      "platforms": [
+        "工商聚合资料纠错"
       ],
       "sources": [
         "publishing/status.json"
@@ -872,6 +895,7 @@
   ],
   "task_changes": {
     "new": [
+      "platform-business-directories",
       "platform-sogou-lizhi",
       "platform-toutiao-search",
       "platform-wechat-official"
