@@ -116,6 +116,12 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["document_mirrors"]["github_release_pdf"],
             home,
         )
+        self.assertIn('"@type": "WebSite"', home)
+        self.assertIn('"@id": "https://yfb686b8p4-web.github.io/hxscar-website/#website"', home)
+        self.assertIn(
+            '"publisher": {"@id": "https://yfb686b8p4-web.github.io/hxscar-website/#autorepair"}',
+            home,
+        )
 
 
 if __name__ == "__main__":

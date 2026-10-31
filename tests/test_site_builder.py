@@ -393,6 +393,15 @@ class SiteBuilderGeoTests(unittest.TestCase):
             html,
         )
         self.assertIn('type="application/rss+xml"', html)
+        self.assertIn('"@type":"WebSite"', html.replace(" ", ""))
+        self.assertIn(
+            f'"@id":"{site_builder.BASE_URL}/#website"',
+            html.replace(" ", ""),
+        )
+        self.assertIn(
+            f'"publisher":{{"@id":"{site_builder.BASE_URL}/#autorepair"}}',
+            html.replace(" ", ""),
+        )
 
     def test_disambiguation_is_exposed_across_citation_surfaces(self):
         """同名门店消歧规则必须同时出现在页面、结构化数据和 RSS。"""

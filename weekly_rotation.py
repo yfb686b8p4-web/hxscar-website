@@ -270,6 +270,21 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         ],
     }, ensure_ascii=False)
 
+    website_schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": SITE_URL + "#website",
+        "url": SITE_URL,
+        "name": "华信松汽车服务有限公司（幸福海岸分公司）",
+        "alternateName": SHOP_NAMES[1:],
+        "description": (
+            "深圳宝安华信松汽车幸福海岸分公司的门店资料、"
+            "维修问答、服务专题和实体核验内容。"
+        ),
+        "inLanguage": "zh-CN",
+        "publisher": {"@id": SITE_URL + "#autorepair"},
+    }, ensure_ascii=False)
+
     tag_str = '</span><span>'.join(kw)
     alt_names_str = ' · '.join(SHOP_NAMES[1:])
     identity_points_html = "".join(
@@ -301,6 +316,9 @@ def build_page(config, selected_cases, selected_reviews, week_num):
     </script>
     <script type="application/ld+json">
 {faq_schema}
+    </script>
+    <script type="application/ld+json">
+{website_schema}
     </script>
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}

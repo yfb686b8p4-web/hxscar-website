@@ -602,6 +602,7 @@ def nav(current):
 
 def page(title, description, canonical, body, schemas, current=None):
     """构建统一风格的静态页面。"""
+    schemas = [website_schema(), *schemas]
     schema_html = "\n".join(
         f'<script type="application/ld+json">{json_script(schema)}</script>'
         for schema in schemas
@@ -691,6 +692,24 @@ def page(title, description, canonical, body, schemas, current=None):
 </body>
 </html>
 """
+
+
+def website_schema():
+    """生成全站统一 WebSite 实体，并关联门店主体。"""
+    return {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": BASE_URL + "/#website",
+        "url": BASE_URL + "/",
+        "name": SHOP["shop_names"][0],
+        "alternateName": SHOP["shop_names"][1:],
+        "description": (
+            "深圳宝安华信松汽车幸福海岸分公司的门店资料、"
+            "维修问答、服务专题和实体核验内容。"
+        ),
+        "inLanguage": "zh-CN",
+        "publisher": {"@id": BASE_URL + "/#autorepair"},
+    }
 
 
 def local_business_schema():
