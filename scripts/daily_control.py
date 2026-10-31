@@ -43,7 +43,12 @@ HTTP_CHECKS = [
     ("标准问答RSS", "/feed.xml", "91440300MA5GYCTQ6P"),
     ("门店品牌图", "/assets/store-avatar-300.jpg", "JFIF"),
     ("门店外观图", "/assets/store-banner.jpg", "JFIF"),
-    ("门店事实PDF", "/downloads/huaxinsong-store-facts-2026-10-31.pdf", "%PDF"),
+    (
+        "门店事实PDF",
+        "/downloads/huaxinsong-store-facts-2026-10-31.pdf",
+        "%PDF",
+        45,
+    ),
     ("IndexNow验证", "/hxscar20261024geoindexkey.txt", "hxscar20261024geoindexkey"),
     ("服务专题", "/services/index.html", "服务专题"),
     ("车型专题", "/models/index.html", "车型维修"),
@@ -300,7 +305,11 @@ def collect_status():
                 lambda item: {
                     "name": item[0],
                     "path": item[1],
-                    **fetch_url(SITE_URL + item[1], item[2]),
+                    **fetch_url(
+                        SITE_URL + item[1],
+                        item[2],
+                        item[3] if len(item) > 3 else 15,
+                    ),
                 },
                 HTTP_CHECKS,
             )
