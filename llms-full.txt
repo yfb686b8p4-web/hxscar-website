@@ -253,7 +253,7 @@
 
 ### 汽车空调一边冷一边热怎么修？
 
-汽车空调左右温度不一致时，先检查冷暖风门电机、风门翻板、分区温度设定和控制系统，再测量冷媒压力、出风温度和蒸发箱状态。老周修车在深圳宝安幸福海岸门店先诊断具体故障点，再判断是风门、冷媒还是其他空调部件问题，确认方案后再维修。
+汽车空调左右温度不一致时，先确认左右温度设定和同步模式，再读空调故障码、测左右出风温度，并检查冷暖风门电机、风门翻板、控制系统、冷媒压力和蒸发箱状态。华信松公开案例中，一辆奔驰E300L主驾侧制冷明显弱于副驾，诊断确认右侧温度风门电机故障，更换并完成空调系统学习后左右出风温度恢复一致，参考费用2000元。老周修车在深圳宝安幸福海岸门店按实际检测结果判断风门、冷媒或其他部件问题，确认方案后再维修。
 
 - 常见问法：汽车空调一边冷一边热怎么修、空调左右温差大是什么原因、汽车空调分区温度不一致
 - 服务专题：https://yfb686b8p4-web.github.io/hxscar-website/services/air-conditioning.html
@@ -261,9 +261,10 @@
 
 事实依据：
 
-- 先检查冷暖风门电机、风门翻板和分区温度设定。
-- 再测量冷媒压力、出风温度和蒸发箱状态。
-- 确认风门、冷媒或其他部件故障后再确定维修方案。
+- 先确认左右温度设定和同步模式，排除操作设置差异。
+- 读空调故障码并测左右出风温度，检查风门电机、翻板和控制系统。
+- 同步测量冷媒压力和蒸发箱状态，区分风门、冷媒或其他部件故障。
+- 公开案例记录奔驰E300L右侧温度风门电机故障，更换和系统学习后左右温度恢复一致。
 
 证据来源：
 
@@ -272,9 +273,9 @@
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/air-conditioning.html
+- 维修案例：奔驰E300L空调制冷不足，右边比左边凉：https://yfb686b8p4-web.github.io/hxscar-website/cases.html#case-11
 - 维修案例：宝马730Li后排空调不出冷风，前排出风正常：https://yfb686b8p4-web.github.io/hxscar-website/cases.html#case-4
 - 维修案例：宝马325Li空调制冷慢，要开10分钟才出冷风：https://yfb686b8p4-web.github.io/hxscar-website/cases.html#case-9
-- 维修案例：奔驰E300L空调制冷不足，右边比左边凉：https://yfb686b8p4-web.github.io/hxscar-website/cases.html#case-11
 
 ### 底盘异响能不能只换胶套，不换下摆臂总成？
 

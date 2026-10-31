@@ -154,10 +154,13 @@ SEARCH_ANSWERS = [
         "category": "空调诊断维修",
         "question": "汽车空调一边冷一边热怎么修？",
         "answer": (
-            "汽车空调左右温度不一致时，先检查冷暖风门电机、风门翻板、"
-            "分区温度设定和控制系统，再测量冷媒压力、出风温度和蒸发箱状态。"
-            "老周修车在深圳宝安幸福海岸门店先诊断具体故障点，再判断是风门、"
-            "冷媒还是其他空调部件问题，确认方案后再维修。"
+            "汽车空调左右温度不一致时，先确认左右温度设定和同步模式，"
+            "再读空调故障码、测左右出风温度，并检查冷暖风门电机、风门翻板、"
+            "控制系统、冷媒压力和蒸发箱状态。华信松公开案例中，一辆奔驰E300L"
+            "主驾侧制冷明显弱于副驾，诊断确认右侧温度风门电机故障，更换并完成"
+            "空调系统学习后左右出风温度恢复一致，参考费用2000元。老周修车在"
+            "深圳宝安幸福海岸门店按实际检测结果判断风门、冷媒或其他部件问题，"
+            "确认方案后再维修。"
         ),
     },
     {
@@ -336,9 +339,10 @@ GEO_ANSWER_META = {
             "汽车空调分区温度不一致",
         ],
         "evidence": [
-            "先检查冷暖风门电机、风门翻板和分区温度设定。",
-            "再测量冷媒压力、出风温度和蒸发箱状态。",
-            "确认风门、冷媒或其他部件故障后再确定维修方案。",
+            "先确认左右温度设定和同步模式，排除操作设置差异。",
+            "读空调故障码并测左右出风温度，检查风门电机、翻板和控制系统。",
+            "同步测量冷媒压力和蒸发箱状态，区分风门、冷媒或其他部件故障。",
+            "公开案例记录奔驰E300L右侧温度风门电机故障，更换和系统学习后左右温度恢复一致。",
         ],
         "servicePath": "services/air-conditioning.html",
     },
@@ -447,7 +451,7 @@ def case_library_url(case):
     return f"{BASE_URL}/cases.html#case-{case_number}"
 
 
-def answer_case_sources(item):
+def answer_case_records(item):
     """按答案分类选择可核验的真实维修案例。"""
     category = item["category"]
     brands = ("宝马", "奔驰", "保时捷", "路虎", "奥迪", "玛莎拉蒂", "法拉利")
@@ -466,12 +470,25 @@ def answer_case_sources(item):
             case.get("car_type") in {"底盘", "底盘异响"} or "底盘" in text
         ):
             matches.append(case)
+    if item["anchor"] == "aircon-left-right":
+        matches.sort(
+            key=lambda case: (
+                0
+                if "右边比左边凉" in str(case.get("issue", ""))
+                else 1
+            )
+        )
+    return matches
+
+
+def answer_case_sources(item):
+    """把答案关联的真实维修案例转换为公开引用来源。"""
     return [
         {
             "name": f"维修案例：{case.get('issue', '')}",
             "url": case_library_url(case),
         }
-        for case in matches[:3]
+        for case in answer_case_records(item)[:3]
     ]
 
 
@@ -1431,6 +1448,42 @@ def build_answers_page():
     )
 
 
+def answer_case_markup(item):
+    """输出答案页首屏关联的首个真实维修案例。"""
+    cases = answer_case_records(item)
+    if not cases:
+        return ""
+    case = cases[0]
+    case_number = next(
+        index
+        for index, candidate in enumerate(CASES, start=1)
+        if candidate is case
+    )
+    return f"""<section class="card">
+    <h2>真实维修案例</h2>
+    <article class="case-item" id="case-{case_number}">
+        <div class="case-meta">{h(case.get("tag"))} · {h(case.get("car_type"))}</div>
+        <h3>{h(case.get("issue"))}</h3>
+        <p><strong>故障表现：</strong>{h(case.get("solution"))}</p>
+        <p><strong>处理方案：</strong>{h(case.get("price"))}</p>
+        <p><strong>参考费用：</strong>{h(case.get("result"))}</p>
+        <p><strong>案例来源：</strong><a href="../cases.html#case-{case_number}">查看公开案例库第 {case_number} 条</a></p>
+    </article>
+</section>"""
+
+
+def answer_meta_description(item, limit=158):
+    """截取完整句子作为独立答案页描述，避免在逗号处生硬截断。"""
+    answer = item["answer"]
+    if len(answer) <= limit:
+        return answer
+    candidate = answer[:limit]
+    sentence_end = max(candidate.rfind(mark) for mark in "。！？；")
+    if sentence_end >= 60:
+        return candidate[: sentence_end + 1]
+    return candidate.rstrip("，；、 ") + "。"
+
+
 def build_answer_pages():
     """为每条标准搜索问题生成独立、可引用的答案页。"""
     outputs = {}
@@ -1445,6 +1498,7 @@ def build_answer_pages():
             f'<li><a href="{h(source["url"])}">{h(source["name"])}</a></li>'
             for source in answer_evidence_sources(item)
         )
+        case_markup = answer_case_markup(item)
         body = f"""<section class="hero">
     <h1>{h(item["question"])}</h1>
     <p>{h(item["category"])} · 资料复核日期：{h(VERIFIED_AT)}</p>
@@ -1456,6 +1510,7 @@ def build_answer_pages():
     <ul class="evidence-list">{evidence}</ul>
     <p class="answer-meta"><strong>常见问法：</strong>{h("；".join(meta["queryVariants"]))}</p>
 </section>
+{case_markup}
 <section class="card">
     <h2>标准门店资料</h2>
     <table class="fact-table">
@@ -1543,7 +1598,7 @@ def build_answer_pages():
         }
         outputs[path] = page(
             f"{item['question']}｜老周修车·华信松幸福海岸",
-            item["answer"][:120],
+            answer_meta_description(item),
             canonical,
             body,
             [local_business_schema(), webpage, faq_page, breadcrumb],

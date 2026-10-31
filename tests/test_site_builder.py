@@ -328,6 +328,31 @@ class SiteBuilderGeoTests(unittest.TestCase):
             self.assertIn(item["question"], html)
             self.assertIn(item["answer"], html)
 
+    def test_aircon_left_right_answer_prioritizes_matching_real_case(self):
+        """左右温差答案必须用同症状真实案例支撑，而不是只列泛化原因。"""
+        item = next(
+            answer
+            for answer in site_builder.SEARCH_ANSWERS
+            if answer["anchor"] == "aircon-left-right"
+        )
+        self.assertIn("奔驰E300L", item["answer"])
+        self.assertIn("右侧温度风门电机故障", item["answer"])
+        self.assertIn("参考费用2000元", item["answer"])
+        cases = site_builder.answer_case_records(item)
+        self.assertEqual(
+            cases[0]["issue"],
+            "奔驰E300L空调制冷不足，右边比左边凉",
+        )
+        html = site_builder.build_answer_pages()[
+            site_builder.ROOT / site_builder.answer_detail_path(item)
+        ]
+        self.assertIn("真实维修案例", html)
+        self.assertIn("case-11", html)
+        self.assertIn("更换右温度风门电机+空调系统重新学习", html)
+        description = site_builder.answer_meta_description(item)
+        self.assertIn("参考费用2000元", description)
+        self.assertFalse(description.endswith(("，", ",", "；", ";")))
+
     def test_answer_hub_exposes_collection_and_every_detail(self):
         """答案目录必须可访问，并列出全部独立答案。"""
         pages = site_builder.build_answer_pages()
