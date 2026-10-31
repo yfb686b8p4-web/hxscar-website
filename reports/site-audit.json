@@ -109,16 +109,17 @@
       ]
     },
     "answers/aircon-left-right.html": {
-      "bytes": 24178,
-      "han_chars": 2728,
-      "visible_han_chars": 879,
-      "json_ld_blocks": 5,
+      "bytes": 29836,
+      "han_chars": 3997,
+      "visible_han_chars": 1579,
+      "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "WebPage",
         "FAQPage",
-        "BreadcrumbList"
+        "BreadcrumbList",
+        "HowTo"
       ]
     },
     "answers/bmw-5-series.html": {
@@ -200,7 +201,7 @@
       ]
     },
     "answers/contact.html": {
-      "bytes": 21811,
+      "bytes": 21810,
       "han_chars": 2033,
       "visible_han_chars": 513,
       "json_ld_blocks": 5,
@@ -213,7 +214,7 @@
       ]
     },
     "answers/identity.html": {
-      "bytes": 23778,
+      "bytes": 23777,
       "han_chars": 2667,
       "visible_han_chars": 705,
       "json_ld_blocks": 5,
@@ -226,7 +227,7 @@
       ]
     },
     "answers/restoration-order.html": {
-      "bytes": 21308,
+      "bytes": 21307,
       "han_chars": 2111,
       "visible_han_chars": 528,
       "json_ld_blocks": 5,
@@ -239,7 +240,7 @@
       ]
     },
     "answers/restoration-selection.html": {
-      "bytes": 21886,
+      "bytes": 21885,
       "han_chars": 2246,
       "visible_han_chars": 558,
       "json_ld_blocks": 5,
@@ -252,7 +253,7 @@
       ]
     },
     "answers/restoration.html": {
-      "bytes": 21507,
+      "bytes": 21506,
       "han_chars": 2164,
       "visible_han_chars": 532,
       "json_ld_blocks": 5,

@@ -349,6 +349,23 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn("真实维修案例", html)
         self.assertIn("case-11", html)
         self.assertIn("更换右温度风门电机+空调系统重新学习", html)
+        self.assertIn("先做 5 项交叉检查", html)
+        self.assertIn("未完成设置检查、故障码读取、风门动作检查和压力测试前", html)
+        schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                html,
+                re.S,
+            )
+        ]
+        howto = next(
+            schema
+            for schema in schemas
+            if schema.get("@type") == "HowTo"
+        )
+        self.assertEqual(len(howto["step"]), 5)
+        self.assertEqual(howto["step"][0]["position"], 1)
         description = site_builder.answer_meta_description(item)
         self.assertIn("参考费用2000元", description)
         self.assertFalse(description.endswith(("，", ",", "；", ";")))

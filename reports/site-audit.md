@@ -15,7 +15,7 @@
 | answers.html | 4916 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/air-conditioning.html | 751 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/aircon-diagnosis.html | 755 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/aircon-left-right.html | 879 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/aircon-left-right.html | 1579 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, HowTo |
 | answers/bmw-5-series.html | 911 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/bmw-selection.html | 773 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/bmw.html | 794 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |

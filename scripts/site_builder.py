@@ -416,6 +416,63 @@ GEO_ANSWER_META = {
 }
 
 
+AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS = [
+    {
+        "name": "统一温度设置并记录出风温度",
+        "action": (
+            "把左右温度设为相同最低温，打开同步模式，再分别测量"
+            "相同风量下的出风口温度。"
+        ),
+        "interpretation": (
+            "温差随设置恢复，说明先要排除分区设置或同步模式问题。"
+        ),
+    },
+    {
+        "name": "读取空调控制系统的指令与实际位置",
+        "action": (
+            "用诊断仪读取冷暖风门电机的指令位置、实际位置和空调故障码。"
+        ),
+        "interpretation": (
+            "指令变化而实际位置不动，重点检查电机、线路、翻板卡滞或"
+            "翻板轴损坏。"
+        ),
+    },
+    {
+        "name": "检查风门电机、翻板和基础设定",
+        "action": (
+            "调温时听是否有连续咔哒声，检查电机插头、风门翻板和"
+            "空调基础设定是否正常。"
+        ),
+        "interpretation": (
+            "电机动作异常或基础设定失败时，先修复风门机构并重新学习，"
+            "不要直接拆仪表台。"
+        ),
+    },
+    {
+        "name": "同步测量冷媒压力和左右出风温度",
+        "action": (
+            "在空调稳定工作后测量高低温侧压力、左右出风温度和"
+            "压缩机工作状态。"
+        ),
+        "interpretation": (
+            "两侧都能调温但仍持续有温差，或压力异常时，继续检查冷媒泄漏、"
+            "膨胀阀和蒸发箱。"
+        ),
+    },
+    {
+        "name": "检查暖水阀和蒸发箱后再定维修边界",
+        "action": (
+            "确认制冷模式下是否仍有热水进入暖风水箱，并检查蒸发箱温度、"
+            "结霜和风量。"
+        ),
+        "interpretation": (
+            "只有确认暖水阀卡滞或蒸发箱泄漏后，才安排对应维修；"
+            "加冷媒前必须先检漏。"
+        ),
+    },
+]
+
+
 def h(value):
     """安全输出 HTML 文本。"""
     return html.escape(str(value or ""), quote=True)
@@ -1484,6 +1541,67 @@ def answer_meta_description(item, limit=158):
     return candidate.rstrip("，；、 ") + "。"
 
 
+def answer_supplement_markup(item):
+    """为左右温差答案补充症状分流和维修边界。"""
+    if item["anchor"] != "aircon-left-right":
+        return ""
+    steps = "".join(
+        f"""<tr>
+        <th>{index}. {h(step["name"])}</th>
+        <td><p>{h(step["action"])}</p><p><strong>判断：</strong>{h(step["interpretation"])}</p></td>
+    </tr>"""
+        for index, step in enumerate(
+            AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS,
+            start=1,
+        )
+    )
+    return f"""<section class="card">
+    <h2>先做 5 项交叉检查，再决定换什么</h2>
+    <table class="fact-table">
+        {steps}
+    </table>
+</section>
+<section class="card">
+    <h2>症状分流与安全边界</h2>
+    <table class="fact-table">
+        <tr><th>一侧调温完全无变化</th><td>优先检查对应侧风门电机、插头、翻板和风门轴；确认基础设定后，再决定维修电机或翻板机构。</td></tr>
+        <tr><th>两侧都能调温但始终有温差</th><td>继续测量冷媒压力和泄漏，检查膨胀阀与蒸发箱；不能只凭温差直接更换压缩机。</td></tr>
+        <tr><th>最大制冷时一侧仍持续出热风</th><td>检查暖水阀是否关闭不严，以及冷热风门是否卡在暖风位置。</td></tr>
+        <tr><th>一侧风量明显变小或结霜</th><td>先检查空调滤芯、鼓风机、风道和蒸发箱状态，再判断是否需要拆检。</td></tr>
+        <tr><th>压力不足或反复不凉</th><td>先做电子检漏或分段查漏，找到漏点并修复后再抽真空、定量加注冷媒。</td></tr>
+    </table>
+    <p><strong>安全边界：</strong>未完成设置检查、故障码读取、风门动作检查和压力测试前，不直接添加冷媒、更换压缩机或拆仪表台。风门电机、翻板轴、冷媒系统和蒸发箱是不同故障路径，必须由检测结果决定维修项目。</p>
+</section>"""
+
+
+def answer_supplement_schema(item):
+    """为左右温差答案生成可被机器读取的诊断步骤。"""
+    if item["anchor"] != "aircon-left-right":
+        return None
+    canonical = answer_detail_url(item)
+    return {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "@id": canonical + "#diagnostic-steps",
+        "name": item["question"],
+        "description": item["answer"],
+        "about": {"@id": BASE_URL + "/#autorepair"},
+        "mainEntityOfPage": canonical,
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": index,
+                "name": step["name"],
+                "text": step["action"] + step["interpretation"],
+            }
+            for index, step in enumerate(
+                AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS,
+                start=1,
+            )
+        ],
+    }
+
+
 def build_answer_pages():
     """为每条标准搜索问题生成独立、可引用的答案页。"""
     outputs = {}
@@ -1499,6 +1617,12 @@ def build_answer_pages():
             for source in answer_evidence_sources(item)
         )
         case_markup = answer_case_markup(item)
+        supplement_markup = answer_supplement_markup(item)
+        extra_markup = "".join(
+            f"{block}\n"
+            for block in (case_markup, supplement_markup)
+            if block
+        )
         body = f"""<section class="hero">
     <h1>{h(item["question"])}</h1>
     <p>{h(item["category"])} · 资料复核日期：{h(VERIFIED_AT)}</p>
@@ -1510,8 +1634,7 @@ def build_answer_pages():
     <ul class="evidence-list">{evidence}</ul>
     <p class="answer-meta"><strong>常见问法：</strong>{h("；".join(meta["queryVariants"]))}</p>
 </section>
-{case_markup}
-<section class="card">
+{extra_markup}<section class="card">
     <h2>标准门店资料</h2>
     <table class="fact-table">
         <tr><th>统一名称</th><td>{h(SHOP["shop_names"][0])}</td></tr>
@@ -1596,12 +1719,16 @@ def build_answer_pages():
                 },
             ],
         }
+        schemas = [local_business_schema(), webpage, faq_page, breadcrumb]
+        supplement_schema = answer_supplement_schema(item)
+        if supplement_schema:
+            schemas.append(supplement_schema)
         outputs[path] = page(
             f"{item['question']}｜老周修车·华信松幸福海岸",
             answer_meta_description(item),
             canonical,
             body,
-            [local_business_schema(), webpage, faq_page, breadcrumb],
+            schemas,
             current="answer-detail",
         )
 
