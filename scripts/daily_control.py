@@ -136,6 +136,13 @@ HTTP_CHECKS = [
         30,
     ),
     (
+        "Gist门店事实页",
+        "https://gist.githubusercontent.com/yfb686b8p4-web/"
+        "7923ef0b18ffbcce04a8b6758254a06b/raw/ENTITY_FACTS.md",
+        "当前手机为18682417667",
+        30,
+    ),
+    (
         "Profile IndexNow验证",
         "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
         "hxscarprofile20261101geo.txt",
