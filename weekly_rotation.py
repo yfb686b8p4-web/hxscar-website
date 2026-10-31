@@ -477,7 +477,7 @@ def build_page(config, selected_cases, week_num):
 
         <!-- HEADER -->
         <div class="header">
-            <img class="storefront" src="assets/store-banner.jpg" alt="华信松汽车幸福海岸门店外观" width="1291" height="726">
+            <img class="storefront" src="assets/store-banner-960.jpg" srcset="assets/store-banner-960.jpg 960w, assets/store-banner.jpg 1291w" sizes="(max-width: 800px) calc(100vw - 40px), 760px" alt="华信松汽车幸福海岸门店外观" width="960" height="540" loading="eager" fetchpriority="high" decoding="async">
             <div class="brand">華信松汽車 · 米其林驰加 · 艾德养车</div>
             <h1>华信松汽车服务有限公司（幸福海岸分公司）</h1>
             <div class="alt-names">又名 · {alt_names_str}</div>

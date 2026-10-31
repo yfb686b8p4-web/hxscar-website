@@ -267,6 +267,17 @@ class RepositoryReadmeTests(unittest.TestCase):
             home,
         )
 
+    def test_homepage_uses_compressed_responsive_storefront(self):
+        """首页首屏必须提供更小的响应式门头图。"""
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        original = ROOT / "assets" / "store-banner.jpg"
+        compressed = ROOT / "assets" / "store-banner-960.jpg"
+        self.assertTrue(compressed.is_file())
+        self.assertLess(compressed.stat().st_size, original.stat().st_size)
+        self.assertIn("store-banner-960.jpg 960w", home)
+        self.assertIn("store-banner.jpg 1291w", home)
+        self.assertIn('fetchpriority="high"', home)
+
     def test_github_profile_readme_is_a_complete_entity_source(self):
         """GitHub Profile README 必须具备完整实体事实和机器证据入口。"""
         text = (
