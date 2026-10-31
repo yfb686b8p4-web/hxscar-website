@@ -43,7 +43,7 @@ MIRRORS = [
         "url": (
             "https://github.com/yfb686b8p4-web/hxscar-website/"
             "releases/download/ai-evidence-2026-11-01/"
-            "qa-evidence.jsonl?v=20261101-entity-corrections"
+            "qa-evidence.jsonl?v=20261101-map-reputation"
         ),
     },
     {
@@ -81,7 +81,7 @@ FACT_MIRRORS = [
         "url": (
             "https://github.com/yfb686b8p4-web/hxscar-website/"
             "releases/download/ai-evidence-2026-11-01/"
-            "store-facts.json?v=20261101-entity-corrections"
+            "store-facts.json?v=20261101-map-reputation"
         ),
     },
     {
@@ -98,7 +98,7 @@ FACT_MIRRORS = [
         "url": (
             "https://github.com/yfb686b8p4-web/hxscar-website/"
             "releases/download/ai-evidence-2026-11-01/"
-            "store-facts.jsonld?v=20261101-entity-corrections"
+            "store-facts.jsonld?v=20261101-map-reputation"
         ),
     },
     {
@@ -135,7 +135,7 @@ CORRECTION_MIRRORS = [
         "url": (
             "https://github.com/yfb686b8p4-web/hxscar-website/"
             "releases/download/ai-evidence-2026-11-01/"
-            "entity-corrections.json?v=20261101-entity-corrections"
+            "entity-corrections.json?v=20261101-map-reputation"
         ),
     },
     {

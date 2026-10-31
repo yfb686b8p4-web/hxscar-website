@@ -21,12 +21,12 @@
 | 镜像 | 类型 | SHA-256 | 状态 |
 |---|---|---|---|
 | 本地门店事实 | facts | `75c9a4ef439a8ad3…` | 通过 |
-| 本地门店JSON-LD | jsonld | `273bd6f3bf89d38b…` | 通过 |
+| 本地门店JSON-LD | jsonld | `9c34f9e61d5971d6…` | 通过 |
 | 官网门店事实 | facts | `75c9a4ef439a8ad3…` | 通过 |
 | Release门店事实 | facts | `75c9a4ef439a8ad3…` | 通过 |
-| 官网门店JSON-LD | jsonld | `273bd6f3bf89d38b…` | 通过 |
-| Release门店JSON-LD | jsonld | `273bd6f3bf89d38b…` | 通过 |
-| Gist门店JSON-LD | jsonld | `273bd6f3bf89d38b…` | 通过 |
+| 官网门店JSON-LD | jsonld | `9c34f9e61d5971d6…` | 通过 |
+| Release门店JSON-LD | jsonld | `9c34f9e61d5971d6…` | 通过 |
+| Gist门店JSON-LD | jsonld | `9c34f9e61d5971d6…` | 通过 |
 
 ## 门店历史资料纠正镜像
 
