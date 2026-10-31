@@ -113,6 +113,18 @@
 - Profile 仓库和官网仓库均增加 `structured-data`、`schema-org`、`llms-txt`、`ai-search` 主题。
 - GitHub API 已复核 Homepage 和主题设置；仍需继续观察 Bing 收录，当前不能记为搜索可见。
 
+## 02:39 索引入口与全站实体同步
+
+- 提交 `6c2284e` 已上线统一 `sitemap-index.xml`，同时列出内容站点地图和图片站点地图；`robots.txt` 已声明该索引。
+- 提交 `8b4259c` 已重跑服务与车型内容生成器，18 个服务/车型页的 `AutoRepair` 结构化数据均补齐 GitHub Profile 的 `sameAs`，并增加审计与单元测试防止回退。
+- 提交 `caab517` 已上线修正后的 IndexNow 选择器，服务详情页和 12 个车型详情页现在都进入快速收录通知范围。
+- 提交 `09b0a29` 已把 3 条未命中的护栏问法逐字写入对应答案页的可见“常见问法”、`keywords`、机器事实和完整语料，并增加回归测试。
+- 公开 Gist 的 `store-facts.jsonld` 与 `ENTITY_FACTS.md` 已同步 GitHub Profile；Raw 地址验证门店 `sameAs` 含该 Profile，共 9 个外部关联。
+- GitHub Profile README 已更新到远端提交 `9de0351`，新增宝马、空调、底盘、老车整备和实体关系 5 组直接答案与证据入口。
+- 当前 65 项单元测试通过，站点审计通过，线上 21 个检查地址 21/21 可访问。
+- IndexNow 聚合端点和 Bing 直连端点均对 53 个 URL 返回 HTTP 200。
+- Bing 对官网域名、GitHub Profile、Gist 和统一社会信用代码的公开查询仍未检出目标结果；本轮只能记为“已发布并已提交抓取”，不能记为“已收录、已引用或已排名”。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。

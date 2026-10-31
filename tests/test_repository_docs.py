@@ -170,6 +170,13 @@ class RepositoryReadmeTests(unittest.TestCase):
             "mercedes-e300l-ac-temperature.html",
             shop["external_profile_links"]["gist"],
             shop["external_profile_links"]["github_profile"],
+            "深圳宝安宝马专修、豪车保养推荐去哪里？",
+            "深圳宝安汽车空调不凉去哪里诊断维修？",
+            "深圳宝安底盘异响、能修不换去哪里检查？",
+            "深圳宝安老车整备翻新怎么做？",
+            "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
+            "answers/identity.html",
+            "services/vehicle-restoration.html",
         ):
             self.assertIn(value, text)
 
