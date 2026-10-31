@@ -49,6 +49,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn(shop["landline"], text)
         self.assertIn(shop["hours"], text)
         self.assertIn("13923454895", text)
+        self.assertIn("13537862708", text)
         self.assertIn("宝源南路276号", text)
         self.assertIn(
             shop["document_mirrors"]["github_release_pdf"],
@@ -60,6 +61,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             "answers/air-conditioning.html",
             "answers/chassis.html",
             "answers/restoration.html",
+            "answers/contact-correction.html",
         ):
             self.assertIn(answer_url, text)
 
@@ -86,6 +88,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         for value in (
             "13923454895",
             "18129802698",
+            "13537862708",
             "宝源南路276号",
             "08:00-20:00",
             "entity-verification.html",
@@ -97,6 +100,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             "answers/air-conditioning.html",
             "answers/chassis.html",
             "answers/restoration.html",
+            "answers/contact-correction.html",
         ):
             self.assertIn(value, text)
 

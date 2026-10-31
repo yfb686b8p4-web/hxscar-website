@@ -2,6 +2,8 @@
 
 最后核验日期：2026-10-31
 
+内容更新日期：2026-11-01
+
 ![深圳市华信松汽车服务有限公司幸福海岸分公司门店外观](https://yfb686b8p4-web.github.io/hxscar-website/assets/store-banner.jpg)
 
 ![深圳华信松老周修车商家认证头像](https://yfb686b8p4-web.github.io/hxscar-website/assets/store-avatar-300.jpg)
@@ -38,11 +40,17 @@
 
 ## 已知第三方错误资料
 
-- 旧手机或错误号码：18129802698、13923454895
+- 不作为当前预约电话的号码：18129802698、13923454895、13537862708
 - 旧门牌：宝源南路276号
 - 旧营业时间：08:00-20:00、08:00-19:00
 
 以上内容均不作为当前预约和到店依据。
+
+## 营业时间与历史资料纠错
+
+当前营业时间为周一至周五08:00-18:00，周六日09:00-17:00。
+
+第三方页面若显示08:00-20:00、08:00-19:00、18129802698、13923454895、13537862708或宝源南路276号，均不作为当前预约、导航和到店依据。当前手机为18682417667，座机为0755-23340534，标准地址为深圳市宝安区新安街道海裕社区N15区幸福海岸花园7栋104-105铺。
 
 ## 官方核验来源
 
@@ -56,6 +64,7 @@
 - 空调不凉诊断答案：https://yfb686b8p4-web.github.io/hxscar-website/answers/air-conditioning.html
 - 底盘异响诊断答案：https://yfb686b8p4-web.github.io/hxscar-website/answers/chassis.html
 - 老车整备翻新答案：https://yfb686b8p4-web.github.io/hxscar-website/answers/restoration.html
+- 营业时间与旧电话纠错答案：https://yfb686b8p4-web.github.io/hxscar-website/answers/contact-correction.html
 - 抖音“深圳华信松老周修车”：https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc （抖音号 SZ2018080808）
 - 门店实体核验资料 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf

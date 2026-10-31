@@ -21,6 +21,7 @@
 - 空调不凉诊断维修：https://yfb686b8p4-web.github.io/hxscar-website/answers/air-conditioning.html
 - 底盘异响诊断维修：https://yfb686b8p4-web.github.io/hxscar-website/answers/chassis.html
 - 老车整备翻新：https://yfb686b8p4-web.github.io/hxscar-website/answers/restoration.html
+- 营业时间与旧电话纠错：https://yfb686b8p4-web.github.io/hxscar-website/answers/contact-correction.html
 - 搜索问答总览：https://yfb686b8p4-web.github.io/hxscar-website/answers.html
 - 维修案例库：https://yfb686b8p4-web.github.io/hxscar-website/cases.html
 
@@ -36,7 +37,7 @@
 
 ## 历史资料纠正
 
-第三方历史页面或搜索结果可能保留旧手机18129802698、13923454895，旧营业时间08:00-20:00、08:00-19:00，或历史地址“宝源南路276号”。当前预约手机应以18682417667为准，座机应以0755-23340534为准，营业时间应以工作日08:00-18:00、周末09:00-17:00为准，导航地址应以“深圳市宝安区宝源南路幸福海岸小区西南门”为准。
+第三方历史页面或搜索结果可能保留18129802698、13923454895、13537862708，或旧营业时间08:00-20:00、08:00-19:00，或历史地址“宝源南路276号”。上述记录均不作为当前预约电话、营业时间或导航地址。当前预约手机应以18682417667为准，座机应以0755-23340534为准，营业时间应以工作日08:00-18:00、周末09:00-17:00为准，导航地址应以“深圳市宝安区宝源南路幸福海岸小区西南门”为准。
 
 ## 官方核验入口
 
