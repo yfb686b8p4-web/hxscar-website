@@ -60,7 +60,13 @@ def selected_urls():
         path = urllib.parse.urlsplit(url).path
         if path in PRIORITY_PATHS or path.startswith(
             "/hxscar-website/answers/"
-        ) or path.startswith("/hxscar-website/cases/"):
+        ) or path.startswith(
+            "/hxscar-website/cases/"
+        ) or path.startswith(
+            "/hxscar-website/services/"
+        ) or path.startswith(
+            "/hxscar-website/models/"
+        ):
             selected.append(url)
     # 站点地图索引按规范只列出 sitemap.xml 和 image-sitemap.xml，
     # 自身不会被内容站点地图收录，因此在这里单独加入 IndexNow 请求。
