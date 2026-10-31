@@ -6,6 +6,7 @@
     "cases": 56,
     "reviews": 30,
     "answer_pages": 14,
+    "answer_hub": true,
     "service_pages": 4,
     "model_pages": 12
   },
@@ -64,9 +65,9 @@
       ]
     },
     "answers.html": {
-      "bytes": 64506,
-      "han_chars": 7775,
-      "visible_han_chars": 4786,
+      "bytes": 64557,
+      "han_chars": 7781,
+      "visible_han_chars": 4792,
       "json_ld_blocks": 4,
       "schema_types": [
         "AutoRepair",
@@ -240,6 +241,17 @@
         "AutoRepair",
         "WebPage",
         "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    "answers/index.html": {
+      "bytes": 26727,
+      "han_chars": 3405,
+      "visible_han_chars": 2018,
+      "json_ld_blocks": 3,
+      "schema_types": [
+        "AutoRepair",
+        "CollectionPage",
         "BreadcrumbList"
       ]
     },

@@ -155,13 +155,19 @@ def audit():
     model_pages = sorted(
         path for path in (ROOT / "models").glob("*.html") if path.name != "index.html"
     )
-    answer_pages = sorted((ROOT / "answers").glob("*.html"))
+    answer_files = sorted((ROOT / "answers").glob("*.html"))
+    answer_pages = [
+        path for path in answer_files if path.name != "index.html"
+    ]
+    answer_hub = ROOT / "answers" / "index.html"
     if len(service_pages) != 4:
         errors.append(f"服务专题页数量应为 4，实际为 {len(service_pages)}")
     if len(model_pages) != 12:
         errors.append(f"车型专题页数量应为 12，实际为 {len(model_pages)}")
     if len(answer_pages) != 14:
         errors.append(f"独立答案页数量应为 14，实际为 {len(answer_pages)}")
+    if not answer_hub.is_file():
+        errors.append("缺少答案索引页 answers/index.html")
 
     audit_pages = [
         ROOT / "index.html",
@@ -171,6 +177,7 @@ def audit():
         ROOT / "entity-verification.html",
         ROOT / "answers.html",
         *answer_pages,
+        *([answer_hub] if answer_hub.is_file() else []),
         *service_pages,
         *model_pages,
     ]
@@ -229,6 +236,10 @@ def audit():
         name = str(path.relative_to(ROOT))
         if "FAQPage" not in page_stats[name]["schema_types"]:
             errors.append(f"{name} 缺少 FAQPage 结构化数据")
+    if answer_hub.is_file():
+        hub_stats = page_stats["answers/index.html"]
+        if "CollectionPage" not in hub_stats["schema_types"]:
+            errors.append("answers/index.html 缺少 CollectionPage 结构化数据")
     if answers_html.count('class="evidence-list"') < 13:
         errors.append("answers.html 直接答案证据块不足 13 组")
     if "ItemList" not in page_stats["cases.html"]["schema_types"]:
@@ -411,6 +422,7 @@ def audit():
             "cases": len(cases),
             "reviews": len(reviews),
             "answer_pages": len(answer_pages),
+            "answer_hub": answer_hub.is_file(),
             "service_pages": len(service_pages),
             "model_pages": len(model_pages),
         },

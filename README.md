@@ -30,6 +30,7 @@
 - [门店资料页](https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html)
 - [机器可读门店事实](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json)
 - [搜索问答](https://yfb686b8p4-web.github.io/hxscar-website/answers.html)
+- [独立答案索引](https://yfb686b8p4-web.github.io/hxscar-website/answers/index.html)
 - [机器语料索引](https://yfb686b8p4-web.github.io/hxscar-website/llms.txt)
 - [标准问答 RSS](https://yfb686b8p4-web.github.io/hxscar-website/feed.xml)
 - [GitHub 实体核验资料发布](https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/store-facts-2026-10-31)

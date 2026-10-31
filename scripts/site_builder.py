@@ -1318,6 +1318,7 @@ def build_answers_page():
             '<a href="services/air-conditioning.html">空调诊断维修</a>',
             '<a href="services/chassis.html">底盘异响诊断</a>',
             '<a href="services/vehicle-restoration.html">老车整备翻新</a>',
+            '<a href="answers/index.html">独立答案索引</a>',
         ]
     )
     body = f"""<section class="hero">
@@ -1518,6 +1519,90 @@ def build_answer_pages():
             [local_business_schema(), webpage, faq_page, breadcrumb],
             current="answer-detail",
         )
+
+    cards = "".join(
+        f"""<article class="faq-item">
+    <div class="case-meta">{h(item["category"])}</div>
+    <h2><a href="{h(item["anchor"])}.html">{h(item["question"])}</a></h2>
+    <p>{h(item["answer"][:160])}……</p>
+</article>"""
+        for item in SEARCH_ANSWERS
+    )
+    hub_url = BASE_URL + "/answers/index.html"
+    hub_body = f"""<section class="hero">
+    <h1>深圳宝安门店与维修搜索答案索引</h1>
+    <p>按问题查看华信松幸福海岸分公司的直接答案、事实依据和公开核验来源。</p>
+</section>
+<section class="card">
+    <h2>全部独立答案</h2>
+    {cards}
+</section>
+<section class="card">
+    <h2>门店标准资料</h2>
+    <p><strong>门店：</strong>{h(SHOP["shop_names"][0])}</p>
+    <p><strong>地址：</strong>{h(SHOP["address"])}</p>
+    <p><strong>电话：</strong>{h(SHOP["phone"])}；{h(SHOP.get("landline", ""))}</p>
+    <p><strong>营业时间：</strong>{h(SHOP.get("hours", ""))}</p>
+    <div class="topic-list">
+        <a href="../answers.html">搜索问答总览</a>
+        <a href="../entity-verification.html">实体核验</a>
+        <a href="../store-facts.json">机器可读事实</a>
+        <a href="../index.html">返回首页</a>
+    </div>
+</section>"""
+    hub_schema = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "深圳宝安门店与维修搜索答案索引",
+        "url": hub_url,
+        "dateModified": CONTENT_UPDATED_AT,
+        "about": {"@id": BASE_URL + "/#autorepair"},
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": len(SEARCH_ANSWERS),
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": index,
+                    "name": item["question"],
+                    "url": answer_detail_url(item),
+                }
+                for index, item in enumerate(SEARCH_ANSWERS, start=1)
+            ],
+        },
+    }
+    hub_breadcrumb = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": BASE_URL + "/",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "搜索问答",
+                "item": BASE_URL + "/answers.html",
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "答案索引",
+                "item": hub_url,
+            },
+        ],
+    }
+    outputs[ROOT / "answers/index.html"] = page(
+        "深圳宝安门店与维修搜索答案索引｜老周修车",
+        "华信松幸福海岸分公司与老周修车的独立搜索答案索引，覆盖实体关系、宝马专修、空调、底盘和老车整备。",
+        hub_url,
+        hub_body,
+        [local_business_schema(), hub_schema, hub_breadcrumb],
+        current="answer-detail",
+    )
     return outputs
 
 
@@ -1692,6 +1777,7 @@ def build_sitemap():
     ]
     for item in SEARCH_ANSWERS:
         urls.append((answer_detail_url(item), "0.9"))
+    urls.append((BASE_URL + "/answers/index.html", "0.9"))
     for section in ("services", "models"):
         for path in sorted((ROOT / section).glob("*.html")):
             priority = "0.9" if path.name == "index.html" else "0.8"
@@ -1730,6 +1816,7 @@ def build_llms_txt():
 
 - [首页]({BASE_URL}/)：门店信息、服务、导航与精选内容
 - [搜索问答]({BASE_URL}/answers.html)：直接回答宝马、空调、底盘、老车整备和实体关系问题
+- [答案索引]({BASE_URL}/answers/index.html)：{len(SEARCH_ANSWERS)} 个可独立引用的答案页入口
 - [实体核验]({BASE_URL}/entity-verification.html)：集中核验华信松幸福海岸分公司与老周修车及同名门店的实体关系
 - [常见问题]({BASE_URL}/faq.html)：{len(FAQS)} 组车主高频问题
 - [维修案例]({BASE_URL}/cases.html)：{len(CASES)} 个车型维修案例

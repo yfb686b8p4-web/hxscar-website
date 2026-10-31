@@ -258,7 +258,10 @@ class SiteBuilderGeoTests(unittest.TestCase):
     def test_each_answer_has_a_unique_citable_page(self):
         """每条标准答案都应有独立 canonical 和 FAQ 引用结构。"""
         pages = site_builder.build_answer_pages()
-        self.assertEqual(len(pages), len(site_builder.SEARCH_ANSWERS))
+        self.assertEqual(
+            len(pages),
+            len(site_builder.SEARCH_ANSWERS) + 1,
+        )
         for item in site_builder.SEARCH_ANSWERS:
             path = (
                 site_builder.ROOT
@@ -287,6 +290,37 @@ class SiteBuilderGeoTests(unittest.TestCase):
             self.assertIn(item["question"], html)
             self.assertIn(item["answer"], html)
 
+    def test_answer_hub_exposes_collection_and_every_detail(self):
+        """答案目录必须可访问，并列出全部独立答案。"""
+        pages = site_builder.build_answer_pages()
+        hub = pages[site_builder.ROOT / "answers" / "index.html"]
+        self.assertIn(
+            f'<link rel="canonical" href="{site_builder.BASE_URL}/answers/index.html">',
+            hub,
+        )
+        schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                hub,
+                re.S,
+            )
+        ]
+        collection = next(
+            schema
+            for schema in schemas
+            if schema.get("@type") == "CollectionPage"
+        )
+        self.assertEqual(
+            collection["mainEntity"]["numberOfItems"],
+            len(site_builder.SEARCH_ANSWERS),
+        )
+        for item in site_builder.SEARCH_ANSWERS:
+            self.assertIn(
+                f'href="{item["anchor"]}.html"',
+                hub,
+            )
+
     def test_sitemap_llms_and_feed_link_answer_pages(self):
         """抓取入口必须直接暴露独立答案页。"""
         sitemap = ET.fromstring(site_builder.build_sitemap())
@@ -297,6 +331,9 @@ class SiteBuilderGeoTests(unittest.TestCase):
         }
         llms = site_builder.build_llms_txt()
         feed = site_builder.build_feed_xml()
+        hub_url = site_builder.BASE_URL + "/answers/index.html"
+        self.assertIn(hub_url, locations)
+        self.assertIn(hub_url, llms)
         for item in site_builder.SEARCH_ANSWERS:
             url = site_builder.answer_detail_url(item)
             self.assertIn(url, locations)
