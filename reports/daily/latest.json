@@ -1,89 +1,90 @@
 {
   "version": 1,
-  "date": "2026-10-31",
-  "generated_at": "2026-11-01T00:25:14.441985+08:00",
+  "date": "2026-11-01",
+  "generated_at": "2026-11-01T00:32:57.193899+08:00",
   "metrics": {
     "total": 12,
-    "completed": 12,
-    "pending": 0,
-    "mentioned": 8,
-    "effective_hits": 4,
-    "effective_hit_rate": 33.3,
-    "citation_rate": 58.3,
-    "entity_completed": 4,
-    "entity_correct": 2,
-    "entity_correct_rate": 50.0,
+    "completed": 1,
+    "pending": 11,
+    "mentioned": 0,
+    "effective_hits": 0,
+    "effective_hit_rate": 0.0,
+    "citation_rate": 100.0,
+    "entity_completed": 0,
+    "entity_correct": 0,
+    "entity_correct_rate": 0.0,
     "full_info_correct": 0,
     "full_info_correct_rate": 0.0,
-    "service_completed": 8,
-    "service_hits": 4,
-    "service_hit_rate": 50.0,
-    "service_citation_rate": 37.5,
-    "service_top1": 4,
-    "service_top3": 4,
-    "service_top1_rate": 50.0,
-    "service_top3_rate": 50.0
+    "service_completed": 1,
+    "service_hits": 0,
+    "service_hit_rate": 0.0,
+    "service_citation_rate": 100.0,
+    "service_top1": 0,
+    "service_top3": 0,
+    "service_top1_rate": 0.0,
+    "service_top3_rate": 0.0
   },
   "guardrail_metrics": {
     "total": 8,
-    "completed": 8,
-    "pending": 0,
-    "mentioned": 5,
-    "effective_hits": 3,
-    "effective_hit_rate": 37.5,
-    "citation_rate": 50.0,
-    "entity_completed": 2,
-    "entity_correct": 1,
-    "entity_correct_rate": 50.0,
+    "completed": 0,
+    "pending": 8,
+    "mentioned": 0,
+    "effective_hits": 0,
+    "effective_hit_rate": 0.0,
+    "citation_rate": 0.0,
+    "entity_completed": 0,
+    "entity_correct": 0,
+    "entity_correct_rate": 0.0,
     "full_info_correct": 0,
     "full_info_correct_rate": 0.0,
-    "service_completed": 6,
-    "service_hits": 3,
-    "service_hit_rate": 50.0,
-    "service_citation_rate": 33.3,
-    "service_top1": 3,
-    "service_top3": 3,
-    "service_top1_rate": 50.0,
-    "service_top3_rate": 50.0
+    "service_completed": 0,
+    "service_hits": 0,
+    "service_hit_rate": 0.0,
+    "service_citation_rate": 0.0,
+    "service_top1": 0,
+    "service_top3": 0,
+    "service_top1_rate": 0.0,
+    "service_top3_rate": 0.0
   },
   "rotating_metrics": {
     "total": 4,
-    "completed": 4,
-    "pending": 0,
-    "mentioned": 3,
-    "effective_hits": 1,
-    "effective_hit_rate": 25.0,
-    "citation_rate": 75.0,
-    "entity_completed": 2,
-    "entity_correct": 1,
-    "entity_correct_rate": 50.0,
+    "completed": 1,
+    "pending": 3,
+    "mentioned": 0,
+    "effective_hits": 0,
+    "effective_hit_rate": 0.0,
+    "citation_rate": 100.0,
+    "entity_completed": 0,
+    "entity_correct": 0,
+    "entity_correct_rate": 0.0,
     "full_info_correct": 0,
     "full_info_correct_rate": 0.0,
-    "service_completed": 2,
-    "service_hits": 1,
-    "service_hit_rate": 50.0,
-    "service_citation_rate": 50.0,
-    "service_top1": 1,
-    "service_top3": 1,
-    "service_top1_rate": 50.0,
-    "service_top3_rate": 50.0
+    "service_completed": 1,
+    "service_hits": 0,
+    "service_hit_rate": 0.0,
+    "service_citation_rate": 100.0,
+    "service_top1": 0,
+    "service_top3": 0,
+    "service_top1_rate": 0.0,
+    "service_top3_rate": 0.0
   },
   "changes": {
-    "previous_date": "2026-10-30",
+    "previous_date": "2026-10-31",
     "comparable": false,
+    "reason": "current_pending",
     "metric_changes": {},
     "fixed": [],
     "new_errors": []
   },
   "status": {
-    "checked_at": "2026-11-01T00:25:14.348892+08:00",
+    "checked_at": "2026-11-01T00:32:57.102089+08:00",
     "source_repo": {
       "available": true,
       "path": "/Users/pingguo2019/Documents/豆包等ai 搜索排名提升方案/live-site",
       "branch": "codex/optimization-plans",
-      "clean": true,
-      "change_count": 0,
-      "head": "7d397de\t为全站页面统一注入WebSite实体",
+      "clean": false,
+      "change_count": 8,
+      "head": "20b2a61\t记录全站WebSite实体上线后的日报",
       "error": ""
     },
     "deploy_repo": {
@@ -92,7 +93,7 @@
       "branch": "main",
       "clean": true,
       "change_count": 0,
-      "head": "7d397de\t为全站页面统一注入WebSite实体",
+      "head": "20b2a61\t记录全站WebSite实体上线后的日报",
       "error": ""
     },
     "launch_agent": {
@@ -117,7 +118,7 @@
           "status": 200,
           "marker": "华信松汽车",
           "via": "直连",
-          "seconds": 1.0,
+          "seconds": 0.95,
           "error": ""
         },
         {
@@ -127,7 +128,7 @@
           "status": 200,
           "marker": "FAQPage",
           "via": "直连",
-          "seconds": 1.33,
+          "seconds": 7.63,
           "error": ""
         },
         {
@@ -137,7 +138,7 @@
           "status": 200,
           "marker": "维修案例",
           "via": "直连",
-          "seconds": 0.8,
+          "seconds": 1.32,
           "error": ""
         },
         {
@@ -147,7 +148,7 @@
           "status": 200,
           "marker": "同一实体门店",
           "via": "直连",
-          "seconds": 1.79,
+          "seconds": 0.94,
           "error": ""
         },
         {
@@ -157,7 +158,7 @@
           "status": 200,
           "marker": "四项实体核验",
           "via": "直连",
-          "seconds": 3.13,
+          "seconds": 2.01,
           "error": ""
         },
         {
@@ -167,7 +168,7 @@
           "status": 200,
           "marker": "直接回答",
           "via": "直连",
-          "seconds": 1.12,
+          "seconds": 1.63,
           "error": ""
         },
         {
@@ -177,7 +178,7 @@
           "status": 200,
           "marker": "全部独立答案",
           "via": "直连",
-          "seconds": 2.96,
+          "seconds": 1.22,
           "error": ""
         },
         {
@@ -187,7 +188,7 @@
           "status": 200,
           "marker": "深圳宝安宝马专修、豪车保养推荐去哪里？",
           "via": "直连",
-          "seconds": 1.31,
+          "seconds": 1.05,
           "error": ""
         },
         {
@@ -197,7 +198,7 @@
           "status": 200,
           "marker": "verifiedAt",
           "via": "直连",
-          "seconds": 0.54,
+          "seconds": 0.67,
           "error": ""
         },
         {
@@ -207,7 +208,7 @@
           "status": 200,
           "marker": "91440300MA5GYCTQ6P",
           "via": "直连",
-          "seconds": 1.53,
+          "seconds": 0.88,
           "error": ""
         },
         {
@@ -217,7 +218,7 @@
           "status": 200,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 1.55,
+          "seconds": 1.57,
           "error": ""
         },
         {
@@ -227,7 +228,7 @@
           "status": 200,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 7.67,
+          "seconds": 14.93,
           "error": ""
         },
         {
@@ -237,7 +238,7 @@
           "status": 200,
           "marker": "%PDF",
           "via": "直连",
-          "seconds": 34.6,
+          "seconds": 42.27,
           "error": ""
         },
         {
@@ -247,7 +248,7 @@
           "status": 200,
           "marker": "hxscar20261024geoindexkey",
           "via": "直连",
-          "seconds": 0.55,
+          "seconds": 0.95,
           "error": ""
         },
         {
@@ -257,7 +258,7 @@
           "status": 200,
           "marker": "服务专题",
           "via": "直连",
-          "seconds": 0.76,
+          "seconds": 3.36,
           "error": ""
         },
         {
@@ -267,7 +268,7 @@
           "status": 200,
           "marker": "车型维修",
           "via": "直连",
-          "seconds": 8.24,
+          "seconds": 1.49,
           "error": ""
         },
         {
@@ -277,7 +278,7 @@
           "status": 200,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 0.8,
+          "seconds": 0.75,
           "error": ""
         },
         {
@@ -287,7 +288,7 @@
           "status": 200,
           "marker": "store-profile.html",
           "via": "直连",
-          "seconds": 2.04,
+          "seconds": 0.82,
           "error": ""
         },
         {
@@ -297,7 +298,7 @@
           "status": 200,
           "marker": "store-banner.jpg",
           "via": "直连",
-          "seconds": 0.73,
+          "seconds": 0.54,
           "error": ""
         },
         {
@@ -307,7 +308,7 @@
           "status": 200,
           "marker": "门店实体关系",
           "via": "直连",
-          "seconds": 2.12,
+          "seconds": 1.45,
           "error": ""
         },
         {
@@ -317,7 +318,7 @@
           "status": 200,
           "marker": "完整常见问题",
           "via": "直连",
-          "seconds": 1.62,
+          "seconds": 0.69,
           "error": ""
         }
       ],
@@ -418,40 +419,6 @@
   },
   "tasks": [
     {
-      "id": "entity-identity",
-      "priority": "P0",
-      "action": "统一门店实体证据：明确同一实体门店、同一地址、同一运营团队，并区分其他同名分店。",
-      "category": "门店身份",
-      "platforms": [
-        "元宝"
-      ],
-      "sources": [
-        "公开网页资料33篇"
-      ],
-      "check_ids": [
-        "guard-entity",
-        "rotate-alias-07"
-      ],
-      "requires_confirmation": true
-    },
-    {
-      "id": "identity-fields-地址-电话-营业时间",
-      "priority": "P0",
-      "action": "修正门店地址、电话、营业时间，并核验引用来源。",
-      "category": "门店身份",
-      "platforms": [
-        "豆包"
-      ],
-      "sources": [
-        "启信宝"
-      ],
-      "check_ids": [
-        "guard-entity",
-        "rotate-alias-07"
-      ],
-      "requires_confirmation": true
-    },
-    {
       "id": "platform-amap",
       "priority": "P0",
       "action": "2026-10-31复核公开详情页触发高德验证码拦截，未能直接确认审核结果，状态维持review。2026-10-26 12:01已在高德网页版“地点报错”提交现有POI B0H3LSJZZC纠错：名称、地址、电话保持原值，目标营业时间改为周一至周五08:00-18:00、周六日09:00-17:00，并明确要求不要新建重复门店。页面返回“反馈提交成功”；尚未审核生效，公开页在复核前可能继续显示08:00-20:00。",
@@ -550,49 +517,18 @@
       "requires_confirmation": true
     },
     {
-      "id": "service-宝马与豪车",
-      "priority": "P1",
-      "action": "补充“宝马与豪车”真实案例和可引用内容，使本店进入推荐候选。",
-      "category": "宝马与豪车",
-      "platforms": [
-        "元宝"
-      ],
-      "sources": [
-        "13篇资料"
-      ],
-      "check_ids": [
-        "guard-bmw",
-        "rotate-bmw-02"
-      ],
-      "requires_confirmation": false
-    },
-    {
-      "id": "service-底盘与老车整备",
-      "priority": "P1",
-      "action": "补充“底盘与老车整备”真实案例和可引用内容，使本店进入推荐候选。",
-      "category": "底盘与老车整备",
-      "platforms": [
-        "元宝"
-      ],
-      "sources": [
-        "23篇资料"
-      ],
-      "check_ids": [
-        "guard-chassis-restore"
-      ],
-      "requires_confirmation": false
-    },
-    {
       "id": "service-空调诊断维修",
       "priority": "P1",
       "action": "补充“空调诊断维修”真实案例和可引用内容，使本店进入推荐候选。",
       "category": "空调诊断维修",
       "platforms": [
-        "元宝"
+        "豆包"
       ],
-      "sources": [],
+      "sources": [
+        "22篇资料"
+      ],
       "check_ids": [
-        "guard-aircon"
+        "rotate-ac-04"
       ],
       "requires_confirmation": false
     },
@@ -612,15 +548,15 @@
     }
   ],
   "task_changes": {
-    "new": [
+    "new": [],
+    "closed": [],
+    "deferred": [
       "entity-identity",
       "identity-fields-地址-电话-营业时间",
       "service-宝马与豪车",
-      "service-底盘与老车整备",
-      "service-空调诊断维修"
+      "service-底盘与老车整备"
     ],
-    "closed": [],
-    "persistent_count": 8
+    "persistent_count": 9
   },
   "records": [
     {
@@ -629,17 +565,17 @@
       "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
       "category": "门店身份",
       "rotating": false,
-      "status": "completed",
-      "mentioned": true,
-      "identity_relation": "correct",
-      "address_ok": false,
-      "phone_ok": false,
-      "hours_ok": false,
-      "position": 1,
-      "cited_source": "启信宝",
-      "sentiment": "正面",
-      "answer_summary": "明确回答是同一家店，区分工商主体、老周修车抖音称呼和艾德养车上架名；地址仅复述幸福海岸花园7栋104、105，未给全量门牌、手机、座机和营业时间",
-      "notes": "实体关系已纠正",
+      "status": "pending",
+      "mentioned": null,
+      "identity_relation": "pending",
+      "address_ok": null,
+      "phone_ok": null,
+      "hours_ok": null,
+      "position": null,
+      "cited_source": "",
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
       "effective_hit": false
     },
     {
@@ -648,17 +584,17 @@
       "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
       "category": "门店身份",
       "rotating": false,
-      "status": "completed",
-      "mentioned": true,
-      "identity_relation": "wrong",
-      "address_ok": false,
-      "phone_ok": false,
-      "hours_ok": false,
-      "position": 1,
-      "cited_source": "公开网页资料33篇",
-      "sentiment": "负面",
-      "answer_summary": "错误结论：把华信松幸福海岸分公司与老周修车判成不是同一家；地址仅部分命中，并混入南山阳光雅苑店和错误电话13537862708",
-      "notes": "元宝实体关系与电话错误",
+      "status": "pending",
+      "mentioned": null,
+      "identity_relation": "pending",
+      "address_ok": null,
+      "phone_ok": null,
+      "hours_ok": null,
+      "position": null,
+      "cited_source": "",
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
       "effective_hit": false
     },
     {
@@ -667,18 +603,18 @@
       "query": "深圳宝安 宝马专修 豪车保养 推荐",
       "category": "宝马与豪车",
       "rotating": false,
-      "status": "completed",
-      "mentioned": true,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
-      "position": 1,
+      "position": null,
       "cited_source": "",
-      "sentiment": "正面",
-      "answer_summary": "第1位推荐老周修车/艾德养车（幸福海岸店，华信松），介绍宝马专修、豪车保养和地址",
-      "notes": "进入Top1",
-      "effective_hit": true
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
+      "effective_hit": false
     },
     {
       "check_id": "guard-bmw",
@@ -686,17 +622,17 @@
       "query": "深圳宝安 宝马专修 豪车保养 推荐",
       "category": "宝马与豪车",
       "rotating": false,
-      "status": "completed",
-      "mentioned": false,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
       "position": null,
       "cited_source": "",
-      "sentiment": "中性",
-      "answer_summary": "未提及本店，推荐宝盛宝马专修、宝粤宝马专修、华胜、宝盈和鑫宝名车",
-      "notes": "未进入候选",
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
       "effective_hit": false
     },
     {
@@ -705,18 +641,18 @@
       "query": "深圳宝安 汽车空调不凉 诊断维修",
       "category": "空调诊断维修",
       "rotating": false,
-      "status": "completed",
-      "mentioned": true,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
-      "position": 1,
-      "cited_source": "电话邦",
-      "sentiment": "正面",
-      "answer_summary": "第1位给出艾德养车幸福海岸店、诊断维修流程与地址",
-      "notes": "进入Top1",
-      "effective_hit": true
+      "position": null,
+      "cited_source": "",
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
+      "effective_hit": false
     },
     {
       "check_id": "guard-aircon",
@@ -724,17 +660,17 @@
       "query": "深圳宝安 汽车空调不凉 诊断维修",
       "category": "空调诊断维修",
       "rotating": false,
-      "status": "completed",
-      "mentioned": false,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
       "position": null,
       "cited_source": "",
-      "sentiment": "中性",
-      "answer_summary": "未提及本店，推荐雄昌汽车修理行、新干线汽车空调维修中心和鑫长达",
-      "notes": "未进入候选",
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
       "effective_hit": false
     },
     {
@@ -743,18 +679,18 @@
       "query": "深圳宝安 底盘异响 老车整备 能修不换",
       "category": "底盘与老车整备",
       "rotating": false,
-      "status": "completed",
-      "mentioned": true,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
-      "position": 1,
+      "position": null,
       "cited_source": "",
-      "sentiment": "正面",
-      "answer_summary": "第1位明确推荐幸福海岸老周修车/华信松艾德养车，说明压胶套工装、定位设备和能修不换流程",
-      "notes": "进入Top1",
-      "effective_hit": true
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
+      "effective_hit": false
     },
     {
       "check_id": "guard-chassis-restore",
@@ -762,81 +698,62 @@
       "query": "深圳宝安 底盘异响 老车整备 能修不换",
       "category": "底盘与老车整备",
       "rotating": false,
-      "status": "completed",
-      "mentioned": false,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
       "position": null,
-      "cited_source": "23篇资料",
-      "sentiment": "中性",
-      "answer_summary": "未提及本店，推荐德擎行、宝盛、养车之道、佳鹏路虎捷豹专修和鹏粤星辉",
-      "notes": "未进入候选",
-      "effective_hit": false
-    },
-    {
-      "check_id": "rotate-alias-07",
-      "platform": "豆包",
-      "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
-      "category": "门店身份",
-      "rotating": true,
-      "status": "completed",
-      "mentioned": true,
-      "identity_relation": "correct",
-      "address_ok": false,
-      "phone_ok": false,
-      "hours_ok": false,
-      "position": 1,
-      "cited_source": "启信宝",
-      "sentiment": "正面",
-      "answer_summary": "同字段实体关系问题已明确回答为同一家店，完整地址、电话和营业时间仍未输出",
-      "notes": "复用同日实体检测结果",
-      "effective_hit": false
-    },
-    {
-      "check_id": "rotate-alias-07",
-      "platform": "元宝",
-      "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
-      "category": "门店身份",
-      "rotating": true,
-      "status": "completed",
-      "mentioned": true,
-      "identity_relation": "wrong",
-      "address_ok": false,
-      "phone_ok": false,
-      "hours_ok": false,
-      "position": 1,
-      "cited_source": "公开网页资料33篇",
-      "sentiment": "负面",
-      "answer_summary": "同字段实体关系问题仍判成不是同一家，混入南山阳光雅苑店和错误电话13537862708",
-      "notes": "复用同日实体检测结果",
-      "effective_hit": false
-    },
-    {
-      "check_id": "rotate-bmw-02",
-      "platform": "豆包",
-      "query": "宝安宝马5系维修保养",
-      "category": "宝马与豪车",
-      "rotating": true,
-      "status": "completed",
-      "mentioned": true,
-      "identity_relation": "not_applicable",
-      "address_ok": null,
-      "phone_ok": null,
-      "hours_ok": null,
-      "position": 1,
       "cited_source": "",
-      "sentiment": "正面",
-      "answer_summary": "第1位推荐华信松艾德养车幸福海岸店，给出宝马5系保养、漏油、底盘、烧机油、空调和ISTA诊断信息，电话18682417667正确",
-      "notes": "宝马5系进入Top1",
-      "effective_hit": true
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
+      "effective_hit": false
+    },
+    {
+      "check_id": "rotate-bmw-02",
+      "platform": "豆包",
+      "query": "宝安宝马5系维修保养",
+      "category": "宝马与豪车",
+      "rotating": true,
+      "status": "pending",
+      "mentioned": null,
+      "identity_relation": "not_applicable",
+      "address_ok": null,
+      "phone_ok": null,
+      "hours_ok": null,
+      "position": null,
+      "cited_source": "",
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
+      "effective_hit": false
     },
     {
       "check_id": "rotate-bmw-02",
       "platform": "元宝",
       "query": "宝安宝马5系维修保养",
       "category": "宝马与豪车",
+      "rotating": true,
+      "status": "pending",
+      "mentioned": null,
+      "identity_relation": "not_applicable",
+      "address_ok": null,
+      "phone_ok": null,
+      "hours_ok": null,
+      "position": null,
+      "cited_source": "",
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
+      "effective_hit": false
+    },
+    {
+      "check_id": "rotate-ac-04",
+      "platform": "豆包",
+      "query": "汽车空调一边冷一边热怎么修",
+      "category": "空调诊断维修",
       "rotating": true,
       "status": "completed",
       "mentioned": false,
@@ -845,10 +762,29 @@
       "phone_ok": null,
       "hours_ok": null,
       "position": null,
-      "cited_source": "13篇资料",
+      "cited_source": "22篇资料",
       "sentiment": "中性",
-      "answer_summary": "未提及本店，推荐宝盛、宝粤和车境界",
-      "notes": "未进入候选",
+      "answer_summary": "回答按翻板电机、冷媒和暖风水阀给出排查顺序，但未提及本店",
+      "notes": "未提及本店",
+      "effective_hit": false
+    },
+    {
+      "check_id": "rotate-ac-04",
+      "platform": "元宝",
+      "query": "汽车空调一边冷一边热怎么修",
+      "category": "空调诊断维修",
+      "rotating": true,
+      "status": "pending",
+      "mentioned": null,
+      "identity_relation": "not_applicable",
+      "address_ok": null,
+      "phone_ok": null,
+      "hours_ok": null,
+      "position": null,
+      "cited_source": "",
+      "sentiment": "",
+      "answer_summary": "",
+      "notes": "",
       "effective_hit": false
     }
   ]

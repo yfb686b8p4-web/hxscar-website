@@ -231,6 +231,27 @@ class DailyControlTests(unittest.TestCase):
         self.assertEqual(changes["closed"], ["c"])
         self.assertEqual(changes["persistent_count"], 1)
 
+    def test_incomplete_checks_prevent_task_closure(self):
+        changes = daily_control.compare_tasks(
+            [],
+            {
+                "tasks": [
+                    {
+                        "id": "entity-identity",
+                        "check_ids": ["guard-entity"],
+                    }
+                ]
+            },
+            records=[
+                {
+                    "status": "pending",
+                    "check_id": "guard-entity",
+                }
+            ],
+        )
+        self.assertEqual(changes["closed"], [])
+        self.assertEqual(changes["deferred"], ["entity-identity"])
+
     def test_parse_results_keeps_unfilled_rows_pending(self):
         plan = {
             "rows": [

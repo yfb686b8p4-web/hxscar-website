@@ -835,14 +835,29 @@ def build_tasks(records, status=None):
     return sorted(output, key=lambda item: (item["priority"], item["id"]))
 
 
-def compare_tasks(tasks, previous):
+def compare_tasks(tasks, previous, records=None):
     """比较新增、关闭和持续待办。"""
     current_ids = {item["id"] for item in tasks}
     previous_tasks = (previous or {}).get("tasks", [])
     previous_ids = {item["id"] for item in previous_tasks}
+    completed_checks = {
+        item.get("check_id")
+        for item in records or []
+        if item.get("status") == "completed"
+    }
+    deferred = set()
+    for item in previous_tasks:
+        check_ids = set(item.get("check_ids", []))
+        if (
+            item["id"] not in current_ids
+            and check_ids
+            and not check_ids.issubset(completed_checks)
+        ):
+            deferred.add(item["id"])
     return {
         "new": sorted(current_ids - previous_ids),
-        "closed": sorted(previous_ids - current_ids),
+        "closed": sorted(previous_ids - current_ids - deferred),
+        "deferred": sorted(deferred),
         "persistent_count": len(current_ids & previous_ids),
     }
 
@@ -987,6 +1002,12 @@ def render_markdown(summary):
         lines.append(
             f"- 已关闭：{'、'.join(task_changes['closed'])}"
         )
+    if task_changes.get("deferred"):
+        lines.append(
+            "已延后关闭："
+            + "、".join(task_changes["deferred"])
+            + "（对应检查尚未完成）"
+        )
     errors = [
         item
         for item in site.get("http", [])
@@ -1033,7 +1054,7 @@ def finalize(day, results_path):
         "changes": changes,
         "status": status,
         "tasks": tasks,
-        "task_changes": compare_tasks(tasks, previous),
+        "task_changes": compare_tasks(tasks, previous, records),
         "records": records,
     }
     write_json(DAILY_DIR / f"{day.isoformat()}.json", summary)
