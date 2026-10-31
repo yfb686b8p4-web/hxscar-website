@@ -553,6 +553,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
             url = site_builder.case_study_url(case)
             self.assertIn(url, locations)
             self.assertIn(url, llms)
+            self.assertIn(url, feed)
 
     def test_page_declares_rss_feed(self):
         """每个静态页面都应声明标准 RSS 发现入口。"""

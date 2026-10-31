@@ -2307,6 +2307,36 @@ def build_feed_xml():
     <description>{h(description)}</description>
   </item>"""
         )
+    for case in CASES:
+        if not case_study_path(case):
+            continue
+        case_number = next(
+            index
+            for index, candidate in enumerate(CASES, start=1)
+            if candidate is case
+        )
+        link = case_study_url(case)
+        description = (
+            f"{case.get('issue', '')}\n\n"
+            f"故障表现：{case.get('solution', '')}\n\n"
+            f"处理方案：{case.get('price', '')}\n\n"
+            f"参考费用：{case.get('result', '')}\n\n"
+            f"门店事实：{facts}\n\n"
+            "证据来源：\n"
+            f"- 维修案例库：{BASE_URL}/cases.html#case-{case_number}\n"
+            f"- 实体核验：{BASE_URL}/entity-verification.html\n"
+            f"- 机器可读门店事实：{BASE_URL}/store-facts.json"
+        )
+        items.append(
+            f"""  <item>
+    <title>{h(case.get("issue", ""))}</title>
+    <link>{h(link)}</link>
+    <guid isPermaLink="true">{h(link)}</guid>
+    <category>维修案例</category>
+    <pubDate>{h(pub_date)}</pubDate>
+    <description>{h(description)}</description>
+  </item>"""
+        )
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>

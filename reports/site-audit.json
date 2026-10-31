@@ -500,8 +500,8 @@
       ]
     },
     "cases/bmw-530li-chassis-bushing.html": {
-      "bytes": 20369,
-      "han_chars": 2062,
+      "bytes": 20627,
+      "han_chars": 2108,
       "visible_han_chars": 626,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -512,8 +512,8 @@
       ]
     },
     "cases/bmw-x5-e70-oil-consumption.html": {
-      "bytes": 20693,
-      "han_chars": 2094,
+      "bytes": 20939,
+      "han_chars": 2134,
       "visible_han_chars": 654,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -524,8 +524,8 @@
       ]
     },
     "cases/mercedes-e300l-ac-temperature.html": {
-      "bytes": 20169,
-      "han_chars": 2026,
+      "bytes": 20438,
+      "han_chars": 2075,
       "visible_han_chars": 609,
       "json_ld_blocks": 4,
       "schema_types": [
