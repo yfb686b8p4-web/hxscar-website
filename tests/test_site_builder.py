@@ -180,6 +180,11 @@ class SiteBuilderGeoTests(unittest.TestCase):
             site_builder.SHOP["external_profile_links"]["gist"],
             html,
         )
+        self.assertIn(
+            site_builder.SHOP["external_profile_links"]["douyin"],
+            html,
+        )
+        self.assertIn(site_builder.SHOP["douyin_id"], html)
         self.assertIn('"@type":"FAQPage"', html.replace(" ", ""))
 
     def test_identity_feed_item_points_to_verification_page(self):

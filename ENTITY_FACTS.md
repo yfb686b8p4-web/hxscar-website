@@ -47,6 +47,7 @@
 - 门店资料：https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html
 - 机器事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - 标准问答 RSS：https://yfb686b8p4-web.github.io/hxscar-website/feed.xml
+- 抖音“深圳华信松老周修车”：https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc （抖音号 SZ2018080808）
 - 企查查：https://www.qcc.com/firm/8ed6b923472b38c0bf3801b468b2d37e.html
 - 爱企查：https://aiqicha.baidu.com/company_detail_94051754221223
 - 高德地图：https://www.amap.com/detail/B0H3LSJZZC

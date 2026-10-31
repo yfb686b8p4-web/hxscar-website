@@ -30,6 +30,8 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("核验时必须同时匹配", normalized_readme)
         self.assertIn("13923454895", readme)
         self.assertIn("宝源南路276号", readme)
+        self.assertIn(shop["external_profile_links"]["douyin"], readme)
+        self.assertIn(shop["douyin_id"], readme)
 
     def test_entity_facts_contains_current_store_facts(self):
         text = (ROOT / "ENTITY_FACTS.md").read_text(encoding="utf-8")
