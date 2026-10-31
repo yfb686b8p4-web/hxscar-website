@@ -2038,6 +2038,48 @@ def answer_supplement_schema(item):
     }
 
 
+ANSWER_SERVICE_TYPES = {
+    "宝马与豪车": {
+        "name": "宝马专修豪车保养",
+        "path": "services/bmw-premium.html",
+    },
+    "空调诊断维修": {
+        "name": "空调不凉诊断维修",
+        "path": "services/air-conditioning.html",
+    },
+    "底盘异响": {
+        "name": "底盘异响诊断维修",
+        "path": "services/chassis.html",
+    },
+    "老车整备翻新": {
+        "name": "老车整备翻新",
+        "path": "services/vehicle-restoration.html",
+    },
+}
+
+
+def answer_service_schema(item):
+    """为服务型答案生成关联门店的 Service 实体。"""
+    service = ANSWER_SERVICE_TYPES.get(item["category"])
+    if not service:
+        return None
+    canonical = answer_detail_url(item)
+    return {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": canonical + "#service",
+        "name": service["name"],
+        "serviceType": service["name"],
+        "description": item["answer"],
+        "areaServed": {"@type": "City", "name": "深圳市宝安区"},
+        "provider": {"@id": BASE_URL + "/#autorepair"},
+        "url": canonical,
+        "mainEntityOfPage": canonical,
+        "sameAs": BASE_URL + "/" + service["path"],
+        "dateModified": CONTENT_UPDATED_AT,
+    }
+
+
 def build_answer_pages():
     """为每条标准搜索问题生成独立、可引用的答案页。"""
     outputs = {}
@@ -2156,6 +2198,9 @@ def build_answer_pages():
             ],
         }
         schemas = [local_business_schema(), webpage, faq_page, breadcrumb]
+        service_schema = answer_service_schema(item)
+        if service_schema:
+            schemas.append(service_schema)
         supplement_schema = answer_supplement_schema(item)
         if supplement_schema:
             schemas.append(supplement_schema)

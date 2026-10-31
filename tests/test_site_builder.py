@@ -466,6 +466,42 @@ class SiteBuilderGeoTests(unittest.TestCase):
             self.assertIn(item["question"], html)
             self.assertIn(item["answer"], html)
 
+    def test_service_answers_declare_matching_service_schema(self):
+        """服务型答案必须声明与类别一致的门店 Service 实体。"""
+        pages = site_builder.build_answer_pages()
+        for item in site_builder.SEARCH_ANSWERS:
+            path = (
+                site_builder.ROOT
+                / site_builder.answer_detail_path(item)
+            )
+            schemas = [
+                json.loads(raw)
+                for raw in re.findall(
+                    r'<script type="application/ld\+json">(.*?)</script>',
+                    pages[path],
+                    re.S,
+                )
+            ]
+            services = [
+                schema
+                for schema in schemas
+                if schema.get("@type") == "Service"
+            ]
+            expected = site_builder.ANSWER_SERVICE_TYPES.get(item["category"])
+            if expected:
+                self.assertEqual(len(services), 1, item["anchor"])
+                self.assertEqual(services[0]["name"], expected["name"])
+                self.assertEqual(
+                    services[0]["provider"]["@id"],
+                    site_builder.BASE_URL + "/#autorepair",
+                )
+                self.assertEqual(
+                    services[0]["sameAs"],
+                    site_builder.BASE_URL + "/" + expected["path"],
+                )
+            else:
+                self.assertFalse(services, item["anchor"])
+
     def test_aircon_left_right_answer_prioritizes_matching_real_case(self):
         """左右温差答案必须用同症状真实案例支撑，而不是只列泛化原因。"""
         item = next(
