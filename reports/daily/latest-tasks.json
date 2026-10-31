@@ -130,6 +130,20 @@
     "requires_confirmation": true
   },
   {
+    "id": "platform-toutiao-search",
+    "priority": "P0",
+    "action": "2026-11-01 05:06复核：头条搜索站长平台提供 sitemap 提交、流量与索引量监控、抓取频次调整，直接服务字节搜索及豆包网页检索。登录弹窗要求今日头条账号手机号和4位短信验证码，当前无法继续。主站 robots.txt 已公开 sitemap-index.xml、sitemap.xml、image-sitemap.xml；需账号本人登录并完成站点验证后提交主站 sitemap 与图片 sitemap。",
+    "category": "站外权威资料",
+    "platforms": [
+      "头条搜索站长平台"
+    ],
+    "sources": [
+      "publishing/status.json"
+    ],
+    "check_ids": [],
+    "requires_confirmation": true
+  },
+  {
     "id": "platform-xiaohongshu",
     "priority": "P1",
     "action": "发布车型维修、整备和避坑内容，统一门店名称",
