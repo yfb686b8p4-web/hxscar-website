@@ -127,6 +127,31 @@ class RepositoryReadmeTests(unittest.TestCase):
             home,
         )
 
+    def test_github_profile_readme_is_a_complete_entity_source(self):
+        """GitHub Profile README 必须具备完整实体事实和机器证据入口。"""
+        text = (
+            ROOT / "publishing" / "github-profile" / "README.md"
+        ).read_text(encoding="utf-8")
+        shop = json.loads(
+            (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
+        )
+        for value in (
+            shop["registered_name"],
+            shop["unified_social_credit_code"],
+            shop["address"],
+            shop["phone"],
+            shop["landline"],
+            shop["hours"],
+            "13537862708",
+            "宝源南路276号",
+            "store-facts.jsonld",
+            "case-evidence.json",
+            "answers/index.html",
+            "mercedes-e300l-ac-temperature.html",
+            shop["external_profile_links"]["gist"],
+        ):
+            self.assertIn(value, text)
+
 
 if __name__ == "__main__":
     unittest.main()
