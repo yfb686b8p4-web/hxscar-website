@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-11-01T04:10:00+08:00",
+  "recipient": "zzpt@tencent.com",
+  "subject": "【立知合作申请】华信松汽车服务有限公司（幸福海岸分公司）",
+  "status": "prepared_not_sent",
+  "website": "https://yfb686b8p4-web.github.io/hxscar-website/",
+  "counts": {
+    "answers": 15,
+    "safeFaqs": 84,
+    "blockedFaqs": 58,
+    "cases": 56,
+    "totalQa": 99
+  },
+  "files": {
+    "application.md": {
+      "bytes": 2944,
+      "sha256": "7b720b8ea80a94c270e3ca0453360973bca69b106de94d42724dd2c209cb4288"
+    },
+    "sample-answers.jsonl": {
+      "bytes": 32609,
+      "sha256": "2e2382b1c0d3c521d9eeea4275f94217a9f17beabd398380492c9eef1cdd6b35"
+    },
+    "sample-answers.csv": {
+      "bytes": 9008,
+      "sha256": "8797c9ae2806b0000501f55d53ad0b87f89a805fd8ab00cf85a6aae77b0a9e3d"
+    },
+    "sample-safe-faq.jsonl": {
+      "bytes": 62390,
+      "sha256": "75c82fb60e40efc6cfa186bca252af079b3c96bbe49206862125d5167bbc3f19"
+    },
+    "sample-cases.jsonl": {
+      "bytes": 28317,
+      "sha256": "7a8819553eeb3b57414c909c897e37c8b3ac808f239da866b9b9302acc752bb9"
+    }
+  }
+}

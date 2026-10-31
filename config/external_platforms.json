@@ -43,6 +43,14 @@
       "objective": "统一门店名称、地址、电话和营业时间"
     },
     {
+      "id": "sogou-lizhi",
+      "name": "搜狗立知TOP1问答",
+      "priority": "P0",
+      "action_url": "https://zhanzhang.sogou.com/index.php/landingPage/lizhiRecruit",
+      "content_source": "publishing/lizhi/2026-11-01/application.md",
+      "objective": "提交本地汽车维修标准问答、真实案例和公开核验资料，申请进入搜狗及QQ浏览器TOP1问答候选"
+    },
+    {
       "id": "dianping",
       "name": "大众点评",
       "priority": "P0",
