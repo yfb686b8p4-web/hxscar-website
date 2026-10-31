@@ -99,6 +99,8 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 site_builder.SHOP["registry_links"][key],
                 schema["sameAs"],
             )
+        for link in site_builder.SHOP["external_profile_links"].values():
+            self.assertIn(link, schema["sameAs"])
 
     def test_profile_page_exposes_registry_evidence(self):
         """门店资料页必须让用户和 AI 直接看到工商核验依据。"""
@@ -160,6 +162,10 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn(site_builder.SHOP["disambiguation_notice"], html)
         self.assertIn("13923454895", html)
         self.assertIn("宝源南路276号", html)
+        self.assertIn(
+            site_builder.SHOP["external_profile_links"]["gist"],
+            html,
+        )
         self.assertIn('"@type":"FAQPage"', html.replace(" ", ""))
 
     def test_identity_feed_item_points_to_verification_page(self):

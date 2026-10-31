@@ -20,7 +20,7 @@
       ]
     },
     "faq.html": {
-      "bytes": 115440,
+      "bytes": 115652,
       "han_chars": 24711,
       "visible_han_chars": 11939,
       "json_ld_blocks": 2,
@@ -30,7 +30,7 @@
       ]
     },
     "cases.html": {
-      "bytes": 56051,
+      "bytes": 56263,
       "han_chars": 8880,
       "visible_han_chars": 7102,
       "json_ld_blocks": 2,
@@ -40,7 +40,7 @@
       ]
     },
     "store-profile.html": {
-      "bytes": 28432,
+      "bytes": 28644,
       "han_chars": 4886,
       "visible_han_chars": 2676,
       "json_ld_blocks": 3,
@@ -51,9 +51,9 @@
       ]
     },
     "entity-verification.html": {
-      "bytes": 19730,
-      "han_chars": 2697,
-      "visible_han_chars": 1205,
+      "bytes": 20273,
+      "han_chars": 2711,
+      "visible_han_chars": 1219,
       "json_ld_blocks": 4,
       "schema_types": [
         "AutoRepair",
@@ -63,7 +63,7 @@
       ]
     },
     "answers.html": {
-      "bytes": 39096,
+      "bytes": 39308,
       "han_chars": 6704,
       "visible_han_chars": 3825,
       "json_ld_blocks": 4,
@@ -75,7 +75,7 @@
       ]
     },
     "services/air-conditioning.html": {
-      "bytes": 25898,
+      "bytes": 26110,
       "han_chars": 4094,
       "visible_han_chars": 2096,
       "json_ld_blocks": 4,
@@ -87,7 +87,7 @@
       ]
     },
     "services/bmw-premium.html": {
-      "bytes": 29817,
+      "bytes": 30029,
       "han_chars": 4852,
       "visible_han_chars": 2853,
       "json_ld_blocks": 4,
@@ -99,7 +99,7 @@
       ]
     },
     "services/chassis.html": {
-      "bytes": 25458,
+      "bytes": 25670,
       "han_chars": 4026,
       "visible_han_chars": 2049,
       "json_ld_blocks": 4,
@@ -111,7 +111,7 @@
       ]
     },
     "services/vehicle-restoration.html": {
-      "bytes": 30283,
+      "bytes": 30495,
       "han_chars": 5081,
       "visible_han_chars": 2966,
       "json_ld_blocks": 4,
@@ -123,7 +123,7 @@
       ]
     },
     "models/audi-a6l.html": {
-      "bytes": 21538,
+      "bytes": 21750,
       "han_chars": 3237,
       "visible_han_chars": 1559,
       "json_ld_blocks": 3,
@@ -134,7 +134,7 @@
       ]
     },
     "models/audi-q5.html": {
-      "bytes": 21418,
+      "bytes": 21630,
       "han_chars": 3218,
       "visible_han_chars": 1540,
       "json_ld_blocks": 3,
@@ -145,7 +145,7 @@
       ]
     },
     "models/bmw-5-series.html": {
-      "bytes": 22489,
+      "bytes": 22701,
       "han_chars": 3394,
       "visible_han_chars": 1762,
       "json_ld_blocks": 3,
@@ -156,7 +156,7 @@
       ]
     },
     "models/bmw-7-series.html": {
-      "bytes": 22496,
+      "bytes": 22708,
       "han_chars": 3384,
       "visible_han_chars": 1753,
       "json_ld_blocks": 3,
@@ -167,7 +167,7 @@
       ]
     },
     "models/bmw-x5.html": {
-      "bytes": 22270,
+      "bytes": 22482,
       "han_chars": 3368,
       "visible_han_chars": 1698,
       "json_ld_blocks": 3,
@@ -178,7 +178,7 @@
       ]
     },
     "models/land-rover-defender.html": {
-      "bytes": 21240,
+      "bytes": 21452,
       "han_chars": 3191,
       "visible_han_chars": 1595,
       "json_ld_blocks": 3,
@@ -189,7 +189,7 @@
       ]
     },
     "models/land-rover-range-rover.html": {
-      "bytes": 20654,
+      "bytes": 20866,
       "han_chars": 3069,
       "visible_han_chars": 1473,
       "json_ld_blocks": 3,
@@ -200,7 +200,7 @@
       ]
     },
     "models/mercedes-e-class.html": {
-      "bytes": 21739,
+      "bytes": 21951,
       "han_chars": 3297,
       "visible_han_chars": 1590,
       "json_ld_blocks": 3,
@@ -211,7 +211,7 @@
       ]
     },
     "models/mercedes-glc.html": {
-      "bytes": 21505,
+      "bytes": 21717,
       "han_chars": 3211,
       "visible_han_chars": 1534,
       "json_ld_blocks": 3,
@@ -222,7 +222,7 @@
       ]
     },
     "models/porsche-cayenne.html": {
-      "bytes": 22907,
+      "bytes": 23119,
       "han_chars": 3559,
       "visible_han_chars": 1856,
       "json_ld_blocks": 3,
@@ -233,7 +233,7 @@
       ]
     },
     "models/porsche-macan.html": {
-      "bytes": 22165,
+      "bytes": 22377,
       "han_chars": 3381,
       "visible_han_chars": 1686,
       "json_ld_blocks": 3,
@@ -244,7 +244,7 @@
       ]
     },
     "models/volkswagen-touareg.html": {
-      "bytes": 19986,
+      "bytes": 20198,
       "han_chars": 2912,
       "visible_han_chars": 1405,
       "json_ld_blocks": 3,

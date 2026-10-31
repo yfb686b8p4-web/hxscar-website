@@ -580,6 +580,7 @@ def local_business_schema():
                 SHOP.get("map_links", {}).get("tencent", ""),
                 SHOP.get("registry_links", {}).get("qichacha", ""),
                 SHOP.get("registry_links", {}).get("aiqicha", ""),
+                *SHOP.get("external_profile_links", {}).values(),
             )
             if link
         ],
@@ -1044,6 +1045,7 @@ def build_entity_verification_page():
 <section class="card">
     <h2>公开核验来源</h2>
     <p><a href="{h(SHOP.get("registry_links", {}).get("qichacha", ""))}">企查查工商登记页</a>；<a href="{h(SHOP.get("registry_links", {}).get("aiqicha", ""))}">爱企查工商登记页</a>；<a href="{h(SHOP.get("map_links", {}).get("amap", ""))}">高德地图 POI</a>；<a href="{h(SHOP.get("map_links", {}).get("tencent", ""))}">腾讯地图 POI</a></p>
+    <p>公开镜像：<a href="{h(SHOP.get("external_profile_links", {}).get("github_repository", ""))}">GitHub 仓库</a>；<a href="{h(SHOP.get("external_profile_links", {}).get("github_release", ""))}">实体核验 Release</a>；<a href="{h(SHOP.get("external_profile_links", {}).get("gist", ""))}">实体事实 Gist</a></p>
     <p><a href="store-profile.html">查看完整门店资料与第三方资料纠错</a></p>
 </section>
 <section class="card">
@@ -1255,6 +1257,9 @@ def build_store_facts_json():
             "legalRepresentative": SHOP.get("legal_representative", ""),
             "registryCheckedAt": SHOP.get("registry_checked_at", ""),
             "registryLinks": SHOP.get("registry_links", {}),
+            "externalProfileLinks": SHOP.get(
+                "external_profile_links", {}
+            ),
             "aliases": SHOP["shop_names"][1:],
             "relationshipStatement": SHOP.get("identity_statement", ""),
             "brandNameStatement": SHOP.get("brand_name_statement", ""),

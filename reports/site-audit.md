@@ -11,7 +11,7 @@
 | faq.html | 11939 | 2 | AutoRepair, FAQPage |
 | cases.html | 7102 | 2 | AutoRepair, ItemList |
 | store-profile.html | 2676 | 3 | AutoRepair, FAQPage, BreadcrumbList |
-| entity-verification.html | 1205 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| entity-verification.html | 1219 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers.html | 3825 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | services/air-conditioning.html | 2096 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
 | services/bmw-premium.html | 2853 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
