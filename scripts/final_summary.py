@@ -54,6 +54,7 @@ def daily_progress():
     plan = load_json(PLAN_PATH) if PLAN_PATH.exists() else {"rows": []}
     planned = len(plan.get("rows", []))
     completed = 0
+    excluded = 0
     if RESULTS_PATH.exists():
         with RESULTS_PATH.open("r", encoding="utf-8-sig", newline="") as file:
             for row in csv.DictReader(file):
@@ -66,12 +67,19 @@ def daily_progress():
                         "answer_summary",
                     )
                 ):
-                    completed += 1
+                    session_mode = str(
+                        row.get("session_mode", "legacy")
+                    ).strip().lower()
+                    if session_mode in {"fresh", "legacy"}:
+                        completed += 1
+                    else:
+                        excluded += 1
     return {
         "date": DATE,
         "planned": planned,
         "completed": completed,
-        "pending": max(planned - completed, 0),
+        "excluded": excluded,
+        "pending": max(planned - completed - excluded, 0),
     }
 
 
@@ -204,7 +212,8 @@ def render_markdown(summary):
                 f"- {progress.get('date', DATE)}："
                 f"完成 {progress.get('completed', 0)}/"
                 f"{progress.get('planned', 0)}，"
-                f"待测 {progress.get('pending', 0)}"
+                f"待测 {progress.get('pending', 0)}，"
+                f"已排除 {progress.get('excluded', 0)}"
             ),
             "",
         ]

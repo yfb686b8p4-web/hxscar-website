@@ -1,13 +1,13 @@
-﻿check_id,platform,query,category,mentioned,identity_relation,address_ok,phone_ok,hours_ok,position,cited_source,sentiment,answer_summary,notes
-guard-entity,豆包,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,,
-guard-entity,元宝,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,,
-guard-bmw,豆包,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,,not_applicable,,,,,,,,
-guard-bmw,元宝,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,,not_applicable,,,,,,,,
-guard-aircon,豆包,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,,not_applicable,,,,,,,,
-guard-aircon,元宝,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,,not_applicable,,,,,,,,
-guard-chassis-restore,豆包,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,,not_applicable,,,,,,,,
-guard-chassis-restore,元宝,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,,not_applicable,,,,,,,,
-rotate-bmw-02,豆包,宝安宝马5系维修保养,宝马与豪车,,not_applicable,,,,,,,,
-rotate-bmw-02,元宝,宝安宝马5系维修保养,宝马与豪车,,not_applicable,,,,,,,,
-rotate-ac-04,豆包,汽车空调一边冷一边热怎么修,空调诊断维修,False,not_applicable,,,,,22篇资料,中性,回答按翻板电机、冷媒和暖风水阀给出排查顺序，但未提及本店,未提及本店
-rotate-ac-04,元宝,汽车空调一边冷一边热怎么修,空调诊断维修,False,not_applicable,,,,,20篇资料,中性,回答先排查风门电机并按高低压和暖风水阀诊断，推荐华胜洪浪北店或途辉但未提及本店,未提及本店
+﻿check_id,platform,session_mode,query,category,mentioned,identity_relation,address_ok,phone_ok,hours_ok,position,cited_source,sentiment,answer_summary,notes
+guard-entity,豆包,fresh_required,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,,
+guard-entity,元宝,fresh_required,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,,
+guard-bmw,豆包,fresh_required,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,,not_applicable,,,,,,,,
+guard-bmw,元宝,fresh_required,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,,not_applicable,,,,,,,,
+guard-aircon,豆包,fresh_required,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,,not_applicable,,,,,,,,
+guard-aircon,元宝,fresh_required,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,,not_applicable,,,,,,,,
+guard-chassis-restore,豆包,fresh_required,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,,not_applicable,,,,,,,,
+guard-chassis-restore,元宝,fresh_required,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,,not_applicable,,,,,,,,
+rotate-bmw-02,豆包,fresh_required,宝安宝马5系维修保养,宝马与豪车,,not_applicable,,,,,,,,
+rotate-bmw-02,元宝,fresh_required,宝安宝马5系维修保养,宝马与豪车,,not_applicable,,,,,,,,
+rotate-ac-04,豆包,fresh,汽车空调一边冷一边热怎么修,空调诊断维修,False,not_applicable,,,,,22篇资料,中性,回答按翻板电机、冷媒和暖风水阀给出排查顺序，但未提及本店,未提及本店
+rotate-ac-04,元宝,contextual,汽车空调一边冷一边热怎么修,空调诊断维修,False,not_applicable,,,,,20篇资料,中性,回答先排查风门电机并按高低压和暖风水阀诊断，推荐华胜洪浪北店或途辉但未提及本店,旧对话上下文影响结果；会话未使用全新对话，结果不计入指标

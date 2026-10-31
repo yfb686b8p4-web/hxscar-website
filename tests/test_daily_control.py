@@ -116,6 +116,22 @@ class DailyControlTests(unittest.TestCase):
         self.assertEqual(metrics["service_top1_rate"], 33.3)
         self.assertEqual(metrics["service_top3_rate"], 66.7)
 
+    def test_metrics_reports_excluded_sessions_separately(self):
+        metrics = daily_control.calculate_metrics(
+            [
+                record(),
+                record(
+                    status="excluded",
+                    mentioned=False,
+                    effective_hit=False,
+                ),
+                record(status="pending", mentioned=None, effective_hit=False),
+            ]
+        )
+        self.assertEqual(metrics["completed"], 1)
+        self.assertEqual(metrics["excluded"], 1)
+        self.assertEqual(metrics["pending"], 1)
+
     def test_comparison_detects_fixed_and_regression(self):
         old = [
             record(effective_hit=False, phone_ok=False),
@@ -251,6 +267,34 @@ class DailyControlTests(unittest.TestCase):
         )
         self.assertEqual(changes["closed"], [])
         self.assertEqual(changes["deferred"], ["entity-identity"])
+
+    def test_contextual_session_is_excluded_from_metrics(self):
+        plan = {
+            "rows": [
+                {
+                    "check_id": "guard-aircon",
+                    "platform": "元宝",
+                    "session_mode": "fresh_required",
+                    "query": "空调问题",
+                    "category": "空调诊断维修",
+                    "rotating": False,
+                }
+            ]
+        }
+        with TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "results.csv"
+            path.write_text(
+                "check_id,platform,session_mode,query,category,"
+                "mentioned,identity_relation,address_ok,phone_ok,"
+                "hours_ok,position,cited_source,sentiment,"
+                "answer_summary,notes\n"
+                "guard-aircon,元宝,contextual,空调问题,空调诊断维修,"
+                "False,not_applicable,,,,20篇资料,中性,回答,测试\n",
+                encoding="utf-8",
+            )
+            records = daily_control.parse_results(path, plan)
+        self.assertEqual(records[0]["status"], "excluded")
+        self.assertFalse(records[0]["effective_hit"])
 
     def test_parse_results_keeps_unfilled_rows_pending(self):
         plan = {

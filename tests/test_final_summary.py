@@ -36,7 +36,8 @@ class FinalSummaryTests(unittest.TestCase):
                 "date": "2026-11-01",
                 "planned": 12,
                 "completed": 3,
-                "pending": 9,
+                "excluded": 1,
+                "pending": 8,
             },
             "changes": {
                 "baseline_date": "2026-10-31",
@@ -95,6 +96,7 @@ class FinalSummaryTests(unittest.TestCase):
         self.assertIn("Top3", markdown)
         self.assertIn("4/8", markdown)
         self.assertIn("完成 3/12", markdown)
+        self.assertIn("已排除 1", markdown)
         self.assertIn("50.0%", markdown)
         self.assertIn("提交不等于排名", markdown)
 

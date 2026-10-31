@@ -61,6 +61,7 @@ HTTP_CHECKS = [
 RESULT_COLUMNS = [
     "check_id",
     "platform",
+    "session_mode",
     "query",
     "category",
     "mentioned",
@@ -392,6 +393,7 @@ def build_probe_plan(day):
                 {
                     "check_id": item["id"],
                     "platform": platform_name,
+                    "session_mode": "fresh_required",
                     "query": item["query"],
                     "category": item["category"],
                     "rotating": item.get("rotating", False),
@@ -511,10 +513,22 @@ def parse_results(path, plan):
         key = (planned["check_id"], planned["platform"])
         row = raw_rows.get(key, {})
         mentioned = parse_optional_bool(row.get("mentioned", ""))
-        status = "completed" if mentioned is not None else "pending"
+        session_mode = (
+            row.get("session_mode")
+            or planned.get("session_mode")
+            or "legacy"
+        ).strip().lower()
+        usable_session = session_mode in {"fresh", "legacy"}
+        if mentioned is None:
+            status = "pending"
+        elif usable_session:
+            status = "completed"
+        else:
+            status = "excluded"
         record = {
             "check_id": planned["check_id"],
             "platform": planned["platform"],
+            "session_mode": session_mode,
             "query": planned["query"],
             "category": planned["category"],
             "rotating": planned.get("rotating", False),
@@ -536,6 +550,11 @@ def parse_results(path, plan):
             "answer_summary": (row.get("answer_summary") or "").strip(),
             "notes": (row.get("notes") or "").strip(),
         }
+        if status == "excluded":
+            record["notes"] = (
+                record["notes"]
+                + "；会话未使用全新对话，结果不计入指标"
+            ).strip("；")
         record["effective_hit"] = evaluate_effective_hit(record)
         records.append(record)
     return records
@@ -563,6 +582,7 @@ def ratio(part, total):
 def calculate_metrics(records):
     """计算每日有效命中与关键资料正确率。"""
     completed = [item for item in records if item["status"] == "completed"]
+    excluded = [item for item in records if item["status"] == "excluded"]
     identity = [
         item for item in completed if "门店身份" in item["category"]
     ]
@@ -587,7 +607,8 @@ def calculate_metrics(records):
     return {
         "total": len(records),
         "completed": len(completed),
-        "pending": len(records) - len(completed),
+        "excluded": len(excluded),
+        "pending": len(records) - len(completed) - len(excluded),
         "mentioned": sum(1 for item in completed if item["mentioned"]),
         "effective_hits": sum(1 for item in completed if item["effective_hit"]),
         "effective_hit_rate": ratio(
@@ -884,7 +905,11 @@ def render_markdown(summary):
         "",
         f"- 生成时间：{summary['generated_at']}",
         f"- 今日结论：{headline}",
-        f"- 完成检查：{metrics['completed']}/{metrics['total']}，待补测 {metrics['pending']}",
+        (
+            f"- 完成检查：{metrics['completed']}/{metrics['total']}，"
+            f"待补测 {metrics['pending']}，"
+            f"已排除 {metrics.get('excluded', 0)}"
+        ),
         f"- 护栏有效命中率：{display_rate(guardrails['effective_hit_rate'], guardrails['completed'])}",
         f"- AI答案引用来源率：{display_rate(guardrails.get('citation_rate', 0), guardrails['completed'])}",
         f"- 门店实体关系正确率：{display_rate(guardrails['entity_correct_rate'], guardrails['entity_completed'])}",
@@ -958,6 +983,18 @@ def render_markdown(summary):
             lines.append(line)
     else:
         lines.append("- 无")
+    excluded_records = [
+        item
+        for item in summary["records"]
+        if item.get("status") == "excluded"
+    ]
+    if excluded_records:
+        lines.extend(["", "## 已排除结果", ""])
+        for item in excluded_records:
+            lines.append(
+                f"- {item['platform']}｜{item['query']}："
+                f"{item.get('notes', '') or '会话未隔离'}"
+            )
     lines.extend(["", "## 运行状态", ""])
     launch = status.get("launch_agent", {})
     site = status.get("site", {})
