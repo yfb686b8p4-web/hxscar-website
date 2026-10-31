@@ -70,6 +70,7 @@
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release AI 证据包：https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/ai-evidence-2026-11-01
 - GitHub 账号级门店资料：https://github.com/yfb686b8p4-web/yfb686b8p4-web
+- GitHub Profile 实体镜像页：https://yfb686b8p4-web.github.io/yfb686b8p4-web/
 - 企查查：https://www.qcc.com/firm/8ed6b923472b38c0bf3801b468b2d37e.html
 - 爱企查：https://aiqicha.baidu.com/company_detail_94051754221223
 - 高德地图：https://www.amap.com/detail/B0H3LSJZZC

@@ -1070,6 +1070,9 @@ def local_business_schema():
                 SHOP.get("external_profile_links", {}).get(
                     "github_profile", ""
                 ),
+                SHOP.get("external_profile_links", {}).get(
+                    "github_profile_pages", ""
+                ),
                 SHOP.get("external_profile_links", {}).get("douyin", ""),
             )
             if link

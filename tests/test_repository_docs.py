@@ -3,6 +3,7 @@
 """验证公开仓库 README 持续包含标准门店事实。"""
 
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -32,6 +33,10 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("宝源南路276号", readme)
         self.assertIn(shop["external_profile_links"]["douyin"], readme)
         self.assertIn(shop["external_profile_links"]["github_profile"], readme)
+        self.assertIn(
+            shop["external_profile_links"]["github_profile_pages"],
+            readme,
+        )
         self.assertIn(shop["douyin_id"], readme)
         self.assertIn(
             shop["document_mirrors"]["github_release_pdf"],
@@ -60,6 +65,10 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("宝源南路276号", text)
         self.assertIn(
             shop["external_profile_links"]["github_profile"],
+            text,
+        )
+        self.assertIn(
+            shop["external_profile_links"]["github_profile_pages"],
             text,
         )
         self.assertIn(
@@ -147,6 +156,50 @@ class RepositoryReadmeTests(unittest.TestCase):
         ):
             self.assertIn(value, text)
 
+    def test_profile_pages_is_a_verified_entity_mirror(self):
+        """Profile Pages 只能作为标准实体与证据镜像。"""
+        site_dir = ROOT / "publishing" / "github-profile-site"
+        html = (site_dir / "index.html").read_text(encoding="utf-8")
+        robots = (site_dir / "robots.txt").read_text(encoding="utf-8")
+        sitemap = (site_dir / "sitemap.xml").read_text(encoding="utf-8")
+        llms = (site_dir / "llms.txt").read_text(encoding="utf-8")
+        shop = json.loads(
+            (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
+        )
+        for text in (html, llms):
+            self.assertIn(shop["registered_name"], text)
+            self.assertIn(shop["unified_social_credit_code"], text)
+            self.assertIn(shop["address"], text)
+            self.assertIn(shop["phone"], text)
+            self.assertIn(shop["landline"], text)
+            self.assertIn(shop["hours"], text)
+            self.assertNotIn("4.9+", text)
+            self.assertNotIn("服务超1000台", text)
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml",
+            robots,
+        )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/",
+            sitemap,
+        )
+        schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                html,
+                re.DOTALL,
+            )
+        ]
+        store = [schema for schema in schemas if schema.get("@type") == "AutoRepair"]
+        self.assertEqual(len(store), 1)
+        self.assertEqual(store[0]["taxID"], shop["unified_social_credit_code"])
+        subject_urls = {item["url"] for item in store[0]["subjectOf"]}
+        self.assertIn(
+            shop["external_profile_links"]["github_ai_evidence_release"],
+            subject_urls,
+        )
+
     def test_homepage_contains_current_entity_signals(self):
         """周更首页必须保留真实图片、工商、抖音和实体核验信号。"""
         home = (ROOT / "index.html").read_text(encoding="utf-8")
@@ -215,6 +268,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             "mercedes-e300l-ac-temperature.html",
             shop["external_profile_links"]["gist"],
             shop["external_profile_links"]["github_profile"],
+            shop["external_profile_links"]["github_profile_pages"],
             shop["external_profile_links"]["github_ai_evidence_release"],
             "深圳宝安宝马专修、豪车保养推荐去哪里？",
             "深圳宝安汽车空调不凉去哪里诊断维修？",

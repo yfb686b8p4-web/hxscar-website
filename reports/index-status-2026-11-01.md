@@ -146,6 +146,14 @@
 - GitHub Profile 与 Gist 已同步加入 Release 入口；Gist 的门店 JSON-LD 通过 `subjectOf` 关联 3 个 Release 数据附件。
 - 该动作只证明外部证据镜像已公开并可下载，不证明任何搜索引擎或 AI 平台已收录、引用或排名。
 
+## 03:35 GitHub Profile 实体镜像页
+
+- 已启用 `https://yfb686b8p4-web.github.io/yfb686b8p4-web/`，GitHub Pages 状态为 `built`。
+- 页面首页、`robots.txt`、`sitemap.xml` 和 `llms.txt` 均验证为 HTTP 200。
+- 页面包含统一社会信用代码、完整标准资料、实体消歧、五个核心答案入口和 AI 证据 Release。
+- 官网、Profile README、Gist 与 Release `store-facts.jsonld` 已相互关联该 Profile Pages。
+- 当前 71 项单元测试通过，站点审计通过；该页面是否被搜索或 AI 平台收录仍需后续公开结果验证。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml

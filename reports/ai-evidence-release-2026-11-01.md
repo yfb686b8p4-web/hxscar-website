@@ -4,6 +4,7 @@
 
 - Release：https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/ai-evidence-2026-11-01
 - GitHub Profile：https://github.com/yfb686b8p4-web/yfb686b8p4-web
+- Profile 实体镜像页：https://yfb686b8p4-web.github.io/yfb686b8p4-web/
 - GitHub Gist：https://gist.github.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b
 
 ## 附件
@@ -29,7 +30,7 @@
 - Release 的 5 个附件均通过独立下载地址验证为 HTTP 200。
 - 官网 4 个服务页均包含 `Service` 与 5 步 `HowTo`。
 - FAQ 人工问题库为 142 条，机器 FAQ 结构化数据为 97 条。
-- 当前 70 项单元测试通过，站点审计通过。
+- 当前 71 项单元测试通过，站点审计通过。
 
 ## 事实边界
 

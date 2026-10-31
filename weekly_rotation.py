@@ -278,6 +278,7 @@ def build_page(config, selected_cases, week_num):
                 REGISTRY_LINKS.get("aiqicha", ""),
                 EXTERNAL_PROFILE_LINKS.get("github_repository", ""),
                 EXTERNAL_PROFILE_LINKS.get("github_profile", ""),
+                EXTERNAL_PROFILE_LINKS.get("github_profile_pages", ""),
                 EXTERNAL_PROFILE_LINKS.get("douyin", ""),
             )
             if link

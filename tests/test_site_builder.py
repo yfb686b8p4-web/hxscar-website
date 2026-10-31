@@ -291,7 +291,12 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 site_builder.SHOP["registry_links"][key],
                 schema["sameAs"],
             )
-        for key in ("github_repository", "github_profile", "douyin"):
+        for key in (
+            "github_repository",
+            "github_profile",
+            "github_profile_pages",
+            "douyin",
+        ):
             self.assertIn(
                 site_builder.SHOP["external_profile_links"][key],
                 schema["sameAs"],
