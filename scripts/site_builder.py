@@ -30,7 +30,6 @@ def load_json(name):
 SHOP = load_json("shop_info.json")
 FAQS = load_json("faqs.json")
 CASES = load_json("cases.json")
-REVIEWS = load_json("reviews.json")
 VERIFIED_AT = SHOP.get("verified_at", datetime.now(TZ).date().isoformat())
 CONTENT_UPDATED_AT = datetime.now(TZ).date().isoformat()
 
@@ -2720,7 +2719,6 @@ def build_llms_txt():
 - 腾讯地图 POI：{SHOP.get("map_ids", {}).get("tencent", "")}
 - 标准坐标：经度 {SHOP.get("geo", {}).get("longitude", "")}，纬度 {SHOP.get("geo", {}).get("latitude", "")}
 - 覆盖车型：{len(SHOP["covered_models"])} 款
-- 页面评价摘录：{len(REVIEWS)} 条
 
 ## 门店实体关系
 

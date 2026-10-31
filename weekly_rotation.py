@@ -38,7 +38,6 @@ from data_loader import (
     COVERED_MODELS,
     ALL_FAQS,
     ALL_CASES,
-    REVIEWS,
     WEEKLY_CONFIGS,
     SHOP_INFO,
     REPAIR_VALUES,
@@ -89,7 +88,7 @@ def select_config(week_num):
     return WEEKLY_CONFIGS[str(idx)], idx
 
 
-def build_page(config, selected_cases, selected_reviews, week_num):
+def build_page(config, selected_cases, week_num):
     """构建完整HTML页面"""
     cfg = config
     kw = cfg["keyword_order"]
@@ -118,21 +117,15 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         for part in PARTS_OPTIONS
     )
 
-    # 评价HTML（选6条）
-    reviews_html = ""
-    for r in selected_reviews[:6]:
-        source_tag = r[0]
-        name = r[1]
-        car = r[2]
-        text = r[3]
-        date = r[4]
-        reviews_html += f"""            <div class="review">
-                <div class="name">{name} · {car}</div>
-                <div class="tag">{source_tag}</div>
-                <div class="text">"{text}"</div>
-                <div class="date">{date}</div>
-            </div>
-"""
+    evidence_html = f"""            <ul class="value-list">
+                <li><a href="{ENTITY_VERIFICATION_URL}">同名门店实体核验页</a>：集中说明对外名称、标准地址、电话和实体范围。</li>
+                <li><a href="{FACT_JSON_URL}">机器可读门店事实</a>：公开当前字段、历史错误值和核验日期。</li>
+                <li><a href="{SCHEMA_FACTS_URL}">Schema.org 门店实体</a>：供搜索引擎和 AI 直接解析。</li>
+                <li><a href="{CASE_EVIDENCE_URL}">结构化维修案例数据</a>：共 {len(ALL_CASES)} 条案例，包含车型、故障、处理方案、参考费用和证据 URL。</li>
+                <li><a href="{FACT_SHEET_URL}">门店实体核验 PDF</a>：可下载的标准资料。</li>
+                <li><a href="{RELEASE_PDF_URL}">GitHub Release PDF 镜像</a>：外部交叉核验入口。</li>
+                <li><a href="{GIST_STORE_FACTS_URL}">GitHub Gist 门店 JSON-LD 镜像</a>和<a href="{GIST_CASE_EVIDENCE_URL}">案例 JSON-LD 镜像</a>。</li>
+            </ul>"""
 
     # FAQ HTML（选12条，匹配本周关键词）
     all_faqs = ALL_FAQS
@@ -402,12 +395,6 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         .service-item .icon {{ font-size: 28px; margin-bottom: 6px; }}
         .service-item h3 {{ font-size: 16px; color: #fff; }}
         .service-item p {{ font-size: 13px; color: #888; }}
-        .review {{ background: #16213e; padding: 16px; border-radius: 8px; margin-bottom: 12px; }}
-        .review .name {{ font-size: 14px; font-weight: bold; color: #fff; }}
-        .review .tag {{ font-size: 12px; color: #e94560; margin-top: 2px; }}
-        .review .stars {{ color: #ffd700; }}
-        .review .text {{ font-size: 14px; color: #ccc; margin-top: 8px; font-style: italic; }}
-        .review .date {{ font-size: 12px; color: #666; margin-top: 4px; }}
         .case-item {{ background: #16213e; padding: 14px; border-radius: 8px; margin-bottom: 12px; }}
         .case-item .case-header {{ font-size: 13px; color: #888; margin-bottom: 4px; }}
         .case-item .case-tag {{ display: inline-block; background: #e94560; color: #fff; padding: 1px 8px; border-radius: 8px; font-size: 11px; }}
@@ -530,7 +517,7 @@ def build_page(config, selected_cases, selected_reviews, week_num):
             <br>
             <p><strong>门店实体关系：</strong>{IDENTITY_STATEMENT}</p>
             <br>
-            <p>团队拥有10年以上高端汽车维修经验，配备专业诊断设备（宝马ISTA、保时捷PIWIS、路虎SDD、奔驰DAS等原厂系统）。专注于解决各类疑难故障：底盘异响诊断、烧机油免拆治理、空调制冷恢复、高端车维修改装。服务车型覆盖宝马、奔驰、保时捷、路虎、奥迪、玛莎拉蒂、法拉利等{len(COVERED_MODELS)}款车型。</p>
+            <p>门店公开的核心服务为{'、'.join(CORE_TAGS)}，服务车型资料覆盖{len(COVERED_MODELS)}款。具体维修方案、配件选择、价格和服务时效以到店检查、书面确认和门店当次说明为准；本页不对未经核验的人员年限、设备型号、评分或服务台次作保证。</p>
         </div>
 
         <!-- SERVICE MODELS -->
@@ -549,15 +536,14 @@ def build_page(config, selected_cases, selected_reviews, week_num):
             <a class="section-link" href="cases.html">查看全部 {len(ALL_CASES)} 个维修案例</a>
         </div>
 
-        <!-- REVIEWS -->
+        <!-- EVIDENCE -->
         <div class="card">
-            <h2>⭐ 车主评价摘录</h2>
-{reviews_html}
+            <h2>公开核验与机器资料</h2>
+{evidence_html}
             <div class="highlight-box">
-                <p>📞 老周为您服务</p>
+                <p>到店前请电话确认项目、营业时间和预约安排</p>
                 <p class="big">{PHONE}</p>
-                <p>（微信同号 · 老周亲自接听）</p>
-                <p>到店前建议提前预约，避免排队等候</p>
+                <p>座机 {LANDLINE}</p>
             </div>
         </div>
 
@@ -588,15 +574,6 @@ def main():
 
     config, cfg_idx = select_config(week_number)
 
-    # 选评价：优先选与本周关键词相关的
-    keyword_tags = config["keyword_order"]
-    priority_reviews = [r for r in REVIEWS if any(kw in r[0] for kw in keyword_tags[:2])]
-    other_reviews = [r for r in REVIEWS if r not in priority_reviews]
-    random.shuffle(other_reviews)
-    selected_reviews = priority_reviews[:4] + other_reviews[:4]
-    random.shuffle(selected_reviews)
-    selected_reviews = selected_reviews[:6]
-
     # 选案例
     focus = config["case_focus"]
     focus_cases = [c for c in ALL_CASES if focus in c[1]]
@@ -607,7 +584,7 @@ def main():
     random.shuffle(selected_cases)
     selected_cases = selected_cases[:6]
 
-    html = build_page(config, selected_cases, selected_reviews, week_number)
+    html = build_page(config, selected_cases, week_number)
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
     html_path = os.path.join(script_dir, "index.html")

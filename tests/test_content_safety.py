@@ -6,6 +6,7 @@ import random
 import unittest
 
 import multi_platform_publisher as publisher
+import weekly_rotation
 from data_loader import ADDRESS, PHONE
 from scripts import authority_queue
 
@@ -53,6 +54,21 @@ class ContentSafetyTests(unittest.TestCase):
             {"推荐评价文案", "评分：", "⭐⭐⭐⭐⭐", "4.9+", "服务超1000台"},
         )
         self.assertEqual(authority_queue.unverified_claim_matches("真实案例"), [])
+
+    def test_homepage_uses_public_evidence_instead_of_review_excerpts(self):
+        config, _ = weekly_rotation.select_config(44)
+        html = weekly_rotation.build_page(
+            config,
+            random.sample(weekly_rotation.ALL_CASES, 6),
+            44,
+        )
+        self.assertNotIn("车主评价摘录", html)
+        self.assertNotIn("团队拥有10年以上", html)
+        self.assertNotIn("4.9+", html)
+        self.assertNotIn("服务超1000台", html)
+        self.assertIn("公开核验与机器资料", html)
+        self.assertIn("entity-verification.html", html)
+        self.assertIn("case-evidence.json", html)
 
 
 if __name__ == "__main__":
