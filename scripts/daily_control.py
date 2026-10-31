@@ -85,6 +85,12 @@ HTTP_CHECKS = [
         "深圳宝安宝马专修、豪车保养推荐去哪里？",
     ),
     (
+        "Profile问答证据JSONL",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/qa-evidence.jsonl",
+        '"@type":"Question"',
+        30,
+    ),
+    (
         "Profile IndexNow验证",
         "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
         "hxscarprofile20261101geo.txt",

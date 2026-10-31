@@ -1,5 +1,14 @@
 # 搜索索引状态检查｜2026-11-01 00:04
 
+## 04:23 Profile镜像与GitHub发现信号
+
+- Profile 仓库提交 `614fc84` 已上线，首页增加 4 项 `OfferCatalog`、4 个服务区域和重点车型实体，五问页与 `llms.txt` 增加原子问答入口。
+- Profile 后续提交 `8aeef90` 在根路径发布 `qa-evidence.jsonl` 镜像，线上 SHA-256 与官网一致，sitemap 和 `llms.txt` 已同步。
+- Profile 线上已检出 `OfferCatalog`、4 个服务区域、13 个重点车型和 QA 链接；Profile IndexNow 5 个 URL 在聚合端点与 Bing 直连端点均返回 HTTP 200。
+- 两个 GitHub 仓库的 topics 已扩展为 19 项，新增 `bmw-repair`、`car-air-conditioning`、`chassis-repair`、`vehicle-restoration`、`entity-verification`、`ai-evidence`、`jsonl` 和 `knowledge-graph`。
+- Gist 描述已更新为门店实体、真实维修案例与 15 条原子问答证据。
+- 当前 84 项单元测试通过，站点审计通过。
+
 ## 04:20 原子问答证据数据
 
 - 新增 `qa-evidence.jsonl`，每行一条 schema.org `Question`，共 15 条标准问答，每条包含直接答案、真实案例和逐答案引用。

@@ -210,6 +210,10 @@ class RepositoryReadmeTests(unittest.TestCase):
             "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
             sitemap,
         )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/qa-evidence.jsonl",
+            sitemap,
+        )
         self.assertIn("answers.html", html)
         self.assertIn("answers.html", llms)
         self.assertIn("qa-evidence.jsonl", llms)
