@@ -10,7 +10,8 @@ import unittest
 import multi_platform_publisher as publisher
 import weekly_rotation
 from content_safety_rules import (
-    UNVERIFIED_FAQ_MARKERS,
+    unverified_claim_markers,
+    unverified_faq_markers,
     partition_faqs,
 )
 from data_loader import ADDRESS, PHONE
@@ -83,15 +84,7 @@ class ContentSafetyTests(unittest.TestCase):
         self.assertTrue(blocked)
         self.assertTrue(
             all(
-                not any(
-                    marker
-                    in (
-                        item["question"] + item["answer"]
-                        if isinstance(item, dict)
-                        else item[0] + item[1]
-                    )
-                    for marker in UNVERIFIED_FAQ_MARKERS
-                )
+                not unverified_faq_markers(item)
                 for item in safe
             )
         )
@@ -113,9 +106,55 @@ class ContentSafetyTests(unittest.TestCase):
             site_builder.BASE_URL + "/#autorepair",
         )
         self.assertTrue(faq_schemas[0].get("dateModified"))
-        schema_text = json.dumps(faq_schemas[0], ensure_ascii=False)
-        for marker in UNVERIFIED_FAQ_MARKERS:
-            self.assertNotIn(marker, schema_text)
+        for question in faq_schemas[0]["mainEntity"]:
+            claim = (
+                question["name"]
+                + question["acceptedAnswer"]["text"]
+            )
+            self.assertEqual(unverified_claim_markers(claim), [])
+
+    def test_all_generated_machine_faq_schemas_use_safe_subset(self):
+        """所有页面型 FAQ 结构化数据均不得重新引入旧营销承诺。"""
+        pages = [
+            site_builder.ROOT / "index.html",
+            site_builder.ROOT / "faq.html",
+            *sorted((site_builder.ROOT / "services").glob("*.html")),
+            *sorted((site_builder.ROOT / "models").glob("*.html")),
+        ]
+        for path in pages:
+            html = path.read_text(encoding="utf-8")
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                html,
+                re.DOTALL,
+            ):
+                schema = json.loads(raw)
+                if schema.get("@type") != "FAQPage":
+                    continue
+                for question in schema.get("mainEntity", []):
+                    item = {
+                        "question": question.get("name", ""),
+                        "answer": question.get("acceptedAnswer", {}).get(
+                            "text", ""
+                        ),
+                    }
+                    matches = unverified_faq_markers(item)
+                    self.assertEqual(
+                        matches,
+                        [],
+                        f"{path.relative_to(site_builder.ROOT)}: "
+                        f"{item['question']}",
+                    )
+
+    def test_llms_full_does_not_leak_blocked_faqs(self):
+        """完整机器语料只能出现安全子集中的问题。"""
+        llms_full = site_builder.build_llms_full_txt()
+        _, blocked = partition_faqs(weekly_rotation.ALL_FAQS)
+        for entry in blocked:
+            self.assertNotIn(
+                f"### {entry['item'][0]}",
+                llms_full,
+            )
 
 
 if __name__ == "__main__":

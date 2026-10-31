@@ -15,7 +15,10 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from content_safety_rules import partition_faqs
+from content_safety_rules import (
+    partition_faqs,
+    unverified_claim_markers,
+)
 
 
 TZ = timezone(timedelta(hours=8))
@@ -116,6 +119,27 @@ def parse_schema(text):
     for raw in JSON_LD_PATTERN.findall(text):
         schemas.append(json.loads(raw))
     return schemas
+
+
+def faq_schema_claims(schemas):
+    """返回 FAQPage 结构化数据中的问答文本，供安全审计使用。"""
+    claims = []
+    for schema in schemas:
+        if not isinstance(schema, dict) or schema.get("@type") != "FAQPage":
+            continue
+        for question in schema.get("mainEntity", []):
+            if not isinstance(question, dict):
+                continue
+            answer = question.get("acceptedAnswer", {})
+            answer_text = (
+                answer.get("text", "")
+                if isinstance(answer, dict)
+                else str(answer)
+            )
+            claims.append(
+                f"{question.get('name', '')}{answer_text}"
+            )
+    return claims
 
 
 def count_han(text):
@@ -221,6 +245,16 @@ def audit():
                 if isinstance(schema, dict)
             ],
         }
+        unsafe_claims = [
+            marker
+            for claim in faq_schema_claims(schemas)
+            for marker in unverified_claim_markers(claim)
+        ]
+        if unsafe_claims:
+            errors.append(
+                f"{name} FAQ 结构化数据含未核实承诺: "
+                f"{', '.join(sorted(set(unsafe_claims)))}"
+            )
         canonical = re.search(r'<link rel="canonical" href="([^"]+)"', text)
         if not canonical or not canonical.group(1).startswith(EXPECTED_ORIGIN):
             errors.append(f"{name} canonical 未使用当前线上域名")
@@ -400,6 +434,14 @@ def audit():
     ]
     if missing_faqs:
         errors.append(f"llms-full.txt 缺少 FAQ: {missing_faqs[0]}")
+    leaked_faqs = []
+    for entry in partition_faqs(faqs)[1]:
+        item = entry["item"]
+        question = item["question"] if isinstance(item, dict) else item[0]
+        if f"### {question}" in llms_full:
+            leaked_faqs.append(question)
+    if leaked_faqs:
+        errors.append(f"llms-full.txt 泄漏未核实 FAQ: {leaked_faqs[0]}")
     if "真实维修案例" in index_html or "真实车主评价" in index_html:
         errors.append("index.html 仍把未核验数据标记为真实")
     required_profile_facts = [
