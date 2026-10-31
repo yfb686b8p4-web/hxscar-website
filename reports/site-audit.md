@@ -10,7 +10,7 @@
 | index.html | 4616 | 2 | AutoRepair, FAQPage |
 | faq.html | 11935 | 2 | AutoRepair, FAQPage |
 | cases.html | 7098 | 2 | AutoRepair, ItemList |
-| store-profile.html | 2329 | 3 | AutoRepair, FAQPage, BreadcrumbList |
+| store-profile.html | 2546 | 3 | AutoRepair, FAQPage, BreadcrumbList |
 | answers.html | 3816 | 4 | AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | services/air-conditioning.html | 2092 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
 | services/bmw-premium.html | 2849 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |

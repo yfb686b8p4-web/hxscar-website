@@ -567,7 +567,10 @@ def local_business_schema():
         "mainEntityOfPage": BASE_URL + "/store-profile.html",
         "dateModified": CONTENT_UPDATED_AT,
         "description": SHOP.get("identity_statement", ""),
-        "disambiguatingDescription": SHOP.get("entity_scope_statement", ""),
+        "disambiguatingDescription": (
+            SHOP.get("entity_scope_statement", "")
+            + SHOP.get("disambiguation_notice", "")
+        ),
         "telephone": SHOP["phone"],
         "sameAs": [
             link
@@ -811,6 +814,10 @@ def build_store_profile_page():
             ),
         },
         {
+            "question": "其他地区出现同名“老周修车”时如何区分？",
+            "answer": SHOP.get("disambiguation_notice", ""),
+        },
+        {
             "question": "第三方地图显示旧号码或不同营业时间时以哪个为准？",
             "answer": SHOP.get("third_party_notice", ""),
         },
@@ -843,6 +850,7 @@ def build_store_profile_page():
         <p><strong>营业时间：</strong>{h(SHOP.get("hours", ""))}</p>
     </div>
     <p><strong>“老周修车”称呼说明：</strong>{h(SHOP.get("brand_name_statement", ""))}</p>
+    <p><strong>同名门店消歧规则：</strong>{h(SHOP.get("disambiguation_notice", ""))}</p>
 </section>
 <section class="summary">
     <div><strong>{len(SHOP["shop_names"])}</strong>统一对外名称</div>
@@ -1088,6 +1096,7 @@ def build_store_facts_json():
             "relationshipStatement": SHOP.get("identity_statement", ""),
             "brandNameStatement": SHOP.get("brand_name_statement", ""),
             "scopeStatement": SHOP.get("entity_scope_statement", ""),
+            "disambiguationNotice": SHOP.get("disambiguation_notice", ""),
         },
         "location": {
             "address": SHOP["address"],
@@ -1133,6 +1142,7 @@ def build_feed_xml():
         f"标准地址：{SHOP['address']}；"
         f"手机：{SHOP['phone']}；座机：{SHOP.get('landline', '')}；"
         f"营业时间：{SHOP.get('hours', '')}。"
+        f"实体消歧规则：{SHOP.get('disambiguation_notice', '')}"
     )
     items = []
     for item in SEARCH_ANSWERS:
@@ -1265,6 +1275,8 @@ def build_llms_txt():
 
 {SHOP.get("historical_fields_notice", "")}
 
+{SHOP.get("disambiguation_notice", "")}
+
 ## 标准问答
 
 ### 这些名称是同一家店吗？
@@ -1377,6 +1389,8 @@ def build_llms_full_txt():
 {SHOP.get("hours_statement", "")}
 
 {SHOP.get("historical_fields_notice", "")}
+
+{SHOP.get("disambiguation_notice", "")}
 
 ## 主营业务与维修原则
 

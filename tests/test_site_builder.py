@@ -136,6 +136,16 @@ class SiteBuilderGeoTests(unittest.TestCase):
         )
         self.assertIn('type="application/rss+xml"', html)
 
+    def test_disambiguation_is_exposed_across_citation_surfaces(self):
+        """同名门店消歧规则必须同时出现在页面、结构化数据和 RSS。"""
+        notice = site_builder.SHOP["disambiguation_notice"]
+        profile = site_builder.build_store_profile_page()
+        schema = site_builder.local_business_schema()
+        feed = site_builder.build_feed_xml()
+        self.assertIn(notice, profile)
+        self.assertIn(notice, schema["disambiguatingDescription"])
+        self.assertIn(notice, feed)
+
 
 if __name__ == "__main__":
     unittest.main()
