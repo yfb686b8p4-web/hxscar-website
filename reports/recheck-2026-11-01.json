@@ -50,6 +50,16 @@
       "before_summary": "案例仅存在于维修案例长列表的锚点中，没有独立 canonical 页面。",
       "after_summary": "独立案例页已上线并包含 Article、门店资料和对应答案链接；元宝全新会话仍引用20篇第三方资料，未提及本店案例。",
       "outcome": "页面已上线，尚未观察到平台引用"
+    },
+    {
+      "id": "github-profile-authority",
+      "title": "GitHub 账号级门店资料",
+      "query": "site:github.com/yfb686b8p4-web/yfb686b8p4-web",
+      "deployed_commit": "41dec8a",
+      "measured_at": "2026-11-01T02:15:00+08:00",
+      "before_summary": "GitHub账号没有公开资料仓库、官网链接或门店实体说明。",
+      "after_summary": "同名公开仓库与Profile README已上线，包含完整门店事实、JSON-LD、56案例、Gist/Release和消歧入口；官网JSON-LD已反向关联该仓库。",
+      "outcome": "外部权威入口已发布，尚未观察到搜索引擎收录"
     }
   ]
 }
