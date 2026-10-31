@@ -2631,15 +2631,20 @@ def build_llms_full_txt():
         f"### {item['question']}\n\n{item['answer']}"
         for item in FAQS
     )
-    case_sections = "\n\n".join(
-        f"""### {item.get("issue", "")}
-
-- 车型与服务：{item.get("tag", "")} / {item.get("car_type", "")}
-- 故障表现：{item.get("solution", "")}
-- 处理方案：{item.get("price", "")}
-- 参考费用：{item.get("result", "")}"""
-        for item in CASES
-    )
+    case_blocks = []
+    for item in CASES:
+        lines = [
+            f"### {item.get('issue', '')}",
+            "",
+            f"- 车型与服务：{item.get('tag', '')} / {item.get('car_type', '')}",
+            f"- 故障表现：{item.get('solution', '')}",
+            f"- 处理方案：{item.get('price', '')}",
+            f"- 参考费用：{item.get('result', '')}",
+        ]
+        if case_study_path(item):
+            lines.append(f"- 独立案例页：{case_study_url(item)}")
+        case_blocks.append("\n".join(lines))
+    case_sections = "\n\n".join(case_blocks)
     repair_values = "\n".join(f"- {value}" for value in SHOP["repair_values"])
     parts_options = "\n".join(
         f"- {part['name']}：{part['description']}"
