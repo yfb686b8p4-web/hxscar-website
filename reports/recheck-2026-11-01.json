@@ -40,6 +40,16 @@
       "before_summary": "公开 Gist 和 Release 正文缺少13537862708及营业时间纠错页入口。",
       "after_summary": "两份镜像均已更新并通过 GitHub API 检出完整实体事实与纠错入口；Bing 精确查询 Gist ID 仍无相关结果。",
       "outcome": "外部镜像已更新，但尚未观察到 Bing 收录"
+    },
+    {
+      "id": "standalone-case-study",
+      "title": "奔驰 E300L 独立空调案例页",
+      "query": "奔驰E300L空调右边比左边凉怎么修",
+      "deployed_commit": "53457ea",
+      "measured_at": "2026-11-01T01:35:00+08:00",
+      "before_summary": "案例仅存在于维修案例长列表的锚点中，没有独立 canonical 页面。",
+      "after_summary": "独立案例页已上线并包含 Article、门店资料和对应答案链接；元宝全新会话仍引用20篇第三方资料，未提及本店案例。",
+      "outcome": "页面已上线，尚未观察到平台引用"
     }
   ]
 }
