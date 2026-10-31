@@ -70,6 +70,15 @@
       "objective": "如账号属于门店，统一公众号资料并发布实体关系纠错文章，向元宝提供官网、信用代码、地址、双电话和营业时间证据"
     },
     {
+      "id": "business-directories",
+      "name": "工商聚合资料纠错",
+      "priority": "P0",
+      "action_url": "https://www.qcc.com/firm/8ed6b923472b38c0bf3801b468b2d37e.html",
+      "content_source": "publishing/drafts/business_directory_entity_correction_2026-11-01.md",
+      "content_source_root": "project",
+      "objective": "在企查查、启信宝、水滴信用等聚合页提交门店当前联系方式纠错，保留法定登记事实并说明旧年报号码不作为当前预约电话"
+    },
+    {
       "id": "dianping",
       "name": "大众点评",
       "priority": "P0",
