@@ -57,6 +57,32 @@ HTTP_CHECKS = [
     ("图片站点地图", "/image-sitemap.xml", "store-banner.jpg"),
     ("llms", "/llms.txt", "门店实体关系"),
     ("完整机器语料", "/llms-full.txt", "证据边界内常见问题"),
+    (
+        "Profile实体镜像",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/",
+        "深圳华信松老周修车",
+    ),
+    (
+        "Profile robots",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/robots.txt",
+        "Sitemap:",
+    ),
+    (
+        "Profile sitemap",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml",
+        "<loc>https://yfb686b8p4-web.github.io/yfb686b8p4-web/</loc>",
+    ),
+    (
+        "Profile llms",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/llms.txt",
+        "统一社会信用代码",
+    ),
+    (
+        "Profile IndexNow验证",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+        "hxscarprofile20261101geo.txt",
+        "hxscarprofile20261101geo",
+    ),
 ]
 RESULT_COLUMNS = [
     "check_id",
@@ -278,6 +304,11 @@ def fetch_url(url, expected, timeout=30):
     }
 
 
+def resolve_check_url(path):
+    """支持主站相对路径和外部镜像绝对 URL。"""
+    return path if path.startswith(("http://", "https://")) else SITE_URL + path
+
+
 def collect_status():
     """收集部署、定时任务、站点和平台状态。"""
     audit = load_json(AUDIT_PATH) if AUDIT_PATH.exists() else {}
@@ -307,7 +338,7 @@ def collect_status():
                     "name": item[0],
                     "path": item[1],
                     **fetch_url(
-                        SITE_URL + item[1],
+                        resolve_check_url(item[1]),
                         item[2],
                         item[3] if len(item) > 3 else 15,
                     ),

@@ -71,6 +71,22 @@ class DailyControlTests(unittest.TestCase):
             90,
         )
 
+    def test_check_url_supports_profile_mirror_absolute_urls(self):
+        """主站相对路径与 Profile 绝对 URL 必须都能正确解析。"""
+        self.assertEqual(
+            daily_control.resolve_check_url("/faq.html"),
+            daily_control.SITE_URL + "/faq.html",
+        )
+        profile_url = (
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/llms.txt"
+        )
+        self.assertEqual(
+            daily_control.resolve_check_url(profile_url),
+            profile_url,
+        )
+        checks = {item[1]: item for item in daily_control.HTTP_CHECKS}
+        self.assertIn(profile_url, checks)
+
     def test_effective_hit_requires_complete_identity(self):
         self.assertTrue(daily_control.evaluate_effective_hit(record()))
         self.assertFalse(
