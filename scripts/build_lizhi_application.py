@@ -158,7 +158,7 @@ def build_payloads(facts, faqs, cases):
 {chr(10).join(f"  {index}. {url}" for index, url in enumerate(sample_links, start=1))}
 - 是否有其他已经合作网站：暂未与立知建立合作
 - 已经合作网站 URL：无
-- 可提供数据量：99 条问答（15 条独立标准答案、84 条证据边界内 FAQ）及 56 条真实维修案例
+- 可提供数据量：{len(answers) + len(faq_rows)} 条问答（{len(answers)} 条独立标准答案、{len(faq_rows)} 条证据边界内 FAQ）及 {len(case_rows)} 条真实维修案例
 
 可核验资料：
 

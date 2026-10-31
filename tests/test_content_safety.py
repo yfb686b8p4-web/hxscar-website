@@ -134,6 +134,14 @@ class ContentSafetyTests(unittest.TestCase):
             )
             self.assertEqual(unverified_claim_markers(claim), [])
 
+    def test_public_faq_page_only_shows_safe_subset(self):
+        """公开 FAQ 页面正文不得重新出现被隔离问题。"""
+        html = site_builder.build_faq_page()
+        self.assertEqual(html.count('class="faq-item"'), len(site_builder.SAFE_FAQS))
+        _, blocked = partition_faqs(site_builder.FAQS)
+        for entry in blocked:
+            self.assertNotIn(entry["item"]["question"], html)
+
     def test_all_generated_machine_faq_schemas_use_safe_subset(self):
         """所有页面型 FAQ 结构化数据均不得重新引入旧营销承诺。"""
         pages = [

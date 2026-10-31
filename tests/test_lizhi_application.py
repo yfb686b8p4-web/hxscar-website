@@ -37,9 +37,10 @@ class LizhiApplicationTests(unittest.TestCase):
         )
         counts = manifest["counts"]
         self.assertEqual(counts["answers"], 15)
-        self.assertEqual(counts["totalQa"], 99)
+        self.assertEqual(counts["safeFaqs"], 77)
+        self.assertEqual(counts["totalQa"], 92)
         self.assertEqual(counts["cases"], 56)
-        self.assertEqual(counts["blockedFaqs"], 58)
+        self.assertEqual(counts["blockedFaqs"], 65)
         self.assertEqual(manifest["status"], "prepared_not_sent")
         self.assertIn("尚未发送", files["application.md"])
         self.assertIn("zzpt@tencent.com", files["application.md"])

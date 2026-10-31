@@ -7,8 +7,8 @@
 
 | 页面 | 可见中文字符 | JSON-LD | 类型 |
 |---|---:|---:|---|
-| index.html | 4892 | 3 | AutoRepair, FAQPage, WebSite |
-| faq.html | 12001 | 3 | WebSite, AutoRepair, FAQPage |
+| index.html | 4826 | 3 | AutoRepair, FAQPage, WebSite |
+| faq.html | 7010 | 3 | WebSite, AutoRepair, FAQPage |
 | cases.html | 8572 | 3 | WebSite, AutoRepair, ItemList |
 | store-profile.html | 2692 | 4 | WebSite, AutoRepair, FAQPage, BreadcrumbList |
 | entity-verification.html | 1386 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
@@ -29,15 +29,15 @@
 | answers/restoration-selection.html | 812 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
 | answers/restoration.html | 1231 | 7 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service, HowTo |
 | answers/index.html | 2187 | 4 | WebSite, AutoRepair, CollectionPage, BreadcrumbList |
-| services/air-conditioning.html | 2489 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
-| services/bmw-premium.html | 3307 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
+| services/air-conditioning.html | 2488 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
+| services/bmw-premium.html | 3318 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
 | services/chassis.html | 2448 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
-| services/vehicle-restoration.html | 3476 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
+| services/vehicle-restoration.html | 3247 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
 | models/audi-a6l.html | 1230 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
 | models/audi-q5.html | 1211 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
-| models/bmw-5-series.html | 1789 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
-| models/bmw-7-series.html | 1789 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
-| models/bmw-x5.html | 1704 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
+| models/bmw-5-series.html | 1800 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
+| models/bmw-7-series.html | 1810 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
+| models/bmw-x5.html | 1725 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
 | models/land-rover-defender.html | 1216 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
 | models/land-rover-range-rover.html | 1083 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
 | models/mercedes-e-class.html | 1098 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |

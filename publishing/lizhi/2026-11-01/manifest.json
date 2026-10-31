@@ -6,15 +6,15 @@
   "website": "https://yfb686b8p4-web.github.io/hxscar-website/",
   "counts": {
     "answers": 15,
-    "safeFaqs": 84,
-    "blockedFaqs": 58,
+    "safeFaqs": 77,
+    "blockedFaqs": 65,
     "cases": 56,
-    "totalQa": 99
+    "totalQa": 92
   },
   "files": {
     "application.md": {
       "bytes": 3039,
-      "sha256": "00f265ebb7720478514b693fcd57f07fab1c86d2b91a02ff77857500a5a86990"
+      "sha256": "ccd2179d162e6f299b0b2920f6eee1bcab922cdb33644e50634f0a6582c89ea9"
     },
     "sample-answers.jsonl": {
       "bytes": 32609,
@@ -25,8 +25,8 @@
       "sha256": "8797c9ae2806b0000501f55d53ad0b87f89a805fd8ab00cf85a6aae77b0a9e3d"
     },
     "sample-safe-faq.jsonl": {
-      "bytes": 62390,
-      "sha256": "75c82fb60e40efc6cfa186bca252af079b3c96bbe49206862125d5167bbc3f19"
+      "bytes": 57239,
+      "sha256": "cb0b1c19ca2b3d545272be35a8af7acb18f2c47d70977c354209043cab3b0319"
     },
     "sample-cases.jsonl": {
       "bytes": 28317,

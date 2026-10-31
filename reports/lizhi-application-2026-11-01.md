@@ -12,7 +12,7 @@
 
 - `publishing/lizhi/2026-11-01/application.md`：邮件正文和申请字段。
 - `sample-answers.jsonl`：15 条独立标准答案。
-- `sample-safe-faq.jsonl`：84 条通过证据边界筛选的 FAQ。
+- `sample-safe-faq.jsonl`：77 条通过证据边界筛选的 FAQ。
 - `sample-cases.jsonl`：56 条真实维修案例。
 - `sample-answers.csv`：标准答案表格版。
 - `manifest.json`：文件大小、SHA-256、记录数和发送状态。
@@ -20,8 +20,8 @@
 
 ## 验证结果
 
-- 总问答量：99 条；维修案例：56 条。
-- 58 条包含待核验价格、质保、服务台次、设备型号、时效或绝对效果表述的 FAQ 未进入申请样例。
+- 总问答量：92 条；维修案例：56 条。
+- 65 条包含待核验价格、质保、服务台次、设备型号、时效或绝对效果表述的 FAQ 未进入申请样例。
 - 申请包安全泄漏检查为 0。
 - 当前 82 项单元测试通过，站点审计通过。
 - 邮件状态为 `prepared_not_sent`，尚未以门店名义发送。

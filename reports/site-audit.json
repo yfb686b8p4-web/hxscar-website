@@ -13,9 +13,9 @@
   },
   "pages": {
     "index.html": {
-      "bytes": 57357,
-      "han_chars": 8040,
-      "visible_han_chars": 4892,
+      "bytes": 56844,
+      "han_chars": 7906,
+      "visible_han_chars": 4826,
       "json_ld_blocks": 3,
       "schema_types": [
         "AutoRepair",
@@ -24,9 +24,9 @@
       ]
     },
     "faq.html": {
-      "bytes": 104911,
-      "han_chars": 20914,
-      "visible_han_chars": 12001,
+      "bytes": 79875,
+      "han_chars": 15339,
+      "visible_han_chars": 7010,
       "json_ld_blocks": 3,
       "schema_types": [
         "WebSite",
@@ -308,9 +308,9 @@
       ]
     },
     "services/air-conditioning.html": {
-      "bytes": 42519,
-      "han_chars": 5349,
-      "visible_han_chars": 2489,
+      "bytes": 42479,
+      "han_chars": 5347,
+      "visible_han_chars": 2488,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -322,9 +322,9 @@
       ]
     },
     "services/bmw-premium.html": {
-      "bytes": 47007,
-      "han_chars": 6135,
-      "visible_han_chars": 3307,
+      "bytes": 47059,
+      "han_chars": 6157,
+      "visible_han_chars": 3318,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -350,9 +350,9 @@
       ]
     },
     "services/vehicle-restoration.html": {
-      "bytes": 47305,
-      "han_chars": 6506,
-      "visible_han_chars": 3476,
+      "bytes": 44741,
+      "han_chars": 6048,
+      "visible_han_chars": 3247,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -390,9 +390,9 @@
       ]
     },
     "models/bmw-5-series.html": {
-      "bytes": 36008,
-      "han_chars": 4109,
-      "visible_han_chars": 1789,
+      "bytes": 36060,
+      "han_chars": 4131,
+      "visible_han_chars": 1800,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -403,9 +403,9 @@
       ]
     },
     "models/bmw-7-series.html": {
-      "bytes": 36038,
-      "han_chars": 4117,
-      "visible_han_chars": 1789,
+      "bytes": 36140,
+      "han_chars": 4159,
+      "visible_han_chars": 1810,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -416,9 +416,9 @@
       ]
     },
     "models/bmw-x5.html": {
-      "bytes": 35531,
-      "han_chars": 4050,
-      "visible_han_chars": 1704,
+      "bytes": 35633,
+      "han_chars": 4092,
+      "visible_han_chars": 1725,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",

@@ -1083,7 +1083,7 @@ def nav(current):
     items = [
         ("index", "首页", prefix + "index.html"),
         ("answers", "搜索问答", prefix + "answers.html"),
-        ("faq", "完整FAQ", prefix + "faq.html"),
+        ("faq", "安全FAQ", prefix + "faq.html"),
         ("cases", "维修案例", prefix + "cases.html"),
         (
             "services",
@@ -1501,9 +1501,9 @@ def local_business_schema():
 
 
 def build_faq_page():
-    """生成包含全部问答的 FAQ 页面。"""
+    """生成仅包含证据边界内 FAQ 的公开页面。"""
     items = []
-    for index, item in enumerate(FAQS, start=1):
+    for index, item in enumerate(SAFE_FAQS, start=1):
         items.append(
             f"""<article class="faq-item" id="faq-{index}">
     <h3>{h(item["question"])}</h3>
@@ -1512,16 +1512,17 @@ def build_faq_page():
         )
     body = f"""<section class="hero">
     <h1>华信松汽车常见问题：烧机油、底盘异响与空调维修</h1>
-    <p>整理宝安本地车主高频问题，共 {len(FAQS)} 组，覆盖宝马、奔驰、保时捷、路虎、奥迪等车型。</p>
+    <p>公开整理宝安本地车主高频问题，共 {len(SAFE_FAQS)} 组，覆盖宝马、奔驰、保时捷、路虎、奥迪等车型。</p>
 </section>
 <section class="summary">
-    <div><strong>{len(FAQS)}</strong>常见问题</div>
+    <div><strong>{len(SAFE_FAQS)}</strong>安全问答</div>
+    <div><strong>{len(BLOCKED_FAQS)}</strong>待核实问题</div>
     <div><strong>{len(CASES)}</strong>维修案例</div>
     <div><strong>{len(SHOP["covered_models"])}</strong>覆盖车型</div>
 </section>
 <section class="card">
-    <h2>全部常见问题</h2>
-    <p><strong>资料边界：</strong>本页保留车主问题库供人工查阅。涉及价格、质保、设备型号、优惠时效和服务台次的具体表述，须以门店当次确认、工单或可公开核验资料为准。</p>
+    <h2>证据边界内常见问题</h2>
+    <p><strong>资料边界：</strong>本页只公开发布通过安全筛选的 {len(SAFE_FAQS)} 组问答。另有 {len(BLOCKED_FAQS)} 组问题涉及价格、质保、设备型号、优惠时效或服务台次，保留在内部数据源，不在公开页面展示；如涉及这些项目，以门店当次确认、工单或可公开核验资料为准。</p>
     {''.join(items)}
     <a class="cta" href="tel:{h(SHOP["phone"])}">电话咨询：{h(SHOP["phone"])}</a>
 </section>"""
@@ -1541,8 +1542,8 @@ def build_faq_page():
         ],
     }
     return page(
-        "华信松汽车常见问题大全｜烧机油、底盘异响、空调维修",
-        f"深圳宝安华信松汽车{len(FAQS)}组常见问题，覆盖烧机油免拆治理、底盘异响、空调不凉、宝马专修等本地车主问题。",
+        "华信松汽车安全常见问题｜烧机油、底盘异响、空调维修",
+        f"深圳宝安华信松汽车{len(SAFE_FAQS)}组证据边界内问答，覆盖烧机油免拆治理、底盘异响、空调不凉、宝马专修等本地车主问题。",
         BASE_URL + "/faq.html",
         body,
         [local_business_schema(), schema],

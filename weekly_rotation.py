@@ -510,7 +510,7 @@ def build_page(config, selected_cases, week_num):
         <nav class="site-nav" aria-label="主要页面">
             <a href="./" aria-current="page">首页</a>
             <a href="answers.html">搜索问答</a>
-            <a href="faq.html">完整FAQ</a>
+            <a href="faq.html">安全FAQ</a>
             <a href="cases.html">维修案例</a>
             <a href="services/index.html">服务专题</a>
             <a href="models/index.html">车型专题</a>
@@ -638,7 +638,7 @@ def build_page(config, selected_cases, week_num):
             <h2>❓ 车主常见问题（首页精选 {len(selected_faqs)} 问）</h2>
             <p><strong>资料边界：</strong>机器语料只收录不含待确认价格、质保、设备型号、优惠时效和服务台次承诺的 {len(SAFE_FAQS)} 组问答；其余 {len(BLOCKED_FAQS)} 组保留在完整问题库供人工查阅。</p>
 {faqs_html}
-            <a class="section-link" href="faq.html">查看全部 {len(ALL_FAQS)} 组常见问题</a>
+            <a class="section-link" href="faq.html">查看证据边界内常见问题</a>
         </div>
 
         <!-- FOOTER -->

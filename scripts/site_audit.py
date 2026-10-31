@@ -293,12 +293,12 @@ def audit():
     week = datetime.now(TZ).strftime("%V")
     queue_manifest = ROOT / "publishing" / "queue" / f"W{week}" / "manifest.json"
 
-    if page_stats["faq.html"]["visible_han_chars"] < 8000:
-        errors.append("faq.html 可见中文字符不足 8000")
+    if page_stats["faq.html"]["visible_han_chars"] < 6500:
+        errors.append("faq.html 可见中文字符不足 6500")
     if page_stats["cases.html"]["visible_han_chars"] < 5000:
         errors.append("cases.html 可见中文字符不足 5000")
-    if faq_html.count('class="faq-item"') != len(faqs):
-        errors.append("faq.html 展示数量与 FAQ 数据总量不一致")
+    if faq_html.count('class="faq-item"') != len(safe_faqs):
+        errors.append("faq.html 展示数量与安全 FAQ 数量不一致")
     if cases_html.count('class="case-item"') != len(cases):
         errors.append("cases.html 展示数量与案例数据总量不一致")
     if "FAQPage" not in page_stats["faq.html"]["schema_types"]:
