@@ -51,6 +51,7 @@ BUSINESS_FACT_SHEET = BASE_URL + "/" + SHOP.get(
     "downloads/huaxinsong-store-facts-2026-10-31.pdf",
 )
 BUSINESS_SCHEMA_FACTS = BASE_URL + "/store-facts.jsonld"
+CASE_EVIDENCE_DATA = BASE_URL + "/case-evidence.json"
 
 CASE_STUDY_SLUGS = {
     "宝马X5 3.0T烧机油半年，从5000km报警到1500km加1升": (
@@ -684,6 +685,10 @@ def answer_evidence_sources(item):
             "url": BUSINESS_SCHEMA_FACTS,
         },
         {
+            "name": "公开维修案例数据",
+            "url": CASE_EVIDENCE_DATA,
+        },
+        {
             "name": "门店实体核验 PDF",
             "url": BUSINESS_FACT_SHEET,
         },
@@ -1173,6 +1178,7 @@ def build_cases_page():
 <section class="card">
     <h2>全部维修案例</h2>
     {''.join(items)}
+    <p><a href="case-evidence.json">查看机器可读维修案例数据</a></p>
     <a class="cta" href="tel:{h(SHOP["phone"])}">预约检测：{h(SHOP["phone"])}</a>
 </section>"""
     schema = {
@@ -2133,6 +2139,52 @@ def build_answer_pages():
     return outputs
 
 
+def build_case_evidence_json():
+    """生成供 AI 搜索直接读取的结构化真实维修案例数据。"""
+    cases = []
+    for case_number, case in enumerate(CASES, start=1):
+        evidence_url = case_study_url(case)
+        cases.append(
+            {
+                "caseNumber": case_number,
+                "caseId": f"case-{case_number}",
+                "title": case.get("issue", ""),
+                "vehicle": case.get("tag", ""),
+                "serviceType": case.get("car_type", ""),
+                "symptom": case.get("solution", ""),
+                "repair": case.get("price", ""),
+                "referenceCost": case.get("result", ""),
+                "caseStudyUrl": (
+                    evidence_url if case_study_path(case) else ""
+                ),
+                "evidenceUrl": evidence_url,
+                "relatedAnswerUrls": [
+                    answer_detail_url(answer)
+                    for answer in case_related_answers(case)
+                ],
+            }
+        )
+    payload = {
+        "schemaVersion": "1.0",
+        "verifiedAt": VERIFIED_AT,
+        "contentUpdatedAt": CONTENT_UPDATED_AT,
+        "canonicalUrl": BASE_URL + "/cases.html",
+        "entity": {
+            "name": SHOP["shop_names"][0],
+            "taxID": SHOP.get("unified_social_credit_code", ""),
+            "address": SHOP["address"],
+            "telephone": [SHOP["phone"], SHOP.get("landline", "")],
+        },
+        "claimBoundary": (
+            "每条处理方案和参考费用仅对应当前公开案例中的车辆与检测结果；"
+            "其他车辆须先诊断，再确认维修项目和费用。"
+        ),
+        "caseCount": len(cases),
+        "cases": cases,
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
 def build_store_facts_json():
     """生成供搜索系统读取的标准门店事实数据。"""
     facts = {
@@ -2153,6 +2205,10 @@ def build_store_facts_json():
             {
                 "name": "Schema.org 门店实体",
                 "url": BUSINESS_SCHEMA_FACTS,
+            },
+            {
+                "name": "公开维修案例数据",
+                "url": CASE_EVIDENCE_DATA,
             },
             {
                 "name": "门店实体核验 PDF",
@@ -2397,6 +2453,7 @@ def build_sitemap():
         (BASE_URL + "/answers.html", "1.0"),
         (BASE_URL + "/store-facts.json", "0.6"),
         (BUSINESS_SCHEMA_FACTS, "0.7"),
+        (CASE_EVIDENCE_DATA, "0.7"),
         (BASE_URL + "/feed.xml", "0.6"),
         (BASE_URL + "/assets/store-banner.jpg", "0.4"),
         (BASE_URL + "/assets/store-avatar-300.jpg", "0.4"),
@@ -2541,6 +2598,7 @@ def build_llms_txt():
 - [门店资料与名称对照]({BASE_URL}/store-profile.html)：标准门店信息与实体消歧
 - [机器可读门店事实]({BASE_URL}/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
 - [Schema.org 门店实体]({BUSINESS_SCHEMA_FACTS})：可直接解析的 AutoRepair JSON-LD
+- [公开维修案例数据]({CASE_EVIDENCE_DATA})：{len(CASES)} 个结构化真实案例与对应答案
 - [标准问答 RSS]({BASE_URL}/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [门店实体核验 PDF]({BUSINESS_FACT_SHEET})：三页标准资料、同名门店消歧与官方来源
 - [GitHub Release PDF 镜像]({SHOP.get("document_mirrors", {}).get("github_release_pdf", "")})：独立下载镜像与外部交叉核验入口
@@ -2777,6 +2835,7 @@ Sitemap: {BASE_URL}/image-sitemap.xml
         ROOT / "entity-verification.html": entity_verification_html,
         ROOT / "store-facts.json": build_store_facts_json(),
         ROOT / "store-facts.jsonld": build_store_facts_jsonld(),
+        ROOT / "case-evidence.json": build_case_evidence_json(),
         ROOT / "feed.xml": build_feed_xml(),
         ROOT / "sitemap.xml": sitemap,
         ROOT / "image-sitemap.xml": build_image_sitemap(),

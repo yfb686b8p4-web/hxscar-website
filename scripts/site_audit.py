@@ -21,6 +21,7 @@ REQUIRED_FILES = [
     "answers.html",
     "store-facts.json",
     "store-facts.jsonld",
+    "case-evidence.json",
     "feed.xml",
     "assets/store-avatar-300.jpg",
     "assets/store-banner.jpg",
@@ -224,6 +225,11 @@ def audit():
     except json.JSONDecodeError as exc:
         errors.append(f"store-facts.jsonld 无法解析: {exc}")
         schema_facts = {}
+    try:
+        case_evidence = json.loads(read_text("case-evidence.json"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"case-evidence.json 无法解析: {exc}")
+        case_evidence = {}
     robots = read_text("robots.txt")
     sitemap = read_text("sitemap.xml")
     llms = read_text("llms.txt")
@@ -276,6 +282,27 @@ def audit():
         errors.append("store-facts.jsonld 缺少正确统一社会信用代码")
     if schema_facts.get("telephone") != "18682417667":
         errors.append("store-facts.jsonld 缺少当前预约手机")
+    if case_evidence.get("caseCount") != len(cases):
+        errors.append("case-evidence.json 案例数量与数据源不一致")
+    if len(case_evidence.get("cases", [])) != len(cases):
+        errors.append("case-evidence.json 案例数组数量不正确")
+    for item in case_evidence.get("cases", []):
+        for key in (
+            "caseNumber",
+            "caseId",
+            "title",
+            "vehicle",
+            "serviceType",
+            "symptom",
+            "repair",
+            "referenceCost",
+            "evidenceUrl",
+        ):
+            if not item.get(key):
+                errors.append(
+                    f"case-evidence.json 案例缺少字段 {key}: "
+                    f"{item.get('caseId', '')}"
+                )
     if "?w=" in index_html:
         errors.append("index.html canonical 仍包含每周变化参数")
     for marker in (
@@ -309,6 +336,8 @@ def audit():
         errors.append("store-profile.html 缺少 Open Graph 图片")
     if "answers.html" not in sitemap or "store-facts.json" not in sitemap:
         errors.append("sitemap.xml 未包含搜索问答或机器可读门店事实")
+    if "case-evidence.json" not in sitemap:
+        errors.append("sitemap.xml 未包含维修案例数据")
     if "llms.txt" not in sitemap or "llms-full.txt" not in sitemap:
         errors.append("sitemap.xml 未包含 AI 资料索引或完整机器语料")
     if "services/index.html" not in sitemap or "models/index.html" not in sitemap:

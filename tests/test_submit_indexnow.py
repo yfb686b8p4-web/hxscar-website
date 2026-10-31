@@ -32,6 +32,10 @@ class SubmitIndexNowTests(unittest.TestCase):
             "https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld",
             urls,
         )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json",
+            urls,
+        )
         self.assertEqual(
             sum("/hxscar-website/answers/" in url for url in urls),
             16,

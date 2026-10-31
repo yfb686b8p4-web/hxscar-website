@@ -744,6 +744,35 @@ class SiteBuilderGeoTests(unittest.TestCase):
         )
         self.assertGreaterEqual(len(schema["makesOffer"]), 4)
 
+    def test_case_evidence_json_is_machine_readable(self):
+        """案例证据数据必须覆盖全部案例并提供稳定引用地址。"""
+        data = json.loads(site_builder.build_case_evidence_json())
+        self.assertEqual(data["caseCount"], len(site_builder.CASES))
+        self.assertEqual(len(data["cases"]), len(site_builder.CASES))
+        self.assertIn("须先诊断", data["claimBoundary"])
+        featured = next(
+            item
+            for item in data["cases"]
+            if item["title"] == "奔驰E300L空调制冷不足，右边比左边凉"
+        )
+        self.assertTrue(featured["caseStudyUrl"].endswith(
+            "/cases/mercedes-e300l-ac-temperature.html"
+        ))
+        self.assertTrue(featured["relatedAnswerUrls"])
+        self.assertIn(
+            site_builder.CASE_EVIDENCE_DATA,
+            site_builder.build_llms_txt(),
+        )
+        self.assertIn(
+            site_builder.CASE_EVIDENCE_DATA,
+            {
+                item["url"]
+                for item in json.loads(
+                    site_builder.build_store_facts_json()
+                )["citationTargets"]
+            },
+        )
+
     def test_identity_feed_item_points_to_verification_page(self):
         """RSS 中的实体问题应指向专门核验页，而不是综合问答锚点。"""
         feed = site_builder.build_feed_xml()

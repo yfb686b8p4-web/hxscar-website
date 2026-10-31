@@ -76,6 +76,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/bmw-premium.html
@@ -102,6 +103,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/air-conditioning.html
@@ -128,6 +130,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/chassis.html
@@ -154,6 +157,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/vehicle-restoration.html
@@ -177,6 +181,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/vehicle-restoration.html
@@ -200,6 +205,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/bmw-premium.html
@@ -226,6 +232,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/models/bmw-5-series.html
@@ -252,6 +259,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/air-conditioning.html
@@ -279,6 +287,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/air-conditioning.html
@@ -305,6 +314,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/chassis.html
@@ -331,6 +341,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/chassis.html
@@ -357,6 +368,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 对应服务或车型专题：https://yfb686b8p4-web.github.io/hxscar-website/services/vehicle-restoration.html
@@ -380,6 +392,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 完整门店资料：https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html
@@ -407,6 +420,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 完整门店资料：https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html
@@ -436,6 +450,7 @@
 - 同名门店实体核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 机器可读门店事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - Schema.org 门店实体：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld
+- 公开维修案例数据：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - 完整门店资料：https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html
