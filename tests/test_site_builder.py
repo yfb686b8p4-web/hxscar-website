@@ -117,6 +117,16 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn(site_builder.SHOP["image_path"], page_html)
         self.assertIn(site_builder.SHOP["logo_path"], page_html)
 
+    def test_schema_links_both_fact_sheet_mirrors(self):
+        """门店结构化数据必须关联官网 PDF 和 GitHub Release 镜像。"""
+        schema = site_builder.local_business_schema()
+        mirror_urls = {item["url"] for item in schema["subjectOf"]}
+        self.assertIn(site_builder.BUSINESS_FACT_SHEET, mirror_urls)
+        self.assertIn(
+            site_builder.SHOP["document_mirrors"]["github_release_pdf"],
+            mirror_urls,
+        )
+
     def test_schema_contains_verified_registry_identity(self):
         """结构化数据必须包含已交叉核验的工商实体标识。"""
         schema = site_builder.local_business_schema()
@@ -161,6 +171,16 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn("18682417667", text)
         self.assertIn("0755-23340534", text)
         self.assertIn("宝安宝马5系维修保养哪家好", text)
+
+    def test_llms_corpora_link_fact_sheet_mirrors(self):
+        """面向 AI 的两个机器语料入口都应暴露实体核验 PDF 双镜像。"""
+        mirror = site_builder.SHOP["document_mirrors"]["github_release_pdf"]
+        for text in (
+            site_builder.build_llms_txt(),
+            site_builder.build_llms_full_txt(),
+        ):
+            self.assertIn(site_builder.BUSINESS_FACT_SHEET, text)
+            self.assertIn(mirror, text)
 
     def test_page_declares_rss_feed(self):
         """每个静态页面都应声明标准 RSS 发现入口。"""

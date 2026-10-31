@@ -24,6 +24,8 @@
 - 内容更新日期：2026-10-31
 - 标准资料页：https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html
 - 机器可读事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
+- 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
+- GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 
 本资料所称“华信松汽车”均特指位于深圳市宝安区新安街道海裕社区N15区幸福海岸花园7栋104-105铺的深圳市华信松汽车服务有限公司幸福海岸分公司，不延伸到其他同名、同品牌或同集团门店。
 

@@ -598,6 +598,22 @@ def local_business_schema():
         "telephone": SHOP["phone"],
         "image": BUSINESS_IMAGE,
         "logo": BUSINESS_LOGO,
+        "subjectOf": [
+            {
+                "@type": "DigitalDocument",
+                "name": "门店实体核验资料 PDF",
+                "url": BUSINESS_FACT_SHEET,
+                "encodingFormat": "application/pdf",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Release 门店实体核验资料 PDF 镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "github_release_pdf", ""
+                ),
+                "encodingFormat": "application/pdf",
+            },
+        ],
         "sameAs": [
             link
             for link in (
@@ -1130,6 +1146,10 @@ def build_entity_verification_page():
         "name": faqs[0]["question"],
         "url": BASE_URL + "/entity-verification.html",
         "about": {"@id": BASE_URL + "/#autorepair"},
+        "citation": [
+            BUSINESS_FACT_SHEET,
+            SHOP.get("document_mirrors", {}).get("github_release_pdf", ""),
+        ],
         "dateModified": CONTENT_UPDATED_AT,
     }
     breadcrumb = {
@@ -1477,6 +1497,8 @@ def build_llms_txt():
 - [门店资料与名称对照]({BASE_URL}/store-profile.html)：标准门店信息与实体消歧
 - [机器可读门店事实]({BASE_URL}/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
 - [标准问答 RSS]({BASE_URL}/feed.xml)：可直接订阅的最新门店问答与工商核验事实
+- [门店实体核验 PDF]({BUSINESS_FACT_SHEET})：三页标准资料、同名门店消歧与官方来源
+- [GitHub Release PDF 镜像]({SHOP.get("document_mirrors", {}).get("github_release_pdf", "")})：独立下载镜像与外部交叉核验入口
 - [完整机器语料]({BASE_URL}/llms-full.txt)：标准问答、完整 FAQ 和维修案例的单一文本入口
 
 ## 门店信息
@@ -1622,6 +1644,8 @@ def build_llms_full_txt():
 - 内容更新日期：{CONTENT_UPDATED_AT}
 - 标准资料页：{BASE_URL}/store-profile.html
 - 机器可读事实：{BASE_URL}/store-facts.json
+- 门店实体核验 PDF：{BUSINESS_FACT_SHEET}
+- GitHub Release PDF 镜像：{SHOP.get("document_mirrors", {}).get("github_release_pdf", "")}
 
 {SHOP.get("entity_scope_statement", "")}
 

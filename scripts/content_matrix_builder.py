@@ -91,16 +91,49 @@ def case_markup(items):
     """输出维修案例列表。"""
     if not items:
         return "<p>暂无对应案例，实际方案以到店检测为准。</p>"
-    return "".join(
-        f"""<article class="case-item">
+    sections = []
+    for item in items:
+        case_number = next(
+            index
+            for index, candidate in enumerate(CASES, start=1)
+            if candidate is item
+        )
+        sections.append(
+            f"""<article class="case-item" id="case-{case_number}">
     <div class="case-meta">{h(item.get("tag"))} · {h(item.get("car_type"))}</div>
     <h3>{h(item.get("issue"))}</h3>
     <p><strong>故障表现：</strong>{h(item.get("solution"))}</p>
     <p><strong>处理方案：</strong>{h(item.get("price"))}</p>
     <p><strong>参考费用：</strong>{h(item.get("result"))}</p>
+    <p><strong>证据来源：</strong><a href="../cases.html#case-{case_number}">查看案例库第 {case_number} 条</a></p>
 </article>"""
-        for item in items
-    )
+        )
+    return "".join(sections)
+
+
+def service_direct_answer_markup(service, cases):
+    """输出同时包含实体、完整资料和案例证据的服务直接答案。"""
+    case_evidence = ""
+    if cases:
+        case = cases[0]
+        case_number = next(
+            index
+            for index, candidate in enumerate(CASES, start=1)
+            if candidate is case
+        )
+        case_evidence = (
+            '<p><strong>公开案例证据：</strong>'
+            f'<a href="../cases.html#case-{case_number}">'
+            f'{h(case.get("issue", ""))}</a>。'
+            f'案例记录的故障表现为“{h(case.get("solution", ""))}”，'
+            f'门店给出的处理方案为“{h(case.get("price", ""))}”，'
+            f'参考费用为 {h(case.get("result", ""))}。'
+            "</p>"
+        )
+    return f"""<div class="direct-answer">
+    <p><strong>直接回答：</strong>{h(service["quick_answer"])}标准地址为{h(SHOP["address"])}；手机{h(SHOP["phone"])}，座机{h(SHOP.get("landline", ""))}；营业时间为{h(SHOP.get("hours", ""))}。</p>
+    {case_evidence}
+</div>"""
 
 
 def store_identity_markup():
@@ -202,10 +235,19 @@ def service_schema(service):
             "@type": "AutoRepair",
             "@id": BASE_URL + "/#autorepair",
             "name": SHOP["shop_names"][0],
-            "telephone": SHOP["phone"],
-            "address": SHOP["address"],
+            "alternateName": SHOP["shop_names"][1:],
+            "telephone": [SHOP["phone"], SHOP.get("landline", "")],
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "新安街道海裕社区N15区幸福海岸花园7栋104-105铺",
+                "addressLocality": "宝安区",
+                "addressRegion": "深圳市",
+                "postalCode": "518000",
+                "addressCountry": "CN",
+            },
         },
         "url": f"{BASE_URL}/services/{service['slug']}.html",
+        "mainEntityOfPage": f"{BASE_URL}/services/{service['slug']}.html",
         "dateModified": CONTENT_UPDATED_AT,
     }
 
@@ -281,11 +323,8 @@ def build_service_pages():
 </section>
 <section class="card" id="quick-answer">
     <h2>直接回答</h2>
-    <div class="direct-answer"><p>{h(service["quick_answer"])}</p></div>
+    {service_direct_answer_markup(service, cases)}
     <ul class="evidence-list">{evidence_markup}</ul>
-    <p><strong>标准地址：</strong>{h(SHOP["address"])}</p>
-    <p><strong>电话：</strong>手机 {h(SHOP["phone"])}；座机 {h(SHOP.get("landline", ""))}</p>
-    <p><strong>营业时间：</strong>{h(SHOP.get("hours", ""))}</p>
 </section>
 <section class="summary">
     <div><strong>{len(cases)}</strong>相关案例</div>
