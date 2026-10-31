@@ -294,7 +294,7 @@ def verify_mirrors():
         and all(not item["errors"] for item in fact_results)
     )
     return {
-        "checked_at": datetime.now(TZ).isoformat(),
+        "checked_at": datetime.now(TZ).date().isoformat(),
         "consistent": consistent,
         "expected_rows": 15,
         "unique_hashes": len(hashes),
