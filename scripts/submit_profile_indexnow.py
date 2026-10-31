@@ -24,6 +24,9 @@ URLS = [
     f"https://{HOST}/yfb686b8p4-web/qa-evidence.jsonl",
     f"https://{HOST}/yfb686b8p4-web/llms.txt",
     f"https://{HOST}/yfb686b8p4-web/sitemap.xml",
+    f"https://{HOST}/yfb686b8p4-web/image-sitemap.xml",
+    f"https://{HOST}/yfb686b8p4-web/assets/store-banner.jpg",
+    f"https://{HOST}/yfb686b8p4-web/assets/store-avatar-300.jpg",
 ]
 
 

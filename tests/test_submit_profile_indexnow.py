@@ -24,6 +24,9 @@ class SubmitProfileIndexNowTests(unittest.TestCase):
                 "https://yfb686b8p4-web.github.io/yfb686b8p4-web/qa-evidence.jsonl",
                 "https://yfb686b8p4-web.github.io/yfb686b8p4-web/llms.txt",
                 "https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml",
+                "https://yfb686b8p4-web.github.io/yfb686b8p4-web/image-sitemap.xml",
+                "https://yfb686b8p4-web.github.io/yfb686b8p4-web/assets/store-banner.jpg",
+                "https://yfb686b8p4-web.github.io/yfb686b8p4-web/assets/store-avatar-300.jpg",
             },
         )
 

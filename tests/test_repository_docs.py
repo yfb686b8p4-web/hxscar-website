@@ -5,6 +5,7 @@
 import json
 import re
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -175,6 +176,9 @@ class RepositoryReadmeTests(unittest.TestCase):
         answers_html = (site_dir / "answers.html").read_text(encoding="utf-8")
         robots = (site_dir / "robots.txt").read_text(encoding="utf-8")
         sitemap = (site_dir / "sitemap.xml").read_text(encoding="utf-8")
+        image_sitemap = (site_dir / "image-sitemap.xml").read_text(
+            encoding="utf-8"
+        )
         llms = (site_dir / "llms.txt").read_text(encoding="utf-8")
         shop = json.loads(
             (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
@@ -189,9 +193,44 @@ class RepositoryReadmeTests(unittest.TestCase):
             self.assertNotIn("4.9+", text)
             self.assertNotIn("服务超1000台", text)
         self.assertIn("store-banner-960.jpg", html)
+        self.assertIn('src="assets/store-banner-960.jpg"', html)
+        self.assertNotIn(
+            'src="https://yfb686b8p4-web.github.io/hxscar-website/'
+            'assets/store-banner-960.jpg"',
+            html,
+        )
         self.assertIn('width="960" height="540"', html)
         self.assertIn('fetchpriority="high"', html)
         self.assertIn('rel="preload" as="image"', html)
+        self.assertIn('href="image-sitemap.xml"', html)
+        for asset_name in (
+            "store-banner.jpg",
+            "store-banner-960.jpg",
+            "store-avatar-300.jpg",
+        ):
+            source = ROOT / "assets" / asset_name
+            mirror = site_dir / "assets" / asset_name
+            self.assertTrue(source.is_file(), asset_name)
+            self.assertTrue(mirror.is_file(), asset_name)
+            self.assertEqual(source.read_bytes(), mirror.read_bytes(), asset_name)
+        image_root = ET.fromstring(image_sitemap)
+        image_namespace = {
+            "sm": "http://www.sitemaps.org/schemas/sitemap/0.9",
+            "image": "http://www.google.com/schemas/sitemap-image/1.1",
+        }
+        image_urls = {
+            node.text
+            for node in image_root.findall(".//image:loc", image_namespace)
+        }
+        self.assertEqual(
+            image_urls,
+            {
+                "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+                "assets/store-banner.jpg",
+                "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+                "assets/store-avatar-300.jpg",
+            },
+        )
         for text in (html, answers_html):
             self.assertIn('href="llms.txt"', text)
             self.assertIn(
@@ -200,6 +239,11 @@ class RepositoryReadmeTests(unittest.TestCase):
             )
         self.assertIn(
             "https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml",
+            robots,
+        )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+            "image-sitemap.xml",
             robots,
         )
         self.assertIn(
@@ -217,6 +261,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("answers.html", html)
         self.assertIn("answers.html", llms)
         self.assertIn("qa-evidence.jsonl", llms)
+        self.assertIn("image-sitemap.xml", llms)
         schemas = [
             json.loads(raw)
             for raw in re.findall(
