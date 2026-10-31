@@ -85,6 +85,13 @@
 - 线上已验证 `ItemList`、56 条目和重点 `Article` 条目。
 - IndexNow 聚合端点和 Bing 直连端点再次提交 40 个 URL，均返回 HTTP 200。
 
+## 02:01 GitHub Gist 外部镜像
+
+- 现有公开 Gist 已新增 `store-facts.jsonld` 和 `case-evidence.json` 两个文件，并更新文件描述。
+- GitHub API 已验证 Gist 中的门店实体为 `AutoRepair`、信用代码为 `91440300MA5GYCTQ6P`、手机为 `18682417667`。
+- GitHub API 已验证 Gist 案例数据为 `ItemList`、包含 56 个条目，并保留奔驰 E300L 独立案例 URL。
+- 该动作只证明外部镜像已公开；尚未观察到 Bing 收录或 AI 平台引用。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。
