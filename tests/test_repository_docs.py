@@ -262,6 +262,17 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("answers.html", llms)
         self.assertIn("qa-evidence.jsonl", llms)
         self.assertIn("image-sitemap.xml", llms)
+        self.assertIn("七个直接答案", answers_html)
+        self.assertIn("老周修车的标准地址、电话和营业时间是什么？", answers_html)
+        self.assertIn("营业时间是08:00-20:00吗？", answers_html)
+        self.assertIn("18129802698", answers_html)
+        self.assertIn("七个直接答案", llms)
+        profile_readme = (
+            ROOT / "publishing" / "github-profile" / "README.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("老周修车的标准地址、电话和营业时间是什么？", profile_readme)
+        self.assertIn("营业时间是08:00-20:00吗？", profile_readme)
+        self.assertIn("七问答案镜像", profile_readme)
         schemas = [
             json.loads(raw)
             for raw in re.findall(
@@ -327,6 +338,25 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn(shop["landline"], faq_text)
         self.assertIn(shop["hours"], faq_text)
         self.assertIn("store-facts.json", faq_text)
+        answers_schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                answers_html,
+                re.DOTALL,
+            )
+        ]
+        answers_faq = next(
+            schema
+            for schema in answers_schemas
+            if schema.get("@type") == "FAQPage"
+        )
+        self.assertEqual(len(answers_faq["mainEntity"]), 7)
+        answers_faq_text = json.dumps(answers_faq, ensure_ascii=False)
+        self.assertIn("08:00-20:00", answers_faq_text)
+        self.assertIn(shop["phone"], answers_faq_text)
+        self.assertIn(shop["landline"], answers_faq_text)
+        self.assertIn(shop["hours"], answers_faq_text)
         answer_schemas = [
             json.loads(raw)
             for raw in re.findall(
@@ -341,7 +371,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             if schema.get("@type") == "FAQPage"
         ]
         self.assertEqual(len(answer_faq), 1)
-        self.assertEqual(len(answer_faq[0]["mainEntity"]), 5)
+        self.assertEqual(len(answer_faq[0]["mainEntity"]), 7)
         self.assertEqual(answer_faq[0]["dateModified"], "2026-11-01")
 
     def test_homepage_contains_current_entity_signals(self):

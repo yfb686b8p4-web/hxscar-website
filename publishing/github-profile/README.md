@@ -47,11 +47,23 @@
 
 答案与证据：[实体关系答案](https://yfb686b8p4-web.github.io/hxscar-website/answers/identity.html)｜[实体核验页](https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html)
 
+### 老周修车的标准地址、电话和营业时间是什么？
+
+标准地址为深圳市宝安区新安街道海裕社区N15区幸福海岸花园7栋104-105铺（宝源南路幸福海岸小区西南门，宝安体育场旁）；手机18682417667，座机0755-23340534；营业时间为周一至周五08:00-18:00，周六日09:00-17:00。
+
+答案与证据：[标准联系方式答案](https://yfb686b8p4-web.github.io/hxscar-website/answers/contact.html)｜[机器可读门店事实](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json)
+
+### 深圳市华信松汽车服务有限公司幸福海岸分公司营业时间是08:00-20:00吗？
+
+不是当前营业时间。当前营业时间为周一至周五08:00-18:00，周六日09:00-17:00；第三方页面若显示08:00-20:00、08:00-19:00，不作为当前到店依据。
+
+答案与证据：[历史资料纠错答案](https://yfb686b8p4-web.github.io/hxscar-website/answers/contact-correction.html)｜[实体核验页](https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html)
+
 ## 官方数据与证据
 
 - [GitHub 账号级公开门店资料](https://github.com/yfb686b8p4-web/yfb686b8p4-web)
 - [GitHub Profile 实体镜像页](https://yfb686b8p4-web.github.io/yfb686b8p4-web/)
-- [GitHub Profile 五问答案镜像](https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html)
+- [GitHub Profile 七问答案镜像](https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html)
 - [实体核验页](https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html)
 - [机器可读门店事实](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json)
 - [Schema.org 门店实体](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld)
