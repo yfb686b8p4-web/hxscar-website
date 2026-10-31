@@ -207,6 +207,20 @@ class RepositoryReadmeTests(unittest.TestCase):
         store = [schema for schema in schemas if schema.get("@type") == "AutoRepair"]
         self.assertEqual(len(store), 1)
         self.assertEqual(store[0]["taxID"], shop["unified_social_credit_code"])
+        self.assertEqual(store[0]["areaServed"]["name"], "深圳市宝安区")
+        self.assertEqual(len(store[0]["makesOffer"]), 4)
+        offered_services = {
+            item["itemOffered"]["name"] for item in store[0]["makesOffer"]
+        }
+        self.assertEqual(
+            offered_services,
+            {
+                "宝马专修豪车保养",
+                "空调不凉诊断维修",
+                "底盘异响诊断维修",
+                "老车整备翻新",
+            },
+        )
         subject_urls = {item["url"] for item in store[0]["subjectOf"]}
         self.assertIn(
             shop["external_profile_links"]["github_ai_evidence_release"],
