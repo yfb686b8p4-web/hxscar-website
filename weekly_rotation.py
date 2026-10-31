@@ -43,6 +43,7 @@ from data_loader import (
     REPAIR_VALUES,
     PARTS_OPTIONS,
 )
+from content_safety_rules import partition_faqs
 
 tz = timezone(timedelta(hours=8))
 now = datetime.now(tz)
@@ -81,6 +82,7 @@ GIST_CASE_EVIDENCE_URL = SHOP_INFO.get("document_mirrors", {}).get(
 )
 REGISTRY_LINKS = SHOP_INFO.get("registry_links", {})
 EXTERNAL_PROFILE_LINKS = SHOP_INFO.get("external_profile_links", {})
+SAFE_FAQS, BLOCKED_FAQS = partition_faqs(ALL_FAQS)
 
 def select_config(week_num):
     """根据周数选择配置（4周循环），同时返回索引"""
@@ -128,7 +130,7 @@ def build_page(config, selected_cases, week_num):
             </ul>"""
 
     # FAQ HTML（选12条，匹配本周关键词）
-    all_faqs = ALL_FAQS
+    all_faqs = SAFE_FAQS
     keyword_faqs = [f for f in all_faqs if any(kw_word in f[0] for kw_word in kw[:2])]
     other_faqs = [f for f in all_faqs if f not in keyword_faqs]
     random.shuffle(keyword_faqs)
@@ -298,7 +300,6 @@ def build_page(config, selected_cases, week_num):
             {"@type": "PropertyValue", "name": "对外称呼说明", "value": SHOP_INFO.get("brand_name_statement", "")},
             {"@type": "PropertyValue", "name": "历史电话和营业时间纠正", "value": SHOP_INFO.get("historical_fields_notice", "")}
         ],
-        "parentOrganization": [{"@type": "Organization", "name": "米其林驰加"}, {"@type": "Organization", "name": "艾德养车"}, {"@type": "Organization", "name": "华信松汽车服务"}]
     }, ensure_ascii=False)
 
     faq_schema = json.dumps({
@@ -550,6 +551,7 @@ def build_page(config, selected_cases, week_num):
         <!-- FAQ -->
         <div class="card">
             <h2>❓ 车主常见问题（首页精选 {len(selected_faqs)} 问）</h2>
+            <p><strong>资料边界：</strong>机器语料只收录不含待确认价格、质保、设备型号、优惠时效和服务台次承诺的 {len(SAFE_FAQS)} 组问答；其余 {len(BLOCKED_FAQS)} 组保留在完整问题库供人工查阅。</p>
 {faqs_html}
             <a class="section-link" href="faq.html">查看全部 {len(ALL_FAQS)} 组常见问题</a>
         </div>

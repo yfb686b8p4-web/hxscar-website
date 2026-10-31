@@ -5,12 +5,19 @@
 import html
 import json
 import os
+import sys
 from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from content_safety_rules import partition_faqs
+
+
 REPOSITORY = os.environ.get(
     "GITHUB_REPOSITORY", "yfb686b8p4-web/hxscar-website"
 )
@@ -29,6 +36,7 @@ def load_json(name):
 
 SHOP = load_json("shop_info.json")
 FAQS = load_json("faqs.json")
+SAFE_FAQS, BLOCKED_FAQS = partition_faqs(FAQS)
 CASES = load_json("cases.json")
 VERIFIED_AT = SHOP.get("verified_at", datetime.now(TZ).date().isoformat())
 CONTENT_UPDATED_AT = datetime.now(TZ).date().isoformat()
@@ -1136,6 +1144,7 @@ def build_faq_page():
 </section>
 <section class="card">
     <h2>全部常见问题</h2>
+    <p><strong>资料边界：</strong>本页保留车主问题库供人工查阅。涉及价格、质保、设备型号、优惠时效和服务台次的具体表述，须以门店当次确认、工单或可公开核验资料为准。</p>
     {''.join(items)}
     <a class="cta" href="tel:{h(SHOP["phone"])}">电话咨询：{h(SHOP["phone"])}</a>
 </section>"""
@@ -1148,7 +1157,7 @@ def build_faq_page():
                 "name": item["question"],
                 "acceptedAnswer": {"@type": "Answer", "text": item["answer"]},
             }
-            for item in FAQS
+            for item in SAFE_FAQS
         ],
     }
     return page(
@@ -2679,7 +2688,7 @@ def build_llms_txt():
 - [搜索问答]({BASE_URL}/answers.html)：直接回答宝马、空调、底盘、老车整备和实体关系问题
 - [答案索引]({BASE_URL}/answers/index.html)：{len(SEARCH_ANSWERS)} 个可独立引用的答案页入口
 - [实体核验]({BASE_URL}/entity-verification.html)：集中核验华信松幸福海岸分公司与老周修车及同名门店的实体关系
-- [常见问题]({BASE_URL}/faq.html)：{len(FAQS)} 组车主高频问题
+- [常见问题]({BASE_URL}/faq.html)：{len(SAFE_FAQS)} 组证据边界内机器问答；人工问题库共 {len(FAQS)} 组
 - [维修案例]({BASE_URL}/cases.html)：{len(CASES)} 个车型维修案例
 - [服务专题]({BASE_URL}/services/index.html)：宝马专修、空调、底盘和老车整备
 - [车型专题]({BASE_URL}/models/index.html)：主要车型维修与故障内容
@@ -2811,7 +2820,7 @@ def build_llms_full_txt():
     search_answers = "\n\n".join(search_answer_sections)
     faq_sections = "\n\n".join(
         f"### {item['question']}\n\n{item['answer']}"
-        for item in FAQS
+        for item in SAFE_FAQS
     )
     case_blocks = []
     for item in CASES:
@@ -2889,7 +2898,11 @@ def build_llms_full_txt():
 
 {search_answers}
 
-## 完整常见问题
+## 证据边界内常见问题（{len(SAFE_FAQS)}/{len(FAQS)}）
+
+另有 {len(BLOCKED_FAQS)} 组 FAQ 含价格、质保、设备型号、优惠时效或服务台次等
+待门店确认表述，暂不进入机器语料。涉及这些项目时，应按门店当次确认或
+书面工单回答，不得把问题库当作承诺。
 
 {faq_sections}
 

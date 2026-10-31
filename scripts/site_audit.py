@@ -4,6 +4,7 @@
 
 import json
 import re
+import sys
 from datetime import datetime, timedelta, timezone
 from html.parser import HTMLParser
 from pathlib import Path
@@ -11,6 +12,12 @@ from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from content_safety_rules import partition_faqs
+
+
 TZ = timezone(timedelta(hours=8))
 REQUIRED_FILES = [
     "index.html",
@@ -150,6 +157,7 @@ def audit():
         }
 
     faqs = load_json("faqs.json")
+    safe_faqs, _ = partition_faqs(faqs)
     cases = load_json("cases.json")
     reviews = load_json("reviews.json")
     shop = load_json("shop_info.json")
@@ -370,7 +378,7 @@ def audit():
     for required_text in (
         "## 引用范围",
         "## 标准搜索问答",
-        "## 完整常见问题",
+        "## 证据边界内常见问题",
         "## 维修案例",
         "深圳市宝安区新安街道海裕社区N15区幸福海岸花园7栋104-105铺",
         "18682417667",
@@ -385,7 +393,7 @@ def audit():
             errors.append(f"llms-full.txt 缺少关键内容: {required_text}")
     missing_faqs = [
         item["question"]
-        for item in faqs
+        for item in safe_faqs
         if f"### {item['question']}" not in llms_full
     ]
     if missing_faqs:

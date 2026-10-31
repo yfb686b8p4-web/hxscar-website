@@ -9,13 +9,15 @@ from site_builder import (
     BUSINESS_FACT_SHEET,
     CASES,
     CONTENT_UPDATED_AT,
-    FAQS,
+    SAFE_FAQS,
     SHOP,
     answer_geo_meta,
     h,
     local_business_schema,
     page,
 )
+
+FAQS = SAFE_FAQS
 
 
 ROOT = Path(__file__).resolve().parent.parent
