@@ -40,6 +40,9 @@ CORE_SERVICE_PATHS = {
     "底盘异响诊断维修": "services/chassis.html",
     "老车整备翻新": "services/vehicle-restoration.html",
 }
+BUSINESS_IMAGE = BASE_URL + "/" + SHOP.get(
+    "image_path", "assets/store-avatar-300.jpg"
+)
 
 SEARCH_ANSWERS = [
     {
@@ -500,6 +503,9 @@ def page(title, description, canonical, body, schemas, current=None):
     <meta property="og:url" content="{h(canonical)}">
     <meta property="og:locale" content="zh_CN">
     <meta property="og:site_name" content="{h(SHOP["shop_names"][0])}">
+    <meta property="og:image" content="{h(BUSINESS_IMAGE)}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{h(BUSINESS_IMAGE)}">
     <link rel="alternate" type="application/json" href="{h(BASE_URL)}/store-facts.json">
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{h(BASE_URL)}/feed.xml">
     {schema_html}
@@ -513,6 +519,7 @@ def page(title, description, canonical, body, schemas, current=None):
         .hero {{ background: linear-gradient(135deg, #1a1a2e, #16213e); color: #fff; padding: 34px 22px; border-radius: 12px; margin-bottom: 18px; border: 1px solid #333; }}
         .hero h1 {{ font-size: 27px; line-height: 1.35; margin-bottom: 10px; }}
         .hero p {{ color: #c9c9c9; font-size: 15px; }}
+        .brand-logo {{ width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 14px; border: 2px solid #e94560; background: #fff; }}
         .summary {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }}
         .summary div {{ background: #16213e; border: 1px solid #333; border-radius: 8px; padding: 14px; color: #ddd; }}
         .summary strong {{ display: block; color: #e94560; font-size: 22px; }}
@@ -580,6 +587,8 @@ def local_business_schema():
             + SHOP.get("disambiguation_notice", "")
         ),
         "telephone": SHOP["phone"],
+        "image": BUSINESS_IMAGE,
+        "logo": BUSINESS_IMAGE,
         "sameAs": [
             link
             for link in (
@@ -1036,6 +1045,7 @@ def build_entity_verification_page():
         f"<span>{h(name)}</span>" for name in SHOP["shop_names"]
     )
     body = f"""<section class="hero">
+    <img class="brand-logo" src="assets/store-avatar-300.jpg" alt="{h(SHOP["shop_names"][0])}商家认证头像" width="96" height="96">
     <h1>深圳市华信松汽车服务有限公司幸福海岸分公司与老周修车是同一家吗？</h1>
     <p>以工商登记、标准地址、当前电话和营业时间四项同时核验，不以门头昵称单独判断。</p>
 </section>
@@ -1289,6 +1299,10 @@ def build_store_facts_json():
                 "external_profile_links", {}
             ),
             "douyinId": SHOP.get("douyin_id", ""),
+            "brandAssets": {
+                "image": BUSINESS_IMAGE,
+                "logo": BUSINESS_IMAGE,
+            },
             "aliases": SHOP["shop_names"][1:],
             "relationshipStatement": SHOP.get("identity_statement", ""),
             "brandNameStatement": SHOP.get("brand_name_statement", ""),
@@ -1385,6 +1399,7 @@ def build_sitemap():
         (BASE_URL + "/answers.html", "1.0"),
         (BASE_URL + "/store-facts.json", "0.6"),
         (BASE_URL + "/feed.xml", "0.6"),
+        (BASE_URL + "/assets/store-avatar-300.jpg", "0.4"),
         (BASE_URL + "/llms.txt", "0.5"),
         (BASE_URL + "/llms-full.txt", "0.6"),
     ]

@@ -92,6 +92,22 @@ class SiteBuilderGeoTests(unittest.TestCase):
         for item in schema["makesOffer"]:
             self.assertTrue(item["itemOffered"]["url"].startswith(site_builder.BASE_URL))
 
+    def test_schema_and_page_use_local_brand_image(self):
+        """门店结构化数据和页面必须使用本地托管的真实品牌图片。"""
+        schema = site_builder.local_business_schema()
+        image_url = site_builder.BUSINESS_IMAGE
+        self.assertEqual(schema["image"], image_url)
+        self.assertEqual(schema["logo"], image_url)
+        image_path = (
+            site_builder.ROOT
+            / site_builder.SHOP["image_path"]
+        )
+        self.assertTrue(image_path.is_file())
+        self.assertGreater(image_path.stat().st_size, 1000)
+        page_html = site_builder.build_entity_verification_page()
+        self.assertIn('class="brand-logo"', page_html)
+        self.assertIn(site_builder.SHOP["image_path"], page_html)
+
     def test_schema_contains_verified_registry_identity(self):
         """结构化数据必须包含已交叉核验的工商实体标识。"""
         schema = site_builder.local_business_schema()

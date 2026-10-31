@@ -21,6 +21,7 @@ REQUIRED_FILES = [
     "answers.html",
     "store-facts.json",
     "feed.xml",
+    "assets/store-avatar-300.jpg",
     "hxscar20261024geoindexkey.txt",
     "robots.txt",
     "sitemap.xml",
@@ -242,6 +243,10 @@ def audit():
         errors.append("sitemap.xml 未包含实体核验页")
     if "entity-verification.html" not in llms:
         errors.append("llms.txt 未包含实体核验页")
+    if "application/rss+xml" not in profile_html:
+        errors.append("store-profile.html 缺少 RSS 发现入口")
+    if 'property="og:image"' not in profile_html:
+        errors.append("store-profile.html 缺少 Open Graph 图片")
     if "answers.html" not in sitemap or "store-facts.json" not in sitemap:
         errors.append("sitemap.xml 未包含搜索问答或机器可读门店事实")
     if "llms.txt" not in sitemap or "llms-full.txt" not in sitemap:
