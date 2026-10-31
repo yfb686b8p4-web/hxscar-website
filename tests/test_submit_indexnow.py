@@ -56,15 +56,6 @@ class SubmitIndexNowTests(unittest.TestCase):
             sum("/hxscar-website/models/" in url for url in urls),
             13,
         )
-        for path in (
-            "/yfb686b8p4-web/",
-            "/yfb686b8p4-web/llms.txt",
-            "/yfb686b8p4-web/sitemap.xml",
-        ):
-            self.assertIn(
-                f"https://yfb686b8p4-web.github.io{path}",
-                urls,
-            )
 
 
 if __name__ == "__main__":

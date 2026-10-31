@@ -44,11 +44,6 @@ PRIORITY_PATHS = {
     "/hxscar-website/services/vehicle-restoration.html",
     "/hxscar-website/models/index.html",
 }
-PROFILE_SITE_PATHS = {
-    "/yfb686b8p4-web/",
-    "/yfb686b8p4-web/llms.txt",
-    "/yfb686b8p4-web/sitemap.xml",
-}
 
 
 def sitemap_urls():
@@ -78,10 +73,6 @@ def selected_urls():
     sitemap_index_url = f"https://{HOST}/hxscar-website/sitemap-index.xml"
     if sitemap_index_url not in selected:
         selected.append(sitemap_index_url)
-    for path in sorted(PROFILE_SITE_PATHS):
-        url = f"https://{HOST}{path}"
-        if url not in selected:
-            selected.append(url)
     return selected
 
 

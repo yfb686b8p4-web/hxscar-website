@@ -20,7 +20,9 @@
 - 首页包含 1 个 `AutoRepair` 实体、统一社会信用代码、标准地址和 AI 证据 Release 链接。
 - GitHub Pages 状态为 `built`，来源为 `main` 根目录。
 - 官网、Profile README、Gist 和 Release 中的 `store-facts.jsonld` 均把该 Profile Pages 作为同一实体的外部入口。
-- 当前 71 项单元测试通过，站点审计通过。
+- 当前 72 项单元测试通过，站点审计通过。
+- Profile 子路径使用独立 IndexNow key；验证文件上线后，聚合端点与 Bing 直连端点最终均返回 HTTP 200，提交 3 个 Profile URL。
+- 初次复用官网子路径 key 时两个端点返回 HTTP 422，已确认是索引 key 授权范围不匹配；未将该次失败记录为收录成功。
 
 ## 事实边界
 

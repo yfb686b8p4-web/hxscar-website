@@ -152,7 +152,8 @@
 - 页面首页、`robots.txt`、`sitemap.xml` 和 `llms.txt` 均验证为 HTTP 200。
 - 页面包含统一社会信用代码、完整标准资料、实体消歧、五个核心答案入口和 AI 证据 Release。
 - 官网、Profile README、Gist 与 Release `store-facts.jsonld` 已相互关联该 Profile Pages。
-- 当前 71 项单元测试通过，站点审计通过；该页面是否被搜索或 AI 平台收录仍需后续公开结果验证。
+- Profile 子路径已配置独立 IndexNow key；聚合端点与 Bing 直连端点最终均对 3 个 Profile URL 返回 HTTP 200。
+- 当前 72 项单元测试通过，站点审计通过；该页面是否被搜索或 AI 平台收录仍需后续公开结果验证。
 
 ## 已执行
 
