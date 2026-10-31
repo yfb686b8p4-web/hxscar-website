@@ -133,10 +133,18 @@
 - 首页 JSON-LD 已移除错误的 `parentOrganization` 品牌隶属断言。
 - 提交 `1e37b14` 已同步每日监测器的新机器语料标记；线上 21 个检查地址恢复为 21/21。
 - 4 个服务专题页已增加统一的 5 步 `HowTo` 接车流程，覆盖故障说明、检查诊断、维修边界、项目费用确认和复检交付，便于 AI 直接抽取步骤。
-- 当前 69 项单元测试通过，站点审计通过；IndexNow 两个端点再次对 53 个 URL 返回 HTTP 200。
+- 当前 70 项单元测试通过，站点审计通过；IndexNow 两个端点再次对 53 个 URL 返回 HTTP 200。
 - 53 个优先 URL 独立可达性检查为 53/53 HTTP 200。
 - 百度旧版 sitemap ping 接口返回 HTTP 404，普通 URL 推送接口在无 token 时返回 HTTP 400。百度资源平台仍需要账号本人完成站点验证、获取推送 token 或提交 sitemap。
 - 本节不改变排名指标；当前仍不能声称 Bing、百度或任一 AI 平台已经收录或引用新页面。
+
+## 03:20 AI 证据 Release
+
+- 已发布公开 Release `ai-evidence-2026-11-01`，包含 `store-facts.json`、`store-facts.jsonld`、`case-evidence.json`、`llms.txt` 和 `llms-full.txt` 五个附件。
+- 五个附件下载地址均验证为 HTTP 200。
+- 官网首页、答案页、服务页、车型页、门店机器事实和 JSON-LD 已加入 Release 页面或附件镜像。
+- GitHub Profile 与 Gist 已同步加入 Release 入口；Gist 的门店 JSON-LD 通过 `subjectOf` 关联 3 个 Release 数据附件。
+- 该动作只证明外部证据镜像已公开并可下载，不证明任何搜索引擎或 AI 平台已收录、引用或排名。
 
 ## 已执行
 

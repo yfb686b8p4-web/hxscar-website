@@ -37,6 +37,10 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["document_mirrors"]["github_release_pdf"],
             readme,
         )
+        self.assertIn(
+            shop["external_profile_links"]["github_ai_evidence_release"],
+            readme,
+        )
         self.assertIn("真实性原则", readme)
         self.assertNotIn("评价摘录", readme)
 
@@ -60,6 +64,10 @@ class RepositoryReadmeTests(unittest.TestCase):
         )
         self.assertIn(
             shop["document_mirrors"]["github_release_pdf"],
+            text,
+        )
+        self.assertIn(
+            shop["external_profile_links"]["github_ai_evidence_release"],
             text,
         )
         for answer_url in (
@@ -112,6 +120,33 @@ class RepositoryReadmeTests(unittest.TestCase):
         ):
             self.assertIn(value, text)
 
+    def test_ai_evidence_release_notes_describe_machine_files(self):
+        """AI 证据 Release 必须说明附件、事实边界和核验入口。"""
+        text = (
+            ROOT / "RELEASE_NOTES_ai-evidence-2026-11-01.md"
+        ).read_text(encoding="utf-8")
+        shop = json.loads(
+            (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
+        )
+        for value in (
+            shop["registered_name"],
+            shop["unified_social_credit_code"],
+            shop["address"],
+            shop["phone"],
+            shop["landline"],
+            shop["hours"],
+            "store-facts.json",
+            "store-facts.jsonld",
+            "case-evidence.json",
+            "llms-full.txt",
+            "56 条真实维修案例",
+            "97 组 FAQ",
+            "不作为其他车辆报价",
+            shop["external_profile_links"]["github_profile"],
+            shop["external_profile_links"]["gist"],
+        ):
+            self.assertIn(value, text)
+
     def test_homepage_contains_current_entity_signals(self):
         """周更首页必须保留真实图片、工商、抖音和实体核验信号。"""
         home = (ROOT / "index.html").read_text(encoding="utf-8")
@@ -140,6 +175,14 @@ class RepositoryReadmeTests(unittest.TestCase):
         )
         self.assertIn(
             shop["document_mirrors"]["gist_case_evidence_json"],
+            home,
+        )
+        self.assertIn(
+            shop["external_profile_links"]["github_ai_evidence_release"],
+            home,
+        )
+        self.assertIn(
+            shop["document_mirrors"]["github_ai_evidence_store_facts_json"],
             home,
         )
         self.assertIn('"@type": "WebSite"', home)
@@ -172,6 +215,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             "mercedes-e300l-ac-temperature.html",
             shop["external_profile_links"]["gist"],
             shop["external_profile_links"]["github_profile"],
+            shop["external_profile_links"]["github_ai_evidence_release"],
             "深圳宝安宝马专修、豪车保养推荐去哪里？",
             "深圳宝安汽车空调不凉去哪里诊断维修？",
             "深圳宝安底盘异响、能修不换去哪里检查？",

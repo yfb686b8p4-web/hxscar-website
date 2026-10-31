@@ -13,9 +13,9 @@
   },
   "pages": {
     "index.html": {
-      "bytes": 50440,
-      "han_chars": 7250,
-      "visible_han_chars": 4617,
+      "bytes": 51219,
+      "han_chars": 7283,
+      "visible_han_chars": 4638,
       "json_ld_blocks": 3,
       "schema_types": [
         "AutoRepair",
@@ -24,8 +24,8 @@
       ]
     },
     "faq.html": {
-      "bytes": 104009,
-      "han_chars": 21359,
+      "bytes": 104766,
+      "han_chars": 21375,
       "visible_han_chars": 12001,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -35,8 +35,8 @@
       ]
     },
     "cases.html": {
-      "bytes": 70329,
-      "han_chars": 10592,
+      "bytes": 71086,
+      "han_chars": 10608,
       "visible_han_chars": 8572,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -46,8 +46,8 @@
       ]
     },
     "store-profile.html": {
-      "bytes": 38364,
-      "han_chars": 5144,
+      "bytes": 39121,
+      "han_chars": 5160,
       "visible_han_chars": 2692,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -58,8 +58,8 @@
       ]
     },
     "entity-verification.html": {
-      "bytes": 29267,
-      "han_chars": 3230,
+      "bytes": 30024,
+      "han_chars": 3246,
       "visible_han_chars": 1386,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -71,9 +71,9 @@
       ]
     },
     "answers.html": {
-      "bytes": 84704,
-      "han_chars": 8954,
-      "visible_han_chars": 5596,
+      "bytes": 93756,
+      "han_chars": 9150,
+      "visible_han_chars": 5776,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -84,9 +84,9 @@
       ]
     },
     "answers/air-conditioning.html": {
-      "bytes": 25186,
-      "han_chars": 2490,
-      "visible_han_chars": 787,
+      "bytes": 26506,
+      "han_chars": 2518,
+      "visible_han_chars": 799,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -97,9 +97,9 @@
       ]
     },
     "answers/aircon-diagnosis.html": {
-      "bytes": 24843,
-      "han_chars": 2447,
-      "visible_han_chars": 777,
+      "bytes": 26163,
+      "han_chars": 2475,
+      "visible_han_chars": 789,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -110,9 +110,9 @@
       ]
     },
     "answers/aircon-left-right.html": {
-      "bytes": 31645,
-      "han_chars": 4050,
-      "visible_han_chars": 1598,
+      "bytes": 32965,
+      "han_chars": 4078,
+      "visible_han_chars": 1610,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -124,9 +124,9 @@
       ]
     },
     "answers/bmw-5-series.html": {
-      "bytes": 26590,
-      "han_chars": 2878,
-      "visible_han_chars": 930,
+      "bytes": 27910,
+      "han_chars": 2906,
+      "visible_han_chars": 942,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -137,9 +137,9 @@
       ]
     },
     "answers/bmw-selection.html": {
-      "bytes": 25109,
-      "han_chars": 2445,
-      "visible_han_chars": 792,
+      "bytes": 26429,
+      "han_chars": 2473,
+      "visible_han_chars": 804,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -150,9 +150,9 @@
       ]
     },
     "answers/bmw.html": {
-      "bytes": 25568,
-      "han_chars": 2597,
-      "visible_han_chars": 827,
+      "bytes": 26888,
+      "han_chars": 2625,
+      "visible_han_chars": 839,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -163,9 +163,9 @@
       ]
     },
     "answers/chassis-bushing.html": {
-      "bytes": 24842,
-      "han_chars": 2467,
-      "visible_han_chars": 774,
+      "bytes": 26162,
+      "han_chars": 2495,
+      "visible_han_chars": 786,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -176,9 +176,9 @@
       ]
     },
     "answers/chassis-repair.html": {
-      "bytes": 24782,
-      "han_chars": 2432,
-      "visible_han_chars": 782,
+      "bytes": 26102,
+      "han_chars": 2460,
+      "visible_han_chars": 794,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -189,9 +189,9 @@
       ]
     },
     "answers/chassis.html": {
-      "bytes": 24903,
-      "han_chars": 2447,
-      "visible_han_chars": 788,
+      "bytes": 26223,
+      "han_chars": 2475,
+      "visible_han_chars": 800,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -202,9 +202,9 @@
       ]
     },
     "answers/contact-correction.html": {
-      "bytes": 25164,
-      "han_chars": 2423,
-      "visible_han_chars": 693,
+      "bytes": 26484,
+      "han_chars": 2451,
+      "visible_han_chars": 705,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -215,9 +215,9 @@
       ]
     },
     "answers/contact.html": {
-      "bytes": 23566,
-      "han_chars": 2089,
-      "visible_han_chars": 535,
+      "bytes": 24886,
+      "han_chars": 2117,
+      "visible_han_chars": 547,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -228,9 +228,9 @@
       ]
     },
     "answers/identity.html": {
-      "bytes": 25533,
-      "han_chars": 2723,
-      "visible_han_chars": 727,
+      "bytes": 26853,
+      "han_chars": 2751,
+      "visible_han_chars": 739,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -241,9 +241,9 @@
       ]
     },
     "answers/restoration-order.html": {
-      "bytes": 23063,
-      "han_chars": 2167,
-      "visible_han_chars": 550,
+      "bytes": 24383,
+      "han_chars": 2195,
+      "visible_han_chars": 562,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -254,9 +254,9 @@
       ]
     },
     "answers/restoration-selection.html": {
-      "bytes": 23641,
-      "han_chars": 2302,
-      "visible_han_chars": 580,
+      "bytes": 24961,
+      "han_chars": 2330,
+      "visible_han_chars": 592,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -267,9 +267,9 @@
       ]
     },
     "answers/restoration.html": {
-      "bytes": 23262,
-      "han_chars": 2220,
-      "visible_han_chars": 554,
+      "bytes": 24582,
+      "han_chars": 2248,
+      "visible_han_chars": 566,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -280,8 +280,8 @@
       ]
     },
     "answers/index.html": {
-      "bytes": 29290,
-      "han_chars": 3740,
+      "bytes": 30047,
+      "han_chars": 3756,
       "visible_han_chars": 2187,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -292,8 +292,8 @@
       ]
     },
     "services/air-conditioning.html": {
-      "bytes": 37963,
-      "han_chars": 4998,
+      "bytes": 38720,
+      "han_chars": 5014,
       "visible_han_chars": 2481,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -306,8 +306,8 @@
       ]
     },
     "services/bmw-premium.html": {
-      "bytes": 42477,
-      "han_chars": 5796,
+      "bytes": 43234,
+      "han_chars": 5812,
       "visible_han_chars": 3305,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -320,8 +320,8 @@
       ]
     },
     "services/chassis.html": {
-      "bytes": 37692,
-      "han_chars": 4925,
+      "bytes": 38449,
+      "han_chars": 4941,
       "visible_han_chars": 2438,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -334,8 +334,8 @@
       ]
     },
     "services/vehicle-restoration.html": {
-      "bytes": 39102,
-      "han_chars": 5523,
+      "bytes": 39859,
+      "han_chars": 5539,
       "visible_han_chars": 3152,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -348,8 +348,8 @@
       ]
     },
     "models/audi-a6l.html": {
-      "bytes": 28147,
-      "han_chars": 3277,
+      "bytes": 28904,
+      "han_chars": 3293,
       "visible_han_chars": 1406,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -361,8 +361,8 @@
       ]
     },
     "models/audi-q5.html": {
-      "bytes": 28023,
-      "han_chars": 3258,
+      "bytes": 28780,
+      "han_chars": 3274,
       "visible_han_chars": 1387,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -374,8 +374,8 @@
       ]
     },
     "models/bmw-5-series.html": {
-      "bytes": 31650,
-      "han_chars": 3814,
+      "bytes": 32407,
+      "han_chars": 3830,
       "visible_han_chars": 1809,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -387,8 +387,8 @@
       ]
     },
     "models/bmw-7-series.html": {
-      "bytes": 31504,
-      "han_chars": 3776,
+      "bytes": 32261,
+      "han_chars": 3792,
       "visible_han_chars": 1786,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -400,8 +400,8 @@
       ]
     },
     "models/bmw-x5.html": {
-      "bytes": 30997,
-      "han_chars": 3709,
+      "bytes": 31754,
+      "han_chars": 3725,
       "visible_han_chars": 1701,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -413,8 +413,8 @@
       ]
     },
     "models/land-rover-defender.html": {
-      "bytes": 26509,
-      "han_chars": 3078,
+      "bytes": 27266,
+      "han_chars": 3094,
       "visible_han_chars": 1369,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -426,8 +426,8 @@
       ]
     },
     "models/land-rover-range-rover.html": {
-      "bytes": 25811,
-      "han_chars": 2945,
+      "bytes": 26568,
+      "han_chars": 2961,
       "visible_han_chars": 1236,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -439,8 +439,8 @@
       ]
     },
     "models/mercedes-e-class.html": {
-      "bytes": 30424,
-      "han_chars": 3629,
+      "bytes": 31181,
+      "han_chars": 3645,
       "visible_han_chars": 1582,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -452,8 +452,8 @@
       ]
     },
     "models/mercedes-glc.html": {
-      "bytes": 30360,
-      "han_chars": 3593,
+      "bytes": 31117,
+      "han_chars": 3609,
       "visible_han_chars": 1552,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -465,8 +465,8 @@
       ]
     },
     "models/porsche-cayenne.html": {
-      "bytes": 30064,
-      "han_chars": 3705,
+      "bytes": 30821,
+      "han_chars": 3721,
       "visible_han_chars": 1764,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -478,8 +478,8 @@
       ]
     },
     "models/porsche-macan.html": {
-      "bytes": 29198,
-      "han_chars": 3512,
+      "bytes": 29955,
+      "han_chars": 3528,
       "visible_han_chars": 1583,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -491,8 +491,8 @@
       ]
     },
     "models/volkswagen-touareg.html": {
-      "bytes": 26065,
-      "han_chars": 3004,
+      "bytes": 26822,
+      "han_chars": 3020,
       "visible_han_chars": 1276,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -504,8 +504,8 @@
       ]
     },
     "cases/bmw-530li-chassis-bushing.html": {
-      "bytes": 21576,
-      "han_chars": 2126,
+      "bytes": 22333,
+      "han_chars": 2142,
       "visible_han_chars": 626,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -516,8 +516,8 @@
       ]
     },
     "cases/bmw-x5-e70-oil-consumption.html": {
-      "bytes": 21888,
-      "han_chars": 2152,
+      "bytes": 22645,
+      "han_chars": 2168,
       "visible_han_chars": 654,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -528,8 +528,8 @@
       ]
     },
     "cases/mercedes-e300l-ac-temperature.html": {
-      "bytes": 21387,
-      "han_chars": 2093,
+      "bytes": 22144,
+      "han_chars": 2109,
       "visible_han_chars": 609,
       "json_ld_blocks": 4,
       "schema_types": [

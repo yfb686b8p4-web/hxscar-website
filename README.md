@@ -36,6 +36,7 @@
 - [机器语料索引](https://yfb686b8p4-web.github.io/hxscar-website/llms.txt)
 - [标准问答 RSS](https://yfb686b8p4-web.github.io/hxscar-website/feed.xml)
 - [GitHub 实体核验资料发布](https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/store-facts-2026-10-31)
+- [GitHub AI 证据发布](https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/ai-evidence-2026-11-01)
 - [GitHub 账号级门店资料](https://github.com/yfb686b8p4-web/yfb686b8p4-web)
 - [GitHub Gist 实体事实副本](https://gist.github.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b)
 - [Gist 门店 JSON-LD 镜像](https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld)

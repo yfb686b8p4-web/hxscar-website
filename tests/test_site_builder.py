@@ -231,6 +231,12 @@ class SiteBuilderGeoTests(unittest.TestCase):
             ],
             mirror_urls,
         )
+        for key in (
+            "github_ai_evidence_store_facts_json",
+            "github_ai_evidence_store_facts_jsonld",
+            "github_ai_evidence_case_evidence_json",
+        ):
+            self.assertIn(site_builder.SHOP["document_mirrors"][key], mirror_urls)
 
     def test_image_sitemap_contains_real_store_assets(self):
         """图片站点地图必须声明真实门头、Logo 和对应页面。"""
@@ -318,6 +324,12 @@ class SiteBuilderGeoTests(unittest.TestCase):
         gist_cases = site_builder.SHOP["document_mirrors"][
             "gist_case_evidence_json"
         ]
+        release_facts = site_builder.SHOP["document_mirrors"][
+            "github_ai_evidence_store_facts_json"
+        ]
+        release_cases = site_builder.SHOP["document_mirrors"][
+            "github_ai_evidence_case_evidence_json"
+        ]
         for text in (
             site_builder.build_llms_txt(),
             site_builder.build_llms_full_txt(),
@@ -326,6 +338,8 @@ class SiteBuilderGeoTests(unittest.TestCase):
             self.assertIn(mirror, text)
             self.assertIn(gist_schema, text)
             self.assertIn(gist_cases, text)
+            self.assertIn(release_facts, text)
+            self.assertIn(release_cases, text)
 
     def test_answer_sources_are_exposed_in_machine_surfaces(self):
         """机器事实、RSS 与完整语料都必须携带逐答案证据来源。"""
