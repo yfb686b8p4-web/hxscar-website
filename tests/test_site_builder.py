@@ -123,11 +123,21 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn("08:00-19:00", item["answer"])
         self.assertIn("18129802698", item["answer"])
         self.assertIn("13923454895", item["answer"])
+        self.assertIn("13537862708", item["answer"])
+        self.assertIn("宝源南路276号", item["answer"])
+        self.assertIn(
+            "深圳市华信松汽车服务有限公司幸福海岸分公司",
+            item["question"],
+        )
         html = site_builder.build_answer_pages()[
             site_builder.ROOT / site_builder.answer_detail_path(item)
         ]
-        self.assertIn("不作为当前预约和到店依据", html)
+        self.assertIn("不作为当前预约、导航和到店依据", html)
         self.assertIn(item["answer"], html)
+        description = site_builder.answer_meta_description(item)
+        self.assertIn("13537862708", description)
+        self.assertIn("宝源南路276号", description)
+        self.assertFalse(description.endswith(("，", ",", "；", ";")))
 
     def test_schema_links_both_verified_map_entities(self):
         """结构化数据必须同时关联高德和腾讯的已核验 POI。"""
