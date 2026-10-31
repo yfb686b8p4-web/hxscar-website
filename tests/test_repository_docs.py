@@ -325,6 +325,22 @@ class RepositoryReadmeTests(unittest.TestCase):
             ],
         )
         self.assertEqual(store[0]["openingHours"], shop["hours"])
+        self.assertNotIn("aggregateRating", store[0])
+        reputation = {
+            item["name"]: item["value"]
+            for item in store[0]["additionalProperty"]
+        }
+        self.assertEqual(
+            reputation["高德地图公开记录快照"],
+            "4.6分，224条评价",
+        )
+        self.assertEqual(
+            reputation["腾讯地图公开记录快照"],
+            "4.4分，1854人访问",
+        )
+        self.assertIn("第三方地图公开记录", html)
+        self.assertIn("4.6分、224条评价", html)
+        self.assertIn("4.4分、1854人访问", html)
         self.assertEqual(len(store[0]["areaServed"]), 4)
         self.assertEqual(
             store[0]["areaServed"][0]["name"],

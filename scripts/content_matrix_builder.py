@@ -14,6 +14,7 @@ from site_builder import (
     answer_geo_meta,
     h,
     local_business_schema,
+    map_reputation_markup,
     page,
 )
 
@@ -395,6 +396,7 @@ def build_service_pages():
     {service_direct_answer_markup(service, cases)}
     <ul class="evidence-list">{evidence_markup}</ul>
 </section>
+{map_reputation_markup()}
 <section class="summary">
     <div><strong>{len(cases)}</strong>相关案例</div>
     <div><strong>{len(faqs)}</strong>常见问题</div>
@@ -493,6 +495,7 @@ def build_model_pages():
     <div><strong>{len(faqs)}</strong>常见问题</div>
     <div><strong>{h(model["name"][:2])}</strong>专项服务</div>
 </section>
+{map_reputation_markup()}
 <section class="card">
     <h2>相关服务</h2>
     <div class="topic-list">

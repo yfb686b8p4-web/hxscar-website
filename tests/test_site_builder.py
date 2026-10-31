@@ -190,6 +190,43 @@ class SiteBuilderGeoTests(unittest.TestCase):
             site_builder.SHOP["hours"],
         )
 
+    def test_map_reputation_is_sourced_not_self_rating(self):
+        """第三方地图评分必须标注来源和日期，不能伪装成自评。"""
+        schema = site_builder.local_business_schema()
+        self.assertNotIn("aggregateRating", schema)
+        properties = {
+            item["name"]: item
+            for item in schema["additionalProperty"]
+        }
+        amap = properties["高德地图公开记录快照"]
+        tencent = properties["腾讯地图公开记录快照"]
+        self.assertEqual(amap["value"], "4.6分，224条评价")
+        self.assertEqual(amap["url"], site_builder.SHOP["map_links"]["amap"])
+        self.assertIn("2026-10-24", amap["description"])
+        self.assertEqual(tencent["value"], "4.4分，1854人访问")
+        self.assertEqual(
+            tencent["url"],
+            site_builder.SHOP["map_links"]["tencent"],
+        )
+        bmw = next(
+            item
+            for item in site_builder.SEARCH_ANSWERS
+            if item["anchor"] == "bmw"
+        )
+        html = site_builder.build_answer_pages()[
+            site_builder.ROOT / site_builder.answer_detail_path(bmw)
+        ]
+        self.assertIn("第三方地图公开记录", html)
+        self.assertIn("4.6分、224条评价", html)
+        self.assertIn("4.4分、1854人访问", html)
+        self.assertIn("不声明平台推荐或排名", html)
+        for text in (
+            site_builder.build_llms_txt(),
+            site_builder.build_llms_full_txt(),
+        ):
+            self.assertIn("4.6分、224条评价", text)
+            self.assertIn("4.4分、1854人访问", text)
+
     def test_schema_declares_core_service_offers(self):
         """门店结构化数据必须声明四项核心维修服务。"""
         schema = site_builder.local_business_schema()

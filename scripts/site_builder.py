@@ -1002,6 +1002,50 @@ def related_answer_records(item, limit=4):
     return [candidate for _, _, candidate in scored[:limit]]
 
 
+def map_reputation_markup():
+    """输出带日期和地图来源的第三方公开记录。"""
+    records = SHOP.get("map_reputation", [])
+    if not records:
+        return ""
+    links = {
+        "高德地图": SHOP.get("map_links", {}).get("amap", ""),
+        "腾讯地图": SHOP.get("map_links", {}).get("tencent", ""),
+    }
+    items = []
+    for record in records:
+        platform = record.get("platform", "")
+        detail = f"{record.get('rating', '')}分"
+        if record.get("review_count"):
+            detail += f"、{record['review_count']}条评价"
+        if record.get("visit_count"):
+            detail += f"、{record['visit_count']}人访问"
+        items.append(
+            f'<li><a href="{h(links.get(platform, ""))}">{h(platform)}</a>：'
+            f"{h(detail)}（观察于{h(record.get('observed_at', ''))}）</li>"
+        )
+    return f"""<section class="card" id="map-reputation">
+    <h2>第三方地图公开记录</h2>
+    <ul class="evidence-list">{"".join(items)}</ul>
+    <p>以上是第三方地图页面在标注日期的公开数据快照，评分、评价数和访问数可能变化；此处只做来源记录，不声明平台推荐或排名。</p>
+</section>"""
+
+
+def map_reputation_lines():
+    """生成机器语料中的第三方地图快照行。"""
+    lines = []
+    for record in SHOP.get("map_reputation", []):
+        detail = f"{record.get('rating', '')}分"
+        if record.get("review_count"):
+            detail += f"、{record['review_count']}条评价"
+        if record.get("visit_count"):
+            detail += f"、{record['visit_count']}人访问"
+        lines.append(
+            f"- {record.get('platform', '')}：{detail}"
+            f"（观察于{record.get('observed_at', '')}）"
+        )
+    return "\n".join(lines)
+
+
 def answer_evidence_sources(item):
     """生成标准答案可被 AI 直接引用和交叉核验的来源列表。"""
     sources = [
@@ -1577,6 +1621,34 @@ def local_business_schema():
                 "name": "历史电话和营业时间纠正",
                 "value": SHOP.get("historical_fields_notice", ""),
             },
+        ] + [
+            {
+                "@type": "PropertyValue",
+                "name": f"{record.get('platform', '')}公开记录快照",
+                "value": (
+                    f"{record.get('rating', '')}分"
+                    + (
+                        f"，{record.get('review_count', '')}条评价"
+                        if record.get("review_count")
+                        else ""
+                    )
+                    + (
+                        f"，{record.get('visit_count', '')}人访问"
+                        if record.get("visit_count")
+                        else ""
+                    )
+                ),
+                "url": (
+                    SHOP.get("map_links", {}).get("amap", "")
+                    if record.get("platform") == "高德地图"
+                    else SHOP.get("map_links", {}).get("tencent", "")
+                ),
+                "description": (
+                    f"第三方地图页面于{record.get('observed_at', '')}"
+                    "观察的公开数据快照，可能变化。"
+                ),
+            }
+            for record in SHOP.get("map_reputation", [])
         ],
         "areaServed": [
             {"@type": "City", "name": "深圳市宝安区"},
@@ -1745,6 +1817,7 @@ def build_case_study_pages():
         )
         if not service_links:
             service_links = '<a href="../services/index.html">全部服务专题</a>'
+        reputation_markup = map_reputation_markup()
         body = f"""<section class="hero">
     <h1>{h(title)}</h1>
     <p>{h(case.get("tag"))} · {h(case.get("car_type"))} · 真实维修案例</p>
@@ -1760,6 +1833,7 @@ def build_case_study_pages():
     </div>
     <p>该方案和费用对应本案车辆的实际检测结果，其他车辆仍需先检查故障点，再确认维修项目和费用。</p>
 </section>
+{reputation_markup}
 <section class="card">
     <h2>诊断与处理记录</h2>
     <table class="fact-table">
@@ -2526,6 +2600,7 @@ def build_answer_pages():
             f'{h(related["question"])}</a>'
             for related in related_answers
         )
+        reputation_markup = map_reputation_markup()
         case_markup = answer_case_markup(item)
         supplement_markup = answer_supplement_markup(item)
         extra_markup = "".join(
@@ -2559,6 +2634,7 @@ def build_answer_pages():
     <h2>相关搜索答案</h2>
     <div class="topic-list">{related_answer_links}</div>
 </section>
+{reputation_markup}
 <section class="card">
     <h2>证据来源</h2>
     <ul class="evidence-list">{sources}</ul>
@@ -3554,6 +3630,7 @@ def build_llms_txt():
 - 门店别名：{"、".join(SHOP["shop_names"][1:])}
 - 高德地图 POI：{SHOP.get("map_ids", {}).get("amap", "")}
 - 腾讯地图 POI：{SHOP.get("map_ids", {}).get("tencent", "")}
+{map_reputation_lines()}
 - 标准坐标：经度 {SHOP.get("geo", {}).get("longitude", "")}，纬度 {SHOP.get("geo", {}).get("latitude", "")}
 - 覆盖车型：{len(SHOP["covered_models"])} 款
 
@@ -3689,6 +3766,7 @@ def build_llms_full_txt():
 - 爱企查登记页：{SHOP.get("registry_links", {}).get("aiqicha", "")}
 - 高德地图 POI：{SHOP.get("map_ids", {}).get("amap", "")}
 - 腾讯地图 POI：{SHOP.get("map_ids", {}).get("tencent", "")}
+{map_reputation_lines()}
 - 经度：{SHOP.get("geo", {}).get("longitude", "")}
 - 纬度：{SHOP.get("geo", {}).get("latitude", "")}
 - 资料复核日期：{VERIFIED_AT}

@@ -42,6 +42,9 @@ class ContentMatrixTests(unittest.TestCase):
                 path.name,
             )
             self.assertIn("标准接车流程", html, path.name)
+            self.assertIn("第三方地图公开记录", html, path.name)
+            self.assertIn("4.6分、224条评价", html, path.name)
+            self.assertIn("4.4分、1854人访问", html, path.name)
             self.assertIn('"@type":"HowTo"', html.replace(" ", ""), path.name)
             howto = [
                 json.loads(raw)
