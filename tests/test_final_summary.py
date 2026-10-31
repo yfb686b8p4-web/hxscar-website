@@ -45,6 +45,14 @@ class FinalSummaryTests(unittest.TestCase):
                 "fixed": [],
                 "regressions": [],
             },
+            "post_launch_rechecks": [
+                {
+                    "title": "实体资料复测",
+                    "deployed_commit": "abc123",
+                    "outcome": "部分改善",
+                    "after_summary": "元宝已给出正确手机。",
+                }
+            ],
             "wrong_items": [
                 {
                     "platform": "元宝",
@@ -57,7 +65,11 @@ class FinalSummaryTests(unittest.TestCase):
                 "site_audit_counts": {"faqs": 142},
                 "online_checks_passed": 21,
                 "online_checks_total": 21,
-                "source_repo": "abc 干净",
+                "source_repo": {
+                    "head": "abc 优化",
+                    "clean": True,
+                    "change_count": 0,
+                },
                 "deploy_repo": "abc 干净",
             },
             "platform_blocks": [
@@ -84,6 +96,7 @@ class FinalSummaryTests(unittest.TestCase):
             "核心指标",
             "当日计划进度",
             "指标变化",
+            "上线后复测",
             "技术验证",
             "仍然错误项",
             "平台阻塞",
@@ -98,6 +111,9 @@ class FinalSummaryTests(unittest.TestCase):
         self.assertIn("完成 3/12", markdown)
         self.assertIn("已排除 1", markdown)
         self.assertIn("50.0%", markdown)
+        self.assertIn("元宝已给出正确手机", markdown)
+        self.assertIn("abc123", markdown)
+        self.assertIn("abc 优化（干净）", markdown)
         self.assertIn("提交不等于排名", markdown)
 
 

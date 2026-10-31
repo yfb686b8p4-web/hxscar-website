@@ -18,6 +18,7 @@ JSON_PATH = REPORTS / f"final-summary-{DATE}.json"
 MARKDOWN_PATH = REPORTS / f"final-summary-{DATE}.md"
 PLAN_PATH = DAILY_DIR / f"{DATE}-plan.json"
 RESULTS_PATH = DAILY_DIR / f"{DATE}-results.csv"
+RECHECK_PATH = REPORTS / f"recheck-{DATE}.json"
 
 
 def load_json(path):
@@ -83,12 +84,29 @@ def daily_progress():
     }
 
 
+def format_repo_state(value):
+    """把仓库状态对象整理成适合最终报告的单行文本。"""
+    if not isinstance(value, dict):
+        return str(value or "暂无记录")
+    head = value.get("head", "") or "未知提交"
+    if value.get("clean"):
+        state = "干净"
+    else:
+        state = f"{value.get('change_count', 0)} 项未提交"
+    return f"{head}（{state}）"
+
+
 def build_summary():
     """从最新日报、审计和平台状态构建交付汇总。"""
     daily = load_json(DAILY_DIR / "latest.json")
     audit = load_json(REPORTS / "site-audit.json")
     publishing = load_json(ROOT / "publishing" / "status.json")
     tasks = load_json(DAILY_DIR / "latest-tasks.json")
+    rechecks = (
+        load_json(RECHECK_PATH).get("rechecks", [])
+        if RECHECK_PATH.exists()
+        else []
+    )
     metrics = daily.get("metrics", {})
     status = daily.get("status", {})
     records = daily.get("records", [])
@@ -135,6 +153,7 @@ def build_summary():
         "rotating_metrics": daily.get("rotating_metrics", {}),
         "daily_progress": daily_progress(),
         "changes": daily.get("changes", {}),
+        "post_launch_rechecks": rechecks,
         "wrong_items": wrong_items,
         "technical": {
             "site_audit_passed": audit.get("passed", False),
@@ -145,8 +164,12 @@ def build_summary():
             "online_checks_total": status.get("site", {}).get(
                 "http_total", 0
             ),
-            "source_repo": status.get("source_repo", ""),
-            "deploy_repo": status.get("deploy_repo", ""),
+            "source_repo": format_repo_state(
+                status.get("source_repo", {})
+            ),
+            "deploy_repo": format_repo_state(
+                status.get("deploy_repo", {})
+            ),
         },
         "platform_blocks": platform_blocks,
         "manual_actions": manual_actions,
@@ -222,23 +245,34 @@ def render_markdown(summary):
         "## 指标变化",
         "",
     ])
-    if changes.get("baseline_date"):
-        lines.append(f"- 对比基线：{changes['baseline_date']}")
+    baseline = changes.get("baseline_date") or changes.get("previous_date")
+    if baseline:
+        lines.append(f"- 对比基线：{baseline}")
         lines.append(
             f"- 新命中：{len(changes.get('new_hits', []))}；"
             f"修复：{len(changes.get('fixed', []))}；"
-            f"回退：{len(changes.get('regressions', []))}"
+            f"新增错误：{len(changes.get('new_errors', changes.get('regressions', [])))}"
         )
     else:
         lines.append("- 暂无已完成的上一日同口径基线。")
+    lines.extend(["", "## 上线后复测", ""])
+    rechecks = summary.get("post_launch_rechecks", [])
+    if rechecks:
+        for item in rechecks:
+            lines.append(
+                f"- {item.get('title', '')}（`{item.get('deployed_commit', '')}`）："
+                f"{item.get('outcome', '')}。{item.get('after_summary', '')}"
+            )
+    else:
+        lines.append("- 暂无发布后复测记录。")
     lines.extend(["", "## 技术验证", ""])
     lines.extend(
         [
             f"- 站点审计：{'通过' if technical['site_audit_passed'] else '未通过'}",
             f"- 审计内容：{json.dumps(technical['site_audit_counts'], ensure_ascii=False)}",
             f"- 线上核心检查：{technical['online_checks_passed']}/{technical['online_checks_total']}",
-            f"- 源仓库：{technical['source_repo']}",
-            f"- 部署副本：{technical['deploy_repo']}",
+            f"- 源仓库：{format_repo_state(technical['source_repo'])}",
+            f"- 部署副本：{format_repo_state(technical['deploy_repo'])}",
         ]
     )
     lines.extend(["", "## 仍然错误项", ""])
