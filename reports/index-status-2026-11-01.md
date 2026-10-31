@@ -77,6 +77,14 @@
 - 全站页面均声明 `case-evidence.json` alternate 数据入口，线上案例页已完成验证。
 - IndexNow 聚合端点和 Bing 直连端点再次提交 40 个 URL，均返回 HTTP 200。
 
+## 01:58 案例证据升级为 JSON-LD
+
+- 提交 `221d2ee` 已上线，`case-evidence.json` 顶层升级为 schema.org `ItemList`，56 条案例均以 `Article` 条目表达。
+- 案例文章的车型 `Car`、标题、正文、费用和关键词均已进入 JSON-LD，现有自定义字段继续保留供普通程序读取。
+- 全站 alternate 声明、案例 Article 引用和门店 JSON-LD 的 `subjectOf` 已同步关联该文件。
+- 线上已验证 `ItemList`、56 条目和重点 `Article` 条目。
+- IndexNow 聚合端点和 Bing 直连端点再次提交 40 个 URL，均返回 HTTP 200。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。
