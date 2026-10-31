@@ -1034,6 +1034,28 @@ def local_business_schema():
                 ),
                 "encodingFormat": "application/ld+json",
             },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Gist 门店实体与案例镜像入口",
+                "url": SHOP.get("external_profile_links", {}).get("gist", ""),
+                "encodingFormat": "text/html",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Release 门店实体核验资料入口",
+                "url": SHOP.get("external_profile_links", {}).get(
+                    "github_release", ""
+                ),
+                "encodingFormat": "text/html",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Release AI 证据包入口",
+                "url": SHOP.get("external_profile_links", {}).get(
+                    "github_ai_evidence_release", ""
+                ),
+                "encodingFormat": "text/html",
+            },
         ],
         "sameAs": [
             link
@@ -1042,7 +1064,13 @@ def local_business_schema():
                 SHOP.get("map_links", {}).get("tencent", ""),
                 SHOP.get("registry_links", {}).get("qichacha", ""),
                 SHOP.get("registry_links", {}).get("aiqicha", ""),
-                *SHOP.get("external_profile_links", {}).values(),
+                SHOP.get("external_profile_links", {}).get(
+                    "github_repository", ""
+                ),
+                SHOP.get("external_profile_links", {}).get(
+                    "github_profile", ""
+                ),
+                SHOP.get("external_profile_links", {}).get("douyin", ""),
             )
             if link
         ],

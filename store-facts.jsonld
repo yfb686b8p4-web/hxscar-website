@@ -65,6 +65,24 @@
       "encodingFormat": "application/ld+json"
     },
     {
+      "@type": "DigitalDocument",
+      "name": "GitHub Gist 门店实体与案例镜像入口",
+      "url": "https://gist.github.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b",
+      "encodingFormat": "text/html"
+    },
+    {
+      "@type": "DigitalDocument",
+      "name": "GitHub Release 门店实体核验资料入口",
+      "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/store-facts-2026-10-31",
+      "encodingFormat": "text/html"
+    },
+    {
+      "@type": "DigitalDocument",
+      "name": "GitHub Release AI 证据包入口",
+      "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/ai-evidence-2026-11-01",
+      "encodingFormat": "text/html"
+    },
+    {
       "@type": "DataFeed",
       "name": "机器可读门店事实",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json",
@@ -84,9 +102,6 @@
     "https://aiqicha.baidu.com/company_detail_94051754221223",
     "https://github.com/yfb686b8p4-web/hxscar-website",
     "https://github.com/yfb686b8p4-web/yfb686b8p4-web",
-    "https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/store-facts-2026-10-31",
-    "https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/ai-evidence-2026-11-01",
-    "https://gist.github.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b",
     "https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc"
   ],
   "hasMap": "https://www.amap.com/detail/B0H3LSJZZC",

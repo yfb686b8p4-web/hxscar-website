@@ -248,6 +248,26 @@ def build_page(config, selected_cases, week_num):
                 ),
                 "encodingFormat": "application/ld+json",
             },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Gist 门店实体与案例镜像入口",
+                "url": EXTERNAL_PROFILE_LINKS.get("gist", ""),
+                "encodingFormat": "text/html",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Release 门店实体核验资料入口",
+                "url": EXTERNAL_PROFILE_LINKS.get("github_release", ""),
+                "encodingFormat": "text/html",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Release AI 证据包入口",
+                "url": EXTERNAL_PROFILE_LINKS.get(
+                    "github_ai_evidence_release", ""
+                ),
+                "encodingFormat": "text/html",
+            },
         ],
         "sameAs": [
             link
@@ -256,7 +276,9 @@ def build_page(config, selected_cases, week_num):
                 SHOP_INFO.get("map_links", {}).get("tencent", ""),
                 REGISTRY_LINKS.get("qichacha", ""),
                 REGISTRY_LINKS.get("aiqicha", ""),
-                *EXTERNAL_PROFILE_LINKS.values(),
+                EXTERNAL_PROFILE_LINKS.get("github_repository", ""),
+                EXTERNAL_PROFILE_LINKS.get("github_profile", ""),
+                EXTERNAL_PROFILE_LINKS.get("douyin", ""),
             )
             if link
         ],

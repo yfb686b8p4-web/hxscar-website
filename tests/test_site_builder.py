@@ -291,8 +291,16 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 site_builder.SHOP["registry_links"][key],
                 schema["sameAs"],
             )
-        for link in site_builder.SHOP["external_profile_links"].values():
-            self.assertIn(link, schema["sameAs"])
+        for key in ("github_repository", "github_profile", "douyin"):
+            self.assertIn(
+                site_builder.SHOP["external_profile_links"][key],
+                schema["sameAs"],
+            )
+        subject_urls = {item["url"] for item in schema["subjectOf"]}
+        for key in ("gist", "github_release", "github_ai_evidence_release"):
+            link = site_builder.SHOP["external_profile_links"][key]
+            self.assertIn(link, subject_urls)
+            self.assertNotIn(link, schema["sameAs"])
 
     def test_profile_page_exposes_registry_evidence(self):
         """门店资料页必须让用户和 AI 直接看到工商核验依据。"""
