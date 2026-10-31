@@ -22,6 +22,7 @@ python3 scripts/site_builder.py
 python3 scripts/site_audit.py
 
 git add index.html answers.html faq.html cases.html store-profile.html entity-verification.html store-facts.json feed.xml robots.txt sitemap.xml llms.txt llms-full.txt
+git add answers
 git add services models
 git add assets
 git add downloads

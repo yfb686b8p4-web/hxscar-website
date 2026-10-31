@@ -427,6 +427,16 @@ def answer_geo_meta(item):
     }
 
 
+def answer_detail_path(item):
+    """返回独立答案页的站内路径。"""
+    return f"answers/{item['anchor']}.html"
+
+
+def answer_detail_url(item):
+    """返回独立答案页的线上地址。"""
+    return BASE_URL + "/" + answer_detail_path(item)
+
+
 def case_library_url(case):
     """返回案例在公开案例库中的稳定地址。"""
     case_number = next(
@@ -562,7 +572,7 @@ def json_script(data):
 
 def nav(current):
     """生成各静态页共用的导航。"""
-    nested = current in {"services", "models"}
+    nested = current in {"services", "models", "answer-detail"}
     prefix = "../" if nested else ""
     items = [
         ("index", "首页", prefix + "index.html"),
@@ -1296,9 +1306,10 @@ def build_answers_page():
         answer_cards.append(
             f"""<article class="faq-item" id="{h(item["anchor"])}">
     <div class="case-meta">{h(item["category"])}</div>
-    <h2>{h(item["question"])}</h2>
+    <h2><a href="{h(answer_detail_path(item))}">{h(item["question"])}</a></h2>
     <div class="direct-answer"><p><strong>直接回答：</strong>{h(item["answer"])}</p></div>
     {answer_evidence_markup(item)}
+    <p><a href="{h(answer_detail_path(item))}">查看独立答案与全部证据来源</a></p>
 </article>"""
         )
     service_links = "".join(
@@ -1400,6 +1411,116 @@ def build_answers_page():
     )
 
 
+def build_answer_pages():
+    """为每条标准搜索问题生成独立、可引用的答案页。"""
+    outputs = {}
+    for item in SEARCH_ANSWERS:
+        meta = answer_geo_meta(item)
+        path = ROOT / answer_detail_path(item)
+        canonical = answer_detail_url(item)
+        evidence = "".join(
+            f"<li>{h(value)}</li>" for value in meta["evidence"]
+        )
+        sources = "".join(
+            f'<li><a href="{h(source["url"])}">{h(source["name"])}</a></li>'
+            for source in answer_evidence_sources(item)
+        )
+        body = f"""<section class="hero">
+    <h1>{h(item["question"])}</h1>
+    <p>{h(item["category"])} · 资料复核日期：{h(VERIFIED_AT)}</p>
+</section>
+<section class="card" id="direct-answer">
+    <h2>直接回答</h2>
+    <div class="direct-answer"><p>{h(item["answer"])}</p></div>
+    <h3>事实依据</h3>
+    <ul class="evidence-list">{evidence}</ul>
+</section>
+<section class="card">
+    <h2>标准门店资料</h2>
+    <table class="fact-table">
+        <tr><th>统一名称</th><td>{h(SHOP["shop_names"][0])}</td></tr>
+        <tr><th>工商登记名称</th><td>{h(SHOP.get("registered_name", ""))}</td></tr>
+        <tr><th>标准地址</th><td>{h(SHOP["address"])}</td></tr>
+        <tr><th>预约电话</th><td>{h(SHOP["phone"])}；{h(SHOP.get("landline", ""))}</td></tr>
+        <tr><th>营业时间</th><td>{h(SHOP.get("hours", ""))}</td></tr>
+        <tr><th>统一社会信用代码</th><td>{h(SHOP.get("unified_social_credit_code", ""))}</td></tr>
+    </table>
+</section>
+<section class="card">
+    <h2>证据来源</h2>
+    <ul class="evidence-list">{sources}</ul>
+    <div class="topic-list">
+        <a href="../{h(meta["servicePath"])}">相关服务或车型专题</a>
+        <a href="../answers.html">全部搜索问答</a>
+        <a href="../entity-verification.html">实体核验</a>
+        <a href="../store-facts.json">机器可读事实</a>
+    </div>
+</section>"""
+        faq_page = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "@id": canonical + "#faq",
+            "dateModified": CONTENT_UPDATED_AT,
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": item["question"],
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": item["answer"],
+                        "citation": [
+                            source["url"]
+                            for source in answer_evidence_sources(item)
+                        ],
+                    },
+                }
+            ],
+        }
+        webpage = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": item["question"],
+            "url": canonical,
+            "dateModified": CONTENT_UPDATED_AT,
+            "about": {"@id": BASE_URL + "/#autorepair"},
+            "mainEntity": {"@id": canonical + "#faq"},
+            "isPartOf": {"@type": "WebSite", "url": BASE_URL + "/"},
+        }
+        breadcrumb = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "首页",
+                    "item": BASE_URL + "/",
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "搜索问答",
+                    "item": BASE_URL + "/answers.html",
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": item["question"],
+                    "item": canonical,
+                },
+            ],
+        }
+        outputs[path] = page(
+            f"{item['question']}｜老周修车·华信松幸福海岸",
+            item["answer"][:120],
+            canonical,
+            body,
+            [local_business_schema(), webpage, faq_page, breadcrumb],
+            current="answer-detail",
+        )
+    return outputs
+
+
 def build_store_facts_json():
     """生成供搜索系统读取的标准门店事实数据。"""
     facts = {
@@ -1490,7 +1611,7 @@ def build_store_facts_json():
             {
                 **item,
                 **answer_geo_meta(item),
-                "sourceUrl": f"{BASE_URL}/answers.html#{item['anchor']}",
+                "sourceUrl": answer_detail_url(item),
                 "evidenceSources": answer_evidence_sources(item),
             }
             for item in SEARCH_ANSWERS
@@ -1517,7 +1638,7 @@ def build_feed_xml():
         if item["anchor"] == "identity":
             link = f"{BASE_URL}/entity-verification.html"
         else:
-            link = f"{BASE_URL}/answers.html#{item['anchor']}"
+            link = answer_detail_url(item)
         source_links = "\n".join(
             f"- {source['name']}：{source['url']}"
             for source in answer_evidence_sources(item)
@@ -1569,6 +1690,8 @@ def build_sitemap():
         (BASE_URL + "/llms.txt", "0.5"),
         (BASE_URL + "/llms-full.txt", "0.6"),
     ]
+    for item in SEARCH_ANSWERS:
+        urls.append((answer_detail_url(item), "0.9"))
     for section in ("services", "models"):
         for path in sorted((ROOT / section).glob("*.html")):
             priority = "0.9" if path.name == "index.html" else "0.8"
@@ -1618,6 +1741,10 @@ def build_llms_txt():
 - [门店实体核验 PDF]({BUSINESS_FACT_SHEET})：三页标准资料、同名门店消歧与官方来源
 - [GitHub Release PDF 镜像]({SHOP.get("document_mirrors", {}).get("github_release_pdf", "")})：独立下载镜像与外部交叉核验入口
 - [完整机器语料]({BASE_URL}/llms-full.txt)：标准问答、完整 FAQ 和维修案例的单一文本入口
+
+## 独立答案页
+
+{chr(10).join(f"- [{item['question']}]({answer_detail_url(item)})" for item in SEARCH_ANSWERS)}
 
 ## 门店信息
 
@@ -1716,6 +1843,7 @@ def build_llms_full_txt():
 
 - 常见问法：{variants}
 - 服务专题：{BASE_URL}/{meta["servicePath"]}
+- 独立答案页：{answer_detail_url(item)}
 
 事实依据：
 
@@ -1818,6 +1946,7 @@ def main():
     cases_html = build_cases_page()
     store_profile_html = build_store_profile_page()
     entity_verification_html = build_entity_verification_page()
+    answer_pages = build_answer_pages()
     sitemap = build_sitemap()
     robots = f"""User-agent: *
 Allow: /
@@ -1836,10 +1965,13 @@ Sitemap: {BASE_URL}/sitemap.xml
         ROOT / "robots.txt": robots,
         ROOT / "llms.txt": build_llms_txt(),
         ROOT / "llms-full.txt": build_llms_full_txt(),
+        **answer_pages,
     }
     for path, content in outputs.items():
+        path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
-        print(f"已生成 {path.name}: {len(content):,} 字符")
+        label = str(path.relative_to(ROOT))
+        print(f"已生成 {label}: {len(content):,} 字符")
 
 
 if __name__ == "__main__":

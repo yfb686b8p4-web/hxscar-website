@@ -153,7 +153,7 @@
         "维修保养可选择品牌件、原厂件或拆车件。"
       ],
       "servicePath": "services/bmw-premium.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#bmw",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/bmw.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -205,7 +205,7 @@
         "确认故障原因后再报价，不用盲目添加冷媒代替诊断。"
       ],
       "servicePath": "services/air-conditioning.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#air-conditioning",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/air-conditioning.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -257,7 +257,7 @@
         "优先维修仍有使用价值的部件，同时明确安全更换边界。"
       ],
       "servicePath": "services/chassis.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#chassis",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/chassis.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -309,7 +309,7 @@
         "配件方案可在品牌件、原厂件和拆车件之间选择。"
       ],
       "servicePath": "services/vehicle-restoration.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#restoration",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/restoration.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -349,7 +349,7 @@
         "配件方案可在品牌件、原厂件和拆车件之间确认。"
       ],
       "servicePath": "services/vehicle-restoration.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#restoration-selection",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/restoration-selection.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -389,7 +389,7 @@
         "标准地址、手机、座机和营业时间均可独立核验。"
       ],
       "servicePath": "services/bmw-premium.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#bmw-selection",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/bmw-selection.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -443,7 +443,7 @@
         "标准地址、手机、座机和分时营业时间均在同一答案中完整列明。"
       ],
       "servicePath": "models/bmw-5-series.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#bmw-5-series",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/bmw-5-series.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -495,7 +495,7 @@
         "维修方案应针对已确认的故障点，而不是只缓解表面现象。"
       ],
       "servicePath": "services/air-conditioning.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#aircon-diagnosis",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/aircon-diagnosis.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -547,7 +547,7 @@
         "确认风门、冷媒或其他部件故障后再确定维修方案。"
       ],
       "servicePath": "services/air-conditioning.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#aircon-left-right",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/aircon-left-right.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -599,7 +599,7 @@
         "球头松旷或摆臂变形时，必须说明更换总成的安全边界。"
       ],
       "servicePath": "services/chassis.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#chassis-repair",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/chassis-repair.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -651,7 +651,7 @@
         "能否单独更换胶套取决于本体、球头和安装部位状态。"
       ],
       "servicePath": "services/chassis.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#chassis-bushing",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/chassis-bushing.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -703,7 +703,7 @@
         "机械状态稳定后再做外观和舒适性，可减少重复施工。"
       ],
       "servicePath": "services/vehicle-restoration.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#restoration-order",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/restoration-order.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -744,7 +744,7 @@
         "工商登记或第三方地图名称不同，不等于另一家门店。"
       ],
       "servicePath": "store-profile.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#identity",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/identity.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",
@@ -801,7 +801,7 @@
         "工作日08:00-18:00，周六日09:00-17:00。"
       ],
       "servicePath": "store-profile.html",
-      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html#contact",
+      "sourceUrl": "https://yfb686b8p4-web.github.io/hxscar-website/answers/contact.html",
       "evidenceSources": [
         {
           "name": "同名门店实体核验",

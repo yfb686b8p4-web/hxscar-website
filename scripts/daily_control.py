@@ -37,6 +37,7 @@ HTTP_CHECKS = [
     ("门店资料", "/store-profile.html", "同一实体门店"),
     ("实体核验", "/entity-verification.html", "四项实体核验"),
     ("搜索问答", "/answers.html", "直接回答"),
+    ("独立答案页", "/answers/bmw.html", "深圳宝安宝马专修、豪车保养推荐去哪里？"),
     ("门店事实", "/store-facts.json", "verifiedAt"),
     ("标准问答RSS", "/feed.xml", "91440300MA5GYCTQ6P"),
     ("门店品牌图", "/assets/store-avatar-300.jpg", "JFIF"),

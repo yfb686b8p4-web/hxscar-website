@@ -49,7 +49,14 @@ def sitemap_urls():
 
 def selected_urls():
     """只提交与门店实体和服务搜索最相关的 URL。"""
-    return [url for url in sitemap_urls() if urllib.parse.urlsplit(url).path in PRIORITY_PATHS]
+    selected = []
+    for url in sitemap_urls():
+        path = urllib.parse.urlsplit(url).path
+        if path in PRIORITY_PATHS or path.startswith(
+            "/hxscar-website/answers/"
+        ):
+            selected.append(url)
+    return selected
 
 
 def wait_for_key(attempts=6, delay=10):

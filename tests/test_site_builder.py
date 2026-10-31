@@ -255,6 +255,55 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 all(url.startswith("https://") for url in answer["citation"])
             )
 
+    def test_each_answer_has_a_unique_citable_page(self):
+        """每条标准答案都应有独立 canonical 和 FAQ 引用结构。"""
+        pages = site_builder.build_answer_pages()
+        self.assertEqual(len(pages), len(site_builder.SEARCH_ANSWERS))
+        for item in site_builder.SEARCH_ANSWERS:
+            path = (
+                site_builder.ROOT
+                / site_builder.answer_detail_path(item)
+            )
+            html = pages[path]
+            self.assertIn(
+                f'<link rel="canonical" href="{site_builder.answer_detail_url(item)}">',
+                html,
+            )
+            schemas = [
+                json.loads(raw)
+                for raw in re.findall(
+                    r'<script type="application/ld\+json">(.*?)</script>',
+                    html,
+                    re.S,
+                )
+            ]
+            faq_page = next(
+                schema
+                for schema in schemas
+                if schema.get("@type") == "FAQPage"
+            )
+            answer = faq_page["mainEntity"][0]["acceptedAnswer"]
+            self.assertGreaterEqual(len(answer["citation"]), 4)
+            self.assertIn(item["question"], html)
+            self.assertIn(item["answer"], html)
+
+    def test_sitemap_llms_and_feed_link_answer_pages(self):
+        """抓取入口必须直接暴露独立答案页。"""
+        sitemap = ET.fromstring(site_builder.build_sitemap())
+        namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        locations = {
+            node.text
+            for node in sitemap.findall("sm:url/sm:loc", namespace)
+        }
+        llms = site_builder.build_llms_txt()
+        feed = site_builder.build_feed_xml()
+        for item in site_builder.SEARCH_ANSWERS:
+            url = site_builder.answer_detail_url(item)
+            self.assertIn(url, locations)
+            self.assertIn(url, llms)
+            if item["anchor"] != "identity":
+                self.assertIn(url, feed)
+
     def test_page_declares_rss_feed(self):
         """每个静态页面都应声明标准 RSS 发现入口。"""
         html = site_builder.page(
@@ -322,6 +371,14 @@ class SiteBuilderGeoTests(unittest.TestCase):
             mirror,
             {item["url"] for item in facts["citationTargets"]},
         )
+        for item, answer in zip(
+            site_builder.SEARCH_ANSWERS,
+            facts["answers"],
+        ):
+            self.assertEqual(
+                answer["sourceUrl"],
+                site_builder.answer_detail_url(item),
+            )
         self.assertIn(
             site_builder.SHOP["fact_sheet_path"],
             site_builder.build_entity_verification_page(),
