@@ -37,6 +37,8 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["document_mirrors"]["github_release_pdf"],
             readme,
         )
+        self.assertIn("真实性原则", readme)
+        self.assertNotIn("评价摘录", readme)
 
     def test_entity_facts_contains_current_store_facts(self):
         text = (ROOT / "ENTITY_FACTS.md").read_text(encoding="utf-8")

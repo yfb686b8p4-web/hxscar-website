@@ -59,7 +59,9 @@ for item in _raw_cases:
     else:
         ALL_CASES.append(item)
 
-# ====== 车主评价 ======
+# ====== 历史评价数据 ======
+# 该文件未逐条附带可公开核验的原始来源链接，仅供内部审计；
+# 不得用于首页、平台发布内容、结构化评价或对外机器语料。
 _raw_reviews = _load_json("reviews.json")
 _r_fields = ["tag", "name", "car_model", "content", "date"]
 REVIEWS = []
