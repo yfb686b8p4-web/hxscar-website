@@ -60,6 +60,16 @@
       "before_summary": "GitHub账号没有公开资料仓库、官网链接或门店实体说明。",
       "after_summary": "同名公开仓库与Profile README已上线，包含完整门店事实、JSON-LD、56案例、Gist/Release和消歧入口；官网JSON-LD已反向关联该仓库。",
       "outcome": "外部权威入口已发布，尚未观察到搜索引擎收录"
+    },
+    {
+      "id": "entity-github-profile-recheck",
+      "title": "GitHub 外部资料发布后实体复测",
+      "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
+      "deployed_commit": "41dec8a",
+      "measured_at": "2026-11-01T02:20:00+08:00",
+      "before_summary": "01:10元宝曾改为基本可以确定是同一家店，并给出正确手机和信用代码。",
+      "after_summary": "02:20元宝仍判断基本是同一家店，但再次引用13537862708和13923454895，未采用官网当前手机、座机或营业时间，引用27篇资料。",
+      "outcome": "实体关系保持正确，联系资料复测出现回退，GitHub尚未成为有效引用源"
     }
   ]
 }
