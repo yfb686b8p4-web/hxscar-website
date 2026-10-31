@@ -94,6 +94,16 @@ class DailyControlTests(unittest.TestCase):
             "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
             checks,
         )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+            "image-sitemap.xml",
+            checks,
+        )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+            "assets/store-banner.jpg",
+            checks,
+        )
 
     def test_checks_cover_release_and_gist_qa_mirrors(self):
         """每日检查必须覆盖四个原子问答镜像中的远端两个。"""

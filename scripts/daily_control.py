@@ -75,6 +75,18 @@ HTTP_CHECKS = [
         "<loc>https://yfb686b8p4-web.github.io/yfb686b8p4-web/</loc>",
     ),
     (
+        "Profile图片站点地图",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/image-sitemap.xml",
+        "store-banner.jpg",
+    ),
+    (
+        "Profile门店外观图",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+        "assets/store-banner.jpg",
+        "JFIF",
+        60,
+    ),
+    (
         "Profile llms",
         "https://yfb686b8p4-web.github.io/yfb686b8p4-web/llms.txt",
         "统一社会信用代码",
