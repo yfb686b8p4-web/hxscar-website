@@ -55,6 +55,38 @@ class RepositoryReadmeTests(unittest.TestCase):
             text,
         )
 
+    def test_release_notes_are_a_standalone_entity_source(self):
+        """GitHub Release 正文必须具备独立可核验的实体事实。"""
+        text = (
+            ROOT / "RELEASE_NOTES_store-facts-2026-10-31.md"
+        ).read_text(encoding="utf-8")
+        shop = json.loads(
+            (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
+        )
+        for value in (
+            shop["registered_name"],
+            shop["unified_social_credit_code"],
+            shop["established_on"],
+            shop["legal_representative"],
+            shop["address"],
+            shop["phone"],
+            shop["landline"],
+            shop["hours"],
+            shop["external_profile_links"]["douyin"],
+        ):
+            self.assertIn(value, text)
+        for value in (
+            "13923454895",
+            "18129802698",
+            "宝源南路276号",
+            "08:00-20:00",
+            "entity-verification.html",
+            "store-facts.json",
+            "feed.xml",
+            shop["document_mirrors"]["github_release_pdf"],
+        ):
+            self.assertIn(value, text)
+
     def test_homepage_contains_current_entity_signals(self):
         """周更首页必须保留真实图片、工商、抖音和实体核验信号。"""
         home = (ROOT / "index.html").read_text(encoding="utf-8")
