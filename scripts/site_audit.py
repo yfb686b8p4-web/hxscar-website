@@ -23,6 +23,7 @@ REQUIRED_FILES = [
     "feed.xml",
     "assets/store-avatar-300.jpg",
     "assets/store-banner.jpg",
+    "downloads/huaxinsong-store-facts-2026-10-31.pdf",
     "hxscar20261024geoindexkey.txt",
     "robots.txt",
     "sitemap.xml",
@@ -238,6 +239,7 @@ def audit():
         "douyin.com/user/",
         "entity-verification.html",
         "application/rss+xml",
+        "downloads/huaxinsong-store-facts-2026-10-31.pdf",
     ):
         if marker not in index_html:
             errors.append(f"index.html 缺少实体信号: {marker}")

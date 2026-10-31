@@ -13,6 +13,10 @@
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html"
     },
     {
+      "name": "门店实体核验 PDF",
+      "url": "https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf"
+    },
+    {
       "name": "搜索直接答案",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/answers.html"
     },
@@ -45,7 +49,8 @@
     "douyinId": "SZ2018080808",
     "brandAssets": {
       "image": "https://yfb686b8p4-web.github.io/hxscar-website/assets/store-banner.jpg",
-      "logo": "https://yfb686b8p4-web.github.io/hxscar-website/assets/store-avatar-300.jpg"
+      "logo": "https://yfb686b8p4-web.github.io/hxscar-website/assets/store-avatar-300.jpg",
+      "factSheet": "https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf"
     },
     "aliases": [
       "老周修车",

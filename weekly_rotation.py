@@ -61,6 +61,10 @@ STORE_LOGO = SITE_URL + SHOP_INFO.get("logo_path", "assets/store-avatar-300.jpg"
 DOUYIN_URL = SHOP_INFO.get("external_profile_links", {}).get("douyin", "")
 DOUYIN_ID = SHOP_INFO.get("douyin_id", "")
 ENTITY_VERIFICATION_URL = SITE_URL + "entity-verification.html"
+FACT_SHEET_URL = SITE_URL + SHOP_INFO.get(
+    "fact_sheet_path",
+    "downloads/huaxinsong-store-facts-2026-10-31.pdf",
+)
 REGISTRY_LINKS = SHOP_INFO.get("registry_links", {})
 EXTERNAL_PROFILE_LINKS = SHOP_INFO.get("external_profile_links", {})
 
@@ -174,6 +178,12 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         "logo": STORE_LOGO,
         "taxID": SHOP_INFO.get("unified_social_credit_code", ""),
         "foundingDate": SHOP_INFO.get("established_on", ""),
+        "subjectOf": {
+            "@type": "DigitalDocument",
+            "name": "华信松汽车幸福海岸分公司门店实体核验资料",
+            "url": FACT_SHEET_URL,
+            "encodingFormat": "application/pdf",
+        },
         "sameAs": [
             link
             for link in (
@@ -393,6 +403,7 @@ def build_page(config, selected_cases, selected_reviews, week_num):
             <p><strong>抖音商家认证主页：</strong><a href="{DOUYIN_URL}">深圳华信松老周修车（{DOUYIN_ID}）</a></p>
             <a class="section-link" href="answers.html">查看宝马、空调、底盘和老车整备问答</a>
             <a class="section-link" href="entity-verification.html">查看独立实体核验页</a>
+            <a class="section-link" href="downloads/huaxinsong-store-facts-2026-10-31.pdf">下载门店实体核验资料 PDF</a>
         </div>
 
         <!-- INFO -->

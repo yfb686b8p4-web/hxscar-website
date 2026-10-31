@@ -46,6 +46,10 @@ BUSINESS_IMAGE = BASE_URL + "/" + SHOP.get(
 BUSINESS_LOGO = BASE_URL + "/" + SHOP.get(
     "logo_path", "assets/store-avatar-300.jpg"
 )
+BUSINESS_FACT_SHEET = BASE_URL + "/" + SHOP.get(
+    "fact_sheet_path",
+    "downloads/huaxinsong-store-facts-2026-10-31.pdf",
+)
 
 SEARCH_ANSWERS = [
     {
@@ -511,6 +515,7 @@ def page(title, description, canonical, body, schemas, current=None):
     <meta name="twitter:image" content="{h(BUSINESS_IMAGE)}">
     <link rel="alternate" type="application/json" href="{h(BASE_URL)}/store-facts.json">
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{h(BASE_URL)}/feed.xml">
+    <link rel="alternate" type="application/pdf" title="门店实体核验资料" href="{h(BUSINESS_FACT_SHEET)}">
     {schema_html}
     <style>
         * {{ margin: 0; padding: 0; box-sizing: border-box; }}
@@ -1091,6 +1096,7 @@ def build_entity_verification_page():
     <h2>公开核验来源</h2>
     <p><a href="{h(SHOP.get("registry_links", {}).get("qichacha", ""))}">企查查工商登记页</a>；<a href="{h(SHOP.get("registry_links", {}).get("aiqicha", ""))}">爱企查工商登记页</a>；<a href="{h(SHOP.get("map_links", {}).get("amap", ""))}">高德地图 POI</a>；<a href="{h(SHOP.get("map_links", {}).get("tencent", ""))}">腾讯地图 POI</a></p>
     <p>公开账号与镜像：<a href="{h(SHOP.get("external_profile_links", {}).get("douyin", ""))}">抖音“深圳华信松老周修车”</a>（抖音号 {h(SHOP.get("douyin_id", ""))}）；<a href="{h(SHOP.get("external_profile_links", {}).get("github_repository", ""))}">GitHub 仓库</a>；<a href="{h(SHOP.get("external_profile_links", {}).get("github_release", ""))}">实体核验 Release</a>；<a href="{h(SHOP.get("external_profile_links", {}).get("gist", ""))}">实体事实 Gist</a></p>
+    <p><a href="{h(SHOP.get("fact_sheet_path", ""))}">下载门店实体核验资料 PDF</a></p>
     <p><a href="store-profile.html">查看完整门店资料与第三方资料纠错</a></p>
 </section>
 <section class="card">
@@ -1280,6 +1286,10 @@ def build_store_facts_json():
                 "url": BASE_URL + "/entity-verification.html",
             },
             {
+                "name": "门店实体核验 PDF",
+                "url": BUSINESS_FACT_SHEET,
+            },
+            {
                 "name": "搜索直接答案",
                 "url": BASE_URL + "/answers.html",
             },
@@ -1309,6 +1319,7 @@ def build_store_facts_json():
             "brandAssets": {
                 "image": BUSINESS_IMAGE,
                 "logo": BUSINESS_LOGO,
+                "factSheet": BUSINESS_FACT_SHEET,
             },
             "aliases": SHOP["shop_names"][1:],
             "relationshipStatement": SHOP.get("identity_statement", ""),
@@ -1408,6 +1419,7 @@ def build_sitemap():
         (BASE_URL + "/feed.xml", "0.6"),
         (BASE_URL + "/assets/store-banner.jpg", "0.4"),
         (BASE_URL + "/assets/store-avatar-300.jpg", "0.4"),
+        (BUSINESS_FACT_SHEET, "0.5"),
         (BASE_URL + "/llms.txt", "0.5"),
         (BASE_URL + "/llms-full.txt", "0.6"),
     ]

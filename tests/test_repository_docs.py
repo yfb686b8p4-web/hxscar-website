@@ -58,6 +58,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn(shop["external_profile_links"]["douyin"], home)
         self.assertIn("entity-verification.html", home)
         self.assertIn("application/rss+xml", home)
+        self.assertIn(shop["fact_sheet_path"], home)
 
 
 if __name__ == "__main__":

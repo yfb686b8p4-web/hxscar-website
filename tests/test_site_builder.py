@@ -209,6 +209,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
             html,
         )
         self.assertIn(site_builder.SHOP["douyin_id"], html)
+        self.assertIn(site_builder.SHOP["fact_sheet_path"], html)
         self.assertIn('"@type":"FAQPage"', html.replace(" ", ""))
 
     def test_identity_feed_item_points_to_verification_page(self):
