@@ -76,6 +76,29 @@ MODELS = [
     {"slug": "volkswagen-touareg", "name": "大众途锐"},
 ]
 
+SERVICE_PROCESS = [
+    (
+        "说明故障和用车场景",
+        "记录故障出现条件、以往维修和车主希望优先解决的问题。",
+    ),
+    (
+        "到店检查和读取数据",
+        "按故障类型进行路试、升车检查、压力或温度测量，并读取相关故障码和实际数据。",
+    ),
+    (
+        "说明故障点与维修边界",
+        "说明已确认的问题、仍需继续检查的项目，以及维修、更换或暂不处理的安全边界。",
+    ),
+    (
+        "确认项目、配件和费用",
+        "车主确认维修项目、配件方案和费用后再施工；新增项目需重新说明并确认。",
+    ),
+    (
+        "复检、交付并记录",
+        "按原故障条件复检，记录更换部件、检测数据和交付说明。",
+    ),
+]
+
 
 def faq_markup(items):
     """输出 FAQ 列表。"""
@@ -148,6 +171,14 @@ def store_identity_markup():
 <p><strong>联系电话：</strong>手机 {h(SHOP.get("phone", ""))}；座机 {h(SHOP.get("landline", ""))}</p>
 <p><strong>营业时间：</strong>{h(SHOP.get("hours", ""))}</p>
 <p><strong>第三方资料纠错：</strong>{h(SHOP.get("third_party_notice", ""))}</p>"""
+
+
+def service_process_markup():
+    """输出可核验的标准接车流程。"""
+    return "".join(
+        f"<li><strong>{h(name)}：</strong>{h(action)}</li>"
+        for name, action in SERVICE_PROCESS
+    )
 
 
 def model_direct_answer_markup(model):
@@ -255,6 +286,29 @@ def service_schema(service):
     }
 
 
+def service_howto_schema(service):
+    """生成服务接车流程结构化数据。"""
+    return {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "@id": f"{BASE_URL}/services/{service['slug']}.html#process",
+        "name": f"{service['name']}标准接车流程",
+        "description": (
+            "从故障说明、检查诊断、维修边界确认到施工和复检的"
+            "标准化门店流程，不包含未核验的时效或售后承诺。"
+        ),
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": index,
+                "name": name,
+                "text": action,
+            }
+            for index, (name, action) in enumerate(SERVICE_PROCESS, start=1)
+        ],
+    }
+
+
 def faq_schema(items):
     """生成 FAQPage 结构化数据。"""
     return {
@@ -345,6 +399,10 @@ def build_service_pages():
     <div><strong>{len(faqs)}</strong>常见问题</div>
     <div><strong>能修不换</strong>节约整备</div>
 </section>
+<section class="card" id="process">
+    <h2>标准接车流程</h2>
+    <ol class="value-list">{service_process_markup()}</ol>
+</section>
 <section class="card">
     <h2>服务说明</h2>
     <p>所有维修先检查、后报价，维修保养和底盘整备可选择品牌件、原厂件或拆车件。</p>
@@ -367,6 +425,7 @@ def build_service_pages():
         schemas = [
             local_business_schema(),
             service_schema(service),
+            service_howto_schema(service),
             breadcrumb(
                 [
                     ("首页", BASE_URL + "/"),

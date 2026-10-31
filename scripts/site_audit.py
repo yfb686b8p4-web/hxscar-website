@@ -283,6 +283,8 @@ def audit():
             )
             if profile_url and profile_url not in read_text(name):
                 errors.append(f"{name} 门店结构化数据缺少 GitHub Profile 实体关联")
+            if name.startswith("services/") and "HowTo" not in stats["schema_types"]:
+                errors.append(f"{name} 缺少 HowTo 接车流程结构化数据")
         if name.startswith("models/") and name != "models/index.html":
             if "Service" not in stats["schema_types"]:
                 errors.append(f"{name} 缺少 Service 结构化数据")

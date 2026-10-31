@@ -292,53 +292,57 @@
       ]
     },
     "services/air-conditioning.html": {
-      "bytes": 35787,
-      "han_chars": 4559,
-      "visible_han_chars": 2287,
-      "json_ld_blocks": 5,
+      "bytes": 37963,
+      "han_chars": 4998,
+      "visible_han_chars": 2481,
+      "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "Service",
+        "HowTo",
         "BreadcrumbList",
         "FAQPage"
       ]
     },
     "services/bmw-premium.html": {
-      "bytes": 40303,
-      "han_chars": 5356,
-      "visible_han_chars": 3111,
-      "json_ld_blocks": 5,
+      "bytes": 42477,
+      "han_chars": 5796,
+      "visible_han_chars": 3305,
+      "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "Service",
+        "HowTo",
         "BreadcrumbList",
         "FAQPage"
       ]
     },
     "services/chassis.html": {
-      "bytes": 35525,
-      "han_chars": 4486,
-      "visible_han_chars": 2244,
-      "json_ld_blocks": 5,
+      "bytes": 37692,
+      "han_chars": 4925,
+      "visible_han_chars": 2438,
+      "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "Service",
+        "HowTo",
         "BreadcrumbList",
         "FAQPage"
       ]
     },
     "services/vehicle-restoration.html": {
-      "bytes": 36929,
-      "han_chars": 5086,
-      "visible_han_chars": 2958,
-      "json_ld_blocks": 5,
+      "bytes": 39102,
+      "han_chars": 5523,
+      "visible_han_chars": 3152,
+      "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "Service",
+        "HowTo",
         "BreadcrumbList",
         "FAQPage"
       ]

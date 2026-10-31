@@ -29,10 +29,10 @@
 | answers/restoration-selection.html | 580 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/restoration.html | 554 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/index.html | 2187 | 4 | WebSite, AutoRepair, CollectionPage, BreadcrumbList |
-| services/air-conditioning.html | 2287 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
-| services/bmw-premium.html | 3111 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
-| services/chassis.html | 2244 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
-| services/vehicle-restoration.html | 2958 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
+| services/air-conditioning.html | 2481 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
+| services/bmw-premium.html | 3305 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
+| services/chassis.html | 2438 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
+| services/vehicle-restoration.html | 3152 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |
 | models/audi-a6l.html | 1406 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
 | models/audi-q5.html | 1387 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
 | models/bmw-5-series.html | 1809 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |

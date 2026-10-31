@@ -36,6 +36,19 @@ class ContentMatrixTests(unittest.TestCase):
                 html.replace(" ", ""),
                 path.name,
             )
+            self.assertIn("标准接车流程", html, path.name)
+            self.assertIn('"@type":"HowTo"', html.replace(" ", ""), path.name)
+            howto = [
+                json.loads(raw)
+                for raw in re.findall(
+                    r'<script type="application/ld\+json">(.*?)</script>',
+                    html,
+                    re.DOTALL,
+                )
+                if json.loads(raw).get("@type") == "HowTo"
+            ]
+            self.assertEqual(len(howto), 1, path.name)
+            self.assertEqual(len(howto[0]["step"]), 5, path.name)
 
     def test_service_schema_declares_full_provider_identity(self):
         html = (ROOT / "services" / "bmw-premium.html").read_text(
