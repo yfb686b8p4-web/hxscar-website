@@ -22,6 +22,7 @@ URLS = [
     f"https://{HOST}/yfb686b8p4-web/",
     f"https://{HOST}/yfb686b8p4-web/answers.html",
     f"https://{HOST}/yfb686b8p4-web/qa-evidence.jsonl",
+    f"https://{HOST}/yfb686b8p4-web/entity-corrections.json",
     f"https://{HOST}/yfb686b8p4-web/llms.txt",
     f"https://{HOST}/yfb686b8p4-web/sitemap.xml",
     f"https://{HOST}/yfb686b8p4-web/image-sitemap.xml",

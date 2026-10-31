@@ -8,6 +8,7 @@
     "github_ai_evidence_store_facts_json": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/store-facts.json",
     "github_ai_evidence_store_facts_jsonld": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/store-facts.jsonld",
     "github_ai_evidence_case_evidence_json": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json",
+    "github_ai_evidence_entity_corrections_json": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/entity-corrections.json",
     "github_ai_evidence_llms_full": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/llms-full.txt",
     "github_profile_answers_html": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
     "gist_store_facts_jsonld": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld",
@@ -34,6 +35,14 @@
     {
       "name": "原子问答证据数据",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl"
+    },
+    {
+      "name": "门店历史资料纠正",
+      "url": "https://yfb686b8p4-web.github.io/hxscar-website/entity-corrections.json"
+    },
+    {
+      "name": "GitHub Release 门店历史资料纠正镜像",
+      "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/entity-corrections.json"
     },
     {
       "name": "GitHub Gist 原子问答证据镜像",
@@ -261,7 +270,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -342,7 +351,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -423,7 +432,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -503,7 +512,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -583,7 +592,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -663,7 +672,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -745,7 +754,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -825,7 +834,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -906,7 +915,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -986,7 +995,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -1066,7 +1075,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -1146,7 +1155,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -1227,7 +1236,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -1312,7 +1321,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {
@@ -1399,7 +1408,7 @@
           "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json"
         },
         {
-          "name": "GitHub Profile 五问答案镜像",
+          "name": "GitHub Profile 七问答案镜像",
           "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html"
         },
         {

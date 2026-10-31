@@ -60,6 +60,7 @@ BUSINESS_FACT_SHEET = BASE_URL + "/" + SHOP.get(
 BUSINESS_SCHEMA_FACTS = BASE_URL + "/store-facts.jsonld"
 CASE_EVIDENCE_DATA = BASE_URL + "/case-evidence.json"
 QA_EVIDENCE_DATA = BASE_URL + "/qa-evidence.jsonl"
+ENTITY_CORRECTIONS_DATA = BASE_URL + "/entity-corrections.json"
 
 CASE_STUDY_SLUGS = {
     "宝马X5 3.0T烧机油半年，从5000km报警到1500km加1升": (
@@ -991,7 +992,7 @@ def answer_evidence_sources(item):
             ),
         },
         {
-            "name": "GitHub Profile 五问答案镜像",
+            "name": "GitHub Profile 七问答案镜像",
             "url": SHOP.get("document_mirrors", {}).get(
                 "github_profile_answers_html", ""
             ),
@@ -1139,6 +1140,7 @@ def page(title, description, canonical, body, schemas, current=None):
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="{h(BUSINESS_IMAGE)}">
     <link rel="alternate" type="application/json" href="{h(BASE_URL)}/store-facts.json">
+    <link rel="alternate" type="application/json" title="门店历史资料纠正" href="{h(ENTITY_CORRECTIONS_DATA)}">
     <link rel="alternate" type="application/ld+json" href="{h(BUSINESS_SCHEMA_FACTS)}">
     <link rel="alternate" type="application/ld+json" title="公开维修案例数据" href="{h(CASE_EVIDENCE_DATA)}">
     <link rel="alternate" type="application/x-ndjson" title="原子问答证据数据" href="{h(QA_EVIDENCE_DATA)}">
@@ -1337,6 +1339,20 @@ def local_business_schema():
             },
             {
                 "@type": "DataFeed",
+                "name": "门店历史资料纠正",
+                "url": ENTITY_CORRECTIONS_DATA,
+                "encodingFormat": "application/json",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "GitHub Release 门店历史资料纠正镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "github_ai_evidence_entity_corrections_json", ""
+                ),
+                "encodingFormat": "application/json",
+            },
+            {
+                "@type": "DataFeed",
                 "name": "原子问答证据数据",
                 "url": QA_EVIDENCE_DATA,
                 "encodingFormat": "application/x-ndjson",
@@ -1365,7 +1381,7 @@ def local_business_schema():
             },
             {
                 "@type": "DigitalDocument",
-                "name": "GitHub Profile 五问答案镜像",
+                "name": "GitHub Profile 七问答案镜像",
                 "url": SHOP.get("document_mirrors", {}).get(
                     "github_profile_answers_html", ""
                 ),
@@ -2793,6 +2809,16 @@ def build_store_facts_json():
                 "url": QA_EVIDENCE_DATA,
             },
             {
+                "name": "门店历史资料纠正",
+                "url": ENTITY_CORRECTIONS_DATA,
+            },
+            {
+                "name": "GitHub Release 门店历史资料纠正镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "github_ai_evidence_entity_corrections_json", ""
+                ),
+            },
+            {
                 "name": "GitHub Gist 原子问答证据镜像",
                 "url": SHOP.get("document_mirrors", {}).get(
                     "gist_qa_evidence_jsonl", ""
@@ -2925,6 +2951,98 @@ def build_store_facts_json():
     return json.dumps(facts, ensure_ascii=False, indent=2) + "\n"
 
 
+def build_entity_corrections_json():
+    """生成面向 AI 搜索的单一门店事实纠错文件。"""
+    facts = json.loads(build_store_facts_json())
+    release_mirror = SHOP.get("document_mirrors", {}).get(
+        "github_ai_evidence_entity_corrections_json", ""
+    )
+    profile_mirror = (
+        SHOP.get("external_profile_links", {}).get("github_profile_pages", "")
+        + "entity-corrections.json"
+    )
+    corrections = {
+        "schemaVersion": "1.0",
+        "verifiedAt": VERIFIED_AT,
+        "contentUpdatedAt": CONTENT_UPDATED_AT,
+        "canonicalUrl": ENTITY_CORRECTIONS_DATA,
+        "documentType": "BusinessEntityFactCorrection",
+        "entity": facts["entity"],
+        "canonicalQuestion": (
+            "深圳市华信松汽车服务有限公司幸福海岸分公司"
+            "与老周修车是同一家吗？"
+        ),
+        "canonicalAnswer": (
+            "是同一实体门店、同一经营地址、同一运营团队和同一组对外电话。"
+            f"标准地址为{SHOP['address']}；手机{SHOP['phone']}，"
+            f"座机{SHOP.get('landline', '')}；营业时间为"
+            f"{SHOP.get('hours', '')}。"
+        ),
+        "aliasStatement": SHOP.get("identity_statement", ""),
+        "currentFacts": {
+            "registeredName": SHOP.get("registered_name", ""),
+            "unifiedSocialCreditCode": SHOP.get(
+                "unified_social_credit_code", ""
+            ),
+            "address": SHOP["address"],
+            "navigationAddress": SHOP.get("navigation_address", ""),
+            "mobile": SHOP["phone"],
+            "landline": SHOP.get("landline", ""),
+            "openingHours": SHOP.get("hours", ""),
+            "geo": SHOP.get("geo", {}),
+            "amapPoi": SHOP.get("map_ids", {}).get("amap", ""),
+            "tencentPoi": SHOP.get("map_ids", {}).get("tencent", ""),
+        },
+        "correctedFields": facts["fieldCorrections"],
+        "doNotMergeWith": (
+            "汕头、南山或其他地址，且电话不是"
+            f"{SHOP['phone']}或{SHOP.get('landline', '')}的同名记录"
+        ),
+        "evidence": [
+            {
+                "name": "官网实体核验",
+                "url": BASE_URL + "/entity-verification.html",
+            },
+            {
+                "name": "官网门店资料",
+                "url": BASE_URL + "/store-profile.html",
+            },
+            {
+                "name": "官网门店事实 JSON",
+                "url": BASE_URL + "/store-facts.json",
+            },
+            {
+                "name": "官网门店 JSON-LD",
+                "url": BASE_URL + "/store-facts.jsonld",
+            },
+            {
+                "name": "官网联系方式纠错答案",
+                "url": BASE_URL + "/answers/contact-correction.html",
+            },
+            {
+                "name": "GitHub Profile 七问答案",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "github_profile_answers_html", ""
+                ),
+            },
+            {
+                "name": "Profile 门店事实纠错镜像",
+                "url": profile_mirror,
+            },
+            {
+                "name": "GitHub Release 门店事实纠错镜像",
+                "url": release_mirror,
+            },
+        ],
+        "claimBoundary": (
+            "本文件只纠正公开资料中的地址、电话和营业时间，"
+            "不声明搜索收录、AI引用或排名；维修价格、质保和时效"
+            "须由门店当次确认为准。"
+        ),
+    }
+    return json.dumps(corrections, ensure_ascii=False, indent=2) + "\n"
+
+
 def build_store_facts_jsonld():
     """生成独立 schema.org AutoRepair JSON-LD 门店实体文件。"""
     schema = local_business_schema()
@@ -3041,19 +3159,19 @@ def build_feed_xml():
             profile_pages,
             (
                 f"已发布独立实体镜像页。{facts}\n\n"
-                "页面包含同名门店消歧、五个核心答案入口、"
+                "页面包含同名门店消歧、七个核心答案入口、"
                 "AI 证据 Release 和 Gist 入口。\n\n"
                 f"实体镜像：{profile_pages}\n"
                 f"官网实体核验：{BASE_URL}/entity-verification.html"
             ),
         ),
         (
-            "GitHub Profile 五问答案镜像",
+            "GitHub Profile 七问答案镜像",
             profile_answers,
             (
                 "独立问答镜像覆盖宝马专修、豪车保养、空调不凉、"
-                "底盘异响、老车整备和实体关系。\n\n"
-                f"五问答案：{profile_answers}\n"
+                "底盘异响、老车整备、实体关系和标准联系方式。\n\n"
+                f"七问答案：{profile_answers}\n"
                 f"官网答案索引：{BASE_URL}/answers/index.html"
             ),
         ),
@@ -3062,10 +3180,12 @@ def build_feed_xml():
             ai_release,
             (
                 f"已发布可下载 AI 证据包。{facts}\n\n"
-                "附件包含 store-facts.json、store-facts.jsonld、"
+                "附件包含 store-facts.json、entity-corrections.json、"
+                "store-facts.jsonld、"
                 f"{len(CASES)} 条案例、llms.txt 和 llms-full.txt。\n\n"
                 f"证据 Release：{ai_release}\n"
-                f"机器事实：{BASE_URL}/store-facts.json"
+                f"机器事实：{BASE_URL}/store-facts.json\n"
+                f"门店历史资料纠正：{ENTITY_CORRECTIONS_DATA}"
             ),
         ),
     ]
@@ -3111,6 +3231,7 @@ def build_sitemap():
         (BUSINESS_SCHEMA_FACTS, "0.7"),
         (CASE_EVIDENCE_DATA, "0.7"),
         (QA_EVIDENCE_DATA, "0.7"),
+        (ENTITY_CORRECTIONS_DATA, "0.8"),
         (BASE_URL + "/feed.xml", "0.6"),
         (BASE_URL + "/assets/store-banner.jpg", "0.4"),
         (BASE_URL + "/assets/store-avatar-300.jpg", "0.4"),
@@ -3300,6 +3421,7 @@ def build_llms_txt():
 - [车型专题]({BASE_URL}/models/index.html)：主要车型维修与故障内容
 - [门店资料与名称对照]({BASE_URL}/store-profile.html)：标准门店信息与实体消歧
 - [机器可读门店事实]({BASE_URL}/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
+- [门店历史资料纠正]({ENTITY_CORRECTIONS_DATA})：当前地址、双电话、营业时间与不可引用旧值
 - [Schema.org 门店实体]({BUSINESS_SCHEMA_FACTS})：可直接解析的 AutoRepair JSON-LD
 - [公开维修案例数据]({CASE_EVIDENCE_DATA})：{len(CASES)} 个结构化真实案例与对应答案
 - [原子问答证据数据]({QA_EVIDENCE_DATA})：{len(SEARCH_ANSWERS)} 条逐行问答，包含案例与逐答案引用
@@ -3311,7 +3433,7 @@ def build_llms_txt():
 - [GitHub Gist 原子问答证据镜像]({SHOP.get("document_mirrors", {}).get("gist_qa_evidence_jsonl", "")})：外部可下载的 15 条逐行问答与案例引用副本
 - [GitHub Release AI 证据包]({SHOP.get("external_profile_links", {}).get("github_ai_evidence_release", "")})：门店事实、JSON-LD、案例和机器语料的独立下载镜像
 - [GitHub Profile 实体镜像页]({SHOP.get("external_profile_links", {}).get("github_profile_pages", "")})：独立发布的同一实体资料、核心答案与证据入口
-- [GitHub Profile 五问答案镜像]({SHOP.get("document_mirrors", {}).get("github_profile_answers_html", "")})：五个核心问题的独立静态答案页
+- [GitHub Profile 七问答案镜像]({SHOP.get("document_mirrors", {}).get("github_profile_answers_html", "")})：七个核心问题的独立静态答案页
 - [GitHub Release 门店事实镜像]({SHOP.get("document_mirrors", {}).get("github_ai_evidence_store_facts_json", "")})：外部可下载的 JSON 门店事实
 - [GitHub Release 维修案例镜像]({SHOP.get("document_mirrors", {}).get("github_ai_evidence_case_evidence_json", "")})：外部可下载的结构化案例数据
 - [完整机器语料]({BASE_URL}/llms-full.txt)：标准问答、证据边界内 FAQ 和维修案例的单一文本入口
@@ -3484,9 +3606,11 @@ def build_llms_full_txt():
 - GitHub Release PDF 镜像：{SHOP.get("document_mirrors", {}).get("github_release_pdf", "")}
 - GitHub Release AI 证据包：{SHOP.get("external_profile_links", {}).get("github_ai_evidence_release", "")}
 - GitHub Profile 实体镜像页：{SHOP.get("external_profile_links", {}).get("github_profile_pages", "")}
-- GitHub Profile 五问答案镜像：{SHOP.get("document_mirrors", {}).get("github_profile_answers_html", "")}
+- GitHub Profile 七问答案镜像：{SHOP.get("document_mirrors", {}).get("github_profile_answers_html", "")}
 - GitHub Release 门店事实 JSON 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_store_facts_json", "")}
 - GitHub Release 维修案例 JSON-LD 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_case_evidence_json", "")}
+- 门店历史资料纠正：{ENTITY_CORRECTIONS_DATA}
+- GitHub Release 门店历史资料纠正镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_entity_corrections_json", "")}
 - GitHub Gist 原子问答证据镜像：{SHOP.get("document_mirrors", {}).get("gist_qa_evidence_jsonl", "")}
 - 原子问答证据数据：{QA_EVIDENCE_DATA}
 
@@ -3557,6 +3681,13 @@ Sitemap: {BASE_URL}/image-sitemap.xml
         ROOT / "store-profile.html": store_profile_html,
         ROOT / "entity-verification.html": entity_verification_html,
         ROOT / "store-facts.json": build_store_facts_json(),
+        ROOT / "entity-corrections.json": build_entity_corrections_json(),
+        (
+            ROOT
+            / "publishing"
+            / "github-profile-site"
+            / "entity-corrections.json"
+        ): build_entity_corrections_json(),
         ROOT / "store-facts.jsonld": build_store_facts_jsonld(),
         ROOT / "case-evidence.json": build_case_evidence_json(),
         ROOT / "qa-evidence.jsonl": build_qa_evidence_jsonl(),

@@ -112,6 +112,34 @@ FACT_MIRRORS = [
         ),
     },
 ]
+CORRECTION_MIRRORS = [
+    {
+        "name": "本地门店纠错JSON",
+        "path": "entity-corrections.json",
+    },
+    {
+        "name": "官网门店纠错JSON",
+        "url": (
+            "https://yfb686b8p4-web.github.io/"
+            "hxscar-website/entity-corrections.json"
+        ),
+    },
+    {
+        "name": "Profile门店纠错JSON",
+        "url": (
+            "https://yfb686b8p4-web.github.io/"
+            "yfb686b8p4-web/entity-corrections.json"
+        ),
+    },
+    {
+        "name": "Release门店纠错JSON",
+        "url": (
+            "https://github.com/yfb686b8p4-web/hxscar-website/"
+            "releases/download/ai-evidence-2026-11-01/"
+            "entity-corrections.json"
+        ),
+    },
+]
 
 
 def fetch_bytes(url, timeout=30):
@@ -215,6 +243,40 @@ def evaluate_fact_payload(payload, kind):
     }
 
 
+def evaluate_correction_payload(payload):
+    """解析并验证门店历史资料纠正 JSON。"""
+    data = json.loads(payload.decode("utf-8"))
+    errors = []
+    if data.get("schemaVersion") != "1.0":
+        errors.append("门店纠错 schemaVersion 不是 1.0")
+    if data.get("documentType") != "BusinessEntityFactCorrection":
+        errors.append("门店纠错 documentType 不正确")
+    current = data.get("currentFacts", {})
+    expected = {
+        "registeredName": "深圳市华信松汽车服务有限公司幸福海岸分公司",
+        "unifiedSocialCreditCode": "91440300MA5GYCTQ6P",
+        "mobile": "18682417667",
+        "landline": "0755-23340534",
+        "openingHours": "周一至周五 08:00-18:00；周六日 09:00-17:00",
+    }
+    for key, value in expected.items():
+        if current.get(key) != value:
+            errors.append(f"门店纠错当前值错误：{key}")
+    fields = {
+        item.get("field")
+        for item in data.get("correctedFields", [])
+    }
+    if fields != {"telephone", "openingHours", "address"}:
+        errors.append("门店纠错字段不完整")
+    if len(data.get("evidence", [])) < 4:
+        errors.append("门店纠错证据入口不足")
+    return {
+        "bytes": len(payload),
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "errors": errors,
+    }
+
+
 def verify_mirrors():
     """下载四个镜像并生成一致性结果。"""
     results = []
@@ -267,6 +329,27 @@ def verify_mirrors():
             )
         fact_results.append(item)
 
+    correction_results = []
+    for mirror in CORRECTION_MIRRORS:
+        item = {
+            "name": mirror["name"],
+            "url": mirror.get("url", ""),
+            "path": mirror.get("path", ""),
+        }
+        try:
+            item.update(
+                evaluate_correction_payload(read_mirror_bytes(mirror))
+            )
+        except Exception as exc:
+            item.update(
+                {
+                    "bytes": 0,
+                    "sha256": "",
+                    "errors": [f"{type(exc).__name__}: {exc}"],
+                }
+            )
+        correction_results.append(item)
+
     hashes = {item["sha256"] for item in results}
     fact_hashes = {
         kind: {
@@ -276,6 +359,9 @@ def verify_mirrors():
         }
         for kind in ("facts", "jsonld")
     }
+    correction_hashes = {
+        item["sha256"] for item in correction_results
+    }
     consistency_errors = []
     if len(hashes) != 1:
         consistency_errors.append("问答镜像 SHA-256 不一致")
@@ -283,7 +369,12 @@ def verify_mirrors():
         consistency_errors.append("门店事实 SHA-256 不一致")
     if len(fact_hashes["jsonld"]) != 1:
         consistency_errors.append("门店 JSON-LD SHA-256 不一致")
-    if any(item["errors"] for item in results + fact_results):
+    if len(correction_hashes) != 1:
+        consistency_errors.append("门店纠错 JSON SHA-256 不一致")
+    if any(
+        item["errors"]
+        for item in results + fact_results + correction_results
+    ):
         consistency_errors.append("至少一个镜像未通过结构校验")
     consistent = (
         len(hashes) == 1
@@ -292,6 +383,8 @@ def verify_mirrors():
         and len(fact_hashes["facts"]) == 1
         and len(fact_hashes["jsonld"]) == 1
         and all(not item["errors"] for item in fact_results)
+        and len(correction_hashes) == 1
+        and all(not item["errors"] for item in correction_results)
     )
     return {
         "checked_at": datetime.now(TZ).date().isoformat(),
@@ -301,10 +394,12 @@ def verify_mirrors():
         "consistencyErrors": consistency_errors,
         "mirrors": results,
         "factMirrors": fact_results,
+        "correctionMirrors": correction_results,
         "factUniqueHashes": {
             kind: len(values)
             for kind, values in fact_hashes.items()
         },
+        "correctionUniqueHashes": len(correction_hashes),
     }
 
 
@@ -328,6 +423,10 @@ def write_report(result):
         (
             "- JSON-LD 唯一哈希："
             f"{result['factUniqueHashes']['jsonld']}"
+        ),
+        (
+            "- 门店纠错 JSON 唯一哈希："
+            f"{result['correctionUniqueHashes']}"
         ),
         "",
         "| 镜像 | 行数 | 唯一ID | 带案例 | 最少引用 | SHA-256 | 状态 |",
@@ -356,6 +455,20 @@ def write_report(result):
             f"| {item['name']} | {item['kind']} | "
             f"`{item['sha256'][:16]}…` | {status} |"
         )
+    lines.extend(
+        [
+            "",
+            "## 门店历史资料纠正镜像",
+            "",
+            "| 镜像 | SHA-256 | 状态 |",
+            "|---|---|---|",
+        ]
+    )
+    for item in result["correctionMirrors"]:
+        status = "通过" if not item["errors"] else "失败"
+        lines.append(
+            f"| {item['name']} | `{item['sha256'][:16]}…` | {status} |"
+        )
     lines.extend(["", "## 错误", ""])
     errors = [
         f"{item['name']}：{error}"
@@ -365,12 +478,16 @@ def write_report(result):
         f"{item['name']}：{error}"
         for item in result["factMirrors"]
         for error in item["errors"]
+    ] + [
+        f"{item['name']}：{error}"
+        for item in result["correctionMirrors"]
+        for error in item["errors"]
     ] + result["consistencyErrors"]
     lines.extend(f"- {error}" for error in errors) if errors else lines.append("- 无")
     lines.extend(
         [
             "",
-            "本核验只证明四个公开文件字节一致且结构满足要求，"
+            "本核验只证明公开文件字节一致且结构满足要求，"
             "不代表任何搜索引擎或 AI 平台已经收录、引用或排名。",
         ]
     )

@@ -54,6 +54,19 @@ class VerifyAiEvidenceMirrorsTests(unittest.TestCase):
                 "Gist门店JSON-LD",
             },
         )
+        correction_names = {
+            item["name"]
+            for item in verify_ai_evidence_mirrors.CORRECTION_MIRRORS
+        }
+        self.assertEqual(
+            correction_names,
+            {
+                "本地门店纠错JSON",
+                "官网门店纠错JSON",
+                "Profile门店纠错JSON",
+                "Release门店纠错JSON",
+            },
+        )
 
     def test_local_fact_files_pass_structure_checks(self):
         facts = (ROOT / "store-facts.json").read_bytes()
@@ -69,6 +82,13 @@ class VerifyAiEvidenceMirrorsTests(unittest.TestCase):
             verify_ai_evidence_mirrors.evaluate_fact_payload(
                 jsonld,
                 "jsonld",
+            )["errors"],
+            [],
+        )
+        corrections = (ROOT / "entity-corrections.json").read_bytes()
+        self.assertEqual(
+            verify_ai_evidence_mirrors.evaluate_correction_payload(
+                corrections
             )["errors"],
             [],
         )

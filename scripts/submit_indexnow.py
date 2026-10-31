@@ -28,6 +28,7 @@ PRIORITY_PATHS = {
     "/hxscar-website/store-profile.html",
     "/hxscar-website/entity-verification.html",
     "/hxscar-website/store-facts.json",
+    "/hxscar-website/entity-corrections.json",
     "/hxscar-website/store-facts.jsonld",
     "/hxscar-website/case-evidence.json",
     "/hxscar-website/qa-evidence.jsonl",

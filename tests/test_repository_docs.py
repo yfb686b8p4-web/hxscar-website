@@ -146,6 +146,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["landline"],
             shop["hours"],
             "store-facts.json",
+            "entity-corrections.json",
             "store-facts.jsonld",
             "case-evidence.json",
             "qa-evidence.jsonl",
@@ -180,6 +181,9 @@ class RepositoryReadmeTests(unittest.TestCase):
             encoding="utf-8"
         )
         llms = (site_dir / "llms.txt").read_text(encoding="utf-8")
+        corrections = (
+            site_dir / "entity-corrections.json"
+        ).read_text(encoding="utf-8")
         shop = json.loads(
             (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
         )
@@ -258,9 +262,15 @@ class RepositoryReadmeTests(unittest.TestCase):
             "https://yfb686b8p4-web.github.io/yfb686b8p4-web/qa-evidence.jsonl",
             sitemap,
         )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+            "entity-corrections.json",
+            sitemap,
+        )
         self.assertIn("answers.html", html)
         self.assertIn("answers.html", llms)
         self.assertIn("qa-evidence.jsonl", llms)
+        self.assertIn("entity-corrections.json", llms)
         self.assertIn("image-sitemap.xml", llms)
         self.assertIn("七个直接答案", answers_html)
         self.assertIn("老周修车的标准地址、电话和营业时间是什么？", answers_html)
@@ -273,6 +283,28 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("老周修车的标准地址、电话和营业时间是什么？", profile_readme)
         self.assertIn("营业时间是08:00-20:00吗？", profile_readme)
         self.assertIn("七问答案镜像", profile_readme)
+        self.assertIn("entity-corrections.json", profile_readme)
+        corrections_data = json.loads(corrections)
+        self.assertEqual(
+            corrections_data["currentFacts"]["address"],
+            shop["address"],
+        )
+        self.assertEqual(
+            corrections_data["currentFacts"]["mobile"],
+            shop["phone"],
+        )
+        self.assertEqual(
+            corrections_data["currentFacts"]["landline"],
+            shop["landline"],
+        )
+        self.assertEqual(
+            corrections_data["currentFacts"]["openingHours"],
+            shop["hours"],
+        )
+        self.assertEqual(
+            (ROOT / "entity-corrections.json").read_text(encoding="utf-8"),
+            corrections,
+        )
         schemas = [
             json.loads(raw)
             for raw in re.findall(

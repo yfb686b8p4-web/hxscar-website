@@ -253,6 +253,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "github_ai_evidence_store_facts_json",
             "github_ai_evidence_store_facts_jsonld",
             "github_ai_evidence_case_evidence_json",
+            "github_ai_evidence_entity_corrections_json",
             "github_profile_answers_html",
         ):
             self.assertIn(site_builder.SHOP["document_mirrors"][key], mirror_urls)
@@ -381,7 +382,11 @@ class SiteBuilderGeoTests(unittest.TestCase):
             text,
         )
         self.assertIn("AI 搜索实体与维修案例证据 Release", text)
-        self.assertIn("GitHub Profile 五问答案镜像", text)
+        self.assertIn("GitHub Profile 七问答案镜像", text)
+        self.assertIn(
+            site_builder.ENTITY_CORRECTIONS_DATA,
+            text,
+        )
 
     def test_llms_corpora_link_fact_sheet_mirrors(self):
         """面向 AI 的两个机器语料入口都应暴露实体核验 PDF 双镜像。"""
@@ -771,6 +776,12 @@ class SiteBuilderGeoTests(unittest.TestCase):
         hub_url = site_builder.BASE_URL + "/answers/index.html"
         self.assertIn(hub_url, locations)
         self.assertIn(hub_url, llms)
+        self.assertIn(site_builder.ENTITY_CORRECTIONS_DATA, locations)
+        self.assertIn(site_builder.ENTITY_CORRECTIONS_DATA, llms)
+        self.assertIn(
+            site_builder.ENTITY_CORRECTIONS_DATA,
+            site_builder.build_llms_full_txt(),
+        )
         for item in site_builder.SEARCH_ANSWERS:
             url = site_builder.answer_detail_url(item)
             self.assertIn(url, locations)
@@ -952,6 +963,46 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "宝源南路276号",
             corrections["address"]["notCurrentValues"],
         )
+
+    def test_entity_corrections_json_is_small_and_machine_readable(self):
+        """实体纠错文件必须直接给出当前值并隔离历史错误值。"""
+        data = json.loads(site_builder.build_entity_corrections_json())
+        self.assertEqual(
+            data["canonicalUrl"],
+            site_builder.ENTITY_CORRECTIONS_DATA,
+        )
+        self.assertEqual(
+            data["entity"]["unifiedSocialCreditCode"],
+            "91440300MA5GYCTQ6P",
+        )
+        current = data["currentFacts"]
+        self.assertEqual(current["address"], site_builder.SHOP["address"])
+        self.assertEqual(current["mobile"], site_builder.SHOP["phone"])
+        self.assertEqual(
+            current["landline"],
+            site_builder.SHOP["landline"],
+        )
+        self.assertEqual(
+            current["openingHours"],
+            site_builder.SHOP["hours"],
+        )
+        corrections = {
+            item["field"]: item
+            for item in data["correctedFields"]
+        }
+        self.assertIn(
+            "13537862708",
+            corrections["telephone"]["notCurrentValues"],
+        )
+        self.assertIn(
+            "08:00-20:00",
+            corrections["openingHours"]["notCurrentValues"],
+        )
+        self.assertIn(
+            "宝源南路276号",
+            corrections["address"]["notCurrentValues"],
+        )
+        self.assertIn("不声明搜索收录", data["claimBoundary"])
 
     def test_store_facts_jsonld_is_a_complete_entity_file(self):
         """独立 JSON-LD 必须是一份完整、可解析的门店实体。"""

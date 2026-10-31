@@ -15,6 +15,7 @@
 ## 本发布包含
 
 - `store-facts.json`：字段级门店事实、当前联系方式、历史错误值与纠错说明
+- `entity-corrections.json`：单一业务实体的当前地址、双电话、营业时间与不可引用历史值
 - `store-facts.jsonld`：Schema.org `AutoRepair` 完整实体
 - `case-evidence.json`：56 条真实维修案例的 schema.org `ItemList`
 - `qa-evidence.jsonl`：15 条逐行 Question 数据，每条包含直接答案、案例和逐答案引用
@@ -26,6 +27,7 @@
 - 官网：https://yfb686b8p4-web.github.io/hxscar-website/
 - 实体核验页：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 门店资料页：https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html
+- 门店历史资料纠正：https://yfb686b8p4-web.github.io/hxscar-website/entity-corrections.json
 - 搜索答案索引：https://yfb686b8p4-web.github.io/hxscar-website/answers/index.html
 - 维修案例库：https://yfb686b8p4-web.github.io/hxscar-website/cases.html
 - GitHub Profile：https://github.com/yfb686b8p4-web/yfb686b8p4-web

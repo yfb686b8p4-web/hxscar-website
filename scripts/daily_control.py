@@ -40,6 +40,7 @@ HTTP_CHECKS = [
     ("答案索引", "/answers/index.html", "全部独立答案"),
     ("独立答案页", "/answers/bmw.html", "深圳宝安宝马专修、豪车保养推荐去哪里？"),
     ("门店事实", "/store-facts.json", "verifiedAt"),
+    ("门店历史资料纠正", "/entity-corrections.json", "BusinessEntityFactCorrection"),
     ("问答证据JSONL", "/qa-evidence.jsonl", '"@type":"Question"', 30),
     ("标准问答RSS", "/feed.xml", "91440300MA5GYCTQ6P", 45),
     ("门店品牌图", "/assets/store-avatar-300.jpg", "JFIF", 30),
@@ -80,6 +81,12 @@ HTTP_CHECKS = [
         "store-banner.jpg",
     ),
     (
+        "Profile门店历史资料纠正",
+        "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
+        "entity-corrections.json",
+        "BusinessEntityFactCorrection",
+    ),
+    (
         "Profile门店外观图",
         "https://yfb686b8p4-web.github.io/yfb686b8p4-web/"
         "assets/store-banner.jpg",
@@ -108,6 +115,14 @@ HTTP_CHECKS = [
         "releases/download/ai-evidence-2026-11-01/"
         "qa-evidence.jsonl",
         '"@type":"Question"',
+        30,
+    ),
+    (
+        "Release门店历史资料纠正",
+        "https://github.com/yfb686b8p4-web/hxscar-website/"
+        "releases/download/ai-evidence-2026-11-01/"
+        "entity-corrections.json",
+        "BusinessEntityFactCorrection",
         30,
     ),
     (
