@@ -961,6 +961,37 @@ class SiteBuilderGeoTests(unittest.TestCase):
             },
         )
         self.assertGreaterEqual(len(schema["makesOffer"]), 4)
+        catalog = schema.get("hasOfferCatalog", {})
+        self.assertEqual(catalog.get("@type"), "OfferCatalog")
+        self.assertEqual(
+            catalog.get("numberOfItems"),
+            len(schema["makesOffer"]),
+        )
+        self.assertEqual(
+            catalog.get("itemListElement"),
+            schema["makesOffer"],
+        )
+        self.assertTrue(
+            {
+                "宝马3系",
+                "奔驰E级",
+                "保时捷卡宴",
+                "路虎卫士",
+                "雷克萨斯ES",
+            }.issubset(set(schema["knowsAbout"]))
+        )
+        area_names = {
+            item.get("name")
+            for item in schema["areaServed"]
+        }
+        self.assertTrue(
+            {
+                "深圳市宝安区",
+                "新安街道",
+                "宝安体育场",
+                "幸福海岸花园",
+            }.issubset(area_names)
+        )
 
     def test_case_evidence_json_is_machine_readable(self):
         """案例证据数据必须覆盖全部案例并提供稳定引用地址。"""

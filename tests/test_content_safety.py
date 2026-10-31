@@ -95,6 +95,8 @@ class ContentSafetyTests(unittest.TestCase):
         self.assertIn("公开核验与机器资料", html)
         self.assertIn("entity-verification.html", html)
         self.assertIn("case-evidence.json", html)
+        self.assertIn('"@type":"OfferCatalog"', html.replace(" ", ""))
+        self.assertIn("雷克萨斯ES", html)
         self.assertNotIn("parentOrganization", html)
 
     def test_machine_faq_schema_excludes_unverified_claims(self):

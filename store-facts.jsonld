@@ -268,6 +268,77 @@
       }
     }
   ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "深圳宝安汽车维修服务目录",
+    "numberOfItems": 4,
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "宝马专修豪车保养",
+          "serviceType": "宝马专修豪车保养",
+          "provider": {
+            "@id": "https://yfb686b8p4-web.github.io/hxscar-website/#autorepair"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "深圳市宝安区"
+          },
+          "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/bmw-premium.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "空调不凉诊断维修",
+          "serviceType": "空调不凉诊断维修",
+          "provider": {
+            "@id": "https://yfb686b8p4-web.github.io/hxscar-website/#autorepair"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "深圳市宝安区"
+          },
+          "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/air-conditioning.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "底盘异响诊断维修",
+          "serviceType": "底盘异响诊断维修",
+          "provider": {
+            "@id": "https://yfb686b8p4-web.github.io/hxscar-website/#autorepair"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "深圳市宝安区"
+          },
+          "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/chassis.html"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "老车整备翻新",
+          "serviceType": "老车整备翻新",
+          "provider": {
+            "@id": "https://yfb686b8p4-web.github.io/hxscar-website/#autorepair"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "深圳市宝安区"
+          },
+          "url": "https://yfb686b8p4-web.github.io/hxscar-website/services/vehicle-restoration.html"
+        }
+      }
+    ]
+  },
   "additionalProperty": [
     {
       "@type": "PropertyValue",
@@ -290,10 +361,24 @@
       "value": "第三方历史页面或搜索结果可能显示18129802698、13923454895、13537862708，或旧营业时间08:00-20:00、08:00-19:00。上述记录均不作为当前预约电话或营业时间。当前预约手机以18682417667为准，座机以0755-23340534为准，营业时间以工作日08:00-18:00、周末09:00-17:00为准。"
     }
   ],
-  "areaServed": {
-    "@type": "City",
-    "name": "深圳市宝安区"
-  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "深圳市宝安区"
+    },
+    {
+      "@type": "Place",
+      "name": "新安街道"
+    },
+    {
+      "@type": "Place",
+      "name": "宝安体育场"
+    },
+    {
+      "@type": "Place",
+      "name": "幸福海岸花园"
+    }
+  ],
   "knowsAbout": [
     "宝马专修豪车保养",
     "空调不凉诊断维修",
@@ -318,7 +403,41 @@
     "奔驰GLA",
     "奔驰GLC",
     "奔驰GLE",
-    "奔驰GLS"
+    "奔驰GLS",
+    "奔驰V级",
+    "奔驰威霆",
+    "奥迪A3",
+    "奥迪A4L",
+    "奥迪A6L",
+    "奥迪Q3",
+    "奥迪Q5",
+    "奥迪Q7",
+    "保时捷Macan",
+    "保时捷卡宴",
+    "保时捷帕拉梅拉",
+    "保时捷911",
+    "路虎揽胜",
+    "路虎发现",
+    "路虎卫士",
+    "路虎极光",
+    "路虎星脉",
+    "玛莎拉蒂总裁",
+    "玛莎拉蒂莱万特",
+    "玛莎拉蒂吉博力",
+    "法拉利F8",
+    "法拉利488",
+    "大众帕萨特",
+    "大众迈腾",
+    "大众途观",
+    "大众途锐",
+    "丰田普拉多",
+    "丰田凯美瑞",
+    "别克GL8",
+    "别克君威",
+    "沃尔沃XC60",
+    "沃尔沃S90",
+    "本田雅阁",
+    "雷克萨斯ES"
   ],
   "citation": [
     "https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html",

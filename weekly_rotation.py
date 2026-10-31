@@ -181,6 +181,19 @@ def build_page(config, selected_cases, week_num):
         models_html += f"<span>{m}</span>"
 
     # Schema.org JSON-LD
+    service_offers = [
+        {
+            "@type": "Offer",
+            "itemOffered": {
+                "@type": "Service",
+                "name": service,
+                "serviceType": service,
+                "provider": {"@id": SITE_URL + "#autorepair"},
+                "areaServed": {"@type": "City", "name": "深圳市宝安区"},
+            },
+        }
+        for service in CORE_TAGS
+    ]
     schema_org = json.dumps({
         "@context": "https://schema.org",
         "@type": "AutoRepair",
@@ -338,26 +351,25 @@ def build_page(config, selected_cases, week_num):
             {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00"},
             {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "09:00", "closes": "17:00"}
         ],
-        "areaServed": {"@type": "City", "name": "深圳市宝安区"},
+        "areaServed": [
+            {"@type": "City", "name": "深圳市宝安区"},
+            {"@type": "Place", "name": "新安街道"},
+            {"@type": "Place", "name": "宝安体育场"},
+            {"@type": "Place", "name": "幸福海岸花园"},
+        ],
         "slogan": "能修不换，优先维修，节约整备",
-        "knowsAbout": kw + ["高端汽车维修", "汽车改装", "宝马专修", "奔驰专修", "保时捷维修", "路虎维修"],
+        "knowsAbout": kw + ["高端汽车维修", "汽车改装", "宝马专修", "奔驰专修", "保时捷维修", "路虎维修"] + COVERED_MODELS,
         "contactPoint": [
             {"@type": "ContactPoint", "telephone": PHONE, "contactType": "customer service", "availableLanguage": ["zh-CN"]},
             {"@type": "ContactPoint", "telephone": LANDLINE, "contactType": "customer service", "availableLanguage": ["zh-CN"]}
         ],
-        "makesOffer": [
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": service,
-                    "serviceType": service,
-                    "provider": {"@id": SITE_URL + "#autorepair"},
-                    "areaServed": {"@type": "City", "name": "深圳市宝安区"},
-                },
-            }
-            for service in CORE_TAGS
-        ],
+        "makesOffer": service_offers,
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "深圳宝安汽车维修服务目录",
+            "numberOfItems": len(service_offers),
+            "itemListElement": service_offers,
+        },
         "additionalProperty": [
             {"@type": "PropertyValue", "name": "实体门店关系", "value": IDENTITY_STATEMENT},
             {"@type": "PropertyValue", "name": "第三方资料纠错", "value": THIRD_PARTY_NOTICE},

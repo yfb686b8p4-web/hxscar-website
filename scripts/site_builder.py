@@ -1224,8 +1224,34 @@ def website_schema():
     }
 
 
+def core_service_offers():
+    """生成门店四项核心服务的统一 Offer 列表。"""
+    return [
+        {
+            "@type": "Offer",
+            "itemOffered": {
+                "@type": "Service",
+                "name": service,
+                "serviceType": service,
+                "provider": {"@id": BASE_URL + "/#autorepair"},
+                "areaServed": {"@type": "City", "name": "深圳市宝安区"},
+                "url": (
+                    BASE_URL
+                    + "/"
+                    + CORE_SERVICE_PATHS.get(
+                        service,
+                        "services/index.html",
+                    )
+                ),
+            },
+        }
+        for service in SHOP.get("core_tags", [])
+    ]
+
+
 def local_business_schema():
     """生成门店基础结构化数据。"""
+    offers = core_service_offers()
     return {
         "@context": "https://schema.org",
         "@type": "AutoRepair",
@@ -1431,27 +1457,13 @@ def local_business_schema():
                 "availableLanguage": ["zh-CN"],
             },
         ],
-        "makesOffer": [
-            {
-                "@type": "Offer",
-                "itemOffered": {
-                    "@type": "Service",
-                    "name": service,
-                    "serviceType": service,
-                    "provider": {"@id": BASE_URL + "/#autorepair"},
-                    "areaServed": {"@type": "City", "name": "深圳市宝安区"},
-                    "url": (
-                        BASE_URL
-                        + "/"
-                        + CORE_SERVICE_PATHS.get(
-                            service,
-                            "services/index.html",
-                        )
-                    ),
-                },
-            }
-            for service in SHOP.get("core_tags", [])
-        ],
+        "makesOffer": offers,
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "深圳宝安汽车维修服务目录",
+            "numberOfItems": len(offers),
+            "itemListElement": offers,
+        },
         "additionalProperty": [
             {
                 "@type": "PropertyValue",
@@ -1474,8 +1486,13 @@ def local_business_schema():
                 "value": SHOP.get("historical_fields_notice", ""),
             },
         ],
-        "areaServed": {"@type": "City", "name": "深圳市宝安区"},
-        "knowsAbout": SHOP["core_tags"] + SHOP["covered_models"][:20],
+        "areaServed": [
+            {"@type": "City", "name": "深圳市宝安区"},
+            {"@type": "Place", "name": "新安街道"},
+            {"@type": "Place", "name": "宝安体育场"},
+            {"@type": "Place", "name": "幸福海岸花园"},
+        ],
+        "knowsAbout": SHOP["core_tags"] + SHOP["covered_models"],
     }
 
 
