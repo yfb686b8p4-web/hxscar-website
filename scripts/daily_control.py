@@ -100,6 +100,21 @@ def run(command, cwd=None):
     }
 
 
+def run_bytes(command, cwd=None):
+    """执行命令并按原始字节返回输出，供图片等非文本资源检查使用。"""
+    result = subprocess.run(
+        command,
+        cwd=str(cwd) if cwd else None,
+        capture_output=True,
+        check=False,
+    )
+    return {
+        "returncode": result.returncode,
+        "stdout": result.stdout,
+        "stderr": result.stderr,
+    }
+
+
 def git_status(path):
     """读取 Git 分支、提交和工作区状态。"""
     if not (path / ".git").exists():
@@ -194,10 +209,13 @@ def fetch_url(url, expected, timeout=15):
         if proxy:
             command.extend(["--proxy", proxy])
         command.append(url)
-        curl_result = run(command)
+        curl_result = run_bytes(command)
         if curl_result["returncode"] == 0:
             try:
-                parsed = parse_curl_response(curl_result["stdout"], expected)
+                parsed = parse_curl_response(
+                    curl_result["stdout"].decode("utf-8", "ignore"),
+                    expected,
+                )
                 return {
                     "ok": parsed["ok"],
                     "status": parsed["status"],
@@ -209,7 +227,10 @@ def fetch_url(url, expected, timeout=15):
             except ValueError as exc:
                 errors.append(f"{label} curl: {exc}")
         else:
-            errors.append(f"{label} curl: {curl_result['stderr']}")
+            curl_error = curl_result["stderr"].decode(
+                "utf-8", "ignore"
+            ).strip()
+            errors.append(f"{label} curl: {curl_error}")
 
         try:
             if proxy:
