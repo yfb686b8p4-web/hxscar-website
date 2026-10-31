@@ -36,6 +36,7 @@ PRIORITY_PATHS = {
     "/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf",
     "/hxscar-website/llms.txt",
     "/hxscar-website/llms-full.txt",
+    "/hxscar-website/sitemap-index.xml",
     "/hxscar-website/services/index.html",
     "/hxscar-website/services/bmw-premium.html",
     "/hxscar-website/services/air-conditioning.html",
@@ -61,6 +62,11 @@ def selected_urls():
             "/hxscar-website/answers/"
         ) or path.startswith("/hxscar-website/cases/"):
             selected.append(url)
+    # 站点地图索引按规范只列出 sitemap.xml 和 image-sitemap.xml，
+    # 自身不会被内容站点地图收录，因此在这里单独加入 IndexNow 请求。
+    sitemap_index_url = f"https://{HOST}/hxscar-website/sitemap-index.xml"
+    if sitemap_index_url not in selected:
+        selected.append(sitemap_index_url)
     return selected
 
 

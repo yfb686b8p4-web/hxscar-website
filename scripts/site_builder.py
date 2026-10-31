@@ -2637,6 +2637,23 @@ def build_image_sitemap():
 """
 
 
+def build_sitemap_index():
+    """生成统一的内容与图片站点地图索引。"""
+    lastmod = datetime.now(TZ).date().isoformat()
+    entries = "\n".join(
+        f"""  <sitemap>
+    <loc>{h(BASE_URL)}/{name}</loc>
+    <lastmod>{lastmod}</lastmod>
+  </sitemap>"""
+        for name in ("sitemap.xml", "image-sitemap.xml")
+    )
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{entries}
+</sitemapindex>
+"""
+
+
 def build_llms_txt():
     """生成面向 AI 阅读的资料索引。"""
     core_tags = "、".join(SHOP["core_tags"])
@@ -2894,6 +2911,7 @@ def main():
     robots = f"""User-agent: *
 Allow: /
 
+Sitemap: {BASE_URL}/sitemap-index.xml
 Sitemap: {BASE_URL}/sitemap.xml
 Sitemap: {BASE_URL}/image-sitemap.xml
 """
@@ -2910,6 +2928,7 @@ Sitemap: {BASE_URL}/image-sitemap.xml
         ROOT / "feed.xml": build_feed_xml(),
         ROOT / "sitemap.xml": sitemap,
         ROOT / "image-sitemap.xml": build_image_sitemap(),
+        ROOT / "sitemap-index.xml": build_sitemap_index(),
         ROOT / "robots.txt": robots,
         ROOT / "llms.txt": build_llms_txt(),
         ROOT / "llms-full.txt": build_llms_full_txt(),

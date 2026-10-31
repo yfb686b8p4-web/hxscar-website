@@ -30,6 +30,7 @@ REQUIRED_FILES = [
     "robots.txt",
     "sitemap.xml",
     "image-sitemap.xml",
+    "sitemap-index.xml",
     "llms.txt",
     "llms-full.txt",
     "services/index.html",
@@ -232,6 +233,7 @@ def audit():
         case_evidence = {}
     robots = read_text("robots.txt")
     sitemap = read_text("sitemap.xml")
+    sitemap_index = read_text("sitemap-index.xml")
     llms = read_text("llms.txt")
     llms_full = read_text("llms-full.txt")
     week = datetime.now(TZ).strftime("%V")
@@ -322,6 +324,13 @@ def audit():
         errors.append("robots.txt 缺少 Sitemap 地址")
     if f"{EXPECTED_ORIGIN}/image-sitemap.xml" not in robots:
         errors.append("robots.txt 缺少图片站点地图")
+    if f"{EXPECTED_ORIGIN}/sitemap-index.xml" not in robots:
+        errors.append("robots.txt 缺少站点地图索引")
+    if (
+        f"{EXPECTED_ORIGIN}/sitemap.xml" not in sitemap_index
+        or f"{EXPECTED_ORIGIN}/image-sitemap.xml" not in sitemap_index
+    ):
+        errors.append("sitemap-index.xml 未包含内容和图片站点地图")
     if "faq.html" not in sitemap or "cases.html" not in sitemap:
         errors.append("sitemap.xml 未包含完整内容页")
     if "store-profile.html" not in sitemap:

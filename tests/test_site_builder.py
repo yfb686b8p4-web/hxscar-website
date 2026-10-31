@@ -227,6 +227,22 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn(site_builder.BUSINESS_IMAGE, image_urls)
         self.assertIn(site_builder.BUSINESS_LOGO, image_urls)
 
+    def test_sitemap_index_exposes_content_and_images(self):
+        """站点地图索引必须同时暴露内容和图片 sitemap。"""
+        root = ET.fromstring(site_builder.build_sitemap_index())
+        namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        locations = {
+            node.text
+            for node in root.findall("sm:sitemap/sm:loc", namespace)
+        }
+        self.assertEqual(
+            locations,
+            {
+                site_builder.BASE_URL + "/sitemap.xml",
+                site_builder.BASE_URL + "/image-sitemap.xml",
+            },
+        )
+
     def test_schema_contains_verified_registry_identity(self):
         """结构化数据必须包含已交叉核验的工商实体标识。"""
         schema = site_builder.local_business_schema()

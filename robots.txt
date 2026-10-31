@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://yfb686b8p4-web.github.io/hxscar-website/sitemap-index.xml
 Sitemap: https://yfb686b8p4-web.github.io/hxscar-website/sitemap.xml
 Sitemap: https://yfb686b8p4-web.github.io/hxscar-website/image-sitemap.xml
