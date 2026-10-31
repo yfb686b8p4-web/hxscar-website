@@ -56,6 +56,13 @@
 - 线上 `feed.xml` 已检出奔驰 E300L 独立案例 URL。
 - IndexNow 聚合端点和 Bing 直连端点再次提交 38 个 URL，均返回 HTTP 200。
 
+## 01:49 独立 Schema.org 门店实体
+
+- 提交 `b264086` 已上线 `store-facts.jsonld`，包含 `AutoRepair` 实体、工商代码、标准地址、手机、座机、分时营业时间、地图 POI、服务范围和历史字段纠错。
+- 全站页面 `<head>`、sitemap、RSS 答案证据、llms 语料和机器事实均增加 JSON-LD 入口。
+- 线上文件已通过 JSON 解析与 `AutoRepair`、统一社会信用代码校验。
+- IndexNow 聚合端点和 Bing 直连端点提交 39 个 URL，均返回 HTTP 200。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。
