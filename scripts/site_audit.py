@@ -152,6 +152,7 @@ def audit():
     faqs = load_json("faqs.json")
     cases = load_json("cases.json")
     reviews = load_json("reviews.json")
+    shop = load_json("shop_info.json")
 
     service_pages = sorted(
         path for path in (ROOT / "services").glob("*.html") if path.name != "index.html"
@@ -268,6 +269,12 @@ def audit():
     if "ItemList" not in page_stats["cases.html"]["schema_types"]:
         errors.append("cases.html 缺少 ItemList 结构化数据")
     for name, stats in page_stats.items():
+        if name.startswith(("services/", "models/")):
+            profile_url = shop.get("external_profile_links", {}).get(
+                "github_profile", ""
+            )
+            if profile_url and profile_url not in read_text(name):
+                errors.append(f"{name} 门店结构化数据缺少 GitHub Profile 实体关联")
         if name.startswith("models/") and name != "models/index.html":
             if "Service" not in stats["schema_types"]:
                 errors.append(f"{name} 缺少 Service 结构化数据")

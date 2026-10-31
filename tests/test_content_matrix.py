@@ -3,6 +3,7 @@
 """验证服务专题页具备完整直接答案和案例证据入口。"""
 
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -44,6 +45,39 @@ class ContentMatrixTests(unittest.TestCase):
         self.assertIn('"alternateName":[', compact)
         self.assertIn('"streetAddress":"新安街道海裕社区', compact)
         self.assertIn('"telephone":["18682417667","0755-23340534"]', compact)
+
+    def test_service_and_model_schemas_link_github_profile(self):
+        """服务与车型页必须把门店实体关联到公开 GitHub Profile。"""
+        shop = json.loads(
+            (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
+        )
+        profile_url = shop["external_profile_links"]["github_profile"]
+        pages = [
+            *sorted((ROOT / "services").glob("*.html")),
+            *sorted((ROOT / "models").glob("*.html")),
+        ]
+        pages = [path for path in pages if path.name != "index.html"]
+        self.assertEqual(len(pages), 16)
+        for path in pages:
+            html = path.read_text(encoding="utf-8")
+            schema_blocks = []
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                html,
+                re.DOTALL,
+            ):
+                schema_blocks.append(json.loads(raw))
+            store_schemas = [
+                schema
+                for schema in schema_blocks
+                if schema.get("@type") == "AutoRepair"
+            ]
+            self.assertTrue(store_schemas, path.name)
+            self.assertIn(
+                profile_url,
+                store_schemas[0].get("sameAs", []),
+                path.name,
+            )
 
 
 if __name__ == "__main__":
