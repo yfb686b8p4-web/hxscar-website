@@ -9,19 +9,19 @@
 |---|---:|---:|---|
 | index.html | 4777 | 3 | AutoRepair, FAQPage, WebSite |
 | faq.html | 11939 | 3 | WebSite, AutoRepair, FAQPage |
-| cases.html | 8373 | 3 | WebSite, AutoRepair, ItemList |
+| cases.html | 8560 | 3 | WebSite, AutoRepair, ItemList |
 | store-profile.html | 2692 | 4 | WebSite, AutoRepair, FAQPage, BreadcrumbList |
 | entity-verification.html | 1386 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers.html | 5266 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/air-conditioning.html | 751 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/aircon-diagnosis.html | 755 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/aircon-left-right.html | 1579 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, HowTo |
-| answers/bmw-5-series.html | 911 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/bmw-selection.html | 773 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/bmw.html | 794 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/chassis-bushing.html | 755 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/chassis-repair.html | 763 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/chassis.html | 753 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/aircon-left-right.html | 1576 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, HowTo |
+| answers/bmw-5-series.html | 908 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/bmw-selection.html | 770 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/bmw.html | 791 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/chassis-bushing.html | 752 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/chassis-repair.html | 760 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/chassis.html | 750 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/contact-correction.html | 671 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/contact.html | 513 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/identity.html | 705 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
@@ -45,6 +45,9 @@
 | models/porsche-cayenne.html | 1889 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
 | models/porsche-macan.html | 1708 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
 | models/volkswagen-touareg.html | 1416 | 5 | WebSite, AutoRepair, Service, BreadcrumbList, FAQPage |
+| cases/bmw-530li-chassis-bushing.html | 626 | 4 | WebSite, AutoRepair, Article, BreadcrumbList |
+| cases/bmw-x5-e70-oil-consumption.html | 654 | 4 | WebSite, AutoRepair, Article, BreadcrumbList |
+| cases/mercedes-e300l-ac-temperature.html | 609 | 4 | WebSite, AutoRepair, Article, BreadcrumbList |
 
 ## 错误
 

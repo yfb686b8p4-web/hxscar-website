@@ -57,7 +57,7 @@ def selected_urls():
         path = urllib.parse.urlsplit(url).path
         if path in PRIORITY_PATHS or path.startswith(
             "/hxscar-website/answers/"
-        ):
+        ) or path.startswith("/hxscar-website/cases/"):
             selected.append(url)
     return selected
 

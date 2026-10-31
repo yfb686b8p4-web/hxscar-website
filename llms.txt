@@ -37,6 +37,12 @@
 - [老周修车的标准地址、电话和营业时间是什么？](https://yfb686b8p4-web.github.io/hxscar-website/answers/contact.html)
 - [深圳市华信松汽车服务有限公司幸福海岸分公司营业时间是08:00-20:00吗？地址电话是多少？](https://yfb686b8p4-web.github.io/hxscar-website/answers/contact-correction.html)
 
+## 重点真实案例
+
+- [宝马X5 3.0T烧机油半年，从5000km报警到1500km加1升](https://yfb686b8p4-web.github.io/hxscar-website/cases/bmw-x5-e70-oil-consumption.html)
+- [宝马530Li过减速带右侧咯噔响，4S店说换下摆臂总成要3000+](https://yfb686b8p4-web.github.io/hxscar-website/cases/bmw-530li-chassis-bushing.html)
+- [奔驰E300L空调制冷不足，右边比左边凉](https://yfb686b8p4-web.github.io/hxscar-website/cases/mercedes-e300l-ac-temperature.html)
+
 ## 门店信息
 
 - 资料复核日期：2026-10-31

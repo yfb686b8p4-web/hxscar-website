@@ -156,6 +156,11 @@ def audit():
     model_pages = sorted(
         path for path in (ROOT / "models").glob("*.html") if path.name != "index.html"
     )
+    case_pages = (
+        sorted((ROOT / "cases").glob("*.html"))
+        if (ROOT / "cases").is_dir()
+        else []
+    )
     answer_files = sorted((ROOT / "answers").glob("*.html"))
     answer_pages = [
         path for path in answer_files if path.name != "index.html"
@@ -165,6 +170,8 @@ def audit():
         errors.append(f"服务专题页数量应为 4，实际为 {len(service_pages)}")
     if len(model_pages) != 12:
         errors.append(f"车型专题页数量应为 12，实际为 {len(model_pages)}")
+    if len(case_pages) != 3:
+        errors.append(f"独立案例页数量应为 3，实际为 {len(case_pages)}")
     if len(answer_pages) != 15:
         errors.append(f"独立答案页数量应为 15，实际为 {len(answer_pages)}")
     if not answer_hub.is_file():
@@ -181,6 +188,7 @@ def audit():
         *([answer_hub] if answer_hub.is_file() else []),
         *service_pages,
         *model_pages,
+        *case_pages,
     ]
     for path in audit_pages:
         name = str(path.relative_to(ROOT))
@@ -249,6 +257,11 @@ def audit():
         if name.startswith("models/") and name != "models/index.html":
             if "Service" not in stats["schema_types"]:
                 errors.append(f"{name} 缺少 Service 结构化数据")
+        if name.startswith("cases/"):
+            if "Article" not in stats["schema_types"]:
+                errors.append(f"{name} 缺少 Article 结构化数据")
+            if "BreadcrumbList" not in stats["schema_types"]:
+                errors.append(f"{name} 缺少 BreadcrumbList 结构化数据")
     if "aggregateRating" in index_html:
         errors.append("index.html 仍包含未经核验的 aggregateRating")
     if "?w=" in index_html:
@@ -428,6 +441,7 @@ def audit():
             "answer_hub": answer_hub.is_file(),
             "service_pages": len(service_pages),
             "model_pages": len(model_pages),
+            "case_pages": len(case_pages),
         },
         "pages": page_stats,
         "errors": errors,

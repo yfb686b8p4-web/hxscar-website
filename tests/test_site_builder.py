@@ -429,6 +429,49 @@ class SiteBuilderGeoTests(unittest.TestCase):
             html,
         )
 
+    def test_key_cases_have_standalone_article_pages(self):
+        """重点真实案例应可独立引用，而不是只存在于长列表锚点。"""
+        pages = site_builder.build_case_study_pages()
+        self.assertEqual(len(pages), 3)
+        case = next(
+            item
+            for item in site_builder.CASES
+            if item["issue"] == "奔驰E300L空调制冷不足，右边比左边凉"
+        )
+        path = site_builder.ROOT / site_builder.case_study_path(case)
+        html = pages[path]
+        self.assertIn(
+            f'<link rel="canonical" href="{site_builder.case_study_url(case)}">',
+            html,
+        )
+        self.assertIn('"@type":"Article"', html.replace(" ", ""))
+        self.assertIn(site_builder.SHOP["address"], html)
+        self.assertIn(site_builder.SHOP["phone"], html)
+        self.assertIn(site_builder.SHOP["landline"], html)
+        self.assertIn(site_builder.SHOP["hours"], html)
+        self.assertIn("../answers/aircon-left-right.html", html)
+        self.assertIn(
+            '<a href="../cases.html" aria-current="page">维修案例</a>',
+            html,
+        )
+        answer = next(
+            item
+            for item in site_builder.SEARCH_ANSWERS
+            if item["anchor"] == "aircon-left-right"
+        )
+        source_urls = {
+            item["url"]
+            for item in site_builder.answer_evidence_sources(answer)
+        }
+        self.assertIn(site_builder.case_study_url(case), source_urls)
+        sitemap = ET.fromstring(site_builder.build_sitemap())
+        namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        locations = {
+            node.text
+            for node in sitemap.findall("sm:url/sm:loc", namespace)
+        }
+        self.assertIn(site_builder.case_study_url(case), locations)
+
     def test_answer_hub_exposes_collection_and_every_detail(self):
         """答案目录必须可访问，并列出全部独立答案。"""
         pages = site_builder.build_answer_pages()
@@ -479,6 +522,12 @@ class SiteBuilderGeoTests(unittest.TestCase):
             self.assertIn(url, llms)
             if item["anchor"] != "identity":
                 self.assertIn(url, feed)
+        for case in site_builder.CASES:
+            if not site_builder.case_study_path(case):
+                continue
+            url = site_builder.case_study_url(case)
+            self.assertIn(url, locations)
+            self.assertIn(url, llms)
 
     def test_page_declares_rss_feed(self):
         """每个静态页面都应声明标准 RSS 发现入口。"""

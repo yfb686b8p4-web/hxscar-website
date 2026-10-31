@@ -51,6 +51,18 @@ BUSINESS_FACT_SHEET = BASE_URL + "/" + SHOP.get(
     "downloads/huaxinsong-store-facts-2026-10-31.pdf",
 )
 
+CASE_STUDY_SLUGS = {
+    "宝马X5 3.0T烧机油半年，从5000km报警到1500km加1升": (
+        "bmw-x5-e70-oil-consumption"
+    ),
+    "宝马530Li过减速带右侧咯噔响，4S店说换下摆臂总成要3000+": (
+        "bmw-530li-chassis-bushing"
+    ),
+    "奔驰E300L空调制冷不足，右边比左边凉": (
+        "mercedes-e300l-ac-temperature"
+    ),
+}
+
 SEARCH_ANSWERS = [
     {
         "anchor": "bmw",
@@ -551,6 +563,18 @@ def case_library_url(case):
     return f"{BASE_URL}/cases.html#case-{case_number}"
 
 
+def case_study_path(case):
+    """返回重点案例独立页的站内路径，无独立页时返回空串。"""
+    slug = CASE_STUDY_SLUGS.get(case.get("issue", ""))
+    return f"cases/{slug}.html" if slug else ""
+
+
+def case_study_url(case):
+    """返回重点案例独立页的线上地址，无独立页时回退到案例库。"""
+    path = case_study_path(case)
+    return BASE_URL + "/" + path if path else case_library_url(case)
+
+
 def case_related_answers(case):
     """按真实案例的故障文本返回最相关的标准答案页。"""
     text = " ".join(
@@ -570,6 +594,7 @@ def case_related_answers(case):
     elif any(marker in text for marker in ("底盘", "异响", "胶套", "摆臂")):
         anchors.extend(["chassis", "chassis-repair"])
     elif "烧机油" in text:
+        anchors.append("bmw")
         anchors.append("restoration")
 
     by_anchor = {item["anchor"]: item for item in SEARCH_ANSWERS}
@@ -615,7 +640,7 @@ def answer_case_sources(item):
     return [
         {
             "name": f"维修案例：{case.get('issue', '')}",
-            "url": case_library_url(case),
+            "url": case_study_url(case),
         }
         for case in answer_case_records(item)[:3]
     ]
@@ -718,7 +743,12 @@ def json_script(data):
 
 def nav(current):
     """生成各静态页共用的导航。"""
-    nested = current in {"services", "models", "answer-detail"}
+    nested = current in {
+        "services",
+        "models",
+        "answer-detail",
+        "case-detail",
+    }
     prefix = "../" if nested else ""
     items = [
         ("index", "首页", prefix + "index.html"),
@@ -740,8 +770,9 @@ def nav(current):
         ("llms", "资料索引", prefix + "llms.txt"),
     ]
     links = []
+    active_key = "cases" if current == "case-detail" else current
     for key, label, href in items:
-        current_attr = ' aria-current="page"' if key == current else ""
+        current_attr = ' aria-current="page"' if key == active_key else ""
         links.append(f'<a href="{href}"{current_attr}>{label}</a>')
     return '<nav class="site-nav" aria-label="主要页面">' + "".join(links) + "</nav>"
 
@@ -1084,10 +1115,16 @@ def build_cases_page():
             if related_answers
             else ""
         )
+        case_path = case_study_path(item)
+        title_markup = (
+            f'<a href="{h(case_path)}">{h(title)}</a>'
+            if case_path
+            else h(title)
+        )
         items.append(
             f"""<article class="case-item" id="case-{index}">
     <div class="case-meta">{h(item.get("tag"))} · {h(item.get("car_type"))}</div>
-    <h3>{h(title)}</h3>
+    <h3>{title_markup}</h3>
     <p><strong>故障表现：</strong>{h(symptoms)}</p>
     <p><strong>处理方案：</strong>{h(solution)}</p>
     <p><strong>参考费用：</strong>{h(cost)}</p>{related_markup}
@@ -1124,6 +1161,146 @@ def build_cases_page():
         body,
         [local_business_schema(), schema],
     )
+
+
+def build_case_study_pages():
+    """为重点真实维修案例生成可独立引用的案例详情页。"""
+    outputs = {}
+    for case in CASES:
+        path_text = case_study_path(case)
+        if not path_text:
+            continue
+        case_number = next(
+            index
+            for index, candidate in enumerate(CASES, start=1)
+            if candidate is case
+        )
+        path = ROOT / path_text
+        canonical = BASE_URL + "/" + path_text
+        title = case.get("issue", "")
+        symptoms = case.get("solution", "")
+        treatment = case.get("price", "")
+        cost = case.get("result", "")
+        related = case_related_answers(case)
+        related_links = " · ".join(
+            f'<a href="../{h(answer_detail_path(answer))}">'
+            f'{h(answer["question"])}</a>'
+            for answer in related
+        )
+        if not related_links:
+            related_links = '<a href="../answers.html">全部搜索问答</a>'
+        service_paths = []
+        for answer in related:
+            service_path = answer_geo_meta(answer)["servicePath"]
+            if service_path not in service_paths:
+                service_paths.append(service_path)
+        service_links = "".join(
+            f'<a href="../{h(path)}">'
+            f'{h(next((name for name, value in CORE_SERVICE_PATHS.items() if value == path), "查看服务专题"))}'
+            "</a>"
+            for path in service_paths
+        )
+        if not service_links:
+            service_links = '<a href="../services/index.html">全部服务专题</a>'
+        body = f"""<section class="hero">
+    <h1>{h(title)}</h1>
+    <p>{h(case.get("tag"))} · {h(case.get("car_type"))} · 真实维修案例</p>
+</section>
+<section class="card" id="direct-answer">
+    <h2>案例结论</h2>
+    <div class="direct-answer">
+        <p><strong>车型：</strong>{h(case.get("tag"))}</p>
+        <p><strong>故障表现：</strong>{h(symptoms)}</p>
+        <p><strong>处理方案：</strong>{h(treatment)}</p>
+        <p><strong>参考费用：</strong>{h(cost)}</p>
+    </div>
+    <p>该方案和费用对应本案车辆的实际检测结果，其他车辆仍需先检查故障点，再确认维修项目和费用。</p>
+</section>
+<section class="card">
+    <h2>诊断与处理记录</h2>
+    <table class="fact-table">
+        <tr><th>车辆</th><td>{h(case.get("tag"))}</td></tr>
+        <tr><th>故障类型</th><td>{h(case.get("car_type"))}</td></tr>
+        <tr><th>故障表现</th><td>{h(symptoms)}</td></tr>
+        <tr><th>处理过程</th><td>{h(treatment)}</td></tr>
+        <tr><th>结果与费用</th><td>{h(cost)}</td></tr>
+    </table>
+</section>
+<section class="card">
+    <h2>相关故障答案</h2>
+    <p>{related_links}</p>
+    <div class="topic-list">
+        <a href="../cases.html#case-{case_number}">案例库原始记录</a>
+        {service_links}
+    </div>
+</section>
+<section class="card">
+    <h2>门店与证据</h2>
+    <p><strong>门店：</strong>{h(SHOP["shop_names"][0])}</p>
+    <p><strong>标准地址：</strong>{h(SHOP["address"])}</p>
+    <p><strong>联系电话：</strong>手机 {h(SHOP["phone"])}；座机 {h(SHOP.get("landline", ""))}</p>
+    <p><strong>营业时间：</strong>{h(SHOP.get("hours", ""))}</p>
+    <p><strong>核验入口：</strong><a href="../entity-verification.html">实体核验</a> · <a href="../store-facts.json">机器可读门店事实</a> · <a href="../cases.html#case-{case_number}">案例库第 {case_number} 条</a></p>
+</section>"""
+        article = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "@id": canonical + "#article",
+            "headline": title,
+            "description": symptoms,
+            "articleBody": f"{symptoms}{treatment}参考费用：{cost}",
+            "about": {"@id": BASE_URL + "/#autorepair"},
+            "author": {"@id": BASE_URL + "/#autorepair"},
+            "publisher": {"@id": BASE_URL + "/#autorepair"},
+            "dateModified": CONTENT_UPDATED_AT,
+            "mainEntityOfPage": canonical,
+            "isPartOf": BASE_URL + "/cases.html",
+            "citation": [
+                BASE_URL + f"/cases.html#case-{case_number}",
+                BASE_URL + "/entity-verification.html",
+                BASE_URL + "/store-facts.json",
+            ],
+            "speakable": {
+                "@type": "SpeakableSpecification",
+                "cssSelector": ["#direct-answer"],
+            },
+        }
+        breadcrumb = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "首页",
+                    "item": BASE_URL + "/",
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "维修案例",
+                    "item": BASE_URL + "/cases.html",
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": title,
+                    "item": canonical,
+                },
+            ],
+        }
+        outputs[path] = page(
+            f"{title}｜真实维修案例｜老周修车",
+            (
+                f"{case.get('tag')}{case.get('car_type')}真实维修案例，"
+                "公开故障表现、处理过程、参考费用和门店核验信息。"
+            ),
+            canonical,
+            body,
+            [local_business_schema(), article, breadcrumb],
+            current="case-detail",
+        )
+    return outputs
 
 
 def build_store_profile_page():
@@ -1609,6 +1786,9 @@ def answer_case_markup(item):
         for index, candidate in enumerate(CASES, start=1)
         if candidate is case
     )
+    case_path = case_study_path(case)
+    case_href = f"../{case_path}" if case_path else f"../cases.html#case-{case_number}"
+    case_label = "查看独立案例" if case_path else f"查看公开案例库第 {case_number} 条"
     return f"""<section class="card">
     <h2>真实维修案例</h2>
     <article class="case-item" id="case-{case_number}">
@@ -1617,7 +1797,7 @@ def answer_case_markup(item):
         <p><strong>故障表现：</strong>{h(case.get("solution"))}</p>
         <p><strong>处理方案：</strong>{h(case.get("price"))}</p>
         <p><strong>参考费用：</strong>{h(case.get("result"))}</p>
-        <p><strong>案例来源：</strong><a href="../cases.html#case-{case_number}">查看公开案例库第 {case_number} 条</a></p>
+        <p><strong>案例来源：</strong><a href="{h(case_href)}">{h(case_label)}</a></p>
     </article>
 </section>"""
 
@@ -2130,6 +2310,9 @@ def build_sitemap():
     for item in SEARCH_ANSWERS:
         urls.append((answer_detail_url(item), "0.9"))
     urls.append((BASE_URL + "/answers/index.html", "0.9"))
+    for case in CASES:
+        if case_study_path(case):
+            urls.append((case_study_url(case), "0.8"))
     for section in ("services", "models"):
         for path in sorted((ROOT / section).glob("*.html")):
             priority = "0.9" if path.name == "index.html" else "0.8"
@@ -2239,6 +2422,11 @@ def build_llms_txt():
         f"- {part['name']}：{part['description']}"
         for part in SHOP["parts_options"]
     )
+    case_study_links = "\n".join(
+        f"- [{case['issue']}]({case_study_url(case)})"
+        for case in CASES
+        if case_study_path(case)
+    )
     return f"""# 华信松汽车服务有限公司（幸福海岸分公司）
 
 > 深圳宝安本地高端汽车维修门店，重点服务：{core_tags}。
@@ -2263,6 +2451,10 @@ def build_llms_txt():
 ## 独立答案页
 
 {chr(10).join(f"- [{item['question']}]({answer_detail_url(item)})" for item in SEARCH_ANSWERS)}
+
+## 重点真实案例
+
+{case_study_links}
 
 ## 门店信息
 
@@ -2462,6 +2654,7 @@ def main():
     answers_html = build_answers_page()
     faq_html = build_faq_page()
     cases_html = build_cases_page()
+    case_study_pages = build_case_study_pages()
     store_profile_html = build_store_profile_page()
     entity_verification_html = build_entity_verification_page()
     answer_pages = build_answer_pages()
@@ -2476,6 +2669,7 @@ Sitemap: {BASE_URL}/image-sitemap.xml
         ROOT / "answers.html": answers_html,
         ROOT / "faq.html": faq_html,
         ROOT / "cases.html": cases_html,
+        **case_study_pages,
         ROOT / "store-profile.html": store_profile_html,
         ROOT / "entity-verification.html": entity_verification_html,
         ROOT / "store-facts.json": build_store_facts_json(),

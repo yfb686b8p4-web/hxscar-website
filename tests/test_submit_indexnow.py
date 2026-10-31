@@ -32,6 +32,10 @@ class SubmitIndexNowTests(unittest.TestCase):
             sum("/hxscar-website/answers/" in url for url in urls),
             16,
         )
+        self.assertEqual(
+            sum("/hxscar-website/cases/" in url for url in urls),
+            3,
+        )
 
 
 if __name__ == "__main__":
