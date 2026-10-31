@@ -562,6 +562,45 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn("参考费用2000元", description)
         self.assertFalse(description.endswith(("，", ",", "；", ";")))
 
+    def test_high_intent_answers_have_machine_readable_playbooks(self):
+        """宝马、底盘和老车整备答案必须给出可执行步骤和安全边界。"""
+        expected = {
+            "bmw.html": "宝马与豪车进店检查流程",
+            "bmw-5-series.html": "宝马5系故障分流检查",
+            "chassis.html": "底盘异响定位与能修不换判断",
+            "restoration.html": "老车整备分阶段执行顺序",
+        }
+        outputs = site_builder.build_answer_pages()
+        for filename, title in expected.items():
+            html = outputs[site_builder.ROOT / "answers" / filename]
+            self.assertIn(title, html, filename)
+            self.assertIn("安全边界：", html, filename)
+            self.assertIn("真实维修案例", html, filename)
+            schemas = [
+                json.loads(raw)
+                for raw in re.findall(
+                    r'<script type="application/ld\+json">(.*?)</script>',
+                    html,
+                    re.DOTALL,
+                )
+            ]
+            howto = next(
+                schema
+                for schema in schemas
+                if schema.get("@type") == "HowTo"
+            )
+            self.assertEqual(len(howto["step"]), 5, filename)
+            self.assertTrue(howto.get("citation"), filename)
+            howto_text = json.dumps(howto, ensure_ascii=False)
+            for marker in (
+                "保证修好",
+                "免费",
+                "质保",
+                "当天",
+                "排名第一",
+            ):
+                self.assertNotIn(marker, howto_text, filename)
+
     def test_cases_link_back_to_related_direct_answers(self):
         """公开案例应反链到对应答案，形成证据与答案的双向链路。"""
         case = next(

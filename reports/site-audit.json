@@ -71,9 +71,9 @@
       ]
     },
     "answers.html": {
-      "bytes": 97232,
-      "han_chars": 9286,
-      "visible_han_chars": 5866,
+      "bytes": 99374,
+      "han_chars": 9469,
+      "visible_han_chars": 6049,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -112,7 +112,7 @@
       ]
     },
     "answers/aircon-left-right.html": {
-      "bytes": 35302,
+      "bytes": 36630,
       "han_chars": 4326,
       "visible_han_chars": 1616,
       "json_ld_blocks": 7,
@@ -127,17 +127,18 @@
       ]
     },
     "answers/bmw-5-series.html": {
-      "bytes": 30373,
-      "han_chars": 3179,
-      "visible_han_chars": 948,
-      "json_ld_blocks": 6,
+      "bytes": 35748,
+      "han_chars": 4023,
+      "visible_han_chars": 1377,
+      "json_ld_blocks": 7,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "WebPage",
         "FAQPage",
         "BreadcrumbList",
-        "Service"
+        "Service",
+        "HowTo"
       ]
     },
     "answers/bmw-selection.html": {
@@ -155,17 +156,18 @@
       ]
     },
     "answers/bmw.html": {
-      "bytes": 29048,
-      "han_chars": 2821,
-      "visible_han_chars": 845,
-      "json_ld_blocks": 6,
+      "bytes": 34554,
+      "han_chars": 3705,
+      "visible_han_chars": 1294,
+      "json_ld_blocks": 7,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "WebPage",
         "FAQPage",
         "BreadcrumbList",
-        "Service"
+        "Service",
+        "HowTo"
       ]
     },
     "answers/chassis-bushing.html": {
@@ -197,17 +199,18 @@
       ]
     },
     "answers/chassis.html": {
-      "bytes": 28262,
-      "han_chars": 2640,
-      "visible_han_chars": 806,
-      "json_ld_blocks": 6,
+      "bytes": 33855,
+      "han_chars": 3560,
+      "visible_han_chars": 1273,
+      "json_ld_blocks": 7,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "WebPage",
         "FAQPage",
         "BreadcrumbList",
-        "Service"
+        "Service",
+        "HowTo"
       ]
     },
     "answers/contact-correction.html": {
@@ -250,9 +253,9 @@
       ]
     },
     "answers/restoration-order.html": {
-      "bytes": 26420,
-      "han_chars": 2350,
-      "visible_han_chars": 568,
+      "bytes": 28053,
+      "han_chars": 2564,
+      "visible_han_chars": 782,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -264,9 +267,9 @@
       ]
     },
     "answers/restoration-selection.html": {
-      "bytes": 27131,
-      "han_chars": 2516,
-      "visible_han_chars": 598,
+      "bytes": 28764,
+      "han_chars": 2730,
+      "visible_han_chars": 812,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -278,17 +281,18 @@
       ]
     },
     "answers/restoration.html": {
-      "bytes": 26663,
-      "han_chars": 2419,
-      "visible_han_chars": 572,
-      "json_ld_blocks": 6,
+      "bytes": 33800,
+      "han_chars": 3509,
+      "visible_han_chars": 1231,
+      "json_ld_blocks": 7,
       "schema_types": [
         "WebSite",
         "AutoRepair",
         "WebPage",
         "FAQPage",
         "BreadcrumbList",
-        "Service"
+        "Service",
+        "HowTo"
       ]
     },
     "answers/index.html": {

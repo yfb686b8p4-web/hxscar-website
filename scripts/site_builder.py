@@ -551,6 +551,255 @@ AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS = [
     },
 ]
 
+ANSWER_DIAGNOSTIC_PLAYBOOKS = {
+    "bmw": {
+        "title": "宝马与豪车进店检查流程",
+        "boundary": (
+            "出现制动、转向、冷却液快速减少、机油压力报警或底盘明显松旷时，"
+            "应停止继续高速行驶，先确认安全状态再安排维修。"
+        ),
+        "steps": [
+            {
+                "name": "核对车型、发动机和维修历史",
+                "action": (
+                    "记录车辆型号、年款、发动机、当前里程、故障出现条件和"
+                    "此前更换或维修过的项目。"
+                ),
+                "interpretation": (
+                    "先把车型差异和旧维修影响纳入判断，避免只凭车系印象"
+                    "直接更换部件。"
+                ),
+            },
+            {
+                "name": "按故障出现条件复现问题",
+                "action": (
+                    "区分冷车、热车、怠速、加速、转向、制动和颠簸路面等条件，"
+                    "记录声音、振动、报警和性能变化。"
+                ),
+                "interpretation": (
+                    "可稳定复现的问题更容易通过路试、数据和部件检查对应到"
+                    "具体系统。"
+                ),
+            },
+            {
+                "name": "先读取故障码和实际数据",
+                "action": (
+                    "读取故障码、冻结帧和与故障相关的实际数据，再检查线路、"
+                    "油液、泄漏和机械间隙。"
+                ),
+                "interpretation": (
+                    "故障码只用于缩小范围，不能代替线路、机械状态和实际数据"
+                    "检查。"
+                ),
+            },
+            {
+                "name": "说明维修、更换与暂不处理边界",
+                "action": (
+                    "把已确认故障、待继续检查项目和涉及安全的部件分开说明，"
+                    "再比较维修、品牌件、原厂件或拆车件方案。"
+                ),
+                "interpretation": (
+                    "本体、球头、安装孔或安全结构已不符合继续使用条件时，"
+                    "不能只做表面维修。"
+                ),
+            },
+            {
+                "name": "按原故障条件复检",
+                "action": (
+                    "施工后按原故障条件路试或复测相关数据，记录更换部件、"
+                    "检测结果和仍需观察的项目。"
+                ),
+                "interpretation": (
+                    "只有原故障条件不再出现且相关数据正常，才进入交付说明。"
+                ),
+            },
+        ],
+    },
+    "bmw-5-series": {
+        "title": "宝马5系故障分流检查",
+        "boundary": (
+            "车辆出现制动异常、方向失控感、冷却液或机油快速减少、"
+            "底盘金属撞击或明显松旷时，不应继续高速行驶。"
+        ),
+        "steps": [
+            {
+                "name": "先区分发动机、底盘、空调和电气问题",
+                "action": (
+                    "按故障现象记录报警内容、出现温度、车速、挡位和路面条件，"
+                    "先判断涉及的系统。"
+                ),
+                "interpretation": (
+                    "同类现象可能来自不同系统，不能因为车型相同就套用固定故障结论。"
+                ),
+            },
+            {
+                "name": "检查电源、油液和基础状态",
+                "action": (
+                    "检查蓄电池与充电状态、机油和冷却液液位、泄漏痕迹、"
+                    "轮胎与制动基础状态。"
+                ),
+                "interpretation": (
+                    "基础状态异常时先处理供电、泄漏和安全隐患，再评价舒适性或性能问题。"
+                ),
+            },
+            {
+                "name": "读取故障码并核对实际数据",
+                "action": (
+                    "读取发动机、变速箱、底盘或空调系统的故障码与相关数据，"
+                    "再做线路、压力和机械检查。"
+                ),
+                "interpretation": (
+                    "故障码与实际数据不一致时继续检查线路和执行部件，"
+                    "不以单条故障码直接报价换件。"
+                ),
+            },
+            {
+                "name": "路试和举升检查同时进行",
+                "action": (
+                    "在安全条件下复现异响、顿挫、跑偏或制冷问题，"
+                    "并检查底盘、悬挂、轮胎和管路状态。"
+                ),
+                "interpretation": (
+                    "动态症状需要路试与静态检查交叉确认，再确定维修项目。"
+                ),
+            },
+            {
+                "name": "确认配件方案后进行复检",
+                "action": (
+                    "说明维修、品牌件、原厂件或拆车件选择及对应边界，"
+                    "施工后按原症状复检。"
+                ),
+                "interpretation": (
+                    "新增项目应重新说明并确认，最终结果以复检记录为准。"
+                ),
+            },
+        ],
+    },
+    "chassis": {
+        "title": "底盘异响定位与能修不换判断",
+        "boundary": (
+            "出现转向松旷、制动跑偏、轮胎异常摆动、金属撞击或部件明显位移时，"
+            "应先停驶检查；不能为了只换胶套而继续使用存在断裂风险的部件。"
+        ),
+        "steps": [
+            {
+                "name": "记录异响出现的速度、路面和动作",
+                "action": (
+                    "分别记录直行、转弯、过减速带、制动、起步和低速停车时"
+                    "是否出现声音，以及声音位置和频率。"
+                ),
+                "interpretation": (
+                    "不同动作对应的受力路径不同，可先缩小到悬挂、转向、制动"
+                    "或传动系统。"
+                ),
+            },
+            {
+                "name": "路试复现并确认声音方向",
+                "action": (
+                    "在安全路段低速复现，由车内外不同位置交叉确认声音来源，"
+                    "避免只凭车内听感判断左右侧。"
+                ),
+                "interpretation": (
+                    "声音在车内会传递，最终仍需结合举升检查和部件受力结果。"
+                ),
+            },
+            {
+                "name": "举升检查胶套、球头、减震器和连接件",
+                "action": (
+                    "检查下摆臂胶套、平衡杆胶套与连杆、球头、减震器顶胶、"
+                    "转向拉杆、副车架和紧固件。"
+                ),
+                "interpretation": (
+                    "只出现胶套老化且金属本体、球头和安装孔符合继续使用条件时，"
+                    "才评估单独更换胶套。"
+                ),
+            },
+            {
+                "name": "加载检查间隙和异常位移",
+                "action": (
+                    "按部件受力方向检查间隙、旷量和异常位移，区分冷车异响、"
+                    "热车异响和颠簸时才出现的异响。"
+                ),
+                "interpretation": (
+                    "球头松旷、本体裂纹、安装孔损伤或安全结构变形时，"
+                    "应更换对应安全部件或总成。"
+                ),
+            },
+            {
+                "name": "维修后做定位与同条件路试",
+                "action": (
+                    "涉及悬挂或转向拆装时，按车型要求做四轮定位，并按原异响条件复检。"
+                ),
+                "interpretation": (
+                    "异响消失且方向、制动和轮胎状态正常，才完成交付记录。"
+                ),
+            },
+        ],
+    },
+    "restoration": {
+        "title": "老车整备分阶段执行顺序",
+        "boundary": (
+            "老车整备先处理制动、转向、轮胎、燃油、冷却和电气安全；"
+            "在这些项目确认前，不先投入内饰和外观翻新。"
+        ),
+        "steps": [
+            {
+                "name": "建立车况基线",
+                "action": (
+                    "记录车型、里程、维修历史、漏油漏水、故障码、轮胎制动状态"
+                    "和车主希望保留或恢复的功能。"
+                ),
+                "interpretation": (
+                    "先区分安全隐患、可靠性问题、舒适性问题和外观问题，"
+                    "形成可核对的整备清单。"
+                ),
+            },
+            {
+                "name": "先解决机械可靠性和泄漏",
+                "action": (
+                    "优先检查发动机和变速箱工况、油液、冷却、燃油及明显泄漏，"
+                    "确认车辆可以稳定运行。"
+                ),
+                "interpretation": (
+                    "机械状态不稳定时先做外观，后续拆装会增加重复施工和返工风险。"
+                ),
+            },
+            {
+                "name": "处理底盘、制动、转向和轮胎",
+                "action": (
+                    "检查胶套、球头、减震器、制动系统、转向间隙、轮胎磨损"
+                    "和四轮定位状态。"
+                ),
+                "interpretation": (
+                    "安全和行驶系统恢复后再评价舒适性和驾驶质感，"
+                    "避免用更换总成掩盖未定位的问题。"
+                ),
+            },
+            {
+                "name": "再安排空调、电气和内饰功能",
+                "action": (
+                    "按泄漏、供电、风门、鼓风机、开关、线路和内饰功能逐项检查，"
+                    "区分功能修复与外观更换。"
+                ),
+                "interpretation": (
+                    "涉及拆内饰的电气或空调维修应在外观翻新前完成，"
+                    "减少饰板和表面二次拆装。"
+                ),
+            },
+            {
+                "name": "最后处理外观并分阶段复检",
+                "action": (
+                    "机械、安全和功能问题稳定后，再按预算安排漆面、内饰和外观，"
+                    "每个阶段完成后按原检查项复检。"
+                ),
+                "interpretation": (
+                    "分阶段施工便于核对预算和结果，也能避免一次性拆装范围失控。"
+                ),
+            },
+        ],
+    },
+}
+
 ANSWER_META_DESCRIPTIONS = {
     "contact-correction": (
         "深圳市华信松汽车服务有限公司幸福海岸分公司当前营业时间为"
@@ -656,6 +905,14 @@ def answer_case_records(item):
         elif category == "底盘异响" and (
             case.get("car_type") in {"底盘", "底盘异响"} or "底盘" in text
         ):
+            matches.append(case)
+        elif category == "老车整备翻新" and case.get("car_type") in {
+            "发动机",
+            "底盘",
+            "底盘异响",
+            "空调",
+            "空调不凉",
+        }:
             matches.append(case)
     if item["anchor"] == "aircon-left-right":
         matches.sort(
@@ -1994,20 +2251,19 @@ def answer_meta_description(item, limit=158):
 
 
 def answer_supplement_markup(item):
-    """为左右温差答案补充症状分流和维修边界。"""
-    if item["anchor"] != "aircon-left-right":
-        return ""
-    steps = "".join(
-        f"""<tr>
+    """为高意图答案补充可执行诊断步骤和安全边界。"""
+    if item["anchor"] == "aircon-left-right":
+        steps = "".join(
+            f"""<tr>
         <th>{index}. {h(step["name"])}</th>
         <td><p>{h(step["action"])}</p><p><strong>判断：</strong>{h(step["interpretation"])}</p></td>
     </tr>"""
-        for index, step in enumerate(
-            AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS,
-            start=1,
+            for index, step in enumerate(
+                AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS,
+                start=1,
+            )
         )
-    )
-    return f"""<section class="card">
+        return f"""<section class="card">
     <h2>先做 5 项交叉检查，再决定换什么</h2>
     <table class="fact-table">
         {steps}
@@ -2025,20 +2281,50 @@ def answer_supplement_markup(item):
     <p><strong>安全边界：</strong>未完成设置检查、故障码读取、风门动作检查和压力测试前，不直接添加冷媒、更换压缩机或拆仪表台。风门电机、翻板轴、冷媒系统和蒸发箱是不同故障路径，必须由检测结果决定维修项目。</p>
 </section>"""
 
+    playbook = ANSWER_DIAGNOSTIC_PLAYBOOKS.get(item["anchor"])
+    if not playbook:
+        return ""
+    steps = "".join(
+        f"""<tr>
+        <th>{index}. {h(step["name"])}</th>
+        <td><p>{h(step["action"])}</p><p><strong>判断：</strong>{h(step["interpretation"])}</p></td>
+    </tr>"""
+        for index, step in enumerate(playbook["steps"], start=1)
+    )
+    return f"""<section class="card">
+    <h2>{h(playbook["title"])}</h2>
+    <table class="fact-table">
+        {steps}
+    </table>
+    <p><strong>安全边界：</strong>{h(playbook["boundary"])}</p>
+</section>"""
+
 
 def answer_supplement_schema(item):
-    """为左右温差答案生成可被机器读取的诊断步骤。"""
-    if item["anchor"] != "aircon-left-right":
-        return None
+    """为高意图答案生成可被机器读取的诊断或施工步骤。"""
+    if item["anchor"] == "aircon-left-right":
+        name = item["question"]
+        steps = AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS
+        description = item["answer"]
+    else:
+        playbook = ANSWER_DIAGNOSTIC_PLAYBOOKS.get(item["anchor"])
+        if not playbook:
+            return None
+        name = playbook["title"]
+        steps = playbook["steps"]
+        description = playbook["boundary"]
     canonical = answer_detail_url(item)
     return {
         "@context": "https://schema.org",
         "@type": "HowTo",
         "@id": canonical + "#diagnostic-steps",
-        "name": item["question"],
-        "description": item["answer"],
+        "name": name,
+        "description": description,
         "about": {"@id": BASE_URL + "/#autorepair"},
         "mainEntityOfPage": canonical,
+        "citation": [
+            source["url"] for source in answer_evidence_sources(item)
+        ],
         "step": [
             {
                 "@type": "HowToStep",
@@ -2046,10 +2332,7 @@ def answer_supplement_schema(item):
                 "name": step["name"],
                 "text": step["action"] + step["interpretation"],
             }
-            for index, step in enumerate(
-                AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS,
-                start=1,
-            )
+            for index, step in enumerate(steps, start=1)
         ],
     }
 
