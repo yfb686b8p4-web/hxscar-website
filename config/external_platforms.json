@@ -61,6 +61,15 @@
       "objective": "完成站点验证后提交主站与图片 sitemap，监控字节搜索抓取和索引，提升豆包网页检索可见性"
     },
     {
+      "id": "wechat-official",
+      "name": "微信公众号·老周在修车",
+      "priority": "P0",
+      "action_url": "https://mp.weixin.qq.com/",
+      "content_source": "publishing/drafts/wechat_official_entity_correction_2026-11-01.md",
+      "content_source_root": "project",
+      "objective": "如账号属于门店，统一公众号资料并发布实体关系纠错文章，向元宝提供官网、信用代码、地址、双电话和营业时间证据"
+    },
+    {
       "id": "dianping",
       "name": "大众点评",
       "priority": "P0",

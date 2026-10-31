@@ -81,6 +81,18 @@
       "notes": "2026-11-01 05:06复核：头条搜索站长平台提供 sitemap 提交、流量与索引量监控、抓取频次调整，直接服务字节搜索及豆包网页检索。登录弹窗要求今日头条账号手机号和4位短信验证码，当前无法继续。主站 robots.txt 已公开 sitemap-index.xml、sitemap.xml、image-sitemap.xml；需账号本人登录并完成站点验证后提交主站 sitemap 与图片 sitemap。"
     },
     {
+      "id": "wechat-official",
+      "name": "微信公众号·老周在修车",
+      "priority": "P0",
+      "status": "blocked",
+      "objective": "如账号属于门店，统一公众号资料并发布实体关系纠错文章，向元宝提供官网、信用代码、地址、双电话和营业时间证据",
+      "action_url": "https://mp.weixin.qq.com/",
+      "task_file": "publishing/queue/W44/p0-wechat-official.md",
+      "source_file": "publishing/drafts/wechat_official_entity_correction_2026-11-01.md",
+      "url": "https://mp.weixin.qq.com/",
+      "notes": "2026-11-01 05:29复核元宝实体问题引用来源，出现“公众号·老周在修车”的《换胶套,修减震就找老周》等内容，但当前无法确认该公众号是否由门店账号所有。已准备实体关系纠错文章；需账号所有人登录微信公众号后台，先核对账号主体，再在资料与文章中补齐登记全称、信用代码、标准地址、双电话、分时营业时间和官网核验链接。"
+    },
+    {
       "id": "dianping",
       "name": "大众点评",
       "priority": "P0",

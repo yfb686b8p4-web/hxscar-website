@@ -91,6 +91,16 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://yfb686b8p4-web.github.io/hxscar-website/assets/store-banner.webp</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://yfb686b8p4-web.github.io/hxscar-website/assets/store-banner-960.webp</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://yfb686b8p4-web.github.io/hxscar-website/assets/store-avatar-300.jpg</loc>
     <lastmod>2026-11-01</lastmod>
     <priority>0.4</priority>
