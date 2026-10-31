@@ -1068,6 +1068,25 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 for item in schema["subjectOf"]
             },
         )
+        gist_qa = site_builder.SHOP["document_mirrors"][
+            "gist_qa_evidence_jsonl"
+        ]
+        self.assertIn(gist_qa, site_builder.build_llms_txt())
+        self.assertIn(gist_qa, site_builder.build_llms_full_txt())
+        self.assertIn(
+            gist_qa,
+            {
+                item["url"]
+                for item in facts["citationTargets"]
+            },
+        )
+        self.assertIn(
+            gist_qa,
+            {
+                item["url"]
+                for item in schema["subjectOf"]
+            },
+        )
 
     def test_identity_feed_item_points_to_verification_page(self):
         """RSS 中的实体问题应指向专门核验页，而不是综合问答锚点。"""

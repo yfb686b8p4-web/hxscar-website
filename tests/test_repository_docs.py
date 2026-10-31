@@ -147,6 +147,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             "store-facts.json",
             "store-facts.jsonld",
             "case-evidence.json",
+            "qa-evidence.jsonl",
             "llms-full.txt",
             "56 条真实维修案例",
             "84 组安全 FAQ",

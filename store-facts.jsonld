@@ -48,6 +48,12 @@
     },
     {
       "@type": "DataFeed",
+      "name": "GitHub Gist 原子问答证据镜像",
+      "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/qa-evidence.jsonl",
+      "encodingFormat": "application/x-ndjson"
+    },
+    {
+      "@type": "DataFeed",
       "name": "GitHub Release 门店事实 JSON 镜像",
       "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/store-facts.json",
       "encodingFormat": "application/json"

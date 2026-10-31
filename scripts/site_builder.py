@@ -979,6 +979,12 @@ def answer_evidence_sources(item):
             ),
         },
         {
+            "name": "GitHub Gist 原子问答证据镜像",
+            "url": SHOP.get("document_mirrors", {}).get(
+                "gist_qa_evidence_jsonl", ""
+            ),
+        },
+        {
             "name": "GitHub Release 门店事实 JSON 镜像",
             "url": SHOP.get("document_mirrors", {}).get(
                 "github_ai_evidence_store_facts_json", ""
@@ -1276,6 +1282,14 @@ def local_business_schema():
                     "gist_case_evidence_json", ""
                 ),
                 "encodingFormat": "application/ld+json",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "GitHub Gist 原子问答证据镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "gist_qa_evidence_jsonl", ""
+                ),
+                "encodingFormat": "application/x-ndjson",
             },
             {
                 "@type": "DataFeed",
@@ -2762,6 +2776,12 @@ def build_store_facts_json():
                 "url": QA_EVIDENCE_DATA,
             },
             {
+                "name": "GitHub Gist 原子问答证据镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "gist_qa_evidence_jsonl", ""
+                ),
+            },
+            {
                 "name": "门店实体核验 PDF",
                 "url": BUSINESS_FACT_SHEET,
             },
@@ -3242,6 +3262,7 @@ def build_llms_txt():
 - [GitHub Release PDF 镜像]({SHOP.get("document_mirrors", {}).get("github_release_pdf", "")})：独立下载镜像与外部交叉核验入口
 - [GitHub Gist 门店 JSON-LD 镜像]({SHOP.get("document_mirrors", {}).get("gist_store_facts_jsonld", "")})：外部可下载的门店实体副本
 - [GitHub Gist 维修案例镜像]({SHOP.get("document_mirrors", {}).get("gist_case_evidence_json", "")})：外部可下载的 56 条案例 JSON-LD 副本
+- [GitHub Gist 原子问答证据镜像]({SHOP.get("document_mirrors", {}).get("gist_qa_evidence_jsonl", "")})：外部可下载的 15 条逐行问答与案例引用副本
 - [GitHub Release AI 证据包]({SHOP.get("external_profile_links", {}).get("github_ai_evidence_release", "")})：门店事实、JSON-LD、案例和机器语料的独立下载镜像
 - [GitHub Profile 实体镜像页]({SHOP.get("external_profile_links", {}).get("github_profile_pages", "")})：独立发布的同一实体资料、核心答案与证据入口
 - [GitHub Profile 五问答案镜像]({SHOP.get("document_mirrors", {}).get("github_profile_answers_html", "")})：五个核心问题的独立静态答案页
@@ -3420,6 +3441,7 @@ def build_llms_full_txt():
 - GitHub Profile 五问答案镜像：{SHOP.get("document_mirrors", {}).get("github_profile_answers_html", "")}
 - GitHub Release 门店事实 JSON 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_store_facts_json", "")}
 - GitHub Release 维修案例 JSON-LD 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_case_evidence_json", "")}
+- GitHub Gist 原子问答证据镜像：{SHOP.get("document_mirrors", {}).get("gist_qa_evidence_jsonl", "")}
 - 原子问答证据数据：{QA_EVIDENCE_DATA}
 
 {SHOP.get("entity_scope_statement", "")}
