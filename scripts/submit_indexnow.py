@@ -40,6 +40,7 @@ PRIORITY_PATHS = {
     "/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf",
     "/hxscar-website/llms.txt",
     "/hxscar-website/llms-full.txt",
+    "/hxscar-website/robots.txt",
     "/hxscar-website/sitemap-index.xml",
     "/hxscar-website/services/index.html",
     "/hxscar-website/services/bmw-premium.html",
@@ -77,6 +78,9 @@ def selected_urls():
     sitemap_index_url = f"https://{HOST}/hxscar-website/sitemap-index.xml"
     if sitemap_index_url not in selected:
         selected.append(sitemap_index_url)
+    robots_url = f"https://{HOST}/hxscar-website/robots.txt"
+    if robots_url not in selected:
+        selected.append(robots_url)
     return selected
 
 

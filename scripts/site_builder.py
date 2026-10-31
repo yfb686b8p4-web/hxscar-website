@@ -3855,7 +3855,22 @@ def main():
     entity_verification_html = build_entity_verification_page()
     answer_pages = build_answer_pages()
     sitemap = build_sitemap()
-    robots = f"""User-agent: *
+    robots = f"""User-agent: Bytespider
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: *
 Allow: /
 
 Sitemap: {BASE_URL}/sitemap-index.xml

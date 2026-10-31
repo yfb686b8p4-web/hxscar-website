@@ -170,6 +170,27 @@ class RepositoryReadmeTests(unittest.TestCase):
             self.assertIn("submit_indexnow.py", text)
             self.assertIn("submit_profile_indexnow.py", text)
 
+    def test_ai_crawlers_are_explicitly_allowed(self):
+        """主站与 Profile 必须明确允许主流 AI 搜索爬虫。"""
+        robots_files = (
+            ROOT / "robots.txt",
+            ROOT / "publishing" / "github-profile-site" / "robots.txt",
+        )
+        for path in robots_files:
+            text = path.read_text(encoding="utf-8")
+            for crawler in (
+                "Bytespider",
+                "GPTBot",
+                "ClaudeBot",
+                "PerplexityBot",
+                "CCBot",
+            ):
+                self.assertIn(
+                    f"User-agent: {crawler}\nAllow: /",
+                    text,
+                    path,
+                )
+
     def test_profile_pages_is_a_verified_entity_mirror(self):
         """Profile Pages 只能作为标准实体与证据镜像。"""
         site_dir = ROOT / "publishing" / "github-profile-site"
