@@ -30,6 +30,11 @@ class ContentMatrixTests(unittest.TestCase):
             self.assertIn("公开案例证据：", html, path.name)
             self.assertIn("../cases.html#case-", html, path.name)
             self.assertIn('"@type":"Service"', html.replace(" ", ""), path.name)
+            self.assertIn(
+                '"citation":["https://yfb686b8p4-web.github.io/',
+                html.replace(" ", ""),
+                path.name,
+            )
 
     def test_service_schema_declares_full_provider_identity(self):
         html = (ROOT / "services" / "bmw-premium.html").read_text(

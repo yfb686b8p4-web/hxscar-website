@@ -6,6 +6,7 @@ from pathlib import Path
 
 from site_builder import (
     BASE_URL,
+    BUSINESS_FACT_SHEET,
     CASES,
     CONTENT_UPDATED_AT,
     FAQS,
@@ -261,7 +262,18 @@ def faq_schema(items):
             {
                 "@type": "Question",
                 "name": item["question"],
-                "acceptedAnswer": {"@type": "Answer", "text": item["answer"]},
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item["answer"],
+                    "citation": [
+                        BASE_URL + "/entity-verification.html",
+                        BASE_URL + "/store-facts.json",
+                        BUSINESS_FACT_SHEET,
+                        SHOP.get("document_mirrors", {}).get(
+                            "github_release_pdf", ""
+                        ),
+                    ],
+                },
             }
             for item in items
         ],

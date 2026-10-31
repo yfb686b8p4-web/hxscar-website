@@ -3,6 +3,7 @@
 """验证 GEO 答案的证据和来源配置。"""
 
 import json
+import re
 import unittest
 import xml.etree.ElementTree as ET
 
@@ -230,6 +231,29 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn("证据来源：", feed)
         self.assertIn("证据来源：", llms_full)
         self.assertIn("/cases.html#case-", llms_full)
+
+    def test_search_answer_faq_schema_contains_citations(self):
+        """搜索问答的结构化答案必须直接携带可引用来源。"""
+        html = site_builder.build_answers_page()
+        schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                html,
+                re.S,
+            )
+        ]
+        faq_page = next(
+            schema
+            for schema in schemas
+            if schema.get("@type") == "FAQPage"
+        )
+        for question in faq_page["mainEntity"]:
+            answer = question["acceptedAnswer"]
+            self.assertGreaterEqual(len(answer.get("citation", [])), 4)
+            self.assertTrue(
+                all(url.startswith("https://") for url in answer["citation"])
+            )
 
     def test_page_declares_rss_feed(self):
         """每个静态页面都应声明标准 RSS 发现入口。"""

@@ -531,6 +531,17 @@ def answer_evidence_sources(item):
     return unique
 
 
+def entity_citation_urls():
+    """返回门店实体核验页的标准引用地址。"""
+    return [
+        BASE_URL + "/store-profile.html",
+        BASE_URL + "/entity-verification.html",
+        BASE_URL + "/store-facts.json",
+        BUSINESS_FACT_SHEET,
+        SHOP.get("document_mirrors", {}).get("github_release_pdf", ""),
+    ]
+
+
 def answer_evidence_markup(item):
     """输出可被生成式搜索直接抽取的证据块。"""
     meta = answer_geo_meta(item)
@@ -1086,6 +1097,7 @@ def build_store_profile_page():
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": item["answer"],
+                    "citation": entity_citation_urls(),
                 },
             }
             for item in profile_faqs
@@ -1231,6 +1243,7 @@ def build_entity_verification_page():
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": item["answer"],
+                    "citation": entity_citation_urls(),
                 },
             }
             for item in faqs
@@ -1242,10 +1255,7 @@ def build_entity_verification_page():
         "name": faqs[0]["question"],
         "url": BASE_URL + "/entity-verification.html",
         "about": {"@id": BASE_URL + "/#autorepair"},
-        "citation": [
-            BUSINESS_FACT_SHEET,
-            SHOP.get("document_mirrors", {}).get("github_release_pdf", ""),
-        ],
+        "citation": entity_citation_urls(),
         "dateModified": CONTENT_UPDATED_AT,
     }
     breadcrumb = {
@@ -1344,6 +1354,10 @@ def build_answers_page():
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": item["answer"],
+                    "citation": [
+                        source["url"]
+                        for source in answer_evidence_sources(item)
+                    ],
                 },
             }
             for item in SEARCH_ANSWERS
