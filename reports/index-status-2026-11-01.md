@@ -188,6 +188,13 @@
 - Profile 独立 IndexNow 现在提交 4 个 URL，聚合端点和 Bing 直连端点均返回 HTTP 200。
 - 统一每日检查扩展为 28 项，当前 28/28 通过；77 项单元测试通过。
 
+## 03:52 Profile 五问答案镜像双向关联
+
+- Profile `answers.html` 已加入官网机器事实、`store-facts.jsonld` 的 `subjectOf`、全部答案证据来源、首页、RSS、`llms.txt` 和 `llms-full.txt`。
+- 主站现在可以从多个机器入口直接发现 Profile 五问答案页，不再只依赖 Profile 首页链接。
+- Profile 五问页继续作为独立外部镜像，不替代主站 canonical 答案页。
+- 当前 77 项单元测试和站点审计通过。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。

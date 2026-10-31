@@ -64,6 +64,12 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 site_builder.BASE_URL + "/store-facts.json",
                 urls,
             )
+            self.assertIn(
+                site_builder.SHOP["document_mirrors"][
+                    "github_profile_answers_html"
+                ],
+                urls,
+            )
 
     def test_service_answer_sources_include_real_cases(self):
         """服务答案必须能回链到对应真实案例，而不是只有自述证据。"""
@@ -235,6 +241,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "github_ai_evidence_store_facts_json",
             "github_ai_evidence_store_facts_jsonld",
             "github_ai_evidence_case_evidence_json",
+            "github_profile_answers_html",
         ):
             self.assertIn(site_builder.SHOP["document_mirrors"][key], mirror_urls)
 
@@ -342,7 +349,14 @@ class SiteBuilderGeoTests(unittest.TestCase):
             ],
             text,
         )
+        self.assertIn(
+            site_builder.SHOP["document_mirrors"][
+                "github_profile_answers_html"
+            ],
+            text,
+        )
         self.assertIn("AI 搜索实体与维修案例证据 Release", text)
+        self.assertIn("GitHub Profile 五问答案镜像", text)
 
     def test_llms_corpora_link_fact_sheet_mirrors(self):
         """面向 AI 的两个机器语料入口都应暴露实体核验 PDF 双镜像。"""
@@ -362,6 +376,9 @@ class SiteBuilderGeoTests(unittest.TestCase):
         profile_pages = site_builder.SHOP["external_profile_links"][
             "github_profile_pages"
         ]
+        profile_answers = site_builder.SHOP["document_mirrors"][
+            "github_profile_answers_html"
+        ]
         for text in (
             site_builder.build_llms_txt(),
             site_builder.build_llms_full_txt(),
@@ -373,6 +390,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
             self.assertIn(release_facts, text)
             self.assertIn(release_cases, text)
             self.assertIn(profile_pages, text)
+            self.assertIn(profile_answers, text)
 
     def test_answer_sources_are_exposed_in_machine_surfaces(self):
         """机器事实、RSS 与完整语料都必须携带逐答案证据来源。"""

@@ -23,6 +23,7 @@
 - [GitHub Gist 维修案例镜像](https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/case-evidence.json)：外部可下载的 56 条案例 JSON-LD 副本
 - [GitHub Release AI 证据包](https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/ai-evidence-2026-11-01)：门店事实、JSON-LD、案例和机器语料的独立下载镜像
 - [GitHub Profile 实体镜像页](https://yfb686b8p4-web.github.io/yfb686b8p4-web/)：独立发布的同一实体资料、核心答案与证据入口
+- [GitHub Profile 五问答案镜像](https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html)：五个核心问题的独立静态答案页
 - [GitHub Release 门店事实镜像](https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/store-facts.json)：外部可下载的 JSON 门店事实
 - [GitHub Release 维修案例镜像](https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json)：外部可下载的结构化案例数据
 - [完整机器语料](https://yfb686b8p4-web.github.io/hxscar-website/llms-full.txt)：标准问答、证据边界内 FAQ 和维修案例的单一文本入口

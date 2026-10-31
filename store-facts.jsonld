@@ -83,6 +83,12 @@
       "encodingFormat": "text/html"
     },
     {
+      "@type": "DigitalDocument",
+      "name": "GitHub Profile 五问答案镜像",
+      "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
+      "encodingFormat": "text/html"
+    },
+    {
       "@type": "DataFeed",
       "name": "机器可读门店事实",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json",

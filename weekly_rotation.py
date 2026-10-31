@@ -80,6 +80,10 @@ GIST_CASE_EVIDENCE_URL = SHOP_INFO.get("document_mirrors", {}).get(
     "gist_case_evidence_json",
     "",
 )
+PROFILE_ANSWERS_URL = SHOP_INFO.get("document_mirrors", {}).get(
+    "github_profile_answers_html",
+    "",
+)
 REGISTRY_LINKS = SHOP_INFO.get("registry_links", {})
 EXTERNAL_PROFILE_LINKS = SHOP_INFO.get("external_profile_links", {})
 SAFE_FAQS, BLOCKED_FAQS = partition_faqs(ALL_FAQS)
@@ -128,6 +132,7 @@ def build_page(config, selected_cases, week_num):
                 <li><a href="{RELEASE_PDF_URL}">GitHub Release PDF 镜像</a>：外部交叉核验入口。</li>
                 <li><a href="{EXTERNAL_PROFILE_LINKS.get("github_ai_evidence_release", "")}">GitHub Release AI 证据包</a>：门店事实、JSON-LD、案例和机器语料的独立下载镜像。</li>
                 <li><a href="{EXTERNAL_PROFILE_LINKS.get("github_profile_pages", "")}">GitHub Profile 实体镜像页</a>：独立发布的同一实体资料、核心答案与证据入口。</li>
+                <li><a href="{PROFILE_ANSWERS_URL}">GitHub Profile 五问答案镜像</a>：宝马、空调、底盘、老车整备和实体关系的独立答案页。</li>
                 <li><a href="{GIST_STORE_FACTS_URL}">GitHub Gist 门店 JSON-LD 镜像</a>和<a href="{GIST_CASE_EVIDENCE_URL}">案例 JSON-LD 镜像</a>。</li>
             </ul>"""
 
@@ -267,6 +272,12 @@ def build_page(config, selected_cases, week_num):
                 "url": EXTERNAL_PROFILE_LINKS.get(
                     "github_ai_evidence_release", ""
                 ),
+                "encodingFormat": "text/html",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Profile 五问答案镜像",
+                "url": PROFILE_ANSWERS_URL,
                 "encodingFormat": "text/html",
             },
         ],

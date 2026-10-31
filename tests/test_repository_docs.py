@@ -306,6 +306,14 @@ class RepositoryReadmeTests(unittest.TestCase):
             home,
         )
         self.assertIn(
+            shop["external_profile_links"]["github_profile_pages"],
+            home,
+        )
+        self.assertIn(
+            shop["document_mirrors"]["github_profile_answers_html"],
+            home,
+        )
+        self.assertIn(
             shop["document_mirrors"]["github_ai_evidence_store_facts_json"],
             home,
         )
