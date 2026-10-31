@@ -69,6 +69,7 @@
 - [实体核验页](https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html)
 - [机器可读门店事实](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json)
 - [门店历史资料纠正 JSON](https://yfb686b8p4-web.github.io/hxscar-website/entity-corrections.json)
+- [门店完整事实 Markdown](https://yfb686b8p4-web.github.io/hxscar-website/downloads/entity-facts-2026-11-01.md)
 - [Schema.org 门店实体](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld)
 - [15 条原子问答证据 JSONL](https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl)
 - [Profile 原子问答镜像](https://yfb686b8p4-web.github.io/yfb686b8p4-web/qa-evidence.jsonl)

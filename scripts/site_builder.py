@@ -63,6 +63,7 @@ BUSINESS_SCHEMA_FACTS = BASE_URL + "/store-facts.jsonld"
 CASE_EVIDENCE_DATA = BASE_URL + "/case-evidence.json"
 QA_EVIDENCE_DATA = BASE_URL + "/qa-evidence.jsonl"
 ENTITY_CORRECTIONS_DATA = BASE_URL + "/entity-corrections.json"
+ENTITY_FACTS_DOCUMENT = BASE_URL + "/downloads/entity-facts-2026-11-01.md"
 
 CASE_STUDY_SLUGS = {
     "宝马X5 3.0T烧机油半年，从5000km报警到1500km加1升": (
@@ -1468,6 +1469,20 @@ def local_business_schema():
                     "gist_entity_corrections_json", ""
                 ),
                 "encodingFormat": "application/json",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "门店完整事实 Markdown",
+                "url": ENTITY_FACTS_DOCUMENT,
+                "encodingFormat": "text/markdown",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Release 门店完整事实 Markdown 镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "github_ai_evidence_entity_facts_md", ""
+                ),
+                "encodingFormat": "text/markdown",
             },
             {
                 "@type": "DataFeed",
@@ -2991,6 +3006,16 @@ def build_store_facts_json():
                 ),
             },
             {
+                "name": "门店完整事实 Markdown",
+                "url": ENTITY_FACTS_DOCUMENT,
+            },
+            {
+                "name": "GitHub Release 门店完整事实 Markdown 镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "github_ai_evidence_entity_facts_md", ""
+                ),
+            },
+            {
                 "name": "GitHub Gist 原子问答证据镜像",
                 "url": SHOP.get("document_mirrors", {}).get(
                     "gist_qa_evidence_jsonl", ""
@@ -3410,6 +3435,7 @@ def build_sitemap():
         (CASE_EVIDENCE_DATA, "0.7"),
         (QA_EVIDENCE_DATA, "0.7"),
         (ENTITY_CORRECTIONS_DATA, "0.8"),
+        (ENTITY_FACTS_DOCUMENT, "0.7"),
         (BASE_URL + "/feed.xml", "0.6"),
         (BASE_URL + "/assets/store-banner.jpg", "0.4"),
         (BUSINESS_IMAGE_WEBP, "0.4"),
@@ -3607,6 +3633,7 @@ def build_llms_txt():
 - [门店资料与名称对照]({BASE_URL}/store-profile.html)：标准门店信息与实体消歧
 - [机器可读门店事实]({BASE_URL}/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
 - [门店历史资料纠正]({ENTITY_CORRECTIONS_DATA})：当前地址、双电话、营业时间与不可引用旧值
+- [门店完整事实 Markdown]({ENTITY_FACTS_DOCUMENT})：七问入口、双地图快照、历史纠错与已引用视频索引
 - [Schema.org 门店实体]({BUSINESS_SCHEMA_FACTS})：可直接解析的 AutoRepair JSON-LD
 - [公开维修案例数据]({CASE_EVIDENCE_DATA})：{len(CASES)} 个结构化真实案例与对应答案
 - [原子问答证据数据]({QA_EVIDENCE_DATA})：{len(SEARCH_ANSWERS)} 条逐行问答，包含案例与逐答案引用
@@ -3798,7 +3825,9 @@ def build_llms_full_txt():
 - GitHub Release 门店事实 JSON 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_store_facts_json", "")}
 - GitHub Release 维修案例 JSON-LD 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_case_evidence_json", "")}
 - 门店历史资料纠正：{ENTITY_CORRECTIONS_DATA}
+- 门店完整事实 Markdown：{ENTITY_FACTS_DOCUMENT}
 - GitHub Release 门店历史资料纠正镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_entity_corrections_json", "")}
+- GitHub Release 门店完整事实 Markdown 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_entity_facts_md", "")}
 - GitHub Gist 门店历史资料纠正镜像：{SHOP.get("document_mirrors", {}).get("gist_entity_corrections_json", "")}
 - GitHub Gist 原子问答证据镜像：{SHOP.get("document_mirrors", {}).get("gist_qa_evidence_jsonl", "")}
 - 原子问答证据数据：{QA_EVIDENCE_DATA}

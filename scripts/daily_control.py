@@ -53,6 +53,12 @@ HTTP_CHECKS = [
         "%PDF",
         90,
     ),
+    (
+        "门店完整事实Markdown",
+        "/downloads/entity-facts-2026-11-01.md",
+        "当前手机为18682417667",
+        30,
+    ),
     ("IndexNow验证", "/hxscar20261024geoindexkey.txt", "hxscar20261024geoindexkey"),
     ("服务专题", "/services/index.html", "服务专题"),
     ("车型专题", "/models/index.html", "车型维修"),
@@ -139,6 +145,14 @@ HTTP_CHECKS = [
         "Gist门店事实页",
         "https://gist.githubusercontent.com/yfb686b8p4-web/"
         "7923ef0b18ffbcce04a8b6758254a06b/raw/ENTITY_FACTS.md",
+        "当前手机为18682417667",
+        30,
+    ),
+    (
+        "Release门店事实Markdown",
+        "https://github.com/yfb686b8p4-web/hxscar-website/"
+        "releases/download/ai-evidence-2026-11-01/"
+        "entity-facts.md?v=20261101-entity-facts",
         "当前手机为18682417667",
         30,
     ),

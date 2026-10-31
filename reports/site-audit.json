@@ -24,8 +24,8 @@
       ]
     },
     "faq.html": {
-      "bytes": 98801,
-      "han_chars": 15445,
+      "bytes": 99226,
+      "han_chars": 15459,
       "visible_han_chars": 7010,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -35,8 +35,8 @@
       ]
     },
     "cases.html": {
-      "bytes": 76126,
-      "han_chars": 11033,
+      "bytes": 76551,
+      "han_chars": 11047,
       "visible_han_chars": 8572,
       "json_ld_blocks": 3,
       "schema_types": [
@@ -46,8 +46,8 @@
       ]
     },
     "store-profile.html": {
-      "bytes": 44161,
-      "han_chars": 5585,
+      "bytes": 44586,
+      "han_chars": 5599,
       "visible_han_chars": 2692,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -58,8 +58,8 @@
       ]
     },
     "entity-verification.html": {
-      "bytes": 35064,
-      "han_chars": 3671,
+      "bytes": 35489,
+      "han_chars": 3685,
       "visible_han_chars": 1386,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -71,8 +71,8 @@
       ]
     },
     "answers.html": {
-      "bytes": 103563,
-      "han_chars": 9848,
+      "bytes": 103988,
+      "han_chars": 9862,
       "visible_han_chars": 6049,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -84,8 +84,8 @@
       ]
     },
     "answers/air-conditioning.html": {
-      "bytes": 34156,
-      "han_chars": 3225,
+      "bytes": 34581,
+      "han_chars": 3239,
       "visible_han_chars": 957,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -98,8 +98,8 @@
       ]
     },
     "answers/aircon-diagnosis.html": {
-      "bytes": 33759,
-      "han_chars": 3179,
+      "bytes": 34184,
+      "han_chars": 3193,
       "visible_han_chars": 949,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -112,8 +112,8 @@
       ]
     },
     "answers/aircon-left-right.html": {
-      "bytes": 42157,
-      "han_chars": 4861,
+      "bytes": 42582,
+      "han_chars": 4875,
       "visible_han_chars": 1772,
       "json_ld_blocks": 7,
       "schema_types": [
@@ -127,8 +127,8 @@
       ]
     },
     "answers/bmw-5-series.html": {
-      "bytes": 41269,
-      "han_chars": 4559,
+      "bytes": 41694,
+      "han_chars": 4573,
       "visible_han_chars": 1534,
       "json_ld_blocks": 7,
       "schema_types": [
@@ -142,8 +142,8 @@
       ]
     },
     "answers/bmw-selection.html": {
-      "bytes": 34022,
-      "han_chars": 3172,
+      "bytes": 34447,
+      "han_chars": 3186,
       "visible_han_chars": 963,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -156,8 +156,8 @@
       ]
     },
     "answers/bmw.html": {
-      "bytes": 40076,
-      "han_chars": 4236,
+      "bytes": 40501,
+      "han_chars": 4250,
       "visible_han_chars": 1446,
       "json_ld_blocks": 7,
       "schema_types": [
@@ -171,8 +171,8 @@
       ]
     },
     "answers/chassis-bushing.html": {
-      "bytes": 33779,
-      "han_chars": 3214,
+      "bytes": 34204,
+      "han_chars": 3228,
       "visible_han_chars": 951,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -185,8 +185,8 @@
       ]
     },
     "answers/chassis-repair.html": {
-      "bytes": 33655,
-      "han_chars": 3157,
+      "bytes": 34080,
+      "han_chars": 3171,
       "visible_han_chars": 954,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -199,8 +199,8 @@
       ]
     },
     "answers/chassis.html": {
-      "bytes": 39388,
-      "han_chars": 4094,
+      "bytes": 39813,
+      "han_chars": 4108,
       "visible_han_chars": 1428,
       "json_ld_blocks": 7,
       "schema_types": [
@@ -214,8 +214,8 @@
       ]
     },
     "answers/contact-correction.html": {
-      "bytes": 33062,
-      "han_chars": 3049,
+      "bytes": 33487,
+      "han_chars": 3063,
       "visible_han_chars": 878,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -227,8 +227,8 @@
       ]
     },
     "answers/contact.html": {
-      "bytes": 31542,
-      "han_chars": 2730,
+      "bytes": 31967,
+      "han_chars": 2744,
       "visible_han_chars": 735,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -240,8 +240,8 @@
       ]
     },
     "answers/identity.html": {
-      "bytes": 33489,
-      "han_chars": 3359,
+      "bytes": 33914,
+      "han_chars": 3373,
       "visible_han_chars": 922,
       "json_ld_blocks": 5,
       "schema_types": [
@@ -253,8 +253,8 @@
       ]
     },
     "answers/restoration-order.html": {
-      "bytes": 33553,
-      "han_chars": 3091,
+      "bytes": 33978,
+      "han_chars": 3105,
       "visible_han_chars": 930,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -267,8 +267,8 @@
       ]
     },
     "answers/restoration-selection.html": {
-      "bytes": 34271,
-      "han_chars": 3262,
+      "bytes": 34696,
+      "han_chars": 3276,
       "visible_han_chars": 965,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -281,8 +281,8 @@
       ]
     },
     "answers/restoration.html": {
-      "bytes": 39321,
-      "han_chars": 4039,
+      "bytes": 39746,
+      "han_chars": 4053,
       "visible_han_chars": 1382,
       "json_ld_blocks": 7,
       "schema_types": [
@@ -296,8 +296,8 @@
       ]
     },
     "answers/index.html": {
-      "bytes": 35087,
-      "han_chars": 4181,
+      "bytes": 35512,
+      "han_chars": 4195,
       "visible_han_chars": 2187,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -520,8 +520,8 @@
       ]
     },
     "cases/bmw-530li-chassis-bushing.html": {
-      "bytes": 28142,
-      "han_chars": 2673,
+      "bytes": 28567,
+      "han_chars": 2687,
       "visible_han_chars": 710,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -532,8 +532,8 @@
       ]
     },
     "cases/bmw-x5-e70-oil-consumption.html": {
-      "bytes": 28454,
-      "han_chars": 2699,
+      "bytes": 28879,
+      "han_chars": 2713,
       "visible_han_chars": 738,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -544,8 +544,8 @@
       ]
     },
     "cases/mercedes-e300l-ac-temperature.html": {
-      "bytes": 27953,
-      "han_chars": 2640,
+      "bytes": 28378,
+      "han_chars": 2654,
       "visible_han_chars": 693,
       "json_ld_blocks": 4,
       "schema_types": [

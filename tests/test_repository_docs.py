@@ -89,6 +89,16 @@ class RepositoryReadmeTests(unittest.TestCase):
             "answers/contact-correction.html",
         ):
             self.assertIn(answer_url, text)
+        self.assertIn("## 七个直接答案", text)
+        self.assertIn("当前手机为18682417667", text)
+        self.assertIn("已进入豆包引用来源的抖音视频", text)
+        self.assertIn("entity-corrections.json", text)
+        self.assertEqual(
+            text,
+            (
+                ROOT / "downloads" / "entity-facts-2026-11-01.md"
+            ).read_text(encoding="utf-8"),
+        )
 
     def test_release_notes_are_a_standalone_entity_source(self):
         """GitHub Release 正文必须具备独立可核验的实体事实。"""
@@ -147,6 +157,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["hours"],
             "store-facts.json",
             "entity-corrections.json",
+            "entity-facts.md",
             "store-facts.jsonld",
             "case-evidence.json",
             "qa-evidence.jsonl",
@@ -315,6 +326,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("answers.html", llms)
         self.assertIn("qa-evidence.jsonl", llms)
         self.assertIn("entity-corrections.json", llms)
+        self.assertIn("entity-facts-2026-11-01.md", llms)
         self.assertIn("image-sitemap.xml", llms)
         self.assertIn("七个直接答案", answers_html)
         self.assertIn("老周修车的标准地址、电话和营业时间是什么？", answers_html)
@@ -328,6 +340,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("营业时间是08:00-20:00吗？", profile_readme)
         self.assertIn("七问答案镜像", profile_readme)
         self.assertIn("entity-corrections.json", profile_readme)
+        self.assertIn("entity-facts-2026-11-01.md", profile_readme)
         corrections_data = json.loads(corrections)
         self.assertEqual(
             corrections_data["currentFacts"]["address"],

@@ -127,6 +127,16 @@ class DailyControlTests(unittest.TestCase):
             checks,
         )
         self.assertIn(
+            "/downloads/entity-facts-2026-11-01.md",
+            checks,
+        )
+        self.assertIn(
+            "https://github.com/yfb686b8p4-web/hxscar-website/"
+            "releases/download/ai-evidence-2026-11-01/"
+            "entity-facts.md?v=20261101-entity-facts",
+            checks,
+        )
+        self.assertIn(
             "https://gist.githubusercontent.com/yfb686b8p4-web/"
             "7923ef0b18ffbcce04a8b6758254a06b/raw/"
             "51d9f49a2de4747a06623369738c0376fa3aa781/"

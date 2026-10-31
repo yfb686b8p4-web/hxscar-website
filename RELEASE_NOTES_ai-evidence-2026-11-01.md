@@ -16,6 +16,7 @@
 
 - `store-facts.json`：字段级门店事实、当前联系方式、历史错误值与纠错说明
 - `entity-corrections.json`：单一业务实体的当前地址、双电话、营业时间与不可引用历史值
+- `entity-facts.md`：可独立阅读的完整门店事实、七问入口、地图快照和历史纠错
 - `store-facts.jsonld`：Schema.org `AutoRepair` 完整实体
 - `case-evidence.json`：56 条真实维修案例的 schema.org `ItemList`
 - `qa-evidence.jsonl`：15 条逐行 Question 数据，每条包含直接答案、案例和逐答案引用

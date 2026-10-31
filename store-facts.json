@@ -9,6 +9,7 @@
     "github_ai_evidence_store_facts_jsonld": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/store-facts.jsonld",
     "github_ai_evidence_case_evidence_json": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json",
     "github_ai_evidence_entity_corrections_json": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/entity-corrections.json",
+    "github_ai_evidence_entity_facts_md": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/entity-facts.md",
     "github_ai_evidence_llms_full": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/llms-full.txt",
     "github_profile_answers_html": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
     "gist_store_facts_jsonld": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/store-facts.jsonld",
@@ -44,6 +45,14 @@
     {
       "name": "GitHub Release 门店历史资料纠正镜像",
       "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/entity-corrections.json"
+    },
+    {
+      "name": "门店完整事实 Markdown",
+      "url": "https://yfb686b8p4-web.github.io/hxscar-website/downloads/entity-facts-2026-11-01.md"
+    },
+    {
+      "name": "GitHub Release 门店完整事实 Markdown 镜像",
+      "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/entity-facts.md"
     },
     {
       "name": "GitHub Gist 原子问答证据镜像",

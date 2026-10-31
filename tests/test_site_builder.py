@@ -291,6 +291,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "github_ai_evidence_store_facts_jsonld",
             "github_ai_evidence_case_evidence_json",
             "github_ai_evidence_entity_corrections_json",
+            "github_ai_evidence_entity_facts_md",
             "gist_entity_corrections_json",
             "github_profile_answers_html",
         ):
@@ -863,9 +864,15 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn(hub_url, locations)
         self.assertIn(hub_url, llms)
         self.assertIn(site_builder.ENTITY_CORRECTIONS_DATA, locations)
+        self.assertIn(site_builder.ENTITY_FACTS_DOCUMENT, locations)
         self.assertIn(site_builder.ENTITY_CORRECTIONS_DATA, llms)
+        self.assertIn(site_builder.ENTITY_FACTS_DOCUMENT, llms)
         self.assertIn(
             site_builder.ENTITY_CORRECTIONS_DATA,
+            site_builder.build_llms_full_txt(),
+        )
+        self.assertIn(
+            site_builder.ENTITY_FACTS_DOCUMENT,
             site_builder.build_llms_full_txt(),
         )
         for item in site_builder.SEARCH_ANSWERS:
