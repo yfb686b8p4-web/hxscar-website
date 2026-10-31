@@ -190,6 +190,12 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn('width="960" height="540"', html)
         self.assertIn('fetchpriority="high"', html)
         self.assertIn('rel="preload" as="image"', html)
+        for text in (html, answers_html):
+            self.assertIn('href="llms.txt"', text)
+            self.assertIn(
+                "https://yfb686b8p4-web.github.io/hxscar-website/llms-full.txt",
+                text,
+            )
         self.assertIn(
             "https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml",
             robots,

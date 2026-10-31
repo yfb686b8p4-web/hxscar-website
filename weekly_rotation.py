@@ -401,6 +401,8 @@ def build_page(config, selected_cases, week_num):
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{SITE_URL}feed.xml">
     <link rel="alternate" type="application/ld+json" href="{SCHEMA_FACTS_URL}">
     <link rel="alternate" type="application/ld+json" title="公开维修案例数据" href="{CASE_EVIDENCE_URL}">
+    <link rel="alternate" type="text/plain" title="AI 搜索资料索引" href="{SITE_URL}llms.txt">
+    <link rel="alternate" type="text/plain" title="AI 搜索完整机器语料" href="{SITE_URL}llms-full.txt">
     <link rel="preload" as="image" href="assets/store-banner-960.jpg" imagesrcset="assets/store-banner-960.jpg 960w, assets/store-banner.jpg 1291w" imagesizes="(max-width: 800px) calc(100vw - 40px), 760px" fetchpriority="high">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
     <script type="application/ld+json">

@@ -13,9 +13,9 @@
 | store-profile.html | 2692 | 4 | WebSite, AutoRepair, FAQPage, BreadcrumbList |
 | entity-verification.html | 1386 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers.html | 5776 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/air-conditioning.html | 799 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/aircon-diagnosis.html | 789 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/aircon-left-right.html | 1610 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, HowTo |
+| answers/air-conditioning.html | 799 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
+| answers/aircon-diagnosis.html | 789 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
+| answers/aircon-left-right.html | 1610 | 7 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service, HowTo |
 | answers/bmw-5-series.html | 942 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
 | answers/bmw-selection.html | 804 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
 | answers/bmw.html | 839 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |

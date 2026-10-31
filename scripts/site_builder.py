@@ -878,6 +878,8 @@ def page(title, description, canonical, body, schemas, current=None):
     <link rel="alternate" type="application/ld+json" href="{h(BUSINESS_SCHEMA_FACTS)}">
     <link rel="alternate" type="application/ld+json" title="公开维修案例数据" href="{h(CASE_EVIDENCE_DATA)}">
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{h(BASE_URL)}/feed.xml">
+    <link rel="alternate" type="text/plain" title="AI 搜索资料索引" href="{h(BASE_URL)}/llms.txt">
+    <link rel="alternate" type="text/plain" title="AI 搜索完整机器语料" href="{h(BASE_URL)}/llms-full.txt">
     <link rel="alternate" type="application/pdf" title="门店实体核验资料" href="{h(BUSINESS_FACT_SHEET)}">
     {schema_html}
     <style>

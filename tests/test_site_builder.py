@@ -720,6 +720,14 @@ class SiteBuilderGeoTests(unittest.TestCase):
             f'href="{site_builder.BASE_URL}/feed.xml"',
             html,
         )
+        self.assertIn(
+            f'href="{site_builder.BASE_URL}/llms.txt"',
+            html,
+        )
+        self.assertIn(
+            f'href="{site_builder.BASE_URL}/llms-full.txt"',
+            html,
+        )
         self.assertIn('type="application/rss+xml"', html)
         self.assertIn(
             f'href="{site_builder.BUSINESS_SCHEMA_FACTS}"',
