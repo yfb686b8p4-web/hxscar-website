@@ -277,6 +277,8 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("store-banner-960.jpg 960w", home)
         self.assertIn("store-banner.jpg 1291w", home)
         self.assertIn('fetchpriority="high"', home)
+        self.assertIn('rel="preload" as="image"', home)
+        self.assertIn('imagesrcset="assets/store-banner-960.jpg 960w', home)
 
     def test_github_profile_readme_is_a_complete_entity_source(self):
         """GitHub Profile README 必须具备完整实体事实和机器证据入口。"""
