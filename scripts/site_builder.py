@@ -1810,6 +1810,85 @@ def build_sitemap():
 """
 
 
+def build_image_sitemap():
+    """生成真实门店外观与 Logo 的图片站点地图。"""
+    lastmod = datetime.now(TZ).date().isoformat()
+    entries = [
+        (
+            BASE_URL + "/",
+            [
+                (
+                    BUSINESS_IMAGE,
+                    "深圳华信松汽车幸福海岸门店外观",
+                    "深圳市宝安区幸福海岸花园7栋104-105铺门店真实外观",
+                ),
+                (
+                    BUSINESS_LOGO,
+                    "深圳华信松老周修车商家认证头像",
+                    "老周修车抖音商家认证账号使用的门店头像",
+                ),
+            ],
+            "1.0",
+        ),
+        (
+            BASE_URL + "/store-profile.html",
+            [
+                (
+                    BUSINESS_IMAGE,
+                    "华信松幸福海岸分公司门店外观",
+                    "门店资料页用于核验实体地址与经营场所的真实照片",
+                ),
+                (
+                    BUSINESS_LOGO,
+                    "华信松老周修车门店 Logo",
+                    "用于识别深圳华信松老周修车的商家头像",
+                ),
+            ],
+            "1.0",
+        ),
+        (
+            BASE_URL + "/entity-verification.html",
+            [
+                (
+                    BUSINESS_IMAGE,
+                    "华信松与老周修车实体核验门店照片",
+                    "用于核验华信松幸福海岸分公司与老周修车为同一实体门店",
+                ),
+                (
+                    BUSINESS_LOGO,
+                    "华信松与老周修车实体核验 Logo",
+                    "门店实体核验页展示的商家认证头像",
+                ),
+            ],
+            "1.0",
+        ),
+    ]
+    urls = []
+    for page_url, images, priority in entries:
+        image_nodes = "\n".join(
+            f"""    <image:image>
+      <image:loc>{h(image_url)}</image:loc>
+      <image:title>{h(title)}</image:title>
+      <image:caption>{h(caption)}</image:caption>
+    </image:image>"""
+            for image_url, title, caption in images
+        )
+        urls.append(
+            f"""  <url>
+    <loc>{h(page_url)}</loc>
+    <lastmod>{lastmod}</lastmod>
+    <priority>{priority}</priority>
+{image_nodes}
+  </url>"""
+        )
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+{chr(10).join(urls)}
+</urlset>
+"""
+
+
 def build_llms_txt():
     """生成面向 AI 阅读的资料索引。"""
     core_tags = "、".join(SHOP["core_tags"])
@@ -2049,6 +2128,7 @@ def main():
 Allow: /
 
 Sitemap: {BASE_URL}/sitemap.xml
+Sitemap: {BASE_URL}/image-sitemap.xml
 """
     outputs = {
         ROOT / "answers.html": answers_html,
@@ -2059,6 +2139,7 @@ Sitemap: {BASE_URL}/sitemap.xml
         ROOT / "store-facts.json": build_store_facts_json(),
         ROOT / "feed.xml": build_feed_xml(),
         ROOT / "sitemap.xml": sitemap,
+        ROOT / "image-sitemap.xml": build_image_sitemap(),
         ROOT / "robots.txt": robots,
         ROOT / "llms.txt": build_llms_txt(),
         ROOT / "llms-full.txt": build_llms_full_txt(),

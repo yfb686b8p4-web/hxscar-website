@@ -49,6 +49,7 @@ HTTP_CHECKS = [
     ("车型专题", "/models/index.html", "车型维修"),
     ("robots", "/robots.txt", "Sitemap:"),
     ("sitemap", "/sitemap.xml", "store-profile.html"),
+    ("图片站点地图", "/image-sitemap.xml", "store-banner.jpg"),
     ("llms", "/llms.txt", "门店实体关系"),
     ("完整机器语料", "/llms-full.txt", "完整常见问题"),
 ]

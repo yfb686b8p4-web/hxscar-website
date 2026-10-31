@@ -165,6 +165,22 @@ class SiteBuilderGeoTests(unittest.TestCase):
             mirror_urls,
         )
 
+    def test_image_sitemap_contains_real_store_assets(self):
+        """图片站点地图必须声明真实门头、Logo 和对应页面。"""
+        root = ET.fromstring(site_builder.build_image_sitemap())
+        namespace = {
+            "sm": "http://www.sitemaps.org/schemas/sitemap/0.9",
+            "image": "http://www.google.com/schemas/sitemap-image/1.1",
+        }
+        self.assertEqual(len(root.findall("sm:url", namespace)), 3)
+        self.assertEqual(len(root.findall(".//image:image", namespace)), 6)
+        image_urls = {
+            node.text
+            for node in root.findall(".//image:loc", namespace)
+        }
+        self.assertIn(site_builder.BUSINESS_IMAGE, image_urls)
+        self.assertIn(site_builder.BUSINESS_LOGO, image_urls)
+
     def test_schema_contains_verified_registry_identity(self):
         """结构化数据必须包含已交叉核验的工商实体标识。"""
         schema = site_builder.local_business_schema()

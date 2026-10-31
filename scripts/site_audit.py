@@ -27,6 +27,7 @@ REQUIRED_FILES = [
     "hxscar20261024geoindexkey.txt",
     "robots.txt",
     "sitemap.xml",
+    "image-sitemap.xml",
     "llms.txt",
     "llms-full.txt",
     "services/index.html",
@@ -266,6 +267,8 @@ def audit():
         errors.append("index.html 缺少完整内容页入口")
     if "Sitemap:" not in robots:
         errors.append("robots.txt 缺少 Sitemap 地址")
+    if f"{EXPECTED_ORIGIN}/image-sitemap.xml" not in robots:
+        errors.append("robots.txt 缺少图片站点地图")
     if "faq.html" not in sitemap or "cases.html" not in sitemap:
         errors.append("sitemap.xml 未包含完整内容页")
     if "store-profile.html" not in sitemap:
