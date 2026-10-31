@@ -92,6 +92,13 @@
 - GitHub API 已验证 Gist 案例数据为 `ItemList`、包含 56 个条目，并保留奔驰 E300L 独立案例 URL。
 - 该动作只证明外部镜像已公开；尚未观察到 Bing 收录或 AI 平台引用。
 
+## 02:06 Gist 镜像双向关联
+
+- 提交 `0dbb31f` 已上线，官网与机器事实新增两个稳定 Gist Raw URL：门店 JSON-LD 和 56 条案例 JSON-LD。
+- 两个外部镜像已加入门店 `subjectOf`、答案证据来源、README 和 llms 索引。
+- 线上门店 JSON-LD 已检出 Gist 镜像地址。
+- IndexNow 聚合端点和 Bing 直连端点提交 40 个 URL，均返回 HTTP 200。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。
