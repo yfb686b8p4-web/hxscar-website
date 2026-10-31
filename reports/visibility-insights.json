@@ -1,13 +1,13 @@
 {
   "generated_at": "2026-11-01",
   "source": "reports/daily/latest.json",
-  "source_generated_at": "2026-10-31T23:58:49.674750+08:00",
+  "source_generated_at": "2026-11-01T01:01:25.477137+08:00",
   "overall": {
     "total": 12,
     "completed": 12,
     "pending": 0,
-    "mentioned": 8,
-    "mention_rate": 66.7,
+    "mentioned": 6,
+    "mention_rate": 50.0,
     "effective_hits": 4,
     "effective_hit_rate": 33.3
   },
@@ -15,43 +15,33 @@
     "豆包": {
       "total": 6,
       "completed": 6,
-      "mentioned": 6,
+      "mentioned": 5,
       "positions": [
-        1,
-        1,
         1,
         1,
         1,
         1
       ],
-      "mention_rate": 100.0,
+      "mention_rate": 83.3,
       "average_position": 1.0
     },
     "元宝": {
       "total": 6,
       "completed": 6,
-      "mentioned": 2,
-      "positions": [
-        1,
-        1
-      ],
-      "mention_rate": 33.3,
-      "average_position": 1.0
+      "mentioned": 1,
+      "positions": [],
+      "mention_rate": 16.7,
+      "average_position": null
     }
   },
   "categories": {
     "门店身份": {
-      "total": 4,
-      "completed": 4,
-      "mentioned": 4,
-      "positions": [
-        1,
-        1,
-        1,
-        1
-      ],
+      "total": 2,
+      "completed": 2,
+      "mentioned": 2,
+      "positions": [],
       "mention_rate": 100.0,
-      "average_position": 1.0
+      "average_position": null
     },
     "宝马与豪车": {
       "total": 4,
@@ -65,13 +55,13 @@
       "average_position": 1.0
     },
     "空调诊断维修": {
-      "total": 2,
-      "completed": 2,
+      "total": 4,
+      "completed": 4,
       "mentioned": 1,
       "positions": [
         1
       ],
-      "mention_rate": 50.0,
+      "mention_rate": 25.0,
       "average_position": 1.0
     },
     "底盘与老车整备": {
@@ -89,7 +79,6 @@
   "strong_categories": [
     "门店身份",
     "宝马与豪车",
-    "空调诊断维修",
     "底盘与老车整备"
   ],
   "negative_mentions": [
@@ -97,13 +86,7 @@
       "keyword_id": "guard-entity",
       "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
       "platform": "元宝",
-      "notes": "元宝实体关系与电话错误"
-    },
-    {
-      "keyword_id": "rotate-alias-07",
-      "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
-      "platform": "元宝",
-      "notes": "复用同日实体检测结果"
+      "notes": "实体关系错误；地址简略；电话错误；营业时间缺失"
     }
   ],
   "recommended_actions": [
