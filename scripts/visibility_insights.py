@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 LATEST_PATH = ROOT / "reports" / "rank-history" / "latest.json"
 SNAPSHOT_DIR = ROOT / "reports" / "rank-history"
+DAILY_PATH = ROOT / "reports" / "daily" / "latest.json"
 REPORT_PATH = ROOT / "reports" / "visibility-insights.md"
 JSON_PATH = ROOT / "reports" / "visibility-insights.json"
 PLAN_PATH = ROOT / "publishing" / "CROSS_PLATFORM_PLAN.md"
@@ -57,9 +58,133 @@ def negative_mentions(snapshot):
     return results
 
 
+def percentage(part, total):
+    """计算一位小数百分比。"""
+    return round(part * 100 / total, 1) if total else 0.0
+
+
+def parse_position(value):
+    """把推荐位置转换为正整数。"""
+    try:
+        position = int(value)
+    except (TypeError, ValueError):
+        return None
+    return position if position > 0 else None
+
+
+def aggregate_records(records):
+    """把每日检测记录汇总为平台和分类指标。"""
+    completed_records = [
+        item for item in records if item.get("status") == "completed"
+    ]
+    platform_values = {}
+    category_values = {}
+    for item in completed_records:
+        mentioned = bool(item.get("mentioned"))
+        position = parse_position(item.get("position"))
+        for values, key in (
+            (platform_values, item.get("platform", "")),
+            (category_values, item.get("category", "")),
+        ):
+            if not key:
+                continue
+            bucket = values.setdefault(
+                key,
+                {
+                    "total": 0,
+                    "completed": 0,
+                    "mentioned": 0,
+                    "positions": [],
+                },
+            )
+            bucket["total"] += 1
+            bucket["completed"] += 1
+            bucket["mentioned"] += int(mentioned)
+            if position:
+                bucket["positions"].append(position)
+    for values in (platform_values, category_values):
+        for bucket in values.values():
+            bucket["mention_rate"] = percentage(
+                bucket["mentioned"], bucket["completed"]
+            )
+            bucket["average_position"] = (
+                round(sum(bucket["positions"]) / len(bucket["positions"]), 1)
+                if bucket["positions"]
+                else None
+            )
+
+    mentioned = sum(
+        int(bool(item.get("mentioned"))) for item in completed_records
+    )
+    effective_hits = sum(
+        int(bool(item.get("effective_hit"))) for item in completed_records
+    )
+    overall = {
+        "total": len(records),
+        "completed": len(completed_records),
+        "pending": len(records) - len(completed_records),
+        "mentioned": mentioned,
+        "mention_rate": percentage(mentioned, len(completed_records)),
+        "effective_hits": effective_hits,
+        "effective_hit_rate": percentage(
+            effective_hits, len(completed_records)
+        ),
+    }
+    return {
+        "overall": overall,
+        "by_platform": platform_values,
+        "by_category": category_values,
+    }
+
+
+def daily_negative_mentions(records):
+    """从每日记录找出错误或负面提及。"""
+    results = []
+    for item in records:
+        if item.get("status") != "completed":
+            continue
+        notes = item.get("notes", "")
+        sentiment = item.get("sentiment", "")
+        if (
+            item.get("identity_relation") == "wrong"
+            or sentiment in {"负面", "negative"}
+            or "错误" in notes
+        ):
+            results.append(
+                {
+                    "keyword_id": item.get("check_id", ""),
+                    "query": item.get("query", ""),
+                    "platform": item.get("platform", ""),
+                    "notes": notes or item.get("answer_summary", ""),
+                }
+            )
+    return results
+
+
+def select_summary():
+    """优先使用已有完成结果的最新日报，否则回退到排名快照。"""
+    daily = load_json(DAILY_PATH) if DAILY_PATH.exists() else {}
+    daily_completed = int(daily.get("metrics", {}).get("completed", 0))
+    if daily_completed > 0:
+        return {
+            "source": "reports/daily/latest.json",
+            "source_generated_at": daily.get("generated_at", ""),
+            "summary": aggregate_records(daily.get("records", [])),
+            "negatives": daily_negative_mentions(daily.get("records", [])),
+        }
+    summary, snapshot = latest_snapshot()
+    return {
+        "source": "reports/rank-history/latest.json",
+        "source_generated_at": summary.get("updated_at", ""),
+        "summary": summary,
+        "negatives": negative_mentions(snapshot),
+    }
+
+
 def build_insights():
     """构建差距与行动建议。"""
-    summary, snapshot = latest_snapshot()
+    selected = select_summary()
+    summary = selected["summary"]
     categories = summary["by_category"]
     completed_categories = {
         name: values
@@ -76,7 +201,7 @@ def build_insights():
         for name, values in completed_categories.items()
         if values["mention_rate"] >= 50
     ]
-    negatives = negative_mentions(snapshot)
+    negatives = selected["negatives"]
 
     actions = []
     if any("同一家" in item["query"] for item in negatives):
@@ -97,6 +222,8 @@ def build_insights():
 
     insights = {
         "generated_at": datetime.now(TZ).date().isoformat(),
+        "source": selected["source"],
+        "source_generated_at": selected["source_generated_at"],
         "overall": summary["overall"],
         "platforms": summary["by_platform"],
         "categories": categories,
@@ -111,9 +238,12 @@ def build_insights():
         "# AI 搜索可见性洞察",
         "",
         f"- 生成时间：{insights['generated_at']}",
+        f"- 数据来源：`{insights['source']}`",
+        f"- 来源更新时间：{insights['source_generated_at']}",
         f"- 已完成检查：{summary['overall']['completed']}/{summary['overall']['total']}",
         f"- 提及次数：{summary['overall']['mentioned']}",
         f"- 已检查命中率：{summary['overall']['mention_rate']}%",
+        f"- 有效命中率：{summary['overall'].get('effective_hit_rate', 0.0)}%",
         "",
         "## 分类结果",
         "",
