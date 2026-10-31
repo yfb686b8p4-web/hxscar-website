@@ -16,7 +16,10 @@ ROOT = Path(__file__).resolve().parent.parent
 KEY = "hxscar20261024geoindexkey"
 HOST = "yfb686b8p4-web.github.io"
 KEY_LOCATION = f"https://{HOST}/hxscar-website/{KEY}.txt"
-ENDPOINT = "https://api.indexnow.org/indexnow"
+ENDPOINTS = (
+    ("IndexNow 聚合端点", "https://api.indexnow.org/indexnow"),
+    ("Bing 直连端点", "https://www.bing.com/indexnow"),
+)
 PRIORITY_PATHS = {
     "/hxscar-website/",
     "/hxscar-website/faq.html",
@@ -92,7 +95,7 @@ def wait_for_key(attempts=6, delay=10):
     return False
 
 
-def submit_payload(payload):
+def submit_payload(payload, endpoint):
     """优先用 curl 提交，规避系统 Python 的 LibreSSL 握手问题。"""
     body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     result = subprocess.run(
@@ -117,7 +120,7 @@ def submit_payload(payload):
             "/dev/null",
             "--write-out",
             "%{http_code}",
-            ENDPOINT,
+            endpoint,
         ],
         input=body,
         capture_output=True,
@@ -130,7 +133,7 @@ def submit_payload(payload):
     error = result.stderr.decode("utf-8", "ignore").strip()
 
     request = urllib.request.Request(
-        ENDPOINT,
+        endpoint,
         data=body,
         headers={
             "Content-Type": "application/json; charset=utf-8",
@@ -164,8 +167,17 @@ def main():
     if args.wait and not wait_for_key():
         raise SystemExit("IndexNow 验证文件尚未上线，本次跳过")
 
-    status = submit_payload(payload)
-    print(f"IndexNow HTTP {status}: {len(payload['urlList'])} 个 URL")
+    results = []
+    for name, endpoint in ENDPOINTS:
+        try:
+            status = submit_payload(payload, endpoint)
+        except OSError as exc:
+            print(f"{name} 提交失败: {exc}")
+            continue
+        results.append((name, status))
+        print(f"{name} HTTP {status}: {len(payload['urlList'])} 个 URL")
+    if not results:
+        raise SystemExit("所有 IndexNow 提交端点均失败")
 
 
 if __name__ == "__main__":
