@@ -6,8 +6,8 @@
 - 15 条问答中 12 条关联真实维修案例；每条答案当前包含 15 个 HTTPS 引用，最少 4 个的审计下限已满足。
 - 首页、全部答案/服务/车型/案例页通过 `<link rel="alternate" type="application/x-ndjson">` 声明数据入口。
 - `sitemap.xml`、`llms.txt`、`llms-full.txt`、`store-facts.json` 和 `store-facts.jsonld` 已链接该文件。
-- Gist 已新增 `qa-evidence.jsonl` 镜像，Raw 文件 SHA-256 与官网文件一致。
-- 每日线上检查从 28 项扩展为 29 项；当前 83 项单元测试通过，站点审计通过。
+- Gist 已新增 `qa-evidence.jsonl` 镜像，不可变 Raw revision 的 SHA-256 与官网文件一致。
+- 每日线上检查从 28 项扩展为 29 项；当前 84 项单元测试通过，站点审计通过。
 - 该动作只证明数据已生成且可发现，尚未被 Bing、百度、豆包、元宝或其他平台抓取或引用。
 
 ## 04:04 高意图答案增强与元宝复测

@@ -979,12 +979,6 @@ def answer_evidence_sources(item):
             ),
         },
         {
-            "name": "GitHub Gist 原子问答证据镜像",
-            "url": SHOP.get("document_mirrors", {}).get(
-                "gist_qa_evidence_jsonl", ""
-            ),
-        },
-        {
             "name": "GitHub Release 门店事实 JSON 镜像",
             "url": SHOP.get("document_mirrors", {}).get(
                 "github_ai_evidence_store_facts_json", ""
