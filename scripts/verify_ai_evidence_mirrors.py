@@ -107,7 +107,6 @@ FACT_MIRRORS = [
         "url": (
             "https://gist.githubusercontent.com/yfb686b8p4-web/"
             "7923ef0b18ffbcce04a8b6758254a06b/raw/"
-            "8fee49f77aca67ec069dcb11b9be51d708ac5cc2/"
             "store-facts.jsonld"
         ),
     },
@@ -136,6 +135,14 @@ CORRECTION_MIRRORS = [
         "url": (
             "https://github.com/yfb686b8p4-web/hxscar-website/"
             "releases/download/ai-evidence-2026-11-01/"
+            "entity-corrections.json"
+        ),
+    },
+    {
+        "name": "Gist门店纠错JSON",
+        "url": (
+            "https://gist.githubusercontent.com/yfb686b8p4-web/"
+            "7923ef0b18ffbcce04a8b6758254a06b/raw/"
             "entity-corrections.json"
         ),
     },

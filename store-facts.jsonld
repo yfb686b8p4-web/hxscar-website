@@ -84,6 +84,12 @@
     },
     {
       "@type": "DataFeed",
+      "name": "GitHub Gist 门店历史资料纠正镜像",
+      "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/entity-corrections.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataFeed",
       "name": "原子问答证据数据",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl",
       "encodingFormat": "application/x-ndjson"

@@ -130,6 +130,10 @@
     {
       "name": "GitHub Release 门店事实纠错镜像",
       "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/entity-corrections.json"
+    },
+    {
+      "name": "GitHub Gist 门店事实纠错镜像",
+      "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/entity-corrections.json"
     }
   ],
   "claimBoundary": "本文件只纠正公开资料中的地址、电话和营业时间，不声明搜索收录、AI引用或排名；维修价格、质保和时效须由门店当次确认为准。"

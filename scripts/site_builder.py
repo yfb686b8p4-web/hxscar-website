@@ -1353,6 +1353,14 @@ def local_business_schema():
             },
             {
                 "@type": "DataFeed",
+                "name": "GitHub Gist 门店历史资料纠正镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "gist_entity_corrections_json", ""
+                ),
+                "encodingFormat": "application/json",
+            },
+            {
+                "@type": "DataFeed",
                 "name": "原子问答证据数据",
                 "url": QA_EVIDENCE_DATA,
                 "encodingFormat": "application/x-ndjson",
@@ -3033,6 +3041,12 @@ def build_entity_corrections_json():
                 "name": "GitHub Release 门店事实纠错镜像",
                 "url": release_mirror,
             },
+            {
+                "name": "GitHub Gist 门店事实纠错镜像",
+                "url": SHOP.get("document_mirrors", {}).get(
+                    "gist_entity_corrections_json", ""
+                ),
+            },
         ],
         "claimBoundary": (
             "本文件只纠正公开资料中的地址、电话和营业时间，"
@@ -3430,6 +3444,7 @@ def build_llms_txt():
 - [GitHub Release PDF 镜像]({SHOP.get("document_mirrors", {}).get("github_release_pdf", "")})：独立下载镜像与外部交叉核验入口
 - [GitHub Gist 门店 JSON-LD 镜像]({SHOP.get("document_mirrors", {}).get("gist_store_facts_jsonld", "")})：外部可下载的门店实体副本
 - [GitHub Gist 维修案例镜像]({SHOP.get("document_mirrors", {}).get("gist_case_evidence_json", "")})：外部可下载的 56 条案例 JSON-LD 副本
+- [GitHub Gist 门店纠错镜像]({SHOP.get("document_mirrors", {}).get("gist_entity_corrections_json", "")})：外部可下载的当前地址、电话、营业时间与历史错误值
 - [GitHub Gist 原子问答证据镜像]({SHOP.get("document_mirrors", {}).get("gist_qa_evidence_jsonl", "")})：外部可下载的 15 条逐行问答与案例引用副本
 - [GitHub Release AI 证据包]({SHOP.get("external_profile_links", {}).get("github_ai_evidence_release", "")})：门店事实、JSON-LD、案例和机器语料的独立下载镜像
 - [GitHub Profile 实体镜像页]({SHOP.get("external_profile_links", {}).get("github_profile_pages", "")})：独立发布的同一实体资料、核心答案与证据入口
@@ -3611,6 +3626,7 @@ def build_llms_full_txt():
 - GitHub Release 维修案例 JSON-LD 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_case_evidence_json", "")}
 - 门店历史资料纠正：{ENTITY_CORRECTIONS_DATA}
 - GitHub Release 门店历史资料纠正镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_entity_corrections_json", "")}
+- GitHub Gist 门店历史资料纠正镜像：{SHOP.get("document_mirrors", {}).get("gist_entity_corrections_json", "")}
 - GitHub Gist 原子问答证据镜像：{SHOP.get("document_mirrors", {}).get("gist_qa_evidence_jsonl", "")}
 - 原子问答证据数据：{QA_EVIDENCE_DATA}
 

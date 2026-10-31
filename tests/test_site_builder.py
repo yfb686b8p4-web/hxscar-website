@@ -254,6 +254,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "github_ai_evidence_store_facts_jsonld",
             "github_ai_evidence_case_evidence_json",
             "github_ai_evidence_entity_corrections_json",
+            "gist_entity_corrections_json",
             "github_profile_answers_html",
         ):
             self.assertIn(site_builder.SHOP["document_mirrors"][key], mirror_urls)

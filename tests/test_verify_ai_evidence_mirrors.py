@@ -65,6 +65,7 @@ class VerifyAiEvidenceMirrorsTests(unittest.TestCase):
                 "官网门店纠错JSON",
                 "Profile门店纠错JSON",
                 "Release门店纠错JSON",
+                "Gist门店纠错JSON",
             },
         )
 
