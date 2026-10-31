@@ -50,6 +50,7 @@ BUSINESS_FACT_SHEET = BASE_URL + "/" + SHOP.get(
     "fact_sheet_path",
     "downloads/huaxinsong-store-facts-2026-10-31.pdf",
 )
+BUSINESS_SCHEMA_FACTS = BASE_URL + "/store-facts.jsonld"
 
 CASE_STUDY_SLUGS = {
     "宝马X5 3.0T烧机油半年，从5000km报警到1500km加1升": (
@@ -679,6 +680,10 @@ def answer_evidence_sources(item):
             "url": BASE_URL + "/store-facts.json",
         },
         {
+            "name": "Schema.org 门店实体",
+            "url": BUSINESS_SCHEMA_FACTS,
+        },
+        {
             "name": "门店实体核验 PDF",
             "url": BUSINESS_FACT_SHEET,
         },
@@ -739,6 +744,7 @@ def entity_citation_urls():
         BASE_URL + "/store-profile.html",
         BASE_URL + "/entity-verification.html",
         BASE_URL + "/store-facts.json",
+        BUSINESS_SCHEMA_FACTS,
         BUSINESS_FACT_SHEET,
         SHOP.get("document_mirrors", {}).get("github_release_pdf", ""),
     ]
@@ -830,6 +836,7 @@ def page(title, description, canonical, body, schemas, current=None):
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="{h(BUSINESS_IMAGE)}">
     <link rel="alternate" type="application/json" href="{h(BASE_URL)}/store-facts.json">
+    <link rel="alternate" type="application/ld+json" href="{h(BUSINESS_SCHEMA_FACTS)}">
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{h(BASE_URL)}/feed.xml">
     <link rel="alternate" type="application/pdf" title="门店实体核验资料" href="{h(BUSINESS_FACT_SHEET)}">
     {schema_html}
@@ -2144,6 +2151,10 @@ def build_store_facts_json():
                 "url": BASE_URL + "/entity-verification.html",
             },
             {
+                "name": "Schema.org 门店实体",
+                "url": BUSINESS_SCHEMA_FACTS,
+            },
+            {
                 "name": "门店实体核验 PDF",
                 "url": BUSINESS_FACT_SHEET,
             },
@@ -2270,6 +2281,28 @@ def build_store_facts_json():
     return json.dumps(facts, ensure_ascii=False, indent=2) + "\n"
 
 
+def build_store_facts_jsonld():
+    """生成独立 schema.org AutoRepair JSON-LD 门店实体文件。"""
+    schema = local_business_schema()
+    schema["citation"] = [
+        BASE_URL + "/entity-verification.html",
+        BASE_URL + "/store-profile.html",
+        BUSINESS_FACT_SHEET,
+        BASE_URL + "/store-facts.json",
+        BASE_URL + "/answers/index.html",
+    ]
+    schema["subjectOf"] = [
+        *schema.get("subjectOf", []),
+        {
+            "@type": "DataFeed",
+            "name": "机器可读门店事实",
+            "url": BASE_URL + "/store-facts.json",
+            "encodingFormat": "application/json",
+        },
+    ]
+    return json.dumps(schema, ensure_ascii=False, indent=2) + "\n"
+
+
 def build_feed_xml():
     """生成门店问答与工商事实的 RSS 订阅源。"""
     updated = datetime.fromisoformat(CONTENT_UPDATED_AT).replace(tzinfo=TZ)
@@ -2363,6 +2396,7 @@ def build_sitemap():
         (BASE_URL + "/entity-verification.html", "1.0"),
         (BASE_URL + "/answers.html", "1.0"),
         (BASE_URL + "/store-facts.json", "0.6"),
+        (BUSINESS_SCHEMA_FACTS, "0.7"),
         (BASE_URL + "/feed.xml", "0.6"),
         (BASE_URL + "/assets/store-banner.jpg", "0.4"),
         (BASE_URL + "/assets/store-avatar-300.jpg", "0.4"),
@@ -2506,6 +2540,7 @@ def build_llms_txt():
 - [车型专题]({BASE_URL}/models/index.html)：主要车型维修与故障内容
 - [门店资料与名称对照]({BASE_URL}/store-profile.html)：标准门店信息与实体消歧
 - [机器可读门店事实]({BASE_URL}/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
+- [Schema.org 门店实体]({BUSINESS_SCHEMA_FACTS})：可直接解析的 AutoRepair JSON-LD
 - [标准问答 RSS]({BASE_URL}/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [门店实体核验 PDF]({BUSINESS_FACT_SHEET})：三页标准资料、同名门店消歧与官方来源
 - [GitHub Release PDF 镜像]({SHOP.get("document_mirrors", {}).get("github_release_pdf", "")})：独立下载镜像与外部交叉核验入口
@@ -2741,6 +2776,7 @@ Sitemap: {BASE_URL}/image-sitemap.xml
         ROOT / "store-profile.html": store_profile_html,
         ROOT / "entity-verification.html": entity_verification_html,
         ROOT / "store-facts.json": build_store_facts_json(),
+        ROOT / "store-facts.jsonld": build_store_facts_jsonld(),
         ROOT / "feed.xml": build_feed_xml(),
         ROOT / "sitemap.xml": sitemap,
         ROOT / "image-sitemap.xml": build_image_sitemap(),

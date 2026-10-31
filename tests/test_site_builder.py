@@ -573,6 +573,11 @@ class SiteBuilderGeoTests(unittest.TestCase):
             html,
         )
         self.assertIn('type="application/rss+xml"', html)
+        self.assertIn(
+            f'href="{site_builder.BUSINESS_SCHEMA_FACTS}"',
+            html,
+        )
+        self.assertIn('type="application/ld+json"', html)
         self.assertIn('"@type":"WebSite"', html.replace(" ", ""))
         self.assertIn(
             f'"@id":"{site_builder.BASE_URL}/#website"',
@@ -705,6 +710,39 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "宝源南路276号",
             corrections["address"]["notCurrentValues"],
         )
+
+    def test_store_facts_jsonld_is_a_complete_entity_file(self):
+        """独立 JSON-LD 必须是一份完整、可解析的门店实体。"""
+        schema = json.loads(site_builder.build_store_facts_jsonld())
+        self.assertEqual(schema["@context"], "https://schema.org")
+        self.assertEqual(schema["@type"], "AutoRepair")
+        self.assertEqual(schema["taxID"], "91440300MA5GYCTQ6P")
+        self.assertEqual(schema["telephone"], site_builder.SHOP["phone"])
+        self.assertEqual(
+            schema["address"]["streetAddress"],
+            "新安街道海裕社区N15区幸福海岸花园7栋104-105铺",
+        )
+        page_html = site_builder.page(
+            "测试",
+            "测试",
+            site_builder.BASE_URL + "/test.html",
+            "<p>测试</p>",
+            [],
+        )
+        self.assertIn(
+            site_builder.BUSINESS_SCHEMA_FACTS,
+            page_html,
+        )
+        self.assertIn(
+            site_builder.BUSINESS_SCHEMA_FACTS,
+            {
+                item["url"]
+                for item in json.loads(
+                    site_builder.build_store_facts_json()
+                )["citationTargets"]
+            },
+        )
+        self.assertGreaterEqual(len(schema["makesOffer"]), 4)
 
     def test_identity_feed_item_points_to_verification_page(self):
         """RSS 中的实体问题应指向专门核验页，而不是综合问答锚点。"""

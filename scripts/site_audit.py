@@ -20,6 +20,7 @@ REQUIRED_FILES = [
     "entity-verification.html",
     "answers.html",
     "store-facts.json",
+    "store-facts.jsonld",
     "feed.xml",
     "assets/store-avatar-300.jpg",
     "assets/store-banner.jpg",
@@ -218,6 +219,11 @@ def audit():
     cases_html = read_text("cases.html")
     profile_html = read_text("store-profile.html")
     answers_html = read_text("answers.html")
+    try:
+        schema_facts = json.loads(read_text("store-facts.jsonld"))
+    except json.JSONDecodeError as exc:
+        errors.append(f"store-facts.jsonld 无法解析: {exc}")
+        schema_facts = {}
     robots = read_text("robots.txt")
     sitemap = read_text("sitemap.xml")
     llms = read_text("llms.txt")
@@ -264,6 +270,12 @@ def audit():
                 errors.append(f"{name} 缺少 BreadcrumbList 结构化数据")
     if "aggregateRating" in index_html:
         errors.append("index.html 仍包含未经核验的 aggregateRating")
+    if schema_facts.get("@type") != "AutoRepair":
+        errors.append("store-facts.jsonld 顶层类型应为 AutoRepair")
+    if schema_facts.get("taxID") != "91440300MA5GYCTQ6P":
+        errors.append("store-facts.jsonld 缺少正确统一社会信用代码")
+    if schema_facts.get("telephone") != "18682417667":
+        errors.append("store-facts.jsonld 缺少当前预约手机")
     if "?w=" in index_html:
         errors.append("index.html canonical 仍包含每周变化参数")
     for marker in (
@@ -273,6 +285,7 @@ def audit():
         "entity-verification.html",
         "application/rss+xml",
         "downloads/huaxinsong-store-facts-2026-10-31.pdf",
+        "store-facts.jsonld",
     ):
         if marker not in index_html:
             errors.append(f"index.html 缺少实体信号: {marker}")
