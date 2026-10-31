@@ -144,6 +144,20 @@
     "requires_confirmation": true
   },
   {
+    "id": "platform-wechat-official",
+    "priority": "P0",
+    "action": "2026-11-01 05:29复核元宝实体问题引用来源，出现“公众号·老周在修车”的《换胶套,修减震就找老周》等内容，但当前无法确认该公众号是否由门店账号所有。已准备实体关系纠错文章；需账号所有人登录微信公众号后台，先核对账号主体，再在资料与文章中补齐登记全称、信用代码、标准地址、双电话、分时营业时间和官网核验链接。",
+    "category": "站外权威资料",
+    "platforms": [
+      "微信公众号·老周在修车"
+    ],
+    "sources": [
+      "publishing/status.json"
+    ],
+    "check_ids": [],
+    "requires_confirmation": true
+  },
+  {
     "id": "platform-xiaohongshu",
     "priority": "P1",
     "action": "发布车型维修、整备和避坑内容，统一门店名称",
