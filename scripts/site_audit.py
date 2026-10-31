@@ -17,8 +17,10 @@ REQUIRED_FILES = [
     "faq.html",
     "cases.html",
     "store-profile.html",
+    "entity-verification.html",
     "answers.html",
     "store-facts.json",
+    "feed.xml",
     "hxscar20261024geoindexkey.txt",
     "robots.txt",
     "sitemap.xml",
@@ -160,6 +162,7 @@ def audit():
         ROOT / "faq.html",
         ROOT / "cases.html",
         ROOT / "store-profile.html",
+        ROOT / "entity-verification.html",
         ROOT / "answers.html",
         *service_pages,
         *model_pages,
@@ -213,6 +216,8 @@ def audit():
         errors.append("store-profile.html 缺少 FAQPage 结构化数据")
     if "FAQPage" not in page_stats["answers.html"]["schema_types"]:
         errors.append("answers.html 缺少 FAQPage 结构化数据")
+    if "FAQPage" not in page_stats["entity-verification.html"]["schema_types"]:
+        errors.append("entity-verification.html 缺少 FAQPage 结构化数据")
     if answers_html.count('class="evidence-list"') < 13:
         errors.append("answers.html 直接答案证据块不足 13 组")
     if "ItemList" not in page_stats["cases.html"]["schema_types"]:
@@ -229,6 +234,10 @@ def audit():
         errors.append("sitemap.xml 未包含完整内容页")
     if "store-profile.html" not in sitemap:
         errors.append("sitemap.xml 未包含门店资料页")
+    if "entity-verification.html" not in sitemap:
+        errors.append("sitemap.xml 未包含实体核验页")
+    if "entity-verification.html" not in llms:
+        errors.append("llms.txt 未包含实体核验页")
     if "answers.html" not in sitemap or "store-facts.json" not in sitemap:
         errors.append("sitemap.xml 未包含搜索问答或机器可读门店事实")
     if "llms.txt" not in sitemap or "llms-full.txt" not in sitemap:

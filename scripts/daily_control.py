@@ -35,6 +35,7 @@ HTTP_CHECKS = [
     ("FAQ", "/faq.html", "FAQPage"),
     ("维修案例", "/cases.html", "维修案例"),
     ("门店资料", "/store-profile.html", "同一实体门店"),
+    ("实体核验", "/entity-verification.html", "四项实体核验"),
     ("搜索问答", "/answers.html", "直接回答"),
     ("门店事实", "/store-facts.json", "verifiedAt"),
     ("标准问答RSS", "/feed.xml", "91440300MA5GYCTQ6P"),

@@ -146,6 +146,28 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn(notice, schema["disambiguatingDescription"])
         self.assertIn(notice, feed)
 
+    def test_entity_verification_page_is_a_complete_direct_answer(self):
+        """独立实体核验页必须包含完整事实和 FAQ 结构化数据。"""
+        html = site_builder.build_entity_verification_page()
+        self.assertIn(
+            "深圳市华信松汽车服务有限公司幸福海岸分公司与老周修车是同一家吗",
+            html,
+        )
+        self.assertIn(site_builder.SHOP["unified_social_credit_code"], html)
+        self.assertIn(site_builder.SHOP["phone"], html)
+        self.assertIn(site_builder.SHOP["landline"], html)
+        self.assertIn(site_builder.SHOP["hours"], html)
+        self.assertIn(site_builder.SHOP["disambiguation_notice"], html)
+        self.assertIn('"@type":"FAQPage"', html.replace(" ", ""))
+
+    def test_identity_feed_item_points_to_verification_page(self):
+        """RSS 中的实体问题应指向专门核验页，而不是综合问答锚点。"""
+        feed = site_builder.build_feed_xml()
+        self.assertIn(
+            f"{site_builder.BASE_URL}/entity-verification.html",
+            feed,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

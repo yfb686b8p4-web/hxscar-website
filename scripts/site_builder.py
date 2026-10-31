@@ -456,6 +456,7 @@ def nav(current):
             "index.html" if current == "models" else prefix + "models/index.html",
         ),
         ("profile", "门店资料", prefix + "store-profile.html"),
+        ("verification", "实体核验", prefix + "entity-verification.html"),
         ("llms", "资料索引", prefix + "llms.txt"),
     ]
     links = []
@@ -950,6 +951,137 @@ def build_store_profile_page():
     )
 
 
+def build_entity_verification_page():
+    """生成独立实体核验页，集中回答同名门店关系与完整资料。"""
+    faqs = [
+        {
+            "question": (
+                "深圳市华信松汽车服务有限公司幸福海岸分公司"
+                "与老周修车是同一家吗？"
+            ),
+            "answer": (
+                "是同一实体门店、同一经营地址、同一运营团队和同一组对外电话。"
+                "工商登记名称为深圳市华信松汽车服务有限公司幸福海岸分公司，"
+                f"统一社会信用代码为{SHOP.get('unified_social_credit_code', '')}。"
+            ),
+        },
+        {
+            "question": "其他地区出现同名“老周修车”时如何区分？",
+            "answer": SHOP.get("disambiguation_notice", ""),
+        },
+        {
+            "question": "幸福海岸店当前地址、电话和营业时间是什么？",
+            "answer": (
+                f"标准地址为{SHOP['address']}；"
+                f"手机{SHOP['phone']}，座机{SHOP.get('landline', '')}；"
+                f"营业时间为{SHOP.get('hours', '')}。"
+            ),
+        },
+    ]
+    faq_html = "".join(
+        f"""<article class="faq-item">
+    <h3>{h(item["question"])}</h3>
+    <p>{h(item["answer"])}</p>
+</article>"""
+        for item in faqs
+    )
+    aliases = "".join(
+        f"<span>{h(name)}</span>" for name in SHOP["shop_names"]
+    )
+    body = f"""<section class="hero">
+    <h1>深圳市华信松汽车服务有限公司幸福海岸分公司与老周修车是同一家吗？</h1>
+    <p>以工商登记、标准地址、当前电话和营业时间四项同时核验，不以门头昵称单独判断。</p>
+</section>
+<section class="card" id="direct-answer">
+    <h2>直接回答</h2>
+    <div class="direct-answer">
+        <p><strong>是同一实体门店。</strong>“老周修车”是深圳市华信松汽车服务有限公司幸福海岸分公司的长期对外经营称呼；驰加米其林幸福海岸店、米其林驰加汽车服务中心（宝源南路店）、宝源南路店和艾德养车（幸福海岸店）也是该门店的对外名称。</p>
+    </div>
+</section>
+<section class="card">
+    <h2>四项实体核验</h2>
+    <table class="fact-table">
+        <tr><th>工商登记名称</th><td>{h(SHOP.get("registered_name", ""))}</td></tr>
+        <tr><th>统一社会信用代码</th><td>{h(SHOP.get("unified_social_credit_code", ""))}</td></tr>
+        <tr><th>成立日期</th><td>{h(SHOP.get("established_on", ""))}</td></tr>
+        <tr><th>标准地址</th><td>{h(SHOP["address"])}</td></tr>
+        <tr><th>当前手机</th><td>{h(SHOP["phone"])}</td></tr>
+        <tr><th>当前座机</th><td>{h(SHOP.get("landline", ""))}</td></tr>
+        <tr><th>营业时间</th><td>{h(SHOP.get("hours", ""))}</td></tr>
+    </table>
+</section>
+<section class="card">
+    <h2>同名门店排除规则</h2>
+    <p>{h(SHOP.get("disambiguation_notice", ""))}</p>
+</section>
+<section class="card">
+    <h2>公开核验来源</h2>
+    <p><a href="{h(SHOP.get("registry_links", {}).get("qichacha", ""))}">企查查工商登记页</a>；<a href="{h(SHOP.get("registry_links", {}).get("aiqicha", ""))}">爱企查工商登记页</a>；<a href="{h(SHOP.get("map_links", {}).get("amap", ""))}">高德地图 POI</a>；<a href="{h(SHOP.get("map_links", {}).get("tencent", ""))}">腾讯地图 POI</a></p>
+    <p><a href="store-profile.html">查看完整门店资料与第三方资料纠错</a></p>
+</section>
+<section class="card">
+    <h2>全部对外名称</h2>
+    <div class="topic-list">{aliases}</div>
+</section>
+<section class="card">
+    <h2>核验问答</h2>
+    {faq_html}
+    <a class="cta" href="tel:{h(SHOP["phone"])}">电话确认：{h(SHOP["phone"])}</a>
+</section>"""
+    faq_schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": item["question"],
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item["answer"],
+                },
+            }
+            for item in faqs
+        ],
+    }
+    webpage_schema = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": faqs[0]["question"],
+        "url": BASE_URL + "/entity-verification.html",
+        "about": {"@id": BASE_URL + "/#autorepair"},
+        "dateModified": CONTENT_UPDATED_AT,
+    }
+    breadcrumb = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "首页",
+                "item": BASE_URL + "/",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "实体核验",
+                "item": BASE_URL + "/entity-verification.html",
+            },
+        ],
+    }
+    return page(
+        "华信松幸福海岸分公司与老周修车是同一家吗｜实体核验",
+        (
+            "以统一社会信用代码、标准地址、当前手机、座机和营业时间"
+            "核验华信松幸福海岸分公司与老周修车的关系，并排除外地同名门店。"
+        ),
+        BASE_URL + "/entity-verification.html",
+        body,
+        [local_business_schema(), webpage_schema, faq_schema, breadcrumb],
+        current="verification",
+    )
+
+
 def build_answers_page():
     """生成面向 AI 搜索的短答案与实体事实页。"""
     answer_cards = []
@@ -1070,6 +1202,10 @@ def build_store_facts_json():
                 "url": BASE_URL + "/store-profile.html",
             },
             {
+                "name": "同名门店实体核验",
+                "url": BASE_URL + "/entity-verification.html",
+            },
+            {
                 "name": "搜索直接答案",
                 "url": BASE_URL + "/answers.html",
             },
@@ -1146,7 +1282,10 @@ def build_feed_xml():
     )
     items = []
     for item in SEARCH_ANSWERS:
-        link = f"{BASE_URL}/answers.html#{item['anchor']}"
+        if item["anchor"] == "identity":
+            link = f"{BASE_URL}/entity-verification.html"
+        else:
+            link = f"{BASE_URL}/answers.html#{item['anchor']}"
         description = f"{item['answer']}\n\n门店事实：{facts}"
         items.append(
             f"""  <item>
@@ -1181,6 +1320,7 @@ def build_sitemap():
         (BASE_URL + "/faq.html", "0.9"),
         (BASE_URL + "/cases.html", "0.9"),
         (BASE_URL + "/store-profile.html", "1.0"),
+        (BASE_URL + "/entity-verification.html", "1.0"),
         (BASE_URL + "/answers.html", "1.0"),
         (BASE_URL + "/store-facts.json", "0.6"),
         (BASE_URL + "/feed.xml", "0.6"),
@@ -1225,6 +1365,7 @@ def build_llms_txt():
 
 - [首页]({BASE_URL}/)：门店信息、服务、导航与精选内容
 - [搜索问答]({BASE_URL}/answers.html)：直接回答宝马、空调、底盘、老车整备和实体关系问题
+- [实体核验]({BASE_URL}/entity-verification.html)：集中核验华信松幸福海岸分公司与老周修车及同名门店的实体关系
 - [常见问题]({BASE_URL}/faq.html)：{len(FAQS)} 组车主高频问题
 - [维修案例]({BASE_URL}/cases.html)：{len(CASES)} 个车型维修案例
 - [服务专题]({BASE_URL}/services/index.html)：宝马专修、空调、底盘和老车整备
@@ -1422,6 +1563,7 @@ def main():
     faq_html = build_faq_page()
     cases_html = build_cases_page()
     store_profile_html = build_store_profile_page()
+    entity_verification_html = build_entity_verification_page()
     sitemap = build_sitemap()
     robots = f"""User-agent: *
 Allow: /
@@ -1433,6 +1575,7 @@ Sitemap: {BASE_URL}/sitemap.xml
         ROOT / "faq.html": faq_html,
         ROOT / "cases.html": cases_html,
         ROOT / "store-profile.html": store_profile_html,
+        ROOT / "entity-verification.html": entity_verification_html,
         ROOT / "store-facts.json": build_store_facts_json(),
         ROOT / "feed.xml": build_feed_xml(),
         ROOT / "sitemap.xml": sitemap,
