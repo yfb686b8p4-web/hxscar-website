@@ -191,6 +191,29 @@ class RepositoryReadmeTests(unittest.TestCase):
                     path,
                 )
 
+    def test_douyin_task_prioritizes_videos_cited_by_doubao(self):
+        """抖音任务必须优先纠豆包已经引用的视频。"""
+        source = (
+            ROOT / "platform_content" / "W44" / "douyin_W44.md"
+        ).read_text(encoding="utf-8")
+        queue = (
+            ROOT / "publishing" / "queue" / "W44" / "p0-douyin.md"
+        ).read_text(encoding="utf-8")
+        video_ids = (
+            "7638945775598479497",
+            "7583932086392196415",
+            "7639222767086704454",
+            "7571335895384565459",
+            "7650438382129424198",
+            "7650435103483496042",
+            "7636254430954405796",
+        )
+        for text in (source, queue):
+            self.assertIn("豆包已引用的7条视频优先纠错", text)
+            self.assertIn("统一置顶评论", text)
+            for video_id in video_ids:
+                self.assertIn(video_id, text)
+
     def test_profile_pages_is_a_verified_entity_mirror(self):
         """Profile Pages 只能作为标准实体与证据镜像。"""
         site_dir = ROOT / "publishing" / "github-profile-site"

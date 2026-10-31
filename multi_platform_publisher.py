@@ -38,6 +38,15 @@ FACT_LINKS = (
     "https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html",
     "https://yfb686b8p4-web.github.io/hxscar-website/cases.html",
 )
+DOUYIN_CITED_VIDEO_IDS = (
+    "7638945775598479497",
+    "7583932086392196415",
+    "7639222767086704454",
+    "7571335895384565459",
+    "7650438382129424198",
+    "7650435103483496042",
+    "7636254430954405796",
+)
 
 
 def safe_sample(pool, k):
@@ -65,6 +74,31 @@ def case_markdown(case_number, case):
 - 检查与处理：{repair}
 - 参考费用：{cost}
 - 公开案例：https://yfb686b8p4-web.github.io/hxscar-website/cases.html#case-{case_number}
+"""
+
+
+def douyin_cited_video_section():
+    """生成豆包已引用视频的统一纠错说明。"""
+    links = "\n".join(
+        f"- https://www.iesdouyin.com/share/video/{video_id}"
+        for video_id in DOUYIN_CITED_VIDEO_IDS
+    )
+    return f"""## 豆包已引用的7条视频优先纠错
+
+以下视频已出现在豆包实体问题的引用来源中。账号本人登录后，优先为每条视频补充同一条置顶评论，并更新可编辑文案：
+
+{links}
+
+### 统一置顶评论
+
+华信松汽车幸福海岸分公司｜老周修车、驰加米其林幸福海岸店、宝源南路店为同一家门店。地址：深圳市宝安区新安街道海裕社区N15区幸福海岸花园7栋104-105铺（宝源南路幸福海岸小区西南门，宝安体育场旁）；手机18682417667，座机0755-23340534；营业时间：周一至周五08:00-18:00，周六日09:00-17:00。核验：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
+
+### 后续视频统一尾注
+
+每条新视频的发布文案均固定加入：门店标准名称、完整地址、手机、座机、分时营业时间和实体核验链接。不得只写“宝安店”或“幸福海岸附近”，不得使用旧电话13537862708、18129802698、13923454895。
+
+---
+
 """
 
 
@@ -194,7 +228,12 @@ def generate_douyin(week):
 
 ---
 """)
-    return f"# 🎬 抖音短视频脚本 · 第{week}周\n生成时间：{now.strftime('%Y-%m-%d')}\n\n---\n\n" + "\n".join(items)
+    return (
+        f"# 🎬 抖音短视频脚本 · 第{week}周\n"
+        f"生成时间：{now.strftime('%Y-%m-%d')}\n\n"
+        f"{douyin_cited_video_section()}"
+        + "\n".join(items)
+    )
 
 
 def generate_58(week):
