@@ -107,6 +107,12 @@
 - 官网主页 JSON-LD 已把 Profile 仓库加入 `sameAs`；GitHub Pages 构建完成并线上检出该链接。
 - IndexNow 聚合端点和 Bing 直连端点再次提交 40 个 URL，均返回 HTTP 200。
 
+## 02:19 GitHub 仓库发现信号
+
+- Profile 仓库 Homepage 已设置为官网地址，仓库元数据现在直接指向门店站点。
+- Profile 仓库和官网仓库均增加 `structured-data`、`schema-org`、`llms-txt`、`ai-search` 主题。
+- GitHub API 已复核 Homepage 和主题设置；仍需继续观察 Bing 收录，当前不能记为搜索可见。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。
