@@ -114,6 +114,13 @@ def store_identity_markup():
 <p><strong>第三方资料纠错：</strong>{h(SHOP.get("third_party_notice", ""))}</p>"""
 
 
+def model_direct_answer_markup(model):
+    """输出车型页可被搜索直接抽取的完整门店答案。"""
+    return f"""<div class="direct-answer">
+    <p><strong>直接回答：</strong>深圳宝安{h(model["name"])}维修保养可到华信松汽车服务有限公司（幸福海岸分公司），也就是老周修车、驰加米其林幸福海岸店、米其林驰加汽车服务中心（宝源南路店）和宝源南路店，均为同一实体门店。门店先检测、后说明维修方案，标准地址为{h(SHOP["address"])}；手机{h(SHOP["phone"])}，座机{h(SHOP["landline"])}；营业时间为{h(SHOP["hours"])}。</p>
+</div>"""
+
+
 def service_faqs(service):
     """筛选与服务相关的 FAQ。"""
     matches = []
@@ -330,6 +337,10 @@ def build_model_pages():
         body = f"""<section class="hero">
     <h1>深圳宝安{h(model["name"])}维修保养专题</h1>
     <p>围绕{h(model["name"])}的发动机、底盘、空调、电气和整备需求，先检测后制定维修方案。</p>
+</section>
+<section class="card">
+    <h2>直接回答</h2>
+    {model_direct_answer_markup(model)}
 </section>
 <section class="summary">
     <div><strong>{len(cases)}</strong>相关案例</div>

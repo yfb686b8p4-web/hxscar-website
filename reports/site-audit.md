@@ -16,18 +16,18 @@
 | services/bmw-premium.html | 2849 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
 | services/chassis.html | 2045 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
 | services/vehicle-restoration.html | 2962 | 4 | AutoRepair, Service, BreadcrumbList, FAQPage |
-| models/audi-a6l.html | 1394 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/audi-q5.html | 1375 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/bmw-5-series.html | 1596 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/bmw-7-series.html | 1587 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/bmw-x5.html | 1533 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/land-rover-defender.html | 1428 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/land-rover-range-rover.html | 1306 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/mercedes-e-class.html | 1424 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/mercedes-glc.html | 1369 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/porsche-cayenne.html | 1688 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/porsche-macan.html | 1520 | 3 | AutoRepair, BreadcrumbList, FAQPage |
-| models/volkswagen-touareg.html | 1238 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/audi-a6l.html | 1555 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/audi-q5.html | 1536 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/bmw-5-series.html | 1758 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/bmw-7-series.html | 1749 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/bmw-x5.html | 1694 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/land-rover-defender.html | 1591 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/land-rover-range-rover.html | 1469 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/mercedes-e-class.html | 1586 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/mercedes-glc.html | 1530 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/porsche-cayenne.html | 1852 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/porsche-macan.html | 1682 | 3 | AutoRepair, BreadcrumbList, FAQPage |
+| models/volkswagen-touareg.html | 1401 | 3 | AutoRepair, BreadcrumbList, FAQPage |
 
 ## 错误
 
