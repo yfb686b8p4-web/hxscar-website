@@ -165,8 +165,8 @@ def audit():
         errors.append(f"服务专题页数量应为 4，实际为 {len(service_pages)}")
     if len(model_pages) != 12:
         errors.append(f"车型专题页数量应为 12，实际为 {len(model_pages)}")
-    if len(answer_pages) != 14:
-        errors.append(f"独立答案页数量应为 14，实际为 {len(answer_pages)}")
+    if len(answer_pages) != 15:
+        errors.append(f"独立答案页数量应为 15，实际为 {len(answer_pages)}")
     if not answer_hub.is_file():
         errors.append("缺少答案索引页 answers/index.html")
 

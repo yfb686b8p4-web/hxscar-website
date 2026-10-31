@@ -5,7 +5,7 @@
     "faqs": 142,
     "cases": 56,
     "reviews": 30,
-    "answer_pages": 14,
+    "answer_pages": 15,
     "answer_hub": true,
     "service_pages": 4,
     "model_pages": 12
@@ -70,9 +70,9 @@
       ]
     },
     "answers.html": {
-      "bytes": 65927,
-      "han_chars": 8075,
-      "visible_han_chars": 4916,
+      "bytes": 69687,
+      "han_chars": 8521,
+      "visible_han_chars": 5216,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -200,6 +200,19 @@
         "BreadcrumbList"
       ]
     },
+    "answers/contact-correction.html": {
+      "bytes": 22841,
+      "han_chars": 2244,
+      "visible_han_chars": 620,
+      "json_ld_blocks": 5,
+      "schema_types": [
+        "WebSite",
+        "AutoRepair",
+        "WebPage",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
     "answers/contact.html": {
       "bytes": 21810,
       "han_chars": 2033,
@@ -266,9 +279,9 @@
       ]
     },
     "answers/index.html": {
-      "bytes": 27555,
-      "han_chars": 3539,
-      "visible_han_chars": 2054,
+      "bytes": 28343,
+      "han_chars": 3671,
+      "visible_han_chars": 2169,
       "json_ld_blocks": 4,
       "schema_types": [
         "WebSite",

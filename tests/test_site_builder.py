@@ -105,6 +105,30 @@ class SiteBuilderGeoTests(unittest.TestCase):
             normalized_answer,
         )
 
+    def test_contact_correction_answer_replaces_stale_hours_and_phones(self):
+        """营业时间纠错答案必须同时给出当前值并明确旧资料无效。"""
+        item = next(
+            answer
+            for answer in site_builder.SEARCH_ANSWERS
+            if answer["anchor"] == "contact-correction"
+        )
+        normalized_answer = item["answer"].replace(" ", "")
+        self.assertIn(
+            site_builder.SHOP["hours"].replace(" ", ""),
+            normalized_answer,
+        )
+        self.assertIn(site_builder.SHOP["phone"], item["answer"])
+        self.assertIn(site_builder.SHOP["landline"], item["answer"])
+        self.assertIn("08:00-20:00", item["answer"])
+        self.assertIn("08:00-19:00", item["answer"])
+        self.assertIn("18129802698", item["answer"])
+        self.assertIn("13923454895", item["answer"])
+        html = site_builder.build_answer_pages()[
+            site_builder.ROOT / site_builder.answer_detail_path(item)
+        ]
+        self.assertIn("不作为当前预约和到店依据", html)
+        self.assertIn(item["answer"], html)
+
     def test_schema_links_both_verified_map_entities(self):
         """结构化数据必须同时关联高德和腾讯的已核验 POI。"""
         schema = site_builder.local_business_schema()

@@ -6,7 +6,7 @@
 
 - [首页](https://yfb686b8p4-web.github.io/hxscar-website/)：门店信息、服务、导航与精选内容
 - [搜索问答](https://yfb686b8p4-web.github.io/hxscar-website/answers.html)：直接回答宝马、空调、底盘、老车整备和实体关系问题
-- [答案索引](https://yfb686b8p4-web.github.io/hxscar-website/answers/index.html)：14 个可独立引用的答案页入口
+- [答案索引](https://yfb686b8p4-web.github.io/hxscar-website/answers/index.html)：15 个可独立引用的答案页入口
 - [实体核验](https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html)：集中核验华信松幸福海岸分公司与老周修车及同名门店的实体关系
 - [常见问题](https://yfb686b8p4-web.github.io/hxscar-website/faq.html)：142 组车主高频问题
 - [维修案例](https://yfb686b8p4-web.github.io/hxscar-website/cases.html)：56 个车型维修案例
@@ -35,6 +35,7 @@
 - [老车整备翻新先做底盘还是先做外观？](https://yfb686b8p4-web.github.io/hxscar-website/answers/restoration-order.html)
 - [老周修车、驰加米其林幸福海岸店、宝源南路店是同一家吗？](https://yfb686b8p4-web.github.io/hxscar-website/answers/identity.html)
 - [老周修车的标准地址、电话和营业时间是什么？](https://yfb686b8p4-web.github.io/hxscar-website/answers/contact.html)
+- [老周修车营业时间是08:00-20:00吗？地址电话是多少？](https://yfb686b8p4-web.github.io/hxscar-website/answers/contact-correction.html)
 
 ## 门店信息
 

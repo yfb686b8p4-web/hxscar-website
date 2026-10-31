@@ -30,7 +30,7 @@ class SubmitIndexNowTests(unittest.TestCase):
         )
         self.assertEqual(
             sum("/hxscar-website/answers/" in url for url in urls),
-            15,
+            16,
         )
 
 
