@@ -266,6 +266,7 @@ def fetch_url(url, expected, timeout=30):
         command = [
             "curl",
             "--http1.1",
+            "--location",
             "--silent",
             "--show-error",
             "--max-time",

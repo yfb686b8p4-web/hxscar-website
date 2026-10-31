@@ -95,6 +95,23 @@ class DailyControlTests(unittest.TestCase):
             checks,
         )
 
+    def test_checks_cover_release_and_gist_qa_mirrors(self):
+        """每日检查必须覆盖四个原子问答镜像中的远端两个。"""
+        checks = {item[1] for item in daily_control.HTTP_CHECKS}
+        self.assertIn(
+            "https://github.com/yfb686b8p4-web/hxscar-website/"
+            "releases/download/ai-evidence-2026-11-01/"
+            "qa-evidence.jsonl",
+            checks,
+        )
+        self.assertIn(
+            "https://gist.githubusercontent.com/yfb686b8p4-web/"
+            "7923ef0b18ffbcce04a8b6758254a06b/raw/"
+            "51d9f49a2de4747a06623369738c0376fa3aa781/"
+            "qa-evidence.jsonl",
+            checks,
+        )
+
     def test_effective_hit_requires_complete_identity(self):
         self.assertTrue(daily_control.evaluate_effective_hit(record()))
         self.assertFalse(
