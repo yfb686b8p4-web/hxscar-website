@@ -2573,6 +2573,49 @@ def build_feed_xml():
     <description>{h(description)}</description>
   </item>"""
         )
+    profile_pages = SHOP.get("external_profile_links", {}).get(
+        "github_profile_pages", ""
+    )
+    ai_release = SHOP.get("external_profile_links", {}).get(
+        "github_ai_evidence_release", ""
+    )
+    external_items = [
+        (
+            "GitHub Profile 门店实体镜像页",
+            profile_pages,
+            (
+                f"已发布独立实体镜像页。{facts}\n\n"
+                "页面包含同名门店消歧、五个核心答案入口、"
+                "AI 证据 Release 和 Gist 入口。\n\n"
+                f"实体镜像：{profile_pages}\n"
+                f"官网实体核验：{BASE_URL}/entity-verification.html"
+            ),
+        ),
+        (
+            "AI 搜索实体与维修案例证据 Release",
+            ai_release,
+            (
+                f"已发布可下载 AI 证据包。{facts}\n\n"
+                "附件包含 store-facts.json、store-facts.jsonld、"
+                f"{len(CASES)} 条案例、llms.txt 和 llms-full.txt。\n\n"
+                f"证据 Release：{ai_release}\n"
+                f"机器事实：{BASE_URL}/store-facts.json"
+            ),
+        ),
+    ]
+    for title, link, description in external_items:
+        if not link:
+            continue
+        items.append(
+            f"""  <item>
+    <title>{h(title)}</title>
+    <link>{h(link)}</link>
+    <guid isPermaLink="true">{h(link)}</guid>
+    <category>外部证据</category>
+    <pubDate>{h(pub_date)}</pubDate>
+    <description>{h(description)}</description>
+  </item>"""
+        )
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>

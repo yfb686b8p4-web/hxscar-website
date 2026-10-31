@@ -328,6 +328,22 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn("0755-23340534", text)
         self.assertIn("宝安宝马5系维修保养哪家好", text)
 
+    def test_feed_exposes_profile_pages_and_ai_evidence_release(self):
+        """RSS 必须分发 Profile 实体镜像和 AI 证据 Release。"""
+        text = site_builder.build_feed_xml()
+        self.assertIn("<category>外部证据</category>", text)
+        self.assertIn(
+            site_builder.SHOP["external_profile_links"]["github_profile_pages"],
+            text,
+        )
+        self.assertIn(
+            site_builder.SHOP["external_profile_links"][
+                "github_ai_evidence_release"
+            ],
+            text,
+        )
+        self.assertIn("AI 搜索实体与维修案例证据 Release", text)
+
     def test_llms_corpora_link_fact_sheet_mirrors(self):
         """面向 AI 的两个机器语料入口都应暴露实体核验 PDF 双镜像。"""
         mirror = site_builder.SHOP["document_mirrors"]["github_release_pdf"]
