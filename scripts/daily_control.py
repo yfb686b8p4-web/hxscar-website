@@ -43,6 +43,7 @@ HTTP_CHECKS = [
     ("标准问答RSS", "/feed.xml", "91440300MA5GYCTQ6P", 45),
     ("门店品牌图", "/assets/store-avatar-300.jpg", "JFIF", 30),
     ("门店外观图", "/assets/store-banner.jpg", "JFIF", 60),
+    ("门店响应式外观图", "/assets/store-banner-960.jpg", "JFIF", 30),
     (
         "门店事实PDF",
         "/downloads/huaxinsong-store-facts-2026-10-31.pdf",

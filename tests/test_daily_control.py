@@ -61,6 +61,10 @@ class DailyControlTests(unittest.TestCase):
             60,
         )
         self.assertEqual(
+            checks["/assets/store-banner-960.jpg"][3],
+            30,
+        )
+        self.assertEqual(
             checks["/feed.xml"][3],
             45,
         )
