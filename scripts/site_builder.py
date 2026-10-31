@@ -1218,6 +1218,9 @@ def build_faq_page():
     schema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
+        "@id": BASE_URL + "/faq.html#faq",
+        "dateModified": CONTENT_UPDATED_AT,
+        "about": {"@id": BASE_URL + "/#autorepair"},
         "mainEntity": [
             {
                 "@type": "Question",

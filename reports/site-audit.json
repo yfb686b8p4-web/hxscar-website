@@ -13,7 +13,7 @@
   },
   "pages": {
     "index.html": {
-      "bytes": 52233,
+      "bytes": 52314,
       "han_chars": 7334,
       "visible_han_chars": 4663,
       "json_ld_blocks": 3,
@@ -24,7 +24,7 @@
       ]
     },
     "faq.html": {
-      "bytes": 105159,
+      "bytes": 105334,
       "han_chars": 21401,
       "visible_han_chars": 12001,
       "json_ld_blocks": 3,

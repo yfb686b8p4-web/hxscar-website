@@ -108,6 +108,11 @@ class ContentSafetyTests(unittest.TestCase):
             if schema.get("@type") == "FAQPage":
                 faq_schemas.append(schema)
         self.assertEqual(len(faq_schemas), 1)
+        self.assertEqual(
+            faq_schemas[0]["about"]["@id"],
+            site_builder.BASE_URL + "/#autorepair",
+        )
+        self.assertTrue(faq_schemas[0].get("dateModified"))
         schema_text = json.dumps(faq_schemas[0], ensure_ascii=False)
         for marker in UNVERIFIED_FAQ_MARKERS:
             self.assertNotIn(marker, schema_text)

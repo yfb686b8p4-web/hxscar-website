@@ -348,6 +348,7 @@ def build_page(config, selected_cases, week_num):
         "@type": "FAQPage",
         "@id": SITE_URL + "#faq",
         "dateModified": SHOP_INFO.get("verified_at", now.strftime("%Y-%m-%d")),
+        "about": {"@id": SITE_URL + "#autorepair"},
         "mainEntity": [
             {
                 "@type": "Question",
