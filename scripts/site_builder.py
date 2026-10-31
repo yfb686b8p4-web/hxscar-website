@@ -565,7 +565,14 @@ def local_business_schema():
         "description": SHOP.get("identity_statement", ""),
         "disambiguatingDescription": SHOP.get("entity_scope_statement", ""),
         "telephone": SHOP["phone"],
-        "sameAs": [SHOP.get("map_links", {}).get("amap", "")],
+        "sameAs": [
+            link
+            for link in (
+                SHOP.get("map_links", {}).get("amap", ""),
+                SHOP.get("map_links", {}).get("tencent", ""),
+            )
+            if link
+        ],
         "hasMap": SHOP.get("map_links", {}).get("amap", ""),
         "identifier": [
             {

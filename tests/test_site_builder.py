@@ -65,6 +65,18 @@ class SiteBuilderGeoTests(unittest.TestCase):
             normalized_answer,
         )
 
+    def test_schema_links_both_verified_map_entities(self):
+        """结构化数据必须同时关联高德和腾讯的已核验 POI。"""
+        schema = site_builder.local_business_schema()
+        self.assertIn(
+            site_builder.SHOP["map_links"]["amap"],
+            schema["sameAs"],
+        )
+        self.assertIn(
+            site_builder.SHOP["map_links"]["tencent"],
+            schema["sameAs"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
