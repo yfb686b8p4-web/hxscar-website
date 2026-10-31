@@ -31,6 +31,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("13923454895", readme)
         self.assertIn("宝源南路276号", readme)
         self.assertIn(shop["external_profile_links"]["douyin"], readme)
+        self.assertIn(shop["external_profile_links"]["github_profile"], readme)
         self.assertIn(shop["douyin_id"], readme)
         self.assertIn(
             shop["document_mirrors"]["github_release_pdf"],
@@ -51,6 +52,10 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("13923454895", text)
         self.assertIn("13537862708", text)
         self.assertIn("宝源南路276号", text)
+        self.assertIn(
+            shop["external_profile_links"]["github_profile"],
+            text,
+        )
         self.assertIn(
             shop["document_mirrors"]["github_release_pdf"],
             text,
@@ -83,6 +88,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["landline"],
             shop["hours"],
             shop["external_profile_links"]["douyin"],
+            shop["external_profile_links"]["github_profile"],
         ):
             self.assertIn(value, text)
         for value in (
@@ -113,11 +119,25 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn(shop["image_path"], home)
         self.assertIn(shop["unified_social_credit_code"], home)
         self.assertIn(shop["external_profile_links"]["douyin"], home)
+        self.assertIn(
+            shop["external_profile_links"]["github_profile"],
+            home,
+        )
         self.assertIn("entity-verification.html", home)
         self.assertIn("application/rss+xml", home)
         self.assertIn(shop["fact_sheet_path"], home)
         self.assertIn(
             shop["document_mirrors"]["github_release_pdf"],
+            home,
+        )
+        self.assertIn("store-facts.jsonld", home)
+        self.assertIn("case-evidence.json", home)
+        self.assertIn(
+            shop["document_mirrors"]["gist_store_facts_jsonld"],
+            home,
+        )
+        self.assertIn(
+            shop["document_mirrors"]["gist_case_evidence_json"],
             home,
         )
         self.assertIn('"@type": "WebSite"', home)
@@ -149,6 +169,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             "answers/index.html",
             "mercedes-e300l-ac-temperature.html",
             shop["external_profile_links"]["gist"],
+            shop["external_profile_links"]["github_profile"],
         ):
             self.assertIn(value, text)
 

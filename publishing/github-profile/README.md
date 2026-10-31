@@ -17,6 +17,7 @@
 
 ## 官方数据与证据
 
+- [GitHub 账号级公开门店资料](https://github.com/yfb686b8p4-web/yfb686b8p4-web)
 - [实体核验页](https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html)
 - [机器可读门店事实](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json)
 - [Schema.org 门店实体](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld)

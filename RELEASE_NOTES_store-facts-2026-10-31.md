@@ -47,6 +47,7 @@
 - 标准问答 RSS：https://yfb686b8p4-web.github.io/hxscar-website/feed.xml
 - 官网 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
+- GitHub 账号级门店资料：https://github.com/yfb686b8p4-web/yfb686b8p4-web
 - 抖音商家认证主页：https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc
 - 企查查：https://www.qcc.com/firm/8ed6b923472b38c0bf3801b468b2d37e.html
 - 爱企查：https://aiqicha.baidu.com/company_detail_94051754221223

@@ -67,6 +67,19 @@ FACT_SHEET_URL = SITE_URL + SHOP_INFO.get(
 )
 SCHEMA_FACTS_URL = SITE_URL + "store-facts.jsonld"
 CASE_EVIDENCE_URL = SITE_URL + "case-evidence.json"
+FACT_JSON_URL = SITE_URL + "store-facts.json"
+RELEASE_PDF_URL = SHOP_INFO.get("document_mirrors", {}).get(
+    "github_release_pdf",
+    "",
+)
+GIST_STORE_FACTS_URL = SHOP_INFO.get("document_mirrors", {}).get(
+    "gist_store_facts_jsonld",
+    "",
+)
+GIST_CASE_EVIDENCE_URL = SHOP_INFO.get("document_mirrors", {}).get(
+    "gist_case_evidence_json",
+    "",
+)
 REGISTRY_LINKS = SHOP_INFO.get("registry_links", {})
 EXTERNAL_PROFILE_LINKS = SHOP_INFO.get("external_profile_links", {})
 
@@ -169,7 +182,7 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         "alternateName": SHOP_NAMES[1:],
         "url": SITE_URL,
         "mainEntityOfPage": SITE_URL + "store-profile.html",
-        "dateModified": SHOP_INFO.get("verified_at", now.strftime("%Y-%m-%d")),
+        "dateModified": now.strftime("%Y-%m-%d"),
         "description": IDENTITY_STATEMENT + " " + cfg["desc"],
         "disambiguatingDescription": (
             ENTITY_SCOPE_STATEMENT
@@ -180,12 +193,50 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         "logo": STORE_LOGO,
         "taxID": SHOP_INFO.get("unified_social_credit_code", ""),
         "foundingDate": SHOP_INFO.get("established_on", ""),
-        "subjectOf": {
-            "@type": "DigitalDocument",
-            "name": "华信松汽车幸福海岸分公司门店实体核验资料",
-            "url": FACT_SHEET_URL,
-            "encodingFormat": "application/pdf",
-        },
+        "subjectOf": [
+            {
+                "@type": "DigitalDocument",
+                "name": "华信松汽车幸福海岸分公司门店实体核验资料",
+                "url": FACT_SHEET_URL,
+                "encodingFormat": "application/pdf",
+            },
+            {
+                "@type": "DigitalDocument",
+                "name": "GitHub Release 门店实体核验资料 PDF 镜像",
+                "url": RELEASE_PDF_URL,
+                "encodingFormat": "application/pdf",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "机器可读门店事实",
+                "url": FACT_JSON_URL,
+                "encodingFormat": "application/json",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "Schema.org 门店实体",
+                "url": SCHEMA_FACTS_URL,
+                "encodingFormat": "application/ld+json",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "结构化维修案例数据",
+                "url": CASE_EVIDENCE_URL,
+                "encodingFormat": "application/ld+json",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "GitHub Gist 门店 JSON-LD 镜像",
+                "url": GIST_STORE_FACTS_URL,
+                "encodingFormat": "application/ld+json",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "GitHub Gist 维修案例 JSON-LD 镜像",
+                "url": GIST_CASE_EVIDENCE_URL,
+                "encodingFormat": "application/ld+json",
+            },
+        ],
         "sameAs": [
             link
             for link in (
