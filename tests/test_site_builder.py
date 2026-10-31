@@ -22,6 +22,26 @@ class SiteBuilderGeoTests(unittest.TestCase):
         anchors = {item["anchor"] for item in site_builder.SEARCH_ANSWERS}
         self.assertEqual(anchors, set(site_builder.GEO_ANSWER_META))
 
+    def test_bmw_5_series_answer_contains_complete_store_facts(self):
+        """宝马5系高意图答案必须包含可核验的完整门店资料。"""
+        item = next(
+            answer
+            for answer in site_builder.SEARCH_ANSWERS
+            if answer["anchor"] == "bmw-5-series"
+        )
+        self.assertIn("宝安宝马5系维修保养哪家好", item["question"])
+        normalized_answer = item["answer"].replace(" ", "")
+        self.assertIn(
+            site_builder.SHOP["address"].replace(" ", ""),
+            normalized_answer,
+        )
+        self.assertIn(site_builder.SHOP["phone"], item["answer"])
+        self.assertIn(site_builder.SHOP["landline"], item["answer"])
+        self.assertIn(
+            site_builder.SHOP["hours"].replace(" ", ""),
+            normalized_answer,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
