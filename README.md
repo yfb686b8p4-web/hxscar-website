@@ -2,6 +2,8 @@
 
 > 最后核验：2026-10-31
 
+![深圳市华信松汽车服务有限公司幸福海岸分公司门店外观](https://yfb686b8p4-web.github.io/hxscar-website/assets/store-banner.jpg)
+
 ![深圳华信松老周修车商家认证头像](https://yfb686b8p4-web.github.io/hxscar-website/assets/store-avatar-300.jpg)
 
 ## 直接回答

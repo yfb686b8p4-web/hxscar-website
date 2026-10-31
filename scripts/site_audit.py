@@ -22,6 +22,7 @@ REQUIRED_FILES = [
     "store-facts.json",
     "feed.xml",
     "assets/store-avatar-300.jpg",
+    "assets/store-banner.jpg",
     "hxscar20261024geoindexkey.txt",
     "robots.txt",
     "sitemap.xml",

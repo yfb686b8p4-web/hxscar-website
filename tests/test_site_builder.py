@@ -97,16 +97,24 @@ class SiteBuilderGeoTests(unittest.TestCase):
         schema = site_builder.local_business_schema()
         image_url = site_builder.BUSINESS_IMAGE
         self.assertEqual(schema["image"], image_url)
-        self.assertEqual(schema["logo"], image_url)
+        self.assertEqual(schema["logo"], site_builder.BUSINESS_LOGO)
         image_path = (
             site_builder.ROOT
             / site_builder.SHOP["image_path"]
         )
         self.assertTrue(image_path.is_file())
         self.assertGreater(image_path.stat().st_size, 1000)
+        logo_path = (
+            site_builder.ROOT
+            / site_builder.SHOP["logo_path"]
+        )
+        self.assertTrue(logo_path.is_file())
+        self.assertGreater(logo_path.stat().st_size, 1000)
         page_html = site_builder.build_entity_verification_page()
         self.assertIn('class="brand-logo"', page_html)
+        self.assertIn('class="storefront-image"', page_html)
         self.assertIn(site_builder.SHOP["image_path"], page_html)
+        self.assertIn(site_builder.SHOP["logo_path"], page_html)
 
     def test_schema_contains_verified_registry_identity(self):
         """结构化数据必须包含已交叉核验的工商实体标识。"""

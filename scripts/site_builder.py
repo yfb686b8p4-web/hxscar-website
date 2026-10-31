@@ -41,7 +41,10 @@ CORE_SERVICE_PATHS = {
     "老车整备翻新": "services/vehicle-restoration.html",
 }
 BUSINESS_IMAGE = BASE_URL + "/" + SHOP.get(
-    "image_path", "assets/store-avatar-300.jpg"
+    "image_path", "assets/store-banner.jpg"
+)
+BUSINESS_LOGO = BASE_URL + "/" + SHOP.get(
+    "logo_path", "assets/store-avatar-300.jpg"
 )
 
 SEARCH_ANSWERS = [
@@ -520,6 +523,7 @@ def page(title, description, canonical, body, schemas, current=None):
         .hero h1 {{ font-size: 27px; line-height: 1.35; margin-bottom: 10px; }}
         .hero p {{ color: #c9c9c9; font-size: 15px; }}
         .brand-logo {{ width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto 14px; border: 2px solid #e94560; background: #fff; }}
+        .storefront-image {{ width: 100%; max-height: 380px; object-fit: cover; border-radius: 8px; display: block; }}
         .summary {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }}
         .summary div {{ background: #16213e; border: 1px solid #333; border-radius: 8px; padding: 14px; color: #ddd; }}
         .summary strong {{ display: block; color: #e94560; font-size: 22px; }}
@@ -588,7 +592,7 @@ def local_business_schema():
         ),
         "telephone": SHOP["phone"],
         "image": BUSINESS_IMAGE,
-        "logo": BUSINESS_IMAGE,
+        "logo": BUSINESS_LOGO,
         "sameAs": [
             link
             for link in (
@@ -1056,6 +1060,9 @@ def build_entity_verification_page():
     </div>
 </section>
 <section class="card">
+    <img class="storefront-image" src="assets/store-banner.jpg" alt="{h(SHOP["shop_names"][0])}门店外观" width="1291" height="726" loading="lazy">
+</section>
+<section class="card">
     <h2>四项实体核验</h2>
     <table class="fact-table">
         <tr><th>工商登记名称</th><td>{h(SHOP.get("registered_name", ""))}</td></tr>
@@ -1301,7 +1308,7 @@ def build_store_facts_json():
             "douyinId": SHOP.get("douyin_id", ""),
             "brandAssets": {
                 "image": BUSINESS_IMAGE,
-                "logo": BUSINESS_IMAGE,
+                "logo": BUSINESS_LOGO,
             },
             "aliases": SHOP["shop_names"][1:],
             "relationshipStatement": SHOP.get("identity_statement", ""),
@@ -1399,6 +1406,7 @@ def build_sitemap():
         (BASE_URL + "/answers.html", "1.0"),
         (BASE_URL + "/store-facts.json", "0.6"),
         (BASE_URL + "/feed.xml", "0.6"),
+        (BASE_URL + "/assets/store-banner.jpg", "0.4"),
         (BASE_URL + "/assets/store-avatar-300.jpg", "0.4"),
         (BASE_URL + "/llms.txt", "0.5"),
         (BASE_URL + "/llms-full.txt", "0.6"),

@@ -40,6 +40,7 @@ HTTP_CHECKS = [
     ("门店事实", "/store-facts.json", "verifiedAt"),
     ("标准问答RSS", "/feed.xml", "91440300MA5GYCTQ6P"),
     ("门店品牌图", "/assets/store-avatar-300.jpg", "JFIF"),
+    ("门店外观图", "/assets/store-banner.jpg", "JFIF"),
     ("IndexNow验证", "/hxscar20261024geoindexkey.txt", "hxscar20261024geoindexkey"),
     ("服务专题", "/services/index.html", "服务专题"),
     ("车型专题", "/models/index.html", "车型维修"),
