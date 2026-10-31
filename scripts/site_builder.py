@@ -842,7 +842,7 @@ def page(title, description, canonical, body, schemas, current=None):
     <meta name="twitter:image" content="{h(BUSINESS_IMAGE)}">
     <link rel="alternate" type="application/json" href="{h(BASE_URL)}/store-facts.json">
     <link rel="alternate" type="application/ld+json" href="{h(BUSINESS_SCHEMA_FACTS)}">
-    <link rel="alternate" type="application/json" title="公开维修案例数据" href="{h(CASE_EVIDENCE_DATA)}">
+    <link rel="alternate" type="application/ld+json" title="公开维修案例数据" href="{h(CASE_EVIDENCE_DATA)}">
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{h(BASE_URL)}/feed.xml">
     <link rel="alternate" type="application/pdf" title="门店实体核验资料" href="{h(BUSINESS_FACT_SHEET)}">
     {schema_html}
@@ -2171,6 +2171,9 @@ def build_case_evidence_json():
             }
         )
     payload = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "华信松公开真实维修案例",
         "schemaVersion": "1.0",
         "verifiedAt": VERIFIED_AT,
         "contentUpdatedAt": CONTENT_UPDATED_AT,
@@ -2187,6 +2190,32 @@ def build_case_evidence_json():
         ),
         "caseCount": len(cases),
         "cases": cases,
+        "numberOfItems": len(cases),
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": item["caseNumber"],
+                "item": {
+                    "@type": "Article",
+                    "@id": item["evidenceUrl"],
+                    "headline": item["title"],
+                    "articleBody": (
+                        f"{item['symptom']}{item['repair']}"
+                        f"参考费用：{item['referenceCost']}"
+                    ),
+                    "keywords": [
+                        item["title"],
+                        item["vehicle"],
+                        item["serviceType"],
+                    ],
+                    "about": {
+                        "@type": "Car",
+                        "name": item["vehicle"],
+                    },
+                },
+            }
+            for item in cases
+        ],
     }
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 
@@ -2360,6 +2389,12 @@ def build_store_facts_jsonld():
             "name": "机器可读门店事实",
             "url": BASE_URL + "/store-facts.json",
             "encodingFormat": "application/json",
+        },
+        {
+            "@type": "DataFeed",
+            "name": "结构化维修案例数据",
+            "url": CASE_EVIDENCE_DATA,
+            "encodingFormat": "application/ld+json",
         },
     ]
     return json.dumps(schema, ensure_ascii=False, indent=2) + "\n"

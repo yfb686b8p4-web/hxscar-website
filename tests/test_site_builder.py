@@ -759,8 +759,19 @@ class SiteBuilderGeoTests(unittest.TestCase):
     def test_case_evidence_json_is_machine_readable(self):
         """案例证据数据必须覆盖全部案例并提供稳定引用地址。"""
         data = json.loads(site_builder.build_case_evidence_json())
+        self.assertEqual(data["@context"], "https://schema.org")
+        self.assertEqual(data["@type"], "ItemList")
+        self.assertEqual(data["numberOfItems"], len(site_builder.CASES))
         self.assertEqual(data["caseCount"], len(site_builder.CASES))
         self.assertEqual(len(data["cases"]), len(site_builder.CASES))
+        self.assertEqual(
+            len(data["itemListElement"]),
+            len(site_builder.CASES),
+        )
+        self.assertEqual(
+            data["itemListElement"][0]["item"]["@type"],
+            "Article",
+        )
         self.assertIn("须先诊断", data["claimBoundary"])
         featured = next(
             item
@@ -782,6 +793,15 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 for item in json.loads(
                     site_builder.build_store_facts_json()
                 )["citationTargets"]
+            },
+        )
+        self.assertIn(
+            site_builder.CASE_EVIDENCE_DATA,
+            {
+                item["url"]
+                for item in json.loads(
+                    site_builder.build_store_facts_jsonld()
+                )["subjectOf"]
             },
         )
 
