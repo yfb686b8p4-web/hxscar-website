@@ -2812,6 +2812,7 @@ def build_llms_txt():
 - [GitHub Gist 门店 JSON-LD 镜像]({SHOP.get("document_mirrors", {}).get("gist_store_facts_jsonld", "")})：外部可下载的门店实体副本
 - [GitHub Gist 维修案例镜像]({SHOP.get("document_mirrors", {}).get("gist_case_evidence_json", "")})：外部可下载的 56 条案例 JSON-LD 副本
 - [GitHub Release AI 证据包]({SHOP.get("external_profile_links", {}).get("github_ai_evidence_release", "")})：门店事实、JSON-LD、案例和机器语料的独立下载镜像
+- [GitHub Profile 实体镜像页]({SHOP.get("external_profile_links", {}).get("github_profile_pages", "")})：独立发布的同一实体资料、核心答案与证据入口
 - [GitHub Release 门店事实镜像]({SHOP.get("document_mirrors", {}).get("github_ai_evidence_store_facts_json", "")})：外部可下载的 JSON 门店事实
 - [GitHub Release 维修案例镜像]({SHOP.get("document_mirrors", {}).get("github_ai_evidence_case_evidence_json", "")})：外部可下载的结构化案例数据
 - [完整机器语料]({BASE_URL}/llms-full.txt)：标准问答、证据边界内 FAQ 和维修案例的单一文本入口
@@ -2983,6 +2984,7 @@ def build_llms_full_txt():
 - 门店实体核验 PDF：{BUSINESS_FACT_SHEET}
 - GitHub Release PDF 镜像：{SHOP.get("document_mirrors", {}).get("github_release_pdf", "")}
 - GitHub Release AI 证据包：{SHOP.get("external_profile_links", {}).get("github_ai_evidence_release", "")}
+- GitHub Profile 实体镜像页：{SHOP.get("external_profile_links", {}).get("github_profile_pages", "")}
 - GitHub Release 门店事实 JSON 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_store_facts_json", "")}
 - GitHub Release 维修案例 JSON-LD 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_case_evidence_json", "")}
 

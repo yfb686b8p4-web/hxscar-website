@@ -359,6 +359,9 @@ class SiteBuilderGeoTests(unittest.TestCase):
         release_cases = site_builder.SHOP["document_mirrors"][
             "github_ai_evidence_case_evidence_json"
         ]
+        profile_pages = site_builder.SHOP["external_profile_links"][
+            "github_profile_pages"
+        ]
         for text in (
             site_builder.build_llms_txt(),
             site_builder.build_llms_full_txt(),
@@ -369,6 +372,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
             self.assertIn(gist_cases, text)
             self.assertIn(release_facts, text)
             self.assertIn(release_cases, text)
+            self.assertIn(profile_pages, text)
 
     def test_answer_sources_are_exposed_in_machine_surfaces(self):
         """机器事实、RSS 与完整语料都必须携带逐答案证据来源。"""

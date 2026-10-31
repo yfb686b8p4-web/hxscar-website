@@ -27,6 +27,7 @@
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release AI 证据包：https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/ai-evidence-2026-11-01
+- GitHub Profile 实体镜像页：https://yfb686b8p4-web.github.io/yfb686b8p4-web/
 - GitHub Release 门店事实 JSON 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/store-facts.json
 - GitHub Release 维修案例 JSON-LD 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/case-evidence.json
 
