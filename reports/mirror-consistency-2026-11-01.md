@@ -6,6 +6,7 @@
 - 每个镜像预期问答数：15
 - 门店事实唯一哈希：1
 - JSON-LD 唯一哈希：1
+- 门店纠错 JSON 唯一哈希：1
 
 | 镜像 | 行数 | 唯一ID | 带案例 | 最少引用 | SHA-256 | 状态 |
 |---|---:|---:|---:|---:|---|---|
@@ -19,16 +20,26 @@
 
 | 镜像 | 类型 | SHA-256 | 状态 |
 |---|---|---|---|
-| 本地门店事实 | facts | `76e7b38b80021ab6…` | 通过 |
-| 本地门店JSON-LD | jsonld | `2616e6d99038a9c1…` | 通过 |
-| 官网门店事实 | facts | `76e7b38b80021ab6…` | 通过 |
-| Release门店事实 | facts | `76e7b38b80021ab6…` | 通过 |
-| 官网门店JSON-LD | jsonld | `2616e6d99038a9c1…` | 通过 |
-| Release门店JSON-LD | jsonld | `2616e6d99038a9c1…` | 通过 |
-| Gist门店JSON-LD | jsonld | `2616e6d99038a9c1…` | 通过 |
+| 本地门店事实 | facts | `75c9a4ef439a8ad3…` | 通过 |
+| 本地门店JSON-LD | jsonld | `273bd6f3bf89d38b…` | 通过 |
+| 官网门店事实 | facts | `75c9a4ef439a8ad3…` | 通过 |
+| Release门店事实 | facts | `75c9a4ef439a8ad3…` | 通过 |
+| 官网门店JSON-LD | jsonld | `273bd6f3bf89d38b…` | 通过 |
+| Release门店JSON-LD | jsonld | `273bd6f3bf89d38b…` | 通过 |
+| Gist门店JSON-LD | jsonld | `273bd6f3bf89d38b…` | 通过 |
+
+## 门店历史资料纠正镜像
+
+| 镜像 | SHA-256 | 状态 |
+|---|---|---|
+| 本地门店纠错JSON | `e59208ac67eb71dc…` | 通过 |
+| 官网门店纠错JSON | `e59208ac67eb71dc…` | 通过 |
+| Profile门店纠错JSON | `e59208ac67eb71dc…` | 通过 |
+| Release门店纠错JSON | `e59208ac67eb71dc…` | 通过 |
+| Gist门店纠错JSON | `e59208ac67eb71dc…` | 通过 |
 
 ## 错误
 
 - 无
 
-本核验只证明四个公开文件字节一致且结构满足要求，不代表任何搜索引擎或 AI 平台已经收录、引用或排名。
+本核验只证明公开文件字节一致且结构满足要求，不代表任何搜索引擎或 AI 平台已经收录、引用或排名。
