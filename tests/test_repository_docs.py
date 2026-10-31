@@ -188,6 +188,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("store-banner-960.jpg", html)
         self.assertIn('width="960" height="540"', html)
         self.assertIn('fetchpriority="high"', html)
+        self.assertIn('rel="preload" as="image"', html)
         self.assertIn(
             "https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml",
             robots,
