@@ -1,7 +1,7 @@
 {
   "version": 1,
   "date": "2026-10-31",
-  "generated_at": "2026-10-31T22:53:29.191704+08:00",
+  "generated_at": "2026-10-31T22:55:58.166100+08:00",
   "metrics": {
     "total": 12,
     "completed": 12,
@@ -76,14 +76,14 @@
     "new_errors": []
   },
   "status": {
-    "checked_at": "2026-10-31T22:53:29.098696+08:00",
+    "checked_at": "2026-10-31T22:55:58.079787+08:00",
     "source_repo": {
       "available": true,
       "path": "/Users/pingguo2019/Documents/豆包等ai 搜索排名提升方案/live-site",
       "branch": "codex/optimization-plans",
       "clean": true,
       "change_count": 0,
-      "head": "9789d8b\t建立官网与GitHub公开镜像的双向实体关联",
+      "head": "2b5b371\t补充门店与车型Service结构化数据",
       "error": ""
     },
     "deploy_repo": {
@@ -92,7 +92,7 @@
       "branch": "main",
       "clean": true,
       "change_count": 0,
-      "head": "9789d8b\t建立官网与GitHub公开镜像的双向实体关联",
+      "head": "2b5b371\t补充门店与车型Service结构化数据",
       "error": ""
     },
     "launch_agent": {
@@ -117,7 +117,7 @@
           "status": 200,
           "marker": "华信松汽车",
           "via": "直连",
-          "seconds": 4.42,
+          "seconds": 0.53,
           "error": ""
         },
         {
@@ -127,7 +127,7 @@
           "status": 200,
           "marker": "FAQPage",
           "via": "直连",
-          "seconds": 4.78,
+          "seconds": 1.33,
           "error": ""
         },
         {
@@ -137,7 +137,7 @@
           "status": 200,
           "marker": "维修案例",
           "via": "直连",
-          "seconds": 13.16,
+          "seconds": 1.03,
           "error": ""
         },
         {
@@ -147,7 +147,7 @@
           "status": 200,
           "marker": "同一实体门店",
           "via": "直连",
-          "seconds": 1.2,
+          "seconds": 2.02,
           "error": ""
         },
         {
@@ -157,7 +157,7 @@
           "status": 200,
           "marker": "四项实体核验",
           "via": "直连",
-          "seconds": 1.37,
+          "seconds": 0.66,
           "error": ""
         },
         {
@@ -167,7 +167,7 @@
           "status": 200,
           "marker": "直接回答",
           "via": "直连",
-          "seconds": 0.58,
+          "seconds": 0.87,
           "error": ""
         },
         {
@@ -177,7 +177,7 @@
           "status": 200,
           "marker": "verifiedAt",
           "via": "直连",
-          "seconds": 0.51,
+          "seconds": 0.44,
           "error": ""
         },
         {
@@ -187,7 +187,7 @@
           "status": 200,
           "marker": "91440300MA5GYCTQ6P",
           "via": "直连",
-          "seconds": 5.39,
+          "seconds": 0.33,
           "error": ""
         },
         {
@@ -197,7 +197,7 @@
           "status": 200,
           "marker": "hxscar20261024geoindexkey",
           "via": "直连",
-          "seconds": 0.56,
+          "seconds": 0.77,
           "error": ""
         },
         {
@@ -207,7 +207,7 @@
           "status": 200,
           "marker": "服务专题",
           "via": "直连",
-          "seconds": 1.12,
+          "seconds": 2.45,
           "error": ""
         },
         {
@@ -217,7 +217,7 @@
           "status": 200,
           "marker": "车型维修",
           "via": "直连",
-          "seconds": 1.24,
+          "seconds": 0.43,
           "error": ""
         },
         {
@@ -227,7 +227,7 @@
           "status": 200,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 0.63,
+          "seconds": 1.04,
           "error": ""
         },
         {
@@ -237,7 +237,7 @@
           "status": 200,
           "marker": "store-profile.html",
           "via": "直连",
-          "seconds": 0.99,
+          "seconds": 1.53,
           "error": ""
         },
         {
@@ -247,7 +247,7 @@
           "status": 200,
           "marker": "门店实体关系",
           "via": "直连",
-          "seconds": 0.75,
+          "seconds": 2.65,
           "error": ""
         },
         {
@@ -257,7 +257,7 @@
           "status": 200,
           "marker": "完整常见问题",
           "via": "直连",
-          "seconds": 1.18,
+          "seconds": 0.55,
           "error": ""
         }
       ],
