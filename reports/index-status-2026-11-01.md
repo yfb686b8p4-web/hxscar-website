@@ -4,7 +4,7 @@
 
 - 新增 `scripts/verify_ai_evidence_mirrors.py`，同时核验官网、Profile Pages、GitHub Release 和 Gist 的 `qa-evidence.jsonl`。
 - 四个镜像当前均为 15 行、15 个唯一 ID、12 条关联真实案例、最少 15 个引用，SHA-256 均为 `3f383cfda4aef3ff4106b57bbb18cc082fe3fc35633600066f045c13eef05748`。
-- 每日线上检查从 30 项扩展为 32 项，新增 Release 和 Gist 问答镜像检查；当前 86 项单元测试通过，站点审计通过。
+- 每日线上检查从 30 项扩展为 32 项，新增 Release 和 Gist 问答镜像检查；当前 88 项单元测试通过，站点审计通过。
 - 搜狗资源平台未发现可靠的匿名 sitemap ping 接口；站点验证和 sitemap 提交仍需登录，立知合作仍以 `zzpt@tencent.com` 邮件申请为入口。
 
 ## 04:23 Profile镜像与GitHub发现信号
@@ -14,7 +14,7 @@
 - Profile 线上已检出 `OfferCatalog`、4 个服务区域、13 个重点车型和 QA 链接；Profile IndexNow 5 个 URL 在聚合端点与 Bing 直连端点均返回 HTTP 200。
 - 两个 GitHub 仓库的 topics 已扩展为 19 项，新增 `bmw-repair`、`car-air-conditioning`、`chassis-repair`、`vehicle-restoration`、`entity-verification`、`ai-evidence`、`jsonl` 和 `knowledge-graph`。
 - Gist 描述已更新为门店实体、真实维修案例与 15 条原子问答证据。
-- 当前 86 项单元测试通过，站点审计通过。
+- 当前 88 项单元测试通过，站点审计通过。
 
 ## 04:20 原子问答证据数据
 

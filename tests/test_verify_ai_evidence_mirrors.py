@@ -32,6 +32,38 @@ class VerifyAiEvidenceMirrorsTests(unittest.TestCase):
             names,
             {"官网", "Profile Pages", "GitHub Release", "GitHub Gist"},
         )
+        fact_names = {
+            item["name"]
+            for item in verify_ai_evidence_mirrors.FACT_MIRRORS
+        }
+        self.assertEqual(
+            fact_names,
+            {
+                "官网门店事实",
+                "Release门店事实",
+                "官网门店JSON-LD",
+                "Release门店JSON-LD",
+                "Gist门店JSON-LD",
+            },
+        )
+
+    def test_local_fact_files_pass_structure_checks(self):
+        facts = (ROOT / "store-facts.json").read_bytes()
+        jsonld = (ROOT / "store-facts.jsonld").read_bytes()
+        self.assertEqual(
+            verify_ai_evidence_mirrors.evaluate_fact_payload(
+                facts,
+                "facts",
+            )["errors"],
+            [],
+        )
+        self.assertEqual(
+            verify_ai_evidence_mirrors.evaluate_fact_payload(
+                jsonld,
+                "jsonld",
+            )["errors"],
+            [],
+        )
 
 
 if __name__ == "__main__":

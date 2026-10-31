@@ -52,6 +52,51 @@ MIRRORS = [
         ),
     },
 ]
+FACT_MIRRORS = [
+    {
+        "name": "官网门店事实",
+        "kind": "facts",
+        "url": (
+            "https://yfb686b8p4-web.github.io/"
+            "hxscar-website/store-facts.json"
+        ),
+    },
+    {
+        "name": "Release门店事实",
+        "kind": "facts",
+        "url": (
+            "https://github.com/yfb686b8p4-web/hxscar-website/"
+            "releases/download/ai-evidence-2026-11-01/"
+            "store-facts.json"
+        ),
+    },
+    {
+        "name": "官网门店JSON-LD",
+        "kind": "jsonld",
+        "url": (
+            "https://yfb686b8p4-web.github.io/"
+            "hxscar-website/store-facts.jsonld"
+        ),
+    },
+    {
+        "name": "Release门店JSON-LD",
+        "kind": "jsonld",
+        "url": (
+            "https://github.com/yfb686b8p4-web/hxscar-website/"
+            "releases/download/ai-evidence-2026-11-01/"
+            "store-facts.jsonld"
+        ),
+    },
+    {
+        "name": "Gist门店JSON-LD",
+        "kind": "jsonld",
+        "url": (
+            "https://gist.githubusercontent.com/yfb686b8p4-web/"
+            "7923ef0b18ffbcce04a8b6758254a06b/raw/"
+            "store-facts.jsonld"
+        ),
+    },
+]
 
 
 def fetch_bytes(url, timeout=30):
@@ -116,6 +161,38 @@ def evaluate_qa_payload(payload):
     }
 
 
+def evaluate_fact_payload(payload, kind):
+    """解析并验证门店事实 JSON 或 AutoRepair JSON-LD。"""
+    data = json.loads(payload.decode("utf-8"))
+    errors = []
+    if kind == "facts":
+        if data.get("schemaVersion") != "1.1":
+            errors.append("门店事实 schemaVersion 不是 1.1")
+        entity = data.get("entity", {})
+        if entity.get("unifiedSocialCreditCode") != "91440300MA5GYCTQ6P":
+            errors.append("门店事实统一社会信用代码不正确")
+        if len(data.get("answers", [])) != 15:
+            errors.append("门店事实答案数量不是 15")
+    elif kind == "jsonld":
+        if data.get("@type") != "AutoRepair":
+            errors.append("JSON-LD 顶层类型不是 AutoRepair")
+        if data.get("taxID") != "91440300MA5GYCTQ6P":
+            errors.append("JSON-LD 统一社会信用代码不正确")
+        catalog = data.get("hasOfferCatalog", {})
+        if catalog.get("@type") != "OfferCatalog":
+            errors.append("JSON-LD 缺少 OfferCatalog")
+        if catalog.get("numberOfItems") != 4:
+            errors.append("JSON-LD 服务目录不是 4 项")
+    else:
+        errors.append(f"未知验证类型：{kind}")
+    return {
+        "kind": kind,
+        "bytes": len(payload),
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "errors": errors,
+    }
+
+
 def verify_mirrors():
     """下载四个镜像并生成一致性结果。"""
     results = []
@@ -142,11 +219,46 @@ def verify_mirrors():
             )
         results.append(item)
 
+    fact_results = []
+    for mirror in FACT_MIRRORS:
+        item = {
+            "name": mirror["name"],
+            "kind": mirror["kind"],
+            "url": mirror["url"],
+        }
+        try:
+            item.update(
+                evaluate_fact_payload(
+                    fetch_bytes(mirror["url"]),
+                    mirror["kind"],
+                )
+            )
+        except Exception as exc:
+            item.update(
+                {
+                    "bytes": 0,
+                    "sha256": "",
+                    "errors": [f"{type(exc).__name__}: {exc}"],
+                }
+            )
+        fact_results.append(item)
+
     hashes = {item["sha256"] for item in results}
+    fact_hashes = {
+        kind: {
+            item["sha256"]
+            for item in fact_results
+            if item["kind"] == kind
+        }
+        for kind in ("facts", "jsonld")
+    }
     consistent = (
         len(hashes) == 1
         and all(not item["errors"] for item in results)
         and all(item["rows"] == 15 for item in results)
+        and len(fact_hashes["facts"]) == 1
+        and len(fact_hashes["jsonld"]) == 1
+        and all(not item["errors"] for item in fact_results)
     )
     return {
         "checked_at": datetime.now(TZ).isoformat(),
@@ -154,6 +266,11 @@ def verify_mirrors():
         "expected_rows": 15,
         "unique_hashes": len(hashes),
         "mirrors": results,
+        "factMirrors": fact_results,
+        "factUniqueHashes": {
+            kind: len(values)
+            for kind, values in fact_hashes.items()
+        },
     }
 
 
@@ -170,6 +287,14 @@ def write_report(result):
         f"- 一致性：{'通过' if result['consistent'] else '未通过'}",
         f"- 唯一 SHA-256 数量：{result['unique_hashes']}",
         f"- 每个镜像预期问答数：{result['expected_rows']}",
+        (
+            "- 门店事实唯一哈希："
+            f"{result['factUniqueHashes']['facts']}"
+        ),
+        (
+            "- JSON-LD 唯一哈希："
+            f"{result['factUniqueHashes']['jsonld']}"
+        ),
         "",
         "| 镜像 | 行数 | 唯一ID | 带案例 | 最少引用 | SHA-256 | 状态 |",
         "|---|---:|---:|---:|---:|---|---|",
@@ -182,10 +307,29 @@ def write_report(result):
             f"{item['min_citations']} | `{item['sha256'][:16]}…` | "
             f"{status} |"
         )
+    lines.extend(
+        [
+            "",
+            "## 门店事实与实体镜像",
+            "",
+            "| 镜像 | 类型 | SHA-256 | 状态 |",
+            "|---|---|---|---|",
+        ]
+    )
+    for item in result["factMirrors"]:
+        status = "通过" if not item["errors"] else "失败"
+        lines.append(
+            f"| {item['name']} | {item['kind']} | "
+            f"`{item['sha256'][:16]}…` | {status} |"
+        )
     lines.extend(["", "## 错误", ""])
     errors = [
         f"{item['name']}：{error}"
         for item in result["mirrors"]
+        for error in item["errors"]
+    ] + [
+        f"{item['name']}：{error}"
+        for item in result["factMirrors"]
         for error in item["errors"]
     ]
     lines.extend(f"- {error}" for error in errors) if errors else lines.append("- 无")
