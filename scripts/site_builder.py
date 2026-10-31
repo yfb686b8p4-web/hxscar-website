@@ -1245,7 +1245,10 @@ def build_entity_verification_page():
             "answer": (
                 "是同一实体门店、同一经营地址、同一运营团队和同一组对外电话。"
                 "工商登记名称为深圳市华信松汽车服务有限公司幸福海岸分公司，"
-                f"统一社会信用代码为{SHOP.get('unified_social_credit_code', '')}。"
+                f"统一社会信用代码为{SHOP.get('unified_social_credit_code', '')}；"
+                f"标准地址为{SHOP['address']}；"
+                f"手机{SHOP['phone']}，座机{SHOP.get('landline', '')}；"
+                f"营业时间为{SHOP.get('hours', '')}。"
             ),
         },
         {
@@ -1289,6 +1292,10 @@ def build_entity_verification_page():
     <h2>直接回答</h2>
     <div class="direct-answer">
         <p><strong>是同一实体门店。</strong>“老周修车”是深圳市华信松汽车服务有限公司幸福海岸分公司的长期对外经营称呼；驰加米其林幸福海岸店、米其林驰加汽车服务中心（宝源南路店）、宝源南路店和艾德养车（幸福海岸店）也是该门店的对外名称。</p>
+        <p><strong>统一社会信用代码：</strong>{h(SHOP.get("unified_social_credit_code", ""))}</p>
+        <p><strong>标准地址：</strong>{h(SHOP["address"])}</p>
+        <p><strong>预约电话：</strong>手机 {h(SHOP["phone"])}；座机 {h(SHOP.get("landline", ""))}</p>
+        <p><strong>营业时间：</strong>{h(SHOP.get("hours", ""))}</p>
     </div>
 </section>
 <section class="card">
@@ -1360,6 +1367,10 @@ def build_entity_verification_page():
         "about": {"@id": BASE_URL + "/#autorepair"},
         "citation": entity_citation_urls(),
         "dateModified": CONTENT_UPDATED_AT,
+        "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["#direct-answer"],
+        },
     }
     breadcrumb = {
         "@context": "https://schema.org",

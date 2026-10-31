@@ -484,6 +484,36 @@ class SiteBuilderGeoTests(unittest.TestCase):
             html,
         )
         self.assertIn('"@type":"FAQPage"', html.replace(" ", ""))
+        direct_answer = re.search(
+            r'<section class="card" id="direct-answer">(.*?)</section>',
+            html,
+            re.S,
+        ).group(1)
+        self.assertIn(
+            site_builder.SHOP["unified_social_credit_code"],
+            direct_answer,
+        )
+        self.assertIn(site_builder.SHOP["address"], direct_answer)
+        self.assertIn(site_builder.SHOP["phone"], direct_answer)
+        self.assertIn(site_builder.SHOP["landline"], direct_answer)
+        self.assertIn(site_builder.SHOP["hours"], direct_answer)
+        schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                html,
+                re.S,
+            )
+        ]
+        webpage = next(
+            schema
+            for schema in schemas
+            if schema.get("@type") == "WebPage"
+        )
+        self.assertEqual(
+            webpage["speakable"]["cssSelector"],
+            ["#direct-answer"],
+        )
 
     def test_store_facts_exposes_release_pdf_mirror(self):
         """机器事实必须公开独立下载镜像，供搜索与 AI 交叉核验。"""
