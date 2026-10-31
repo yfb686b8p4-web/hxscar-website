@@ -537,6 +537,35 @@ def case_library_url(case):
     return f"{BASE_URL}/cases.html#case-{case_number}"
 
 
+def case_related_answers(case):
+    """按真实案例的故障文本返回最相关的标准答案页。"""
+    text = " ".join(
+        str(case.get(key, ""))
+        for key in ("tag", "car_type", "issue", "solution", "price")
+    )
+    anchors = []
+    if "空调" in text:
+        if any(
+            marker in text
+            for marker in ("一边冷一边热", "右边比左边凉", "左右温差")
+        ):
+            anchors.append("aircon-left-right")
+        else:
+            anchors.append("aircon-diagnosis")
+        anchors.append("air-conditioning")
+    elif any(marker in text for marker in ("底盘", "异响", "胶套", "摆臂")):
+        anchors.extend(["chassis", "chassis-repair"])
+    elif "烧机油" in text:
+        anchors.append("restoration")
+
+    by_anchor = {item["anchor"]: item for item in SEARCH_ANSWERS}
+    return [
+        by_anchor[anchor]
+        for anchor in anchors
+        if anchor in by_anchor
+    ]
+
+
 def answer_case_records(item):
     """按答案分类选择可核验的真实维修案例。"""
     category = item["category"]
@@ -1031,13 +1060,23 @@ def build_cases_page():
         symptoms = item.get("solution", "")
         solution = item.get("price", "")
         cost = item.get("result", "")
+        related_answers = " · ".join(
+            f'<a href="{h(answer_detail_path(answer))}">'
+            f'{h(answer["question"])}</a>'
+            for answer in case_related_answers(item)
+        )
+        related_markup = (
+            f'\n    <p><strong>相关解答：</strong>{related_answers}</p>'
+            if related_answers
+            else ""
+        )
         items.append(
             f"""<article class="case-item" id="case-{index}">
     <div class="case-meta">{h(item.get("tag"))} · {h(item.get("car_type"))}</div>
     <h3>{h(title)}</h3>
     <p><strong>故障表现：</strong>{h(symptoms)}</p>
     <p><strong>处理方案：</strong>{h(solution)}</p>
-    <p><strong>参考费用：</strong>{h(cost)}</p>
+    <p><strong>参考费用：</strong>{h(cost)}</p>{related_markup}
 </article>"""
         )
         list_items.append(

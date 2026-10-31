@@ -394,6 +394,31 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn("参考费用2000元", description)
         self.assertFalse(description.endswith(("，", ",", "；", ";")))
 
+    def test_cases_link_back_to_related_direct_answers(self):
+        """公开案例应反链到对应答案，形成证据与答案的双向链路。"""
+        case = next(
+            item
+            for item in site_builder.CASES
+            if item["issue"] == "奔驰E300L空调制冷不足，右边比左边凉"
+        )
+        anchors = [
+            item["anchor"]
+            for item in site_builder.case_related_answers(case)
+        ]
+        self.assertEqual(
+            anchors,
+            ["aircon-left-right", "air-conditioning"],
+        )
+        html = site_builder.build_cases_page()
+        self.assertIn(
+            'href="answers/aircon-left-right.html"',
+            html,
+        )
+        self.assertIn(
+            "汽车空调一边冷一边热怎么修？",
+            html,
+        )
+
     def test_answer_hub_exposes_collection_and_every_detail(self):
         """答案目录必须可访问，并列出全部独立答案。"""
         pages = site_builder.build_answer_pages()

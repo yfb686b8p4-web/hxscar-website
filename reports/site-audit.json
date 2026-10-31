@@ -34,9 +34,9 @@
       ]
     },
     "cases.html": {
-      "bytes": 59863,
-      "han_chars": 9088,
-      "visible_han_chars": 7102,
+      "bytes": 68233,
+      "han_chars": 10359,
+      "visible_han_chars": 8373,
       "json_ld_blocks": 3,
       "schema_types": [
         "WebSite",

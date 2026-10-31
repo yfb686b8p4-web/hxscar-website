@@ -9,7 +9,7 @@
 |---|---:|---:|---|
 | index.html | 4777 | 3 | AutoRepair, FAQPage, WebSite |
 | faq.html | 11939 | 3 | WebSite, AutoRepair, FAQPage |
-| cases.html | 7102 | 3 | WebSite, AutoRepair, ItemList |
+| cases.html | 8373 | 3 | WebSite, AutoRepair, ItemList |
 | store-profile.html | 2676 | 4 | WebSite, AutoRepair, FAQPage, BreadcrumbList |
 | entity-verification.html | 1386 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers.html | 5216 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
