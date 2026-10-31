@@ -90,6 +90,10 @@ class DailyControlTests(unittest.TestCase):
         )
         checks = {item[1]: item for item in daily_control.HTTP_CHECKS}
         self.assertIn(profile_url, checks)
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
+            checks,
+        )
 
     def test_effective_hit_requires_complete_identity(self):
         self.assertTrue(daily_control.evaluate_effective_hit(record()))

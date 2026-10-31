@@ -20,6 +20,7 @@ class SubmitProfileIndexNowTests(unittest.TestCase):
             set(submit_profile_indexnow.URLS),
             {
                 "https://yfb686b8p4-web.github.io/yfb686b8p4-web/",
+                "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
                 "https://yfb686b8p4-web.github.io/yfb686b8p4-web/llms.txt",
                 "https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml",
             },

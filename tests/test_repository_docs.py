@@ -170,13 +170,14 @@ class RepositoryReadmeTests(unittest.TestCase):
         """Profile Pages 只能作为标准实体与证据镜像。"""
         site_dir = ROOT / "publishing" / "github-profile-site"
         html = (site_dir / "index.html").read_text(encoding="utf-8")
+        answers_html = (site_dir / "answers.html").read_text(encoding="utf-8")
         robots = (site_dir / "robots.txt").read_text(encoding="utf-8")
         sitemap = (site_dir / "sitemap.xml").read_text(encoding="utf-8")
         llms = (site_dir / "llms.txt").read_text(encoding="utf-8")
         shop = json.loads(
             (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
         )
-        for text in (html, llms):
+        for text in (html, answers_html, llms):
             self.assertIn(shop["registered_name"], text)
             self.assertIn(shop["unified_social_credit_code"], text)
             self.assertIn(shop["address"], text)
@@ -197,6 +198,12 @@ class RepositoryReadmeTests(unittest.TestCase):
             "https://yfb686b8p4-web.github.io/yfb686b8p4-web/",
             sitemap,
         )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
+            sitemap,
+        )
+        self.assertIn("answers.html", html)
+        self.assertIn("answers.html", llms)
         schemas = [
             json.loads(raw)
             for raw in re.findall(
@@ -241,6 +248,22 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn(shop["landline"], faq_text)
         self.assertIn(shop["hours"], faq_text)
         self.assertIn("store-facts.json", faq_text)
+        answer_schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                answers_html,
+                re.DOTALL,
+            )
+        ]
+        answer_faq = [
+            schema
+            for schema in answer_schemas
+            if schema.get("@type") == "FAQPage"
+        ]
+        self.assertEqual(len(answer_faq), 1)
+        self.assertEqual(len(answer_faq[0]["mainEntity"]), 5)
+        self.assertEqual(answer_faq[0]["dateModified"], "2026-11-01")
 
     def test_homepage_contains_current_entity_signals(self):
         """周更首页必须保留真实图片、工商、抖音和实体核验信号。"""
