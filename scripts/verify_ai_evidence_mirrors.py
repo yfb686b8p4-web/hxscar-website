@@ -107,6 +107,7 @@ FACT_MIRRORS = [
         "url": (
             "https://gist.githubusercontent.com/yfb686b8p4-web/"
             "7923ef0b18ffbcce04a8b6758254a06b/raw/"
+            "8fee49f77aca67ec069dcb11b9be51d708ac5cc2/"
             "store-facts.jsonld"
         ),
     },
