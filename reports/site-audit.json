@@ -40,9 +40,9 @@
       ]
     },
     "store-profile.html": {
-      "bytes": 24053,
-      "han_chars": 3964,
-      "visible_han_chars": 2189,
+      "bytes": 25356,
+      "han_chars": 4203,
+      "visible_han_chars": 2329,
       "json_ld_blocks": 3,
       "schema_types": [
         "AutoRepair",

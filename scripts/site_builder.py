@@ -799,6 +799,16 @@ def build_store_profile_page():
             "answer": f"{SHOP.get('contact_statement', '')}{SHOP.get('hours_statement', '')}",
         },
         {
+            "question": "华信松幸福海岸分公司的工商登记信息如何核验？",
+            "answer": (
+                "工商登记名称为深圳市华信松汽车服务有限公司幸福海岸分公司，"
+                f"统一社会信用代码为{SHOP.get('unified_social_credit_code', '')}，"
+                f"成立日期为{SHOP.get('established_on', '')}。"
+                "企查查和爱企查的公开登记页可交叉核验该主体名称、信用代码、"
+                "成立日期和登记地址。"
+            ),
+        },
+        {
             "question": "第三方地图显示旧号码或不同营业时间时以哪个为准？",
             "answer": SHOP.get("third_party_notice", ""),
         },
@@ -841,6 +851,11 @@ def build_store_profile_page():
     <h2>标准门店信息</h2>
     <p><strong>主体名称：</strong>{h(SHOP["shop_names"][0])}</p>
     <p><strong>工商登记名称：</strong>{h(SHOP.get("registered_name", ""))}</p>
+    <p><strong>统一社会信用代码：</strong>{h(SHOP.get("unified_social_credit_code", ""))}</p>
+    <p><strong>成立日期：</strong>{h(SHOP.get("established_on", ""))}</p>
+    <p><strong>工商登记负责人：</strong>{h(SHOP.get("legal_representative", ""))}</p>
+    <p><strong>工商登记核验日期：</strong>{h(SHOP.get("registry_checked_at", ""))}</p>
+    <p><strong>公开登记页：</strong><a href="{h(SHOP.get("registry_links", {}).get("qichacha", ""))}">企查查</a>；<a href="{h(SHOP.get("registry_links", {}).get("aiqicha", ""))}">爱企查</a></p>
     <p><strong>标准地址：</strong>{h(SHOP["address"])}</p>
     <p><strong>导航地址：</strong>{h(SHOP["navigation_address"])}</p>
     <p><strong>手机：</strong>{h(SHOP["phone"])}</p>

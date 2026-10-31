@@ -99,6 +99,14 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 schema["sameAs"],
             )
 
+    def test_profile_page_exposes_registry_evidence(self):
+        """门店资料页必须让用户和 AI 直接看到工商核验依据。"""
+        html = site_builder.build_store_profile_page()
+        self.assertIn("91440300MA5GYCTQ6P", html)
+        self.assertIn("2021-08-26", html)
+        self.assertIn(site_builder.SHOP["registry_links"]["qichacha"], html)
+        self.assertIn(site_builder.SHOP["registry_links"]["aiqicha"], html)
+
 
 if __name__ == "__main__":
     unittest.main()
