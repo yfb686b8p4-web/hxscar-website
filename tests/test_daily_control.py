@@ -289,12 +289,17 @@ class DailyControlTests(unittest.TestCase):
                 "hours_ok,position,cited_source,sentiment,"
                 "answer_summary,notes\n"
                 "guard-aircon,元宝,contextual,空调问题,空调诊断维修,"
-                "False,not_applicable,,,,20篇资料,中性,回答,测试\n",
+                "False,not_applicable,,,,20篇资料,中性,回答,"
+                "测试；会话未使用全新对话，结果不计入指标\n",
                 encoding="utf-8",
             )
             records = daily_control.parse_results(path, plan)
         self.assertEqual(records[0]["status"], "excluded")
         self.assertFalse(records[0]["effective_hit"])
+        self.assertEqual(
+            records[0]["notes"].count("会话未使用全新对话，结果不计入指标"),
+            1,
+        )
 
     def test_parse_results_keeps_unfilled_rows_pending(self):
         plan = {

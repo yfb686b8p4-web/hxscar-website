@@ -551,10 +551,18 @@ def parse_results(path, plan):
             "notes": (row.get("notes") or "").strip(),
         }
         if status == "excluded":
-            record["notes"] = (
+            exclusion_note = "会话未使用全新对话，结果不计入指标"
+            base_notes = (
                 record["notes"]
-                + "；会话未使用全新对话，结果不计入指标"
-            ).strip("；")
+                .replace(f"；{exclusion_note}", "")
+                .replace(exclusion_note, "")
+                .strip("；")
+            )
+            record["notes"] = (
+                f"{base_notes}；{exclusion_note}"
+                if base_notes
+                else exclusion_note
+            )
         record["effective_hit"] = evaluate_effective_hit(record)
         records.append(record)
     return records
