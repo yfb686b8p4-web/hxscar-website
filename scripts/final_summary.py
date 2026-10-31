@@ -3,6 +3,7 @@
 """汇总 AI 搜索排名冲刺的实施、指标、阻塞和下一步。"""
 
 import json
+import csv
 import subprocess
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -15,6 +16,8 @@ DATE = "2026-11-01"
 TZ = timezone(timedelta(hours=8))
 JSON_PATH = REPORTS / f"final-summary-{DATE}.json"
 MARKDOWN_PATH = REPORTS / f"final-summary-{DATE}.md"
+PLAN_PATH = DAILY_DIR / f"{DATE}-plan.json"
+RESULTS_PATH = DAILY_DIR / f"{DATE}-results.csv"
 
 
 def load_json(path):
@@ -44,6 +47,32 @@ def recent_commits(limit=40):
         for line in result.stdout.splitlines()
         if line.strip()
     ]
+
+
+def daily_progress():
+    """读取 11 月 1 日计划和已填写结果数量。"""
+    plan = load_json(PLAN_PATH) if PLAN_PATH.exists() else {"rows": []}
+    planned = len(plan.get("rows", []))
+    completed = 0
+    if RESULTS_PATH.exists():
+        with RESULTS_PATH.open("r", encoding="utf-8-sig", newline="") as file:
+            for row in csv.DictReader(file):
+                if any(
+                    str(row.get(key, "")).strip()
+                    for key in (
+                        "mentioned",
+                        "identity_relation",
+                        "position",
+                        "answer_summary",
+                    )
+                ):
+                    completed += 1
+    return {
+        "date": DATE,
+        "planned": planned,
+        "completed": completed,
+        "pending": max(planned - completed, 0),
+    }
 
 
 def build_summary():
@@ -96,6 +125,7 @@ def build_summary():
         "metrics": metrics,
         "guardrail_metrics": daily.get("guardrail_metrics", {}),
         "rotating_metrics": daily.get("rotating_metrics", {}),
+        "daily_progress": daily_progress(),
         "changes": daily.get("changes", {}),
         "wrong_items": wrong_items,
         "technical": {
@@ -145,12 +175,44 @@ def render_markdown(summary):
         f"- 门店实体关系正确率：{metrics.get('entity_correct_rate', 0.0)}%",
         f"- 完整地址、电话、营业时间正确率：{metrics.get('full_info_correct_rate', 0.0)}%",
         f"- 服务推荐命中率：{metrics.get('service_hit_rate', 0.0)}%",
-        f"- 服务推荐 Top1：{metrics.get('service_top1_rate', 0.0)}%",
-        f"- 服务推荐 Top3：{metrics.get('service_top3_rate', 0.0)}%",
+        (
+            f"- 服务推荐 Top1：{metrics.get('service_top1', 0)}/"
+            f"{metrics.get('service_completed', 0)}"
+            f"（{metrics.get('service_top1_rate', 0.0)}%）"
+        ),
+        (
+            f"- 服务推荐 Top3：{metrics.get('service_top3', 0)}/"
+            f"{metrics.get('service_completed', 0)}"
+            f"（{metrics.get('service_top3_rate', 0.0)}%）"
+        ),
+        (
+            f"- 门店实体正确：{metrics.get('entity_correct', 0)}/"
+            f"{metrics.get('entity_completed', 0)}"
+        ),
+        (
+            f"- 完整资料正确：{metrics.get('full_info_correct', 0)}/"
+            f"{metrics.get('entity_completed', 0)}"
+        ),
         "",
-        "## 指标变化",
+        "## 当日计划进度",
         "",
     ]
+    progress = summary.get("daily_progress", {})
+    lines.extend(
+        [
+            (
+                f"- {progress.get('date', DATE)}："
+                f"完成 {progress.get('completed', 0)}/"
+                f"{progress.get('planned', 0)}，"
+                f"待测 {progress.get('pending', 0)}"
+            ),
+            "",
+        ]
+    )
+    lines.extend([
+        "## 指标变化",
+        "",
+    ])
     if changes.get("baseline_date"):
         lines.append(f"- 对比基线：{changes['baseline_date']}")
         lines.append(

@@ -23,8 +23,20 @@ class FinalSummaryTests(unittest.TestCase):
                 "entity_correct_rate": 50.0,
                 "full_info_correct_rate": 0.0,
                 "service_hit_rate": 50.0,
+                "service_completed": 8,
+                "service_top1": 4,
+                "service_top3": 4,
                 "service_top1_rate": 50.0,
                 "service_top3_rate": 50.0,
+                "entity_completed": 4,
+                "entity_correct": 2,
+                "full_info_correct": 0,
+            },
+            "daily_progress": {
+                "date": "2026-11-01",
+                "planned": 12,
+                "completed": 3,
+                "pending": 9,
             },
             "changes": {
                 "baseline_date": "2026-10-31",
@@ -69,6 +81,7 @@ class FinalSummaryTests(unittest.TestCase):
         markdown = final_summary.render_markdown(summary)
         for heading in (
             "核心指标",
+            "当日计划进度",
             "指标变化",
             "技术验证",
             "仍然错误项",
@@ -80,6 +93,8 @@ class FinalSummaryTests(unittest.TestCase):
             self.assertIn(heading, markdown)
         self.assertIn("Top1", markdown)
         self.assertIn("Top3", markdown)
+        self.assertIn("4/8", markdown)
+        self.assertIn("完成 3/12", markdown)
         self.assertIn("50.0%", markdown)
         self.assertIn("提交不等于排名", markdown)
 
