@@ -99,6 +99,14 @@
 - 线上门店 JSON-LD 已检出 Gist 镜像地址。
 - IndexNow 聚合端点和 Bing 直连端点提交 40 个 URL，均返回 HTTP 200。
 
+## 02:15 GitHub 账号级资料
+
+- 已创建并发布公开仓库 `yfb686b8p4-web/yfb686b8p4-web`，其 README 会显示在 GitHub 账号主页。
+- Profile README 已包含标准门店资料、官网、实体 JSON-LD、56 条案例数据、Release、Gist、抖音和地图核验入口。
+- GitHub API 已检出公开 Profile README 内容；仓库为 Public，已设置 `auto-repair`、`car-service`、`shenzhen`、`baoan`、`local-seo` 主题。
+- 官网主页 JSON-LD 已把 Profile 仓库加入 `sameAs`；GitHub Pages 构建完成并线上检出该链接。
+- IndexNow 聚合端点和 Bing 直连端点再次提交 40 个 URL，均返回 HTTP 200。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。
