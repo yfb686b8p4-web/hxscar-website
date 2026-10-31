@@ -10,4 +10,4 @@ guard-chassis-restore,元宝,fresh_required,深圳宝安 底盘异响 老车整�
 rotate-bmw-02,豆包,fresh_required,宝安宝马5系维修保养,宝马与豪车,,not_applicable,,,,,,,,
 rotate-bmw-02,元宝,fresh_required,宝安宝马5系维修保养,宝马与豪车,,not_applicable,,,,,,,,
 rotate-ac-04,豆包,fresh,汽车空调一边冷一边热怎么修,空调诊断维修,False,not_applicable,,,,,22篇资料,中性,回答按翻板电机、冷媒和暖风水阀给出排查顺序，但未提及本店,未提及本店
-rotate-ac-04,元宝,contextual,汽车空调一边冷一边热怎么修,空调诊断维修,False,not_applicable,,,,,20篇资料,中性,回答先排查风门电机并按高低压和暖风水阀诊断，推荐华胜洪浪北店或途辉但未提及本店,旧对话上下文影响结果；会话未使用全新对话，结果不计入指标
+rotate-ac-04,元宝,fresh,汽车空调一边冷一边热怎么修,空调诊断维修,False,not_applicable,,,,,21篇资料,中性,回答按风门电机、冷媒膨胀阀和暖水阀给出排查与成本但未提及本店,全新对话复测未提及本店
