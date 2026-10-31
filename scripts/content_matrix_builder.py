@@ -226,6 +226,39 @@ def faq_schema(items):
     }
 
 
+def model_service_schema(model):
+    """生成车型维修保养服务结构化数据。"""
+    return {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": (
+            f"{BASE_URL}/models/{model['slug']}.html#service"
+        ),
+        "name": f"{model['name']}维修保养",
+        "serviceType": [
+            f"{model['name']}维修保养",
+            "底盘异响诊断维修",
+            "空调不凉诊断维修",
+            "老车整备翻新",
+        ],
+        "areaServed": [
+            {"@type": "City", "name": "深圳市宝安区"},
+            {"@type": "Place", "name": "新安街道"},
+            {"@type": "Place", "name": "宝安体育场"},
+            {"@type": "Place", "name": "幸福海岸花园"},
+        ],
+        "provider": {
+            "@type": "AutoRepair",
+            "@id": BASE_URL + "/#autorepair",
+            "name": SHOP["shop_names"][0],
+            "telephone": SHOP["phone"],
+            "address": SHOP["address"],
+        },
+        "url": f"{BASE_URL}/models/{model['slug']}.html",
+        "dateModified": CONTENT_UPDATED_AT,
+    }
+
+
 def build_service_pages():
     """生成四个服务专题页。"""
     output_dir = ROOT / "services"
@@ -370,6 +403,7 @@ def build_model_pages():
 </section>"""
         schemas = [
             local_business_schema(),
+            model_service_schema(model),
             breadcrumb(
                 [
                     ("首页", BASE_URL + "/"),

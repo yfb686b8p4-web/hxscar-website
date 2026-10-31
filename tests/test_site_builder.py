@@ -78,6 +78,20 @@ class SiteBuilderGeoTests(unittest.TestCase):
             schema["sameAs"],
         )
 
+    def test_schema_declares_core_service_offers(self):
+        """门店结构化数据必须声明四项核心维修服务。"""
+        schema = site_builder.local_business_schema()
+        offered = {
+            item["itemOffered"]["name"]
+            for item in schema["makesOffer"]
+        }
+        self.assertEqual(
+            offered,
+            set(site_builder.SHOP["core_tags"]),
+        )
+        for item in schema["makesOffer"]:
+            self.assertTrue(item["itemOffered"]["url"].startswith(site_builder.BASE_URL))
+
     def test_schema_contains_verified_registry_identity(self):
         """结构化数据必须包含已交叉核验的工商实体标识。"""
         schema = site_builder.local_business_schema()

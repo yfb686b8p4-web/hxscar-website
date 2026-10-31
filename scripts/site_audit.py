@@ -222,6 +222,10 @@ def audit():
         errors.append("answers.html 直接答案证据块不足 13 组")
     if "ItemList" not in page_stats["cases.html"]["schema_types"]:
         errors.append("cases.html 缺少 ItemList 结构化数据")
+    for name, stats in page_stats.items():
+        if name.startswith("models/") and name != "models/index.html":
+            if "Service" not in stats["schema_types"]:
+                errors.append(f"{name} 缺少 Service 结构化数据")
     if "aggregateRating" in index_html:
         errors.append("index.html 仍包含未经核验的 aggregateRating")
     if "?w=" in index_html:

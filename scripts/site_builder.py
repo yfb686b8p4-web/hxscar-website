@@ -34,6 +34,13 @@ REVIEWS = load_json("reviews.json")
 VERIFIED_AT = SHOP.get("verified_at", datetime.now(TZ).date().isoformat())
 CONTENT_UPDATED_AT = datetime.now(TZ).date().isoformat()
 
+CORE_SERVICE_PATHS = {
+    "宝马专修豪车保养": "services/bmw-premium.html",
+    "空调不凉诊断维修": "services/air-conditioning.html",
+    "底盘异响诊断维修": "services/chassis.html",
+    "老车整备翻新": "services/vehicle-restoration.html",
+}
+
 SEARCH_ANSWERS = [
     {
         "anchor": "bmw",
@@ -648,6 +655,27 @@ def local_business_schema():
                 "contactType": "customer service",
                 "availableLanguage": ["zh-CN"],
             },
+        ],
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": service,
+                    "serviceType": service,
+                    "provider": {"@id": BASE_URL + "/#autorepair"},
+                    "areaServed": {"@type": "City", "name": "深圳市宝安区"},
+                    "url": (
+                        BASE_URL
+                        + "/"
+                        + CORE_SERVICE_PATHS.get(
+                            service,
+                            "services/index.html",
+                        )
+                    ),
+                },
+            }
+            for service in SHOP.get("core_tags", [])
         ],
         "additionalProperty": [
             {
