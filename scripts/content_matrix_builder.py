@@ -389,6 +389,7 @@ def build_service_pages():
     <h1>{h(service["name"])}（深圳宝安）</h1>
     <p>{h(service["intro"])}</p>
 </section>
+<img class="storefront-image" src="../assets/store-banner-960.jpg" alt="{h(SHOP["shop_names"][0])}门店外观" width="960" height="540" loading="lazy">
 <section class="card" id="quick-answer">
     <h2>直接回答</h2>
     {service_direct_answer_markup(service, cases)}

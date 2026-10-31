@@ -264,14 +264,27 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "sm": "http://www.sitemaps.org/schemas/sitemap/0.9",
             "image": "http://www.google.com/schemas/sitemap-image/1.1",
         }
-        self.assertEqual(len(root.findall("sm:url", namespace)), 3)
-        self.assertEqual(len(root.findall(".//image:image", namespace)), 6)
+        self.assertEqual(len(root.findall("sm:url", namespace)), 10)
+        self.assertEqual(len(root.findall(".//image:image", namespace)), 13)
         image_urls = {
             node.text
             for node in root.findall(".//image:loc", namespace)
         }
         self.assertIn(site_builder.BUSINESS_IMAGE, image_urls)
         self.assertIn(site_builder.BUSINESS_LOGO, image_urls)
+        page_urls = {
+            node.text
+            for node in root.findall("sm:url/sm:loc", namespace)
+        }
+        for service_path in site_builder.CORE_SERVICE_PATHS.values():
+            self.assertIn(site_builder.BASE_URL + "/" + service_path, page_urls)
+        case_urls = {
+            site_builder.case_study_url(case)
+            for case in site_builder.CASES
+            if site_builder.case_study_path(case)
+        }
+        self.assertEqual(len(case_urls), 3)
+        self.assertTrue(case_urls.issubset(page_urls))
 
     def test_sitemap_index_exposes_content_and_images(self):
         """站点地图索引必须同时暴露内容和图片 sitemap。"""

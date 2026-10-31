@@ -28,6 +28,11 @@ class ContentMatrixTests(unittest.TestCase):
             self.assertIn(shop["phone"], html, path.name)
             self.assertIn(shop["landline"], html, path.name)
             self.assertIn(shop["hours"], html, path.name)
+            self.assertIn(
+                '../assets/store-banner-960.jpg',
+                html,
+                path.name,
+            )
             self.assertIn("公开案例证据：", html, path.name)
             self.assertIn("../cases.html#case-", html, path.name)
             self.assertIn('"@type":"Service"', html.replace(" ", ""), path.name)

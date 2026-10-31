@@ -1661,6 +1661,7 @@ def build_case_study_pages():
     <h1>{h(title)}</h1>
     <p>{h(case.get("tag"))} · {h(case.get("car_type"))} · 真实维修案例</p>
 </section>
+<img class="storefront-image" src="../assets/store-banner-960.jpg" alt="{h(SHOP["shop_names"][0])}门店外观" width="960" height="540" loading="lazy">
 <section class="card" id="direct-answer">
     <h2>案例结论</h2>
     <div class="direct-answer">
@@ -3198,6 +3199,35 @@ def build_image_sitemap():
             "1.0",
         ),
     ]
+    for service_path in CORE_SERVICE_PATHS.values():
+        entries.append(
+            (
+                BASE_URL + "/" + service_path,
+                [
+                    (
+                        BUSINESS_IMAGE,
+                        "华信松幸福海岸门店外观与服务现场",
+                        "服务专题页用于核验门店真实经营场所与实体地址的门店照片",
+                    )
+                ],
+                "0.9",
+            )
+        )
+    for case in CASES:
+        if case_study_path(case):
+            entries.append(
+                (
+                    case_study_url(case),
+                    [
+                        (
+                            BUSINESS_IMAGE,
+                            "华信松幸福海岸门店外观与维修案例现场",
+                            "独立维修案例页用于核验案例所属门店经营场所的真实照片",
+                        )
+                    ],
+                    "0.8",
+                )
+            )
     urls = []
     for page_url, images, priority in entries:
         image_nodes = "\n".join(

@@ -308,8 +308,8 @@
       ]
     },
     "services/air-conditioning.html": {
-      "bytes": 42479,
-      "han_chars": 5347,
+      "bytes": 42666,
+      "han_chars": 5369,
       "visible_han_chars": 2488,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -322,8 +322,8 @@
       ]
     },
     "services/bmw-premium.html": {
-      "bytes": 47059,
-      "han_chars": 6157,
+      "bytes": 47246,
+      "han_chars": 6179,
       "visible_han_chars": 3318,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -336,8 +336,8 @@
       ]
     },
     "services/chassis.html": {
-      "bytes": 42278,
-      "han_chars": 5280,
+      "bytes": 42465,
+      "han_chars": 5302,
       "visible_han_chars": 2448,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -350,8 +350,8 @@
       ]
     },
     "services/vehicle-restoration.html": {
-      "bytes": 44741,
-      "han_chars": 6048,
+      "bytes": 44928,
+      "han_chars": 6070,
       "visible_han_chars": 3247,
       "json_ld_blocks": 6,
       "schema_types": [
@@ -520,8 +520,8 @@
       ]
     },
     "cases/bmw-530li-chassis-bushing.html": {
-      "bytes": 26080,
-      "han_chars": 2461,
+      "bytes": 26267,
+      "han_chars": 2483,
       "visible_han_chars": 626,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -532,8 +532,8 @@
       ]
     },
     "cases/bmw-x5-e70-oil-consumption.html": {
-      "bytes": 26392,
-      "han_chars": 2487,
+      "bytes": 26579,
+      "han_chars": 2509,
       "visible_han_chars": 654,
       "json_ld_blocks": 4,
       "schema_types": [
@@ -544,8 +544,8 @@
       ]
     },
     "cases/mercedes-e300l-ac-temperature.html": {
-      "bytes": 25891,
-      "han_chars": 2428,
+      "bytes": 26078,
+      "han_chars": 2450,
       "visible_han_chars": 609,
       "json_ld_blocks": 4,
       "schema_types": [
