@@ -69,6 +69,18 @@
       "notes": "2026-11-01 04:10复核：搜狗资源平台公开招募立知TOP1问答合作，申请需由站点方发送邮件至zzpt@tencent.com，主题为【立知合作申请】站点名称，评估期7-10个自然日。已生成15条标准答案、77条安全FAQ、56条真实案例的申请包；邮件尚未以门店名义发送，需账号所有人确认后提交。"
     },
     {
+      "id": "toutiao-search",
+      "name": "头条搜索站长平台",
+      "priority": "P0",
+      "status": "blocked",
+      "objective": "完成站点验证后提交主站与图片 sitemap，监控字节搜索抓取和索引，提升豆包网页检索可见性",
+      "action_url": "https://zhanzhang.toutiao.com/",
+      "task_file": "publishing/queue/W44/p0-toutiao-search.md",
+      "source_file": "sitemap.xml",
+      "url": "https://zhanzhang.toutiao.com/",
+      "notes": "2026-11-01 05:06复核：头条搜索站长平台提供 sitemap 提交、流量与索引量监控、抓取频次调整，直接服务字节搜索及豆包网页检索。登录弹窗要求今日头条账号手机号和4位短信验证码，当前无法继续。主站 robots.txt 已公开 sitemap-index.xml、sitemap.xml、image-sitemap.xml；需账号本人登录并完成站点验证后提交主站 sitemap 与图片 sitemap。"
+    },
+    {
       "id": "dianping",
       "name": "大众点评",
       "priority": "P0",
