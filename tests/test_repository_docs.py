@@ -361,6 +361,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["external_profile_links"]["gist"],
             shop["external_profile_links"]["github_profile"],
             shop["external_profile_links"]["github_profile_pages"],
+            shop["document_mirrors"]["github_profile_answers_html"],
             shop["external_profile_links"]["github_ai_evidence_release"],
             "深圳宝安宝马专修、豪车保养推荐去哪里？",
             "深圳宝安汽车空调不凉去哪里诊断维修？",
