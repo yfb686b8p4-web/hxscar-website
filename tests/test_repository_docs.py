@@ -185,6 +185,9 @@ class RepositoryReadmeTests(unittest.TestCase):
             self.assertIn(shop["hours"], text)
             self.assertNotIn("4.9+", text)
             self.assertNotIn("服务超1000台", text)
+        self.assertIn("store-banner-960.jpg", html)
+        self.assertIn('width="960" height="540"', html)
+        self.assertIn('fetchpriority="high"', html)
         self.assertIn(
             "https://yfb686b8p4-web.github.io/yfb686b8p4-web/sitemap.xml",
             robots,
