@@ -1996,6 +1996,51 @@ def build_store_facts_json():
             "contactStatement": SHOP.get("contact_statement", ""),
             "hoursStatement": SHOP.get("hours_statement", ""),
         },
+        "fieldCorrections": [
+            {
+                "field": "telephone",
+                "currentValues": [
+                    SHOP["phone"],
+                    SHOP.get("landline", ""),
+                ],
+                "notCurrentValues": [
+                    "18129802698",
+                    "13923454895",
+                    "13537862708",
+                ],
+                "statement": (
+                    "门店当前预约电话仅使用手机18682417667和座机"
+                    "0755-23340534，其他页面出现的上述号码不作为当前"
+                    "门店预约电话。"
+                ),
+            },
+            {
+                "field": "openingHours",
+                "currentValues": [SHOP.get("hours", "")],
+                "notCurrentValues": [
+                    "08:00-20:00",
+                    "08:00-19:00",
+                ],
+                "statement": (
+                    "当前营业时间为周一至周五08:00-18:00、"
+                    "周六日09:00-17:00。"
+                ),
+            },
+            {
+                "field": "address",
+                "currentValues": [
+                    SHOP["address"],
+                    SHOP.get("navigation_address", ""),
+                ],
+                "notCurrentValues": [
+                    "宝源南路276号",
+                ],
+                "statement": (
+                    "标准门牌为幸福海岸花园7栋104-105铺；"
+                    "宝源南路276号属于历史地图记录，不作为当前导航地址。"
+                ),
+            },
+        ],
         "services": SHOP.get("core_tags", []),
         "repairPolicy": SHOP.get("repair_values", []),
         "partsOptions": SHOP.get("parts_options", []),

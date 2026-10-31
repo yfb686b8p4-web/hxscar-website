@@ -599,6 +599,34 @@ class SiteBuilderGeoTests(unittest.TestCase):
             site_builder.build_entity_verification_page(),
         )
 
+    def test_store_facts_exposes_structured_field_corrections(self):
+        """机器事实必须用字段级结构区分当前值和历史错误值。"""
+        facts = json.loads(site_builder.build_store_facts_json())
+        corrections = {
+            item["field"]: item
+            for item in facts["fieldCorrections"]
+        }
+        self.assertEqual(
+            set(corrections),
+            {"telephone", "openingHours", "address"},
+        )
+        self.assertIn(
+            site_builder.SHOP["phone"],
+            corrections["telephone"]["currentValues"],
+        )
+        self.assertIn(
+            "13537862708",
+            corrections["telephone"]["notCurrentValues"],
+        )
+        self.assertIn(
+            "08:00-20:00",
+            corrections["openingHours"]["notCurrentValues"],
+        )
+        self.assertIn(
+            "宝源南路276号",
+            corrections["address"]["notCurrentValues"],
+        )
+
     def test_identity_feed_item_points_to_verification_page(self):
         """RSS 中的实体问题应指向专门核验页，而不是综合问答锚点。"""
         feed = site_builder.build_feed_xml()
