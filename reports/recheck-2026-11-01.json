@@ -26,10 +26,20 @@
       "title": "工商全称营业时间纠错",
       "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 营业时间是08:00-20:00吗？地址电话是多少？",
       "deployed_commit": "90144fa",
-      "measured_at": "2026-11-01T01:38:00+08:00",
+      "measured_at": "2026-11-01T01:28:00+08:00",
       "before_summary": "元宝返回08:00-19:00、宝源南路276号和13537862708。",
       "after_summary": "发布后再次用全新会话复测，元宝仍引用同一组地图旧资料，引用9篇资料，纠错页尚未进入检索源。",
       "outcome": "页面已发布但尚未影响平台回答，旧资料仍错误"
+    },
+    {
+      "id": "external-authority-mirrors",
+      "title": "GitHub Gist 与 Release 权威镜像",
+      "query": "7923ef0b18ffbcce04a8b6758254a06b",
+      "deployed_commit": "4a2022c",
+      "measured_at": "2026-11-01T01:32:00+08:00",
+      "before_summary": "公开 Gist 和 Release 正文缺少13537862708及营业时间纠错页入口。",
+      "after_summary": "两份镜像均已更新并通过 GitHub API 检出完整实体事实与纠错入口；Bing 精确查询 Gist ID 仍无相关结果。",
+      "outcome": "外部镜像已更新，但尚未观察到 Bing 收录"
     }
   ]
 }

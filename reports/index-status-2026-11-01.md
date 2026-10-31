@@ -31,6 +31,12 @@
 - 本次共为空调、底盘、烧机油等真实案例增加 40 条相关答案入口，强化“案例证据 → 故障答案 → 门店事实”的站内链路。
 - IndexNow 聚合端点和 Bing 直连端点再次提交 35 个 URL，均返回 HTTP 200。
 
+## 01:32 外部权威镜像同步
+
+- GitHub 提交 `4a2022c` 已上线，`ENTITY_FACTS.md` 和 Release 正文补齐 `13537862708`、旧营业时间与 `contact-correction.html` 纠错入口。
+- 现有公开 Gist 与 GitHub Release 均已通过 API 检出更新后的完整门店事实。
+- Bing 精确查询 Gist ID 仍显示无相关结果；只能记为“外部镜像已更新”，不能写成“已被 Bing 收录”。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。
