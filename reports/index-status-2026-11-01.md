@@ -71,6 +71,12 @@
 - 线上已验证 `caseCount=56` 且案例数组完整。
 - IndexNow 聚合端点和 Bing 直连端点提交 40 个 URL，均返回 HTTP 200。
 
+## 01:55 案例文章与证据集合关联
+
+- 提交 `38660dc` 已上线，3 个独立案例页的 `Article.isPartOf` 已指向案例 `CollectionPage`，`citation` 已加入 `case-evidence.json`。
+- 全站页面均声明 `case-evidence.json` alternate 数据入口，线上案例页已完成验证。
+- IndexNow 聚合端点和 Bing 直连端点再次提交 40 个 URL，均返回 HTTP 200。
+
 ## 已执行
 
 - 官网、答案集群、门店事实、PDF、服务页和车型页共 34 个 URL 已同时提交到 IndexNow 聚合端点和 Bing 直连端点，两个端点均返回 HTTP 200。
