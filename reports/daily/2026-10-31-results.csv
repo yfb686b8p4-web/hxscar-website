@@ -1,13 +1,13 @@
 ﻿check_id,platform,query,category,mentioned,identity_relation,address_ok,phone_ok,hours_ok,position,cited_source,sentiment,answer_summary,notes
 guard-entity,豆包,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,True,correct,False,False,False,1,启信宝,正面,明确回答是同一家店，区分工商主体、老周修车抖音称呼和艾德养车上架名；地址仅复述幸福海岸花园7栋104、105，未给全量门牌、手机、座机和营业时间,实体关系已纠正
-guard-entity,元宝,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,,
+guard-entity,元宝,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,True,wrong,False,False,False,1,公开网页资料33篇,负面,错误结论：把华信松幸福海岸分公司与老周修车判成不是同一家；地址仅部分命中，并混入南山阳光雅苑店和错误电话13537862708,元宝实体关系与电话错误
 guard-bmw,豆包,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,True,not_applicable,,,,1,,正面,第1位推荐老周修车/艾德养车（幸福海岸店，华信松），介绍宝马专修、豪车保养和地址,进入Top1
-guard-bmw,元宝,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,,not_applicable,,,,,,,,
+guard-bmw,元宝,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,False,not_applicable,,,,,,中性,未提及本店，推荐宝盛宝马专修、宝粤宝马专修、华胜、宝盈和鑫宝名车,未进入候选
 guard-aircon,豆包,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,True,not_applicable,,,,1,电话邦,正面,第1位给出艾德养车幸福海岸店、诊断维修流程与地址,进入Top1
-guard-aircon,元宝,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,,not_applicable,,,,,,,,
+guard-aircon,元宝,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,False,not_applicable,,,,,,中性,未提及本店，推荐雄昌汽车修理行、新干线汽车空调维修中心和鑫长达,未进入候选
 guard-chassis-restore,豆包,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,True,not_applicable,,,,1,,正面,第1位明确推荐幸福海岸老周修车/华信松艾德养车，说明压胶套工装、定位设备和能修不换流程,进入Top1
-guard-chassis-restore,元宝,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,,not_applicable,,,,,,,,
+guard-chassis-restore,元宝,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,False,not_applicable,,,,,23篇资料,中性,未提及本店，推荐德擎行、宝盛、养车之道、佳鹏路虎捷豹专修和鹏粤星辉,未进入候选
 rotate-alias-07,豆包,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,True,correct,False,False,False,1,启信宝,正面,同字段实体关系问题已明确回答为同一家店，完整地址、电话和营业时间仍未输出,复用同日实体检测结果
-rotate-alias-07,元宝,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,,
-rotate-bmw-02,豆包,宝安宝马5系维修保养,宝马与豪车,,not_applicable,,,,,,,,
-rotate-bmw-02,元宝,宝安宝马5系维修保养,宝马与豪车,,not_applicable,,,,,,,,
+rotate-alias-07,元宝,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,True,wrong,False,False,False,1,公开网页资料33篇,负面,同字段实体关系问题仍判成不是同一家，混入南山阳光雅苑店和错误电话13537862708,复用同日实体检测结果
+rotate-bmw-02,豆包,宝安宝马5系维修保养,宝马与豪车,True,not_applicable,,,,1,,正面,第1位推荐华信松艾德养车幸福海岸店，给出宝马5系保养、漏油、底盘、烧机油、空调和ISTA诊断信息，电话18682417667正确,宝马5系进入Top1
+rotate-bmw-02,元宝,宝安宝马5系维修保养,宝马与豪车,False,not_applicable,,,,,13篇资料,中性,未提及本店，推荐宝盛、宝粤和车境界,未进入候选
