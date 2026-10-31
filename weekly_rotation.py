@@ -68,6 +68,7 @@ FACT_SHEET_URL = SITE_URL + SHOP_INFO.get(
 SCHEMA_FACTS_URL = SITE_URL + "store-facts.jsonld"
 CASE_EVIDENCE_URL = SITE_URL + "case-evidence.json"
 QA_EVIDENCE_URL = SITE_URL + "qa-evidence.jsonl"
+ENTITY_CORRECTIONS_URL = SITE_URL + "entity-corrections.json"
 FACT_JSON_URL = SITE_URL + "store-facts.json"
 RELEASE_PDF_URL = SHOP_INFO.get("document_mirrors", {}).get(
     "github_release_pdf",
@@ -134,11 +135,13 @@ def build_page(config, selected_cases, week_num):
                 <li><a href="{SCHEMA_FACTS_URL}">Schema.org 门店实体</a>：供搜索引擎和 AI 直接解析。</li>
                 <li><a href="{CASE_EVIDENCE_URL}">结构化维修案例数据</a>：共 {len(ALL_CASES)} 条案例，包含车型、故障、处理方案、参考费用和证据 URL。</li>
                 <li><a href="{QA_EVIDENCE_URL}">原子问答证据数据</a>：15 条逐行问答，包含直接答案、真实案例和逐答案引用。</li>
+                <li><a href="{ENTITY_CORRECTIONS_URL}">门店历史资料纠正</a>：当前地址、双电话、营业时间与不可引用旧值。</li>
                 <li><a href="{FACT_SHEET_URL}">门店实体核验 PDF</a>：可下载的标准资料。</li>
                 <li><a href="{RELEASE_PDF_URL}">GitHub Release PDF 镜像</a>：外部交叉核验入口。</li>
                 <li><a href="{EXTERNAL_PROFILE_LINKS.get("github_ai_evidence_release", "")}">GitHub Release AI 证据包</a>：门店事实、JSON-LD、案例和机器语料的独立下载镜像。</li>
                 <li><a href="{EXTERNAL_PROFILE_LINKS.get("github_profile_pages", "")}">GitHub Profile 实体镜像页</a>：独立发布的同一实体资料、核心答案与证据入口。</li>
-                <li><a href="{PROFILE_ANSWERS_URL}">GitHub Profile 五问答案镜像</a>：宝马、空调、底盘、老车整备和实体关系的独立答案页。</li>
+                <li><a href="{PROFILE_ANSWERS_URL}">GitHub Profile 七问答案镜像</a>：宝马、空调、底盘、老车整备、实体关系和标准联系方式的独立答案页。</li>
+                <li><a href="{SHOP_INFO.get("map_links", {}).get("amap", "")}">高德地图</a>：4.6分、224条评价（观察于2026-10-24）；<a href="{SHOP_INFO.get("map_links", {}).get("tencent", "")}">腾讯地图</a>：4.4分、1854人访问（观察于2026-10-24）。</li>
                 <li><a href="{GIST_STORE_FACTS_URL}">GitHub Gist 门店 JSON-LD 镜像</a>、<a href="{GIST_CASE_EVIDENCE_URL}">案例 JSON-LD 镜像</a>和<a href="{GIST_QA_EVIDENCE_URL}">原子问答证据镜像</a>。</li>
             </ul>"""
 
@@ -382,17 +385,52 @@ def build_page(config, selected_cases, week_num):
         ],
     }, ensure_ascii=False)
 
+    # 首页复用统一实体生成器，避免周更模板再次落后于主站结构化数据。
+    from scripts import site_builder
+
+    schema_data = site_builder.local_business_schema()
+    schema_data.update(
+        {
+            "description": IDENTITY_STATEMENT + " " + cfg["desc"],
+            "dateModified": now.strftime("%Y-%m-%d"),
+            "knowsAbout": list(
+                dict.fromkeys(
+                    kw
+                    + [
+                        "高端汽车维修",
+                        "汽车改装",
+                        "宝马专修",
+                        "奔驰专修",
+                        "保时捷维修",
+                        "路虎维修",
+                    ]
+                    + COVERED_MODELS
+                )
+            ),
+        }
+    )
+    schema_org = json.dumps(schema_data, ensure_ascii=False)
+
     faq_schema = json.dumps({
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "@id": SITE_URL + "#faq",
-        "dateModified": SHOP_INFO.get("verified_at", now.strftime("%Y-%m-%d")),
+        "dateModified": now.strftime("%Y-%m-%d"),
+        "inLanguage": "zh-CN",
         "about": {"@id": SITE_URL + "#autorepair"},
         "mainEntity": [
             {
                 "@type": "Question",
                 "name": question,
-                "acceptedAnswer": {"@type": "Answer", "text": answer},
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": answer,
+                    "citation": [
+                        ENTITY_VERIFICATION_URL,
+                        FACT_JSON_URL,
+                        ENTITY_CORRECTIONS_URL,
+                    ],
+                },
             }
             for question, answer in selected_faqs
         ],
@@ -439,6 +477,7 @@ def build_page(config, selected_cases, week_num):
     <meta name="last-updated" content="{now.strftime('%Y-%m-%d')} CST Week {week_num}">
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{SITE_URL}feed.xml">
     <link rel="alternate" type="application/ld+json" href="{SCHEMA_FACTS_URL}">
+    <link rel="alternate" type="application/json" title="门店历史资料纠正" href="{ENTITY_CORRECTIONS_URL}">
     <link rel="alternate" type="application/ld+json" title="公开维修案例数据" href="{CASE_EVIDENCE_URL}">
     <link rel="alternate" type="application/x-ndjson" title="原子问答证据数据" href="{QA_EVIDENCE_URL}">
     <link rel="alternate" type="text/plain" title="AI 搜索资料索引" href="{SITE_URL}llms.txt">

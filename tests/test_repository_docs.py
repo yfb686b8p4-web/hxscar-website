@@ -468,12 +468,59 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["document_mirrors"]["github_ai_evidence_store_facts_json"],
             home,
         )
+        self.assertIn("entity-corrections.json", home)
+        self.assertIn("GitHub Profile 七问答案镜像", home)
+        self.assertNotIn("GitHub Profile 五问答案镜像", home)
+        self.assertIn("4.6分、224条评价", home)
+        self.assertIn("4.4分、1854人访问", home)
         self.assertIn('"@type": "WebSite"', home)
         self.assertIn('"@id": "https://yfb686b8p4-web.github.io/hxscar-website/#website"', home)
         self.assertIn(
             '"publisher": {"@id": "https://yfb686b8p4-web.github.io/hxscar-website/#autorepair"}',
             home,
         )
+        schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                home,
+                re.DOTALL,
+            )
+        ]
+        store = next(
+            schema
+            for schema in schemas
+            if schema.get("@type") == "AutoRepair"
+        )
+        self.assertNotIn("aggregateRating", store)
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/hxscar-website/"
+            "entity-corrections.json",
+            {item["url"] for item in store["subjectOf"]},
+        )
+        reputation = {
+            item["name"]: item["value"]
+            for item in store["additionalProperty"]
+        }
+        self.assertEqual(
+            reputation["高德地图公开记录快照"],
+            "4.6分，224条评价",
+        )
+        self.assertEqual(
+            reputation["腾讯地图公开记录快照"],
+            "4.4分，1854人访问",
+        )
+        faq = next(
+            schema
+            for schema in schemas
+            if schema.get("@type") == "FAQPage"
+        )
+        for question in faq["mainEntity"]:
+            self.assertIn(
+                "https://yfb686b8p4-web.github.io/hxscar-website/"
+                "entity-corrections.json",
+                question["acceptedAnswer"]["citation"],
+            )
 
     def test_homepage_uses_compressed_responsive_storefront(self):
         """首页首屏必须提供更小的响应式门头图。"""
