@@ -457,6 +457,8 @@ class RepositoryReadmeTests(unittest.TestCase):
             (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
         )
         self.assertIn(shop["image_path"], home)
+        self.assertIn("store-banner-960.webp", home)
+        self.assertIn('type="image/webp"', home)
         self.assertIn(shop["unified_social_credit_code"], home)
         self.assertIn(shop["external_profile_links"]["douyin"], home)
         self.assertIn(
@@ -561,7 +563,11 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("store-banner.jpg 1291w", home)
         self.assertIn('fetchpriority="high"', home)
         self.assertIn('rel="preload" as="image"', home)
-        self.assertIn('imagesrcset="assets/store-banner-960.jpg 960w', home)
+        self.assertIn('imagesrcset="assets/store-banner-960.webp 960w', home)
+        self.assertIn(
+            'src="assets/store-banner-960.jpg"',
+            home,
+        )
 
     def test_github_profile_readme_is_a_complete_entity_source(self):
         """GitHub Profile README 必须具备完整实体事实和机器证据入口。"""

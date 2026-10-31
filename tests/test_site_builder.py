@@ -304,12 +304,13 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "image": "http://www.google.com/schemas/sitemap-image/1.1",
         }
         self.assertEqual(len(root.findall("sm:url", namespace)), 10)
-        self.assertEqual(len(root.findall(".//image:image", namespace)), 13)
+        self.assertEqual(len(root.findall(".//image:image", namespace)), 14)
         image_urls = {
             node.text
             for node in root.findall(".//image:loc", namespace)
         }
         self.assertIn(site_builder.BUSINESS_IMAGE, image_urls)
+        self.assertIn(site_builder.BUSINESS_IMAGE_SMALL_WEBP, image_urls)
         self.assertIn(site_builder.BUSINESS_LOGO, image_urls)
         page_urls = {
             node.text

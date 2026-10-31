@@ -35,6 +35,8 @@ PRIORITY_PATHS = {
     "/hxscar-website/feed.xml",
     "/hxscar-website/assets/store-avatar-300.jpg",
     "/hxscar-website/assets/store-banner.jpg",
+    "/hxscar-website/assets/store-banner.webp",
+    "/hxscar-website/assets/store-banner-960.webp",
     "/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf",
     "/hxscar-website/llms.txt",
     "/hxscar-website/llms-full.txt",

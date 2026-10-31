@@ -50,6 +50,8 @@ CORE_SERVICE_PATHS = {
 BUSINESS_IMAGE = BASE_URL + "/" + SHOP.get(
     "image_path", "assets/store-banner.jpg"
 )
+BUSINESS_IMAGE_WEBP = BASE_URL + "/assets/store-banner.webp"
+BUSINESS_IMAGE_SMALL_WEBP = BASE_URL + "/assets/store-banner-960.webp"
 BUSINESS_LOGO = BASE_URL + "/" + SHOP.get(
     "logo_path", "assets/store-avatar-300.jpg"
 )
@@ -3410,6 +3412,8 @@ def build_sitemap():
         (ENTITY_CORRECTIONS_DATA, "0.8"),
         (BASE_URL + "/feed.xml", "0.6"),
         (BASE_URL + "/assets/store-banner.jpg", "0.4"),
+        (BUSINESS_IMAGE_WEBP, "0.4"),
+        (BUSINESS_IMAGE_SMALL_WEBP, "0.4"),
         (BASE_URL + "/assets/store-avatar-300.jpg", "0.4"),
         (BUSINESS_FACT_SHEET, "0.5"),
         (BASE_URL + "/llms.txt", "0.5"),
@@ -3454,6 +3458,11 @@ def build_image_sitemap():
                     BUSINESS_IMAGE,
                     "深圳华信松汽车幸福海岸门店外观",
                     "深圳市宝安区幸福海岸花园7栋104-105铺门店真实外观",
+                ),
+                (
+                    BUSINESS_IMAGE_SMALL_WEBP,
+                    "深圳华信松汽车幸福海岸门店外观 WebP",
+                    "首页优先加载的真实门店外观 WebP 版本",
                 ),
                 (
                     BUSINESS_LOGO,

@@ -57,6 +57,7 @@ SITE_URL = os.environ.get(
     "SITE_URL", f"https://{_owner.lower()}.github.io/{_repo}/"
 ).rstrip("/") + "/"
 STORE_IMAGE = SITE_URL + SHOP_INFO.get("image_path", "assets/store-banner.jpg")
+STORE_IMAGE_WEBP = SITE_URL + "assets/store-banner.webp"
 STORE_LOGO = SITE_URL + SHOP_INFO.get("logo_path", "assets/store-avatar-300.jpg")
 DOUYIN_URL = SHOP_INFO.get("external_profile_links", {}).get("douyin", "")
 DOUYIN_ID = SHOP_INFO.get("douyin_id", "")
@@ -482,7 +483,7 @@ def build_page(config, selected_cases, week_num):
     <link rel="alternate" type="application/x-ndjson" title="原子问答证据数据" href="{QA_EVIDENCE_URL}">
     <link rel="alternate" type="text/plain" title="AI 搜索资料索引" href="{SITE_URL}llms.txt">
     <link rel="alternate" type="text/plain" title="AI 搜索完整机器语料" href="{SITE_URL}llms-full.txt">
-    <link rel="preload" as="image" href="assets/store-banner-960.jpg" imagesrcset="assets/store-banner-960.jpg 960w, assets/store-banner.jpg 1291w" imagesizes="(max-width: 800px) calc(100vw - 40px), 760px" fetchpriority="high">
+    <link rel="preload" as="image" type="image/webp" href="assets/store-banner-960.webp" imagesrcset="assets/store-banner-960.webp 960w, assets/store-banner.webp 1291w" imagesizes="(max-width: 800px) calc(100vw - 40px), 760px" fetchpriority="high">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
     <script type="application/ld+json">
 {schema_org}
@@ -503,6 +504,7 @@ def build_page(config, selected_cases, week_num):
         .section-link {{ display: inline-block; margin-top: 12px; color: #fff; background: #e94560; padding: 9px 14px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; }}
         .header {{ background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 40px 20px; text-align: center; border-radius: 12px; margin-bottom: 24px; border: 1px solid #333; }}
         .header .storefront {{ width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.14); }}
+        .header picture {{ display: block; }}
         .header .brand {{ font-size: 13px; opacity: 0.7; margin-bottom: 6px; }}
         .header h1 {{ font-size: 22px; margin-bottom: 6px; }}
         .header .alt-names {{ font-size: 13px; opacity: 0.55; margin-top: 4px; }}
@@ -569,7 +571,10 @@ def build_page(config, selected_cases, week_num):
 
         <!-- HEADER -->
         <div class="header">
-            <img class="storefront" src="assets/store-banner-960.jpg" srcset="assets/store-banner-960.jpg 960w, assets/store-banner.jpg 1291w" sizes="(max-width: 800px) calc(100vw - 40px), 760px" alt="华信松汽车幸福海岸门店外观" width="960" height="540" loading="eager" fetchpriority="high" decoding="async">
+            <picture>
+                <source type="image/webp" srcset="assets/store-banner-960.webp 960w, assets/store-banner.webp 1291w" sizes="(max-width: 800px) calc(100vw - 40px), 760px">
+                <img class="storefront" src="assets/store-banner-960.jpg" srcset="assets/store-banner-960.jpg 960w, assets/store-banner.jpg 1291w" sizes="(max-width: 800px) calc(100vw - 40px), 760px" alt="华信松汽车幸福海岸门店外观" width="960" height="540" loading="eager" fetchpriority="high" decoding="async">
+            </picture>
             <div class="brand">華信松汽車 · 米其林驰加 · 艾德养车</div>
             <h1>华信松汽车服务有限公司（幸福海岸分公司）</h1>
             <div class="alt-names">又名 · {alt_names_str}</div>
