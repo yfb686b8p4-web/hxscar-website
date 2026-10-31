@@ -212,6 +212,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         )
         self.assertIn("answers.html", html)
         self.assertIn("answers.html", llms)
+        self.assertIn("qa-evidence.jsonl", llms)
         schemas = [
             json.loads(raw)
             for raw in re.findall(
@@ -224,8 +225,16 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertEqual(len(store), 1)
         self.assertEqual(store[0]["dateModified"], "2026-11-01")
         self.assertEqual(store[0]["taxID"], shop["unified_social_credit_code"])
-        self.assertEqual(store[0]["areaServed"]["name"], "深圳市宝安区")
+        self.assertEqual(len(store[0]["areaServed"]), 4)
+        self.assertEqual(
+            store[0]["areaServed"][0]["name"],
+            "深圳市宝安区",
+        )
         self.assertEqual(len(store[0]["makesOffer"]), 4)
+        self.assertEqual(
+            store[0]["hasOfferCatalog"]["numberOfItems"],
+            4,
+        )
         offered_services = {
             item["itemOffered"]["name"] for item in store[0]["makesOffer"]
         }
@@ -243,6 +252,11 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["external_profile_links"]["github_ai_evidence_release"],
             subject_urls,
         )
+        self.assertIn(
+            "https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl",
+            subject_urls,
+        )
+        self.assertIn("qa-evidence.jsonl", answers_html)
         self.assertIn("WebSite", {schema.get("@type") for schema in schemas})
         faq_pages = [
             schema for schema in schemas if schema.get("@type") == "FAQPage"
