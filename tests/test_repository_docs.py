@@ -207,6 +207,7 @@ class RepositoryReadmeTests(unittest.TestCase):
         ]
         store = [schema for schema in schemas if schema.get("@type") == "AutoRepair"]
         self.assertEqual(len(store), 1)
+        self.assertEqual(store[0]["dateModified"], "2026-11-01")
         self.assertEqual(store[0]["taxID"], shop["unified_social_credit_code"])
         self.assertEqual(store[0]["areaServed"]["name"], "深圳市宝安区")
         self.assertEqual(len(store[0]["makesOffer"]), 4)
@@ -232,6 +233,7 @@ class RepositoryReadmeTests(unittest.TestCase):
             schema for schema in schemas if schema.get("@type") == "FAQPage"
         ]
         self.assertEqual(len(faq_pages), 1)
+        self.assertEqual(faq_pages[0]["dateModified"], "2026-11-01")
         faq_text = json.dumps(faq_pages[0], ensure_ascii=False)
         self.assertIn(shop["unified_social_credit_code"], faq_text)
         self.assertIn(shop["address"], faq_text)
