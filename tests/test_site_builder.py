@@ -25,6 +25,27 @@ class SiteBuilderGeoTests(unittest.TestCase):
         anchors = {item["anchor"] for item in site_builder.SEARCH_ANSWERS}
         self.assertEqual(anchors, set(site_builder.GEO_ANSWER_META))
 
+    def test_guardrail_queries_have_exact_answer_coverage(self):
+        """每日护栏问法必须逐字出现在对应答案的查询变体中。"""
+        plan = json.loads(
+            (
+                site_builder.ROOT
+                / "reports"
+                / "daily"
+                / "2026-11-01-plan.json"
+            ).read_text(encoding="utf-8")
+        )
+        exposed_queries = {
+            query
+            for item in site_builder.SEARCH_ANSWERS
+            for query in (
+                item["question"],
+                *site_builder.answer_geo_meta(item)["queryVariants"],
+            )
+        }
+        for guardrail in plan["guardrails"]:
+            self.assertIn(guardrail["query"], exposed_queries)
+
     def test_every_answer_has_directly_citable_sources(self):
         """每条标准答案必须给出至少四个可直接核验的 HTTPS 来源。"""
         for item in site_builder.SEARCH_ANSWERS:

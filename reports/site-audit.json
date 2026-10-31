@@ -84,9 +84,9 @@
       ]
     },
     "answers/air-conditioning.html": {
-      "bytes": 25092,
-      "han_chars": 2462,
-      "visible_han_chars": 773,
+      "bytes": 25186,
+      "han_chars": 2490,
+      "visible_han_chars": 787,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -150,9 +150,9 @@
       ]
     },
     "answers/bmw.html": {
-      "bytes": 25472,
-      "han_chars": 2569,
-      "visible_han_chars": 813,
+      "bytes": 25568,
+      "han_chars": 2597,
+      "visible_han_chars": 827,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -189,9 +189,9 @@
       ]
     },
     "answers/chassis.html": {
-      "bytes": 24795,
-      "han_chars": 2415,
-      "visible_han_chars": 772,
+      "bytes": 24903,
+      "han_chars": 2447,
+      "visible_han_chars": 788,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
