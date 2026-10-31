@@ -13,6 +13,20 @@ CONFIG_PATH = ROOT / "config" / "external_platforms.json"
 PUBLISHING_DIR = ROOT / "publishing"
 STATUS_PATH = PUBLISHING_DIR / "status.json"
 TZ = timezone(timedelta(hours=8))
+UNVERIFIED_CLAIMS = (
+    "4.9+",
+    "服务超1000台",
+    "⭐⭐⭐⭐⭐",
+    "评分：",
+    "推荐评价文案",
+    "团队10年以上",
+    "免费检测",
+    "质保无忧",
+    "当天可取",
+    "省一半",
+    "原价：¥",
+    "团购价：",
+)
 
 
 def load_json(path):
@@ -37,6 +51,11 @@ def load_status():
     return {"updated_at": "", "platforms": {}}
 
 
+def unverified_claim_matches(text):
+    """返回内容中发现的未核验承诺或虚构评价标记。"""
+    return [marker for marker in UNVERIFIED_CLAIMS if marker in text]
+
+
 def queue_week(week):
     """生成指定周的发布队列。"""
     config = load_json(CONFIG_PATH)
@@ -58,13 +77,24 @@ def queue_week(week):
             if source.exists()
             else f"未找到本周内容源：{source.relative_to(ROOT)}"
         )
+        claim_matches = unverified_claim_matches(source_text)
+        if claim_matches:
+            source_text = (
+                "内容校验未通过，禁止发布。\n\n"
+                "检测到未核验承诺或虚构评价标记："
+                + "、".join(claim_matches)
+                + "。\n\n请先运行 `python3 multi_platform_publisher.py --week "
+                f"{week}` 重新生成安全内容，并人工核验价格、优惠、评分、"
+                "服务时效和售后承诺。"
+            )
         stored = status["platforms"].get(platform_id, {})
         current_status = stored.get("status", "pending")
+        queue_status = "blocked" if claim_matches else current_status
         task_path = queue_dir / f"{platform['priority'].lower()}-{platform_id}.md"
         task_text = f"""# {platform['name']}发布任务
 
 - 平台优先级：{platform['priority']}
-- 当前状态：{current_status}
+- 当前状态：{queue_status}
 - 目标：{platform['objective']}
 - 操作入口：{platform['action_url']}
 - 内容来源：`{source.relative_to(ROOT) if source.exists() else source}`
@@ -102,7 +132,7 @@ def queue_week(week):
                 "id": platform_id,
                 "name": platform["name"],
                 "priority": platform["priority"],
-                "status": current_status,
+                "status": queue_status,
                 "objective": platform["objective"],
                 "action_url": platform["action_url"],
                 "task_file": str(task_path.relative_to(ROOT)),
@@ -110,7 +140,11 @@ def queue_week(week):
                 if source.exists()
                 else "",
                 "url": stored.get("url", ""),
-                "notes": stored.get("notes", ""),
+                "notes": (
+                    "内容校验未通过：" + "、".join(claim_matches)
+                    if claim_matches
+                    else stored.get("notes", "")
+                ),
             }
         )
 
