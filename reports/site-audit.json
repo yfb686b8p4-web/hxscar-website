@@ -10,9 +10,9 @@
   },
   "pages": {
     "index.html": {
-      "bytes": 44573,
-      "han_chars": 6905,
-      "visible_han_chars": 4616,
+      "bytes": 48742,
+      "han_chars": 7278,
+      "visible_han_chars": 4765,
       "json_ld_blocks": 2,
       "schema_types": [
         "AutoRepair",

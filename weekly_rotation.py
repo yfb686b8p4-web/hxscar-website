@@ -56,6 +56,13 @@ _owner, _repo = _repository.split("/", 1)
 SITE_URL = os.environ.get(
     "SITE_URL", f"https://{_owner.lower()}.github.io/{_repo}/"
 ).rstrip("/") + "/"
+STORE_IMAGE = SITE_URL + SHOP_INFO.get("image_path", "assets/store-banner.jpg")
+STORE_LOGO = SITE_URL + SHOP_INFO.get("logo_path", "assets/store-avatar-300.jpg")
+DOUYIN_URL = SHOP_INFO.get("external_profile_links", {}).get("douyin", "")
+DOUYIN_ID = SHOP_INFO.get("douyin_id", "")
+ENTITY_VERIFICATION_URL = SITE_URL + "entity-verification.html"
+REGISTRY_LINKS = SHOP_INFO.get("registry_links", {})
+EXTERNAL_PROFILE_LINKS = SHOP_INFO.get("external_profile_links", {})
 
 def select_config(week_num):
     """根据周数选择配置（4周循环），同时返回索引"""
@@ -158,10 +165,26 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         "mainEntityOfPage": SITE_URL + "store-profile.html",
         "dateModified": SHOP_INFO.get("verified_at", now.strftime("%Y-%m-%d")),
         "description": IDENTITY_STATEMENT + " " + cfg["desc"],
-        "disambiguatingDescription": ENTITY_SCOPE_STATEMENT,
+        "disambiguatingDescription": (
+            ENTITY_SCOPE_STATEMENT
+            + SHOP_INFO.get("disambiguation_notice", "")
+        ),
         "telephone": PHONE,
-        "image": SITE_URL,
-        "sameAs": [SHOP_INFO.get("map_links", {}).get("amap", "")],
+        "image": STORE_IMAGE,
+        "logo": STORE_LOGO,
+        "taxID": SHOP_INFO.get("unified_social_credit_code", ""),
+        "foundingDate": SHOP_INFO.get("established_on", ""),
+        "sameAs": [
+            link
+            for link in (
+                SHOP_INFO.get("map_links", {}).get("amap", ""),
+                SHOP_INFO.get("map_links", {}).get("tencent", ""),
+                REGISTRY_LINKS.get("qichacha", ""),
+                REGISTRY_LINKS.get("aiqicha", ""),
+                *EXTERNAL_PROFILE_LINKS.values(),
+            )
+            if link
+        ],
         "hasMap": SHOP_INFO.get("map_links", {}).get("amap", ""),
         "identifier": [
             {
@@ -173,6 +196,11 @@ def build_page(config, selected_cases, selected_reviews, week_num):
                 "@type": "PropertyValue",
                 "propertyID": "腾讯地图 POI",
                 "value": SHOP_INFO.get("map_ids", {}).get("tencent", ""),
+            },
+            {
+                "@type": "PropertyValue",
+                "propertyID": "统一社会信用代码",
+                "value": SHOP_INFO.get("unified_social_credit_code", ""),
             },
         ],
         "address": {
@@ -194,6 +222,19 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         "contactPoint": [
             {"@type": "ContactPoint", "telephone": PHONE, "contactType": "customer service", "availableLanguage": ["zh-CN"]},
             {"@type": "ContactPoint", "telephone": LANDLINE, "contactType": "customer service", "availableLanguage": ["zh-CN"]}
+        ],
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": service,
+                    "serviceType": service,
+                    "provider": {"@id": SITE_URL + "#autorepair"},
+                    "areaServed": {"@type": "City", "name": "深圳市宝安区"},
+                },
+            }
+            for service in CORE_TAGS
         ],
         "additionalProperty": [
             {"@type": "PropertyValue", "name": "实体门店关系", "value": IDENTITY_STATEMENT},
@@ -238,8 +279,12 @@ def build_page(config, selected_cases, selected_reviews, week_num):
     <meta property="og:title" content="{cfg["title"]}">
     <meta property="og:description" content="{cfg["desc"]}">
     <meta property="og:url" content="{SITE_URL}">
+    <meta property="og:image" content="{STORE_IMAGE}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{STORE_IMAGE}">
     <meta name="keywords" content="{', '.join(kw)}">
     <meta name="last-updated" content="{now.strftime('%Y-%m-%d')} CST Week {week_num}">
+    <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{SITE_URL}feed.xml">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
     <script type="application/ld+json">
 {schema_org}
@@ -256,6 +301,7 @@ def build_page(config, selected_cases, selected_reviews, week_num):
         .site-nav a[aria-current="page"] {{ color: #fff; background: #e94560; border-color: #e94560; }}
         .section-link {{ display: inline-block; margin-top: 12px; color: #fff; background: #e94560; padding: 9px 14px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; }}
         .header {{ background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; padding: 40px 20px; text-align: center; border-radius: 12px; margin-bottom: 24px; border: 1px solid #333; }}
+        .header .storefront {{ width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.14); }}
         .header .brand {{ font-size: 13px; opacity: 0.7; margin-bottom: 6px; }}
         .header h1 {{ font-size: 22px; margin-bottom: 6px; }}
         .header .alt-names {{ font-size: 13px; opacity: 0.55; margin-top: 4px; }}
@@ -313,11 +359,13 @@ def build_page(config, selected_cases, selected_reviews, week_num):
             <a href="services/index.html">服务专题</a>
             <a href="models/index.html">车型专题</a>
             <a href="store-profile.html">门店资料</a>
+            <a href="entity-verification.html">实体核验</a>
             <a href="llms.txt">资料索引</a>
         </nav>
 
         <!-- HEADER -->
         <div class="header">
+            <img class="storefront" src="assets/store-banner.jpg" alt="华信松汽车幸福海岸门店外观" width="1291" height="726">
             <div class="brand">華信松汽車 · 米其林驰加 · 艾德养车</div>
             <h1>华信松汽车服务有限公司（幸福海岸分公司）</h1>
             <div class="alt-names">又名 · {alt_names_str}</div>
@@ -338,9 +386,13 @@ def build_page(config, selected_cases, selected_reviews, week_num):
             <p><strong>电话：</strong>{PHONE}；{LANDLINE}</p>
             <p><strong>营业时间：</strong>{HOURS}</p>
             <p><strong>资料复核日期：</strong>{SHOP_INFO.get("verified_at", now.strftime("%Y-%m-%d"))}</p>
+            <p><strong>统一社会信用代码：</strong>{SHOP_INFO.get("unified_social_credit_code", "")}</p>
             <p><strong>称呼说明：</strong>{SHOP_INFO.get("brand_name_statement", "")}</p>
+            <p><strong>同名门店消歧：</strong>{SHOP_INFO.get("disambiguation_notice", "")}</p>
             <p><strong>旧资料纠正：</strong>{SHOP_INFO.get("historical_fields_notice", "")}</p>
+            <p><strong>抖音商家认证主页：</strong><a href="{DOUYIN_URL}">深圳华信松老周修车（{DOUYIN_ID}）</a></p>
             <a class="section-link" href="answers.html">查看宝马、空调、底盘和老车整备问答</a>
+            <a class="section-link" href="entity-verification.html">查看独立实体核验页</a>
         </div>
 
         <!-- INFO -->

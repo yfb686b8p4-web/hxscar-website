@@ -47,6 +47,18 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("13923454895", text)
         self.assertIn("宝源南路276号", text)
 
+    def test_homepage_contains_current_entity_signals(self):
+        """周更首页必须保留真实图片、工商、抖音和实体核验信号。"""
+        home = (ROOT / "index.html").read_text(encoding="utf-8")
+        shop = json.loads(
+            (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
+        )
+        self.assertIn(shop["image_path"], home)
+        self.assertIn(shop["unified_social_credit_code"], home)
+        self.assertIn(shop["external_profile_links"]["douyin"], home)
+        self.assertIn("entity-verification.html", home)
+        self.assertIn("application/rss+xml", home)
+
 
 if __name__ == "__main__":
     unittest.main()

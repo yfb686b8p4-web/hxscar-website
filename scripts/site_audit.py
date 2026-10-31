@@ -232,6 +232,15 @@ def audit():
         errors.append("index.html 仍包含未经核验的 aggregateRating")
     if "?w=" in index_html:
         errors.append("index.html canonical 仍包含每周变化参数")
+    for marker in (
+        "assets/store-banner.jpg",
+        "91440300MA5GYCTQ6P",
+        "douyin.com/user/",
+        "entity-verification.html",
+        "application/rss+xml",
+    ):
+        if marker not in index_html:
+            errors.append(f"index.html 缺少实体信号: {marker}")
     if 'href="faq.html"' not in index_html or 'href="cases.html"' not in index_html:
         errors.append("index.html 缺少完整内容页入口")
     if "Sitemap:" not in robots:
