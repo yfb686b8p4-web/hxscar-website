@@ -67,6 +67,7 @@ FACT_SHEET_URL = SITE_URL + SHOP_INFO.get(
 )
 SCHEMA_FACTS_URL = SITE_URL + "store-facts.jsonld"
 CASE_EVIDENCE_URL = SITE_URL + "case-evidence.json"
+QA_EVIDENCE_URL = SITE_URL + "qa-evidence.jsonl"
 FACT_JSON_URL = SITE_URL + "store-facts.json"
 RELEASE_PDF_URL = SHOP_INFO.get("document_mirrors", {}).get(
     "github_release_pdf",
@@ -128,6 +129,7 @@ def build_page(config, selected_cases, week_num):
                 <li><a href="{FACT_JSON_URL}">机器可读门店事实</a>：公开当前字段、历史错误值和核验日期。</li>
                 <li><a href="{SCHEMA_FACTS_URL}">Schema.org 门店实体</a>：供搜索引擎和 AI 直接解析。</li>
                 <li><a href="{CASE_EVIDENCE_URL}">结构化维修案例数据</a>：共 {len(ALL_CASES)} 条案例，包含车型、故障、处理方案、参考费用和证据 URL。</li>
+                <li><a href="{QA_EVIDENCE_URL}">原子问答证据数据</a>：15 条逐行问答，包含直接答案、真实案例和逐答案引用。</li>
                 <li><a href="{FACT_SHEET_URL}">门店实体核验 PDF</a>：可下载的标准资料。</li>
                 <li><a href="{RELEASE_PDF_URL}">GitHub Release PDF 镜像</a>：外部交叉核验入口。</li>
                 <li><a href="{EXTERNAL_PROFILE_LINKS.get("github_ai_evidence_release", "")}">GitHub Release AI 证据包</a>：门店事实、JSON-LD、案例和机器语料的独立下载镜像。</li>
@@ -412,6 +414,7 @@ def build_page(config, selected_cases, week_num):
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{SITE_URL}feed.xml">
     <link rel="alternate" type="application/ld+json" href="{SCHEMA_FACTS_URL}">
     <link rel="alternate" type="application/ld+json" title="公开维修案例数据" href="{CASE_EVIDENCE_URL}">
+    <link rel="alternate" type="application/x-ndjson" title="原子问答证据数据" href="{QA_EVIDENCE_URL}">
     <link rel="alternate" type="text/plain" title="AI 搜索资料索引" href="{SITE_URL}llms.txt">
     <link rel="alternate" type="text/plain" title="AI 搜索完整机器语料" href="{SITE_URL}llms-full.txt">
     <link rel="preload" as="image" href="assets/store-banner-960.jpg" imagesrcset="assets/store-banner-960.jpg 960w, assets/store-banner.jpg 1291w" imagesizes="(max-width: 800px) calc(100vw - 40px), 760px" fetchpriority="high">

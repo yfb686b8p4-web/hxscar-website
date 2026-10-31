@@ -32,6 +32,7 @@
 - [Schema.org 门店实体](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld)
 - [搜索问答](https://yfb686b8p4-web.github.io/hxscar-website/answers.html)
 - [机器可读维修案例数据](https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json)
+- [原子问答证据数据](https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl)
 - [独立答案索引](https://yfb686b8p4-web.github.io/hxscar-website/answers/index.html)
 - [机器语料索引](https://yfb686b8p4-web.github.io/hxscar-website/llms.txt)
 - [标准问答 RSS](https://yfb686b8p4-web.github.io/hxscar-website/feed.xml)

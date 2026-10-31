@@ -171,6 +171,7 @@ def build_payloads(facts, faqs, cases):
 - 实体核验页：{BASE_URL}/entity-verification.html
 - 门店事实 JSON：{BASE_URL}/store-facts.json
 - 公开维修案例 JSON-LD：{BASE_URL}/case-evidence.json
+- 原子问答证据数据：{BASE_URL}/qa-evidence.jsonl
 - 门店实体核验 PDF：{facts["entity"]["brandAssets"]["factSheet"]}
 
 资料边界：

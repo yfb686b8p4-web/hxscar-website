@@ -17,6 +17,7 @@
 - `store-facts.json`：字段级门店事实、当前联系方式、历史错误值与纠错说明
 - `store-facts.jsonld`：Schema.org `AutoRepair` 完整实体
 - `case-evidence.json`：56 条真实维修案例的 schema.org `ItemList`
+- `qa-evidence.jsonl`：15 条逐行 Question 数据，每条包含直接答案、案例和逐答案引用
 - `llms.txt`：AI 搜索资料索引
 - `llms-full.txt`：证据边界内的标准搜索问答、84 组安全 FAQ 与维修案例语料
 

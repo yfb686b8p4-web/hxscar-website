@@ -19,6 +19,7 @@ from content_safety_rules import (
     partition_faqs,
     unverified_claim_markers,
 )
+from scripts import site_builder
 
 
 TZ = timezone(timedelta(hours=8))
@@ -32,6 +33,7 @@ REQUIRED_FILES = [
     "store-facts.json",
     "store-facts.jsonld",
     "case-evidence.json",
+    "qa-evidence.jsonl",
     "feed.xml",
     "assets/store-avatar-300.jpg",
     "assets/store-banner.jpg",
@@ -274,6 +276,15 @@ def audit():
     except json.JSONDecodeError as exc:
         errors.append(f"case-evidence.json 无法解析: {exc}")
         case_evidence = {}
+    try:
+        qa_evidence = [
+            json.loads(line)
+            for line in read_text("qa-evidence.jsonl").splitlines()
+            if line.strip()
+        ]
+    except json.JSONDecodeError as exc:
+        errors.append(f"qa-evidence.jsonl 无法解析: {exc}")
+        qa_evidence = []
     robots = read_text("robots.txt")
     sitemap = read_text("sitemap.xml")
     sitemap_index = read_text("sitemap-index.xml")
@@ -339,6 +350,27 @@ def audit():
         errors.append("case-evidence.json 案例数量与数据源不一致")
     if len(case_evidence.get("cases", [])) != len(cases):
         errors.append("case-evidence.json 案例数组数量不正确")
+    if len(qa_evidence) != len(site_builder.SEARCH_ANSWERS):
+        errors.append("qa-evidence.jsonl 问答数量与标准答案不一致")
+    for item in qa_evidence:
+        answer = item.get("acceptedAnswer", {})
+        if item.get("@type") != "Question" or not item.get("name"):
+            errors.append("qa-evidence.jsonl 存在无效 Question")
+            break
+        if not answer.get("text") or len(answer.get("citation", [])) < 4:
+            errors.append(
+                "qa-evidence.jsonl 问答缺少答案或引用: "
+                f"{item.get('name', '')}"
+            )
+            break
+        if unverified_claim_markers(
+            item.get("name", "") + answer.get("text", "")
+        ):
+            errors.append(
+                "qa-evidence.jsonl 含未核实承诺: "
+                f"{item.get('name', '')}"
+            )
+            break
     for item in case_evidence.get("cases", []):
         for key in (
             "caseNumber",
@@ -366,6 +398,7 @@ def audit():
         "application/rss+xml",
         "downloads/huaxinsong-store-facts-2026-10-31.pdf",
         "store-facts.jsonld",
+        "qa-evidence.jsonl",
     ):
         if marker not in index_html:
             errors.append(f"index.html 缺少实体信号: {marker}")
@@ -398,6 +431,8 @@ def audit():
         errors.append("sitemap.xml 未包含搜索问答或机器可读门店事实")
     if "case-evidence.json" not in sitemap:
         errors.append("sitemap.xml 未包含维修案例数据")
+    if "qa-evidence.jsonl" not in sitemap:
+        errors.append("sitemap.xml 未包含原子问答证据数据")
     if "llms.txt" not in sitemap or "llms-full.txt" not in sitemap:
         errors.append("sitemap.xml 未包含 AI 资料索引或完整机器语料")
     if "services/index.html" not in sitemap or "models/index.html" not in sitemap:
@@ -409,6 +444,8 @@ def audit():
             errors.append(f"抓取入口仍包含旧域名: {stale_host}")
     if "llms-full.txt" not in llms:
         errors.append("llms.txt 未链接完整机器语料")
+    if "qa-evidence.jsonl" not in llms:
+        errors.append("llms.txt 未链接原子问答证据数据")
     if len(llms_full) < 20000:
         errors.append("llms-full.txt 内容量不足")
     for required_text in (

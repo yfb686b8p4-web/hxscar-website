@@ -7,6 +7,7 @@ import re
 import unittest
 import xml.etree.ElementTree as ET
 
+from content_safety_rules import unverified_claim_markers
 from scripts import site_builder
 
 
@@ -1007,6 +1008,64 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 for item in json.loads(
                     site_builder.build_store_facts_jsonld()
                 )["subjectOf"]
+            },
+        )
+
+    def test_qa_evidence_jsonl_is_atomic_and_cited(self):
+        """原子问答数据必须覆盖全部答案并逐条携带案例与引用。"""
+        rows = [
+            json.loads(line)
+            for line in site_builder.build_qa_evidence_jsonl().splitlines()
+        ]
+        self.assertEqual(len(rows), len(site_builder.SEARCH_ANSWERS))
+        self.assertEqual(len({row["@id"] for row in rows}), len(rows))
+        for row in rows:
+            self.assertEqual(row["@type"], "Question")
+            self.assertTrue(row["name"])
+            self.assertEqual(
+                row["about"]["@id"],
+                site_builder.BASE_URL + "/#autorepair",
+            )
+            answer = row["acceptedAnswer"]
+            self.assertEqual(answer["@type"], "Answer")
+            self.assertTrue(answer["text"])
+            self.assertGreaterEqual(len(answer["citation"]), 4)
+            self.assertTrue(
+                all(
+                    url.startswith("https://")
+                    for url in answer["citation"]
+                )
+            )
+            self.assertEqual(
+                unverified_claim_markers(
+                    row["name"] + answer["text"]
+                ),
+                [],
+            )
+        case_rows = [
+            row for row in rows if row["caseEvidence"]
+        ]
+        self.assertGreaterEqual(len(case_rows), 12)
+        for text in (
+            site_builder.build_llms_txt(),
+            site_builder.build_llms_full_txt(),
+            site_builder.build_sitemap(),
+        ):
+            self.assertIn(site_builder.QA_EVIDENCE_DATA, text)
+        facts = json.loads(site_builder.build_store_facts_json())
+        self.assertIn(
+            site_builder.QA_EVIDENCE_DATA,
+            {
+                item["url"]
+                for item in facts["citationTargets"]
+            },
+        )
+        schema = json.loads(site_builder.build_store_facts_jsonld())
+        self.assertIn(
+            site_builder.QA_EVIDENCE_DATA,
+            {
+                item["url"]
+                for item in schema["subjectOf"]
             },
         )
 

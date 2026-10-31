@@ -31,6 +31,10 @@
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json"
     },
     {
+      "name": "原子问答证据数据",
+      "url": "https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl"
+    },
+    {
       "name": "门店实体核验 PDF",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf"
     },

@@ -16,6 +16,7 @@
 - [机器可读门店事实](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
 - [Schema.org 门店实体](https://yfb686b8p4-web.github.io/hxscar-website/store-facts.jsonld)：可直接解析的 AutoRepair JSON-LD
 - [公开维修案例数据](https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json)：56 个结构化真实案例与对应答案
+- [原子问答证据数据](https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl)：15 条逐行问答，包含案例与逐答案引用
 - [标准问答 RSS](https://yfb686b8p4-web.github.io/hxscar-website/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [门店实体核验 PDF](https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf)：三页标准资料、同名门店消歧与官方来源
 - [GitHub Release PDF 镜像](https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf)：独立下载镜像与外部交叉核验入口

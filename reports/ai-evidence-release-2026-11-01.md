@@ -14,6 +14,7 @@
 | `store-facts.json` | HTTP 200 | 字段级门店事实与历史资料纠错 |
 | `store-facts.jsonld` | HTTP 200 | Schema.org `AutoRepair` 实体 |
 | `case-evidence.json` | HTTP 200 | 56 条真实维修案例 `ItemList` |
+| `qa-evidence.jsonl` | HTTP 200 | 15 条原子问答、真实案例与逐答案引用 |
 | `llms.txt` | HTTP 200 | AI 资料索引 |
 | `llms-full.txt` | HTTP 200 | 证据边界内机器语料 |
 
@@ -27,11 +28,12 @@
 
 ## 验证结果
 
-- Release 的 5 个附件均通过独立下载地址验证为 HTTP 200。
+- Release 的 6 个附件均通过独立下载地址验证为 HTTP 200。
 - 官网 4 个服务页均包含 `Service` 与 5 步 `HowTo`。
 - FAQ 人工问题库为 142 条，机器可用安全问答为 84 条，58 条因具体未核实承诺被隔离。
-- 当前 82 项单元测试通过，站点审计通过。
-- 2026-11-01 04:00 复核发现 Release 正文和 `llms-full.txt` 仍保留旧版FAQ口径，已同步刷新 Release 正文与 5 个附件。
+- 当前 83 项单元测试通过，站点审计通过。
+- 2026-11-01 04:00 复核发现 Release 正文和 `llms-full.txt` 仍保留旧版FAQ口径，已同步刷新 Release 正文与附件。
+- 2026-11-01 04:20 新增 `qa-evidence.jsonl`，提供比整页 HTML 更直接的逐行问答与引用数据。
 
 ## 事实边界
 

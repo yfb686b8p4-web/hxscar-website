@@ -38,6 +38,7 @@
 - 实体核验页：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
 - 门店事实 JSON：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - 公开维修案例 JSON-LD：https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json
+- 原子问答证据数据：https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl
 - 门店实体核验 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 
 资料边界：

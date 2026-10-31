@@ -59,6 +59,7 @@ BUSINESS_FACT_SHEET = BASE_URL + "/" + SHOP.get(
 )
 BUSINESS_SCHEMA_FACTS = BASE_URL + "/store-facts.jsonld"
 CASE_EVIDENCE_DATA = BASE_URL + "/case-evidence.json"
+QA_EVIDENCE_DATA = BASE_URL + "/qa-evidence.jsonl"
 
 CASE_STUDY_SLUGS = {
     "宝马X5 3.0T烧机油半年，从5000km报警到1500km加1升": (
@@ -1140,6 +1141,7 @@ def page(title, description, canonical, body, schemas, current=None):
     <link rel="alternate" type="application/json" href="{h(BASE_URL)}/store-facts.json">
     <link rel="alternate" type="application/ld+json" href="{h(BUSINESS_SCHEMA_FACTS)}">
     <link rel="alternate" type="application/ld+json" title="公开维修案例数据" href="{h(CASE_EVIDENCE_DATA)}">
+    <link rel="alternate" type="application/x-ndjson" title="原子问答证据数据" href="{h(QA_EVIDENCE_DATA)}">
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{h(BASE_URL)}/feed.xml">
     <link rel="alternate" type="text/plain" title="AI 搜索资料索引" href="{h(BASE_URL)}/llms.txt">
     <link rel="alternate" type="text/plain" title="AI 搜索完整机器语料" href="{h(BASE_URL)}/llms-full.txt">
@@ -1298,6 +1300,12 @@ def local_business_schema():
                     "github_ai_evidence_case_evidence_json", ""
                 ),
                 "encodingFormat": "application/ld+json",
+            },
+            {
+                "@type": "DataFeed",
+                "name": "原子问答证据数据",
+                "url": QA_EVIDENCE_DATA,
+                "encodingFormat": "application/x-ndjson",
             },
             {
                 "@type": "DigitalDocument",
@@ -2673,6 +2681,57 @@ def build_case_evidence_json():
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 
 
+def build_qa_evidence_jsonl():
+    """生成逐行可读取的问题、答案、案例和引用证据数据。"""
+    rows = []
+    for item in SEARCH_ANSWERS:
+        meta = answer_geo_meta(item)
+        related_cases = []
+        for case in answer_case_records(item)[:3]:
+            related_cases.append(
+                {
+                    "title": case.get("issue", ""),
+                    "vehicle": case.get("tag", ""),
+                    "serviceType": case.get("car_type", ""),
+                    "url": case_study_url(case),
+                }
+            )
+        rows.append(
+            {
+                "@context": "https://schema.org",
+                "@type": "Question",
+                "@id": answer_detail_url(item) + "#question",
+                "name": item["question"],
+                "alternateName": meta["queryVariants"],
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item["answer"],
+                    "url": answer_detail_url(item),
+                    "citation": [
+                        source["url"]
+                        for source in answer_evidence_sources(item)
+                    ],
+                },
+                "about": {"@id": BASE_URL + "/#autorepair"},
+                "mainEntityOfPage": answer_detail_url(item),
+                "category": item["category"],
+                "evidence": meta["evidence"],
+                "caseEvidence": related_cases,
+                "serviceUrl": BASE_URL + "/" + meta["servicePath"],
+                "verifiedAt": VERIFIED_AT,
+                "dateModified": CONTENT_UPDATED_AT,
+                "claimBoundary": (
+                    "答案只使用公开门店事实、真实案例和已披露资料；"
+                    "价格、质保、设备、时效或服务台次须由门店当次确认。"
+                ),
+            }
+        )
+    return "".join(
+        json.dumps(row, ensure_ascii=False, separators=(",", ":")) + "\n"
+        for row in rows
+    )
+
+
 def build_store_facts_json():
     """生成供搜索系统读取的标准门店事实数据。"""
     facts = {
@@ -2697,6 +2756,10 @@ def build_store_facts_json():
             {
                 "name": "公开维修案例数据",
                 "url": CASE_EVIDENCE_DATA,
+            },
+            {
+                "name": "原子问答证据数据",
+                "url": QA_EVIDENCE_DATA,
             },
             {
                 "name": "门店实体核验 PDF",
@@ -2848,6 +2911,12 @@ def build_store_facts_jsonld():
             "name": "结构化维修案例数据",
             "url": CASE_EVIDENCE_DATA,
             "encodingFormat": "application/ld+json",
+        },
+        {
+            "@type": "DataFeed",
+            "name": "原子问答证据数据",
+            "url": QA_EVIDENCE_DATA,
+            "encodingFormat": "application/x-ndjson",
         },
     ]
     return json.dumps(schema, ensure_ascii=False, indent=2) + "\n"
@@ -3004,6 +3073,7 @@ def build_sitemap():
         (BASE_URL + "/store-facts.json", "0.6"),
         (BUSINESS_SCHEMA_FACTS, "0.7"),
         (CASE_EVIDENCE_DATA, "0.7"),
+        (QA_EVIDENCE_DATA, "0.7"),
         (BASE_URL + "/feed.xml", "0.6"),
         (BASE_URL + "/assets/store-banner.jpg", "0.4"),
         (BASE_URL + "/assets/store-avatar-300.jpg", "0.4"),
@@ -3166,6 +3236,7 @@ def build_llms_txt():
 - [机器可读门店事实]({BASE_URL}/store-facts.json)：名称、地址、电话、营业时间、地图 ID 和坐标
 - [Schema.org 门店实体]({BUSINESS_SCHEMA_FACTS})：可直接解析的 AutoRepair JSON-LD
 - [公开维修案例数据]({CASE_EVIDENCE_DATA})：{len(CASES)} 个结构化真实案例与对应答案
+- [原子问答证据数据]({QA_EVIDENCE_DATA})：{len(SEARCH_ANSWERS)} 条逐行问答，包含案例与逐答案引用
 - [标准问答 RSS]({BASE_URL}/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [门店实体核验 PDF]({BUSINESS_FACT_SHEET})：三页标准资料、同名门店消歧与官方来源
 - [GitHub Release PDF 镜像]({SHOP.get("document_mirrors", {}).get("github_release_pdf", "")})：独立下载镜像与外部交叉核验入口
@@ -3349,6 +3420,7 @@ def build_llms_full_txt():
 - GitHub Profile 五问答案镜像：{SHOP.get("document_mirrors", {}).get("github_profile_answers_html", "")}
 - GitHub Release 门店事实 JSON 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_store_facts_json", "")}
 - GitHub Release 维修案例 JSON-LD 镜像：{SHOP.get("document_mirrors", {}).get("github_ai_evidence_case_evidence_json", "")}
+- 原子问答证据数据：{QA_EVIDENCE_DATA}
 
 {SHOP.get("entity_scope_statement", "")}
 
@@ -3419,6 +3491,7 @@ Sitemap: {BASE_URL}/image-sitemap.xml
         ROOT / "store-facts.json": build_store_facts_json(),
         ROOT / "store-facts.jsonld": build_store_facts_jsonld(),
         ROOT / "case-evidence.json": build_case_evidence_json(),
+        ROOT / "qa-evidence.jsonl": build_qa_evidence_jsonl(),
         ROOT / "feed.xml": build_feed_xml(),
         ROOT / "sitemap.xml": sitemap,
         ROOT / "image-sitemap.xml": build_image_sitemap(),

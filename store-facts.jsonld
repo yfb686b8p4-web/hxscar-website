@@ -65,6 +65,12 @@
       "encodingFormat": "application/ld+json"
     },
     {
+      "@type": "DataFeed",
+      "name": "原子问答证据数据",
+      "url": "https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl",
+      "encodingFormat": "application/x-ndjson"
+    },
+    {
       "@type": "DigitalDocument",
       "name": "GitHub Gist 门店实体与案例镜像入口",
       "url": "https://gist.github.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b",
@@ -99,6 +105,12 @@
       "name": "结构化维修案例数据",
       "url": "https://yfb686b8p4-web.github.io/hxscar-website/case-evidence.json",
       "encodingFormat": "application/ld+json"
+    },
+    {
+      "@type": "DataFeed",
+      "name": "原子问答证据数据",
+      "url": "https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl",
+      "encodingFormat": "application/x-ndjson"
     }
   ],
   "sameAs": [
