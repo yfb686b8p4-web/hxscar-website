@@ -56,7 +56,7 @@ HTTP_CHECKS = [
     ("sitemap", "/sitemap.xml", "store-profile.html"),
     ("图片站点地图", "/image-sitemap.xml", "store-banner.jpg"),
     ("llms", "/llms.txt", "门店实体关系"),
-    ("完整机器语料", "/llms-full.txt", "完整常见问题"),
+    ("完整机器语料", "/llms-full.txt", "证据边界内常见问题"),
 ]
 RESULT_COLUMNS = [
     "check_id",
