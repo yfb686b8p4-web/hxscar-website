@@ -304,7 +304,7 @@ def build_page(config, selected_cases, week_num):
             },
             {
                 "@type": "DigitalDocument",
-                "name": "GitHub Profile 五问答案镜像",
+                "name": "GitHub Profile 七问答案镜像",
                 "url": PROFILE_ANSWERS_URL,
                 "encodingFormat": "text/html",
             },

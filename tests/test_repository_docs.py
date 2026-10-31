@@ -315,6 +315,20 @@ class RepositoryReadmeTests(unittest.TestCase):
         ]
         store = [schema for schema in schemas if schema.get("@type") == "AutoRepair"]
         self.assertEqual(len(store), 1)
+        profile_pages = [
+            schema
+            for schema in schemas
+            if schema.get("@type") == "ProfilePage"
+        ]
+        self.assertEqual(len(profile_pages), 1)
+        self.assertEqual(
+            profile_pages[0]["mainEntity"]["@id"],
+            "https://yfb686b8p4-web.github.io/hxscar-website/#autorepair",
+        )
+        self.assertEqual(
+            profile_pages[0]["primaryImageOfPage"]["width"],
+            1291,
+        )
         self.assertEqual(store[0]["dateModified"], "2026-11-01")
         self.assertEqual(store[0]["taxID"], shop["unified_social_credit_code"])
         self.assertEqual(
@@ -405,6 +419,20 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn(shop["phone"], answers_faq_text)
         self.assertIn(shop["landline"], answers_faq_text)
         self.assertIn(shop["hours"], answers_faq_text)
+        collections = [
+            schema
+            for schema in answers_schemas
+            if schema.get("@type") == "CollectionPage"
+        ]
+        self.assertEqual(len(collections), 1)
+        self.assertEqual(
+            collections[0]["mainEntity"]["numberOfItems"],
+            7,
+        )
+        self.assertEqual(
+            len(collections[0]["mainEntity"]["itemListElement"]),
+            7,
+        )
         answer_schemas = [
             json.loads(raw)
             for raw in re.findall(
