@@ -121,6 +121,7 @@
 - 提交 `09b0a29` 已把 3 条未命中的护栏问法逐字写入对应答案页的可见“常见问法”、`keywords`、机器事实和完整语料，并增加回归测试。
 - 公开 Gist 的 `store-facts.jsonld` 与 `ENTITY_FACTS.md` 已同步 GitHub Profile；Raw 地址验证门店 `sameAs` 含该 Profile，共 9 个外部关联。
 - GitHub Profile README 已更新到远端提交 `9de0351`，新增宝马、空调、底盘、老车整备和实体关系 5 组直接答案与证据入口。
+- 提交 `1780f85` 已把上述 Profile 模板和回归测试归档到官网仓库；源仓库与部署副本均与远端 `main` 同步。
 - 当前 65 项单元测试通过，站点审计通过，线上 21 个检查地址 21/21 可访问。
 - IndexNow 聚合端点和 Bing 直连端点均对 53 个 URL 返回 HTTP 200。
 - Bing 对官网域名、GitHub Profile、Gist 和统一社会信用代码的公开查询仍未检出目标结果；本轮只能记为“已发布并已提交抓取”，不能记为“已收录、已引用或已排名”。
