@@ -558,6 +558,8 @@ def local_business_schema():
         "@id": BASE_URL + "/#autorepair",
         "name": SHOP["shop_names"][0],
         "legalName": SHOP.get("registered_name", ""),
+        "taxID": SHOP.get("unified_social_credit_code", ""),
+        "foundingDate": SHOP.get("established_on", ""),
         "alternateName": SHOP["shop_names"][1:],
         "url": BASE_URL + "/",
         "mainEntityOfPage": BASE_URL + "/store-profile.html",
@@ -570,6 +572,8 @@ def local_business_schema():
             for link in (
                 SHOP.get("map_links", {}).get("amap", ""),
                 SHOP.get("map_links", {}).get("tencent", ""),
+                SHOP.get("registry_links", {}).get("qichacha", ""),
+                SHOP.get("registry_links", {}).get("aiqicha", ""),
             )
             if link
         ],
@@ -584,6 +588,11 @@ def local_business_schema():
                 "@type": "PropertyValue",
                 "propertyID": "腾讯地图 POI",
                 "value": SHOP.get("map_ids", {}).get("tencent", ""),
+            },
+            {
+                "@type": "PropertyValue",
+                "propertyID": "统一社会信用代码",
+                "value": SHOP.get("unified_social_credit_code", ""),
             },
         ],
         "slogan": "能修不换，优先维修，节约整备",
@@ -1047,6 +1056,13 @@ def build_store_facts_json():
         "entity": {
             "canonicalName": SHOP["shop_names"][0],
             "registeredName": SHOP.get("registered_name", ""),
+            "unifiedSocialCreditCode": SHOP.get(
+                "unified_social_credit_code", ""
+            ),
+            "establishedOn": SHOP.get("established_on", ""),
+            "legalRepresentative": SHOP.get("legal_representative", ""),
+            "registryCheckedAt": SHOP.get("registry_checked_at", ""),
+            "registryLinks": SHOP.get("registry_links", {}),
             "aliases": SHOP["shop_names"][1:],
             "relationshipStatement": SHOP.get("identity_statement", ""),
             "brandNameStatement": SHOP.get("brand_name_statement", ""),
@@ -1153,6 +1169,9 @@ def build_llms_txt():
 - 电话：{SHOP["phone"]}
 - 座机：{SHOP.get("landline", "")}
 - 营业时间：{SHOP.get("hours", "")}
+- 统一社会信用代码：{SHOP.get("unified_social_credit_code", "")}
+- 成立日期：{SHOP.get("established_on", "")}
+- 工商登记页：{SHOP.get("registry_links", {}).get("qichacha", "")}；{SHOP.get("registry_links", {}).get("aiqicha", "")}
 - 门店别名：{"、".join(SHOP["shop_names"][1:])}
 - 高德地图 POI：{SHOP.get("map_ids", {}).get("amap", "")}
 - 腾讯地图 POI：{SHOP.get("map_ids", {}).get("tencent", "")}
@@ -1270,6 +1289,10 @@ def build_llms_full_txt():
 - 手机：{SHOP["phone"]}
 - 座机：{SHOP.get("landline", "")}
 - 营业时间：{SHOP.get("hours", "")}
+- 统一社会信用代码：{SHOP.get("unified_social_credit_code", "")}
+- 成立日期：{SHOP.get("established_on", "")}
+- 企查查登记页：{SHOP.get("registry_links", {}).get("qichacha", "")}
+- 爱企查登记页：{SHOP.get("registry_links", {}).get("aiqicha", "")}
 - 高德地图 POI：{SHOP.get("map_ids", {}).get("amap", "")}
 - 腾讯地图 POI：{SHOP.get("map_ids", {}).get("tencent", "")}
 - 经度：{SHOP.get("geo", {}).get("longitude", "")}

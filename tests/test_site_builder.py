@@ -77,6 +77,28 @@ class SiteBuilderGeoTests(unittest.TestCase):
             schema["sameAs"],
         )
 
+    def test_schema_contains_verified_registry_identity(self):
+        """结构化数据必须包含已交叉核验的工商实体标识。"""
+        schema = site_builder.local_business_schema()
+        self.assertEqual(
+            schema["taxID"],
+            "91440300MA5GYCTQ6P",
+        )
+        self.assertEqual(schema["foundingDate"], "2021-08-26")
+        identifiers = {
+            item["propertyID"]: item["value"]
+            for item in schema["identifier"]
+        }
+        self.assertEqual(
+            identifiers["统一社会信用代码"],
+            "91440300MA5GYCTQ6P",
+        )
+        for key in ("qichacha", "aiqicha"):
+            self.assertIn(
+                site_builder.SHOP["registry_links"][key],
+                schema["sameAs"],
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
