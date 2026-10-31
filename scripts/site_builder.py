@@ -1301,8 +1301,13 @@ def build_case_study_pages():
             "publisher": {"@id": BASE_URL + "/#autorepair"},
             "dateModified": CONTENT_UPDATED_AT,
             "mainEntityOfPage": canonical,
-            "isPartOf": BASE_URL + "/cases.html",
+            "isPartOf": {
+                "@type": "CollectionPage",
+                "@id": BASE_URL + "/cases.html",
+                "url": BASE_URL + "/cases.html",
+            },
             "citation": [
+                CASE_EVIDENCE_DATA,
                 BASE_URL + f"/cases.html#case-{case_number}",
                 BASE_URL + "/entity-verification.html",
                 BASE_URL + "/store-facts.json",

@@ -471,6 +471,14 @@ class SiteBuilderGeoTests(unittest.TestCase):
             "奔驰E300L空调一边冷一边热",
             article["keywords"],
         )
+        self.assertEqual(
+            article["isPartOf"]["@type"],
+            "CollectionPage",
+        )
+        self.assertIn(
+            site_builder.CASE_EVIDENCE_DATA,
+            article["citation"],
+        )
         self.assertTrue(
             any(
                 item.get("@type") == "Car"
