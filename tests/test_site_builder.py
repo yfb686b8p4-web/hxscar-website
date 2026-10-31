@@ -454,6 +454,31 @@ class SiteBuilderGeoTests(unittest.TestCase):
             '<a href="../cases.html" aria-current="page">维修案例</a>',
             html,
         )
+        schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                html,
+                re.S,
+            )
+        ]
+        article = next(
+            schema
+            for schema in schemas
+            if schema.get("@type") == "Article"
+        )
+        self.assertIn(
+            "奔驰E300L空调一边冷一边热",
+            article["keywords"],
+        )
+        self.assertTrue(
+            any(
+                item.get("@type") == "Car"
+                and "奔驰E级" in item.get("name", "")
+                for item in article["about"]
+                if isinstance(item, dict)
+            )
+        )
         answer = next(
             item
             for item in site_builder.SEARCH_ANSWERS

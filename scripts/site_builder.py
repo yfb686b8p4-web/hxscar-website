@@ -63,6 +63,27 @@ CASE_STUDY_SLUGS = {
     ),
 }
 
+CASE_STUDY_KEYWORDS = {
+    "宝马X5 3.0T烧机油半年，从5000km报警到1500km加1升": [
+        "宝马X5 E70烧机油",
+        "N55发动机烧机油",
+        "宝马5000公里烧一升机油",
+        "宝马免拆治理烧机油",
+    ],
+    "宝马530Li过减速带右侧咯噔响，4S店说换下摆臂总成要3000+": [
+        "宝马530Li底盘异响",
+        "宝马G38过减速带异响",
+        "宝马平衡杆小连杆异响",
+        "宝马下摆臂衬套更换",
+    ],
+    "奔驰E300L空调制冷不足，右边比左边凉": [
+        "奔驰E300L空调一边冷一边热",
+        "奔驰W213空调左右温差",
+        "奔驰温度风门电机故障",
+        "奔驰空调系统学习",
+    ],
+}
+
 SEARCH_ANSWERS = [
     {
         "anchor": "bmw",
@@ -1249,7 +1270,19 @@ def build_case_study_pages():
             "headline": title,
             "description": symptoms,
             "articleBody": f"{symptoms}{treatment}参考费用：{cost}",
-            "about": {"@id": BASE_URL + "/#autorepair"},
+            "articleSection": "真实维修案例",
+            "keywords": CASE_STUDY_KEYWORDS.get(title, []),
+            "about": [
+                {"@id": BASE_URL + "/#autorepair"},
+                {
+                    "@type": "Car",
+                    "name": case.get("tag", ""),
+                },
+                {
+                    "@type": "DefinedTerm",
+                    "name": case.get("car_type", ""),
+                },
+            ],
             "author": {"@id": BASE_URL + "/#autorepair"},
             "publisher": {"@id": BASE_URL + "/#autorepair"},
             "dateModified": CONTENT_UPDATED_AT,
