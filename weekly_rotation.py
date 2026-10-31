@@ -127,6 +127,7 @@ def build_page(config, selected_cases, week_num):
                 <li><a href="{FACT_SHEET_URL}">门店实体核验 PDF</a>：可下载的标准资料。</li>
                 <li><a href="{RELEASE_PDF_URL}">GitHub Release PDF 镜像</a>：外部交叉核验入口。</li>
                 <li><a href="{EXTERNAL_PROFILE_LINKS.get("github_ai_evidence_release", "")}">GitHub Release AI 证据包</a>：门店事实、JSON-LD、案例和机器语料的独立下载镜像。</li>
+                <li><a href="{EXTERNAL_PROFILE_LINKS.get("github_profile_pages", "")}">GitHub Profile 实体镜像页</a>：独立发布的同一实体资料、核心答案与证据入口。</li>
                 <li><a href="{GIST_STORE_FACTS_URL}">GitHub Gist 门店 JSON-LD 镜像</a>和<a href="{GIST_CASE_EVIDENCE_URL}">案例 JSON-LD 镜像</a>。</li>
             </ul>"""
 
