@@ -199,6 +199,18 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["external_profile_links"]["github_ai_evidence_release"],
             subject_urls,
         )
+        self.assertIn("WebSite", {schema.get("@type") for schema in schemas})
+        faq_pages = [
+            schema for schema in schemas if schema.get("@type") == "FAQPage"
+        ]
+        self.assertEqual(len(faq_pages), 1)
+        faq_text = json.dumps(faq_pages[0], ensure_ascii=False)
+        self.assertIn(shop["unified_social_credit_code"], faq_text)
+        self.assertIn(shop["address"], faq_text)
+        self.assertIn(shop["phone"], faq_text)
+        self.assertIn(shop["landline"], faq_text)
+        self.assertIn(shop["hours"], faq_text)
+        self.assertIn("store-facts.json", faq_text)
 
     def test_homepage_contains_current_entity_signals(self):
         """周更首页必须保留真实图片、工商、抖音和实体核验信号。"""
