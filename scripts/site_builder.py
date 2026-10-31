@@ -1696,7 +1696,15 @@ def build_faq_page():
             {
                 "@type": "Question",
                 "name": item["question"],
-                "acceptedAnswer": {"@type": "Answer", "text": item["answer"]},
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": item["answer"],
+                    "citation": [
+                        BASE_URL + "/entity-verification.html",
+                        BASE_URL + "/store-facts.json",
+                        ENTITY_CORRECTIONS_DATA,
+                    ],
+                },
             }
             for item in SAFE_FAQS
         ],

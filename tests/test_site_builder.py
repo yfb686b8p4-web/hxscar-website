@@ -495,6 +495,37 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 all(url.startswith("https://") for url in answer["citation"])
             )
 
+    def test_public_faq_schema_contains_fact_citations(self):
+        """公开 FAQ 的每条结构化答案必须携带事实来源。"""
+        html = site_builder.build_faq_page()
+        schemas = [
+            json.loads(raw)
+            for raw in re.findall(
+                r'<script type="application/ld\+json">(.*?)</script>',
+                html,
+                re.S,
+            )
+        ]
+        faq_page = next(
+            schema
+            for schema in schemas
+            if schema.get("@type") == "FAQPage"
+        )
+        self.assertEqual(
+            len(faq_page["mainEntity"]),
+            len(site_builder.SAFE_FAQS),
+        )
+        expected = {
+            site_builder.BASE_URL + "/entity-verification.html",
+            site_builder.BASE_URL + "/store-facts.json",
+            site_builder.ENTITY_CORRECTIONS_DATA,
+        }
+        for question in faq_page["mainEntity"]:
+            self.assertEqual(
+                set(question["acceptedAnswer"]["citation"]),
+                expected,
+            )
+
     def test_each_answer_has_a_unique_citable_page(self):
         """每条标准答案都应有独立 canonical 和 FAQ 引用结构。"""
         pages = site_builder.build_answer_pages()
