@@ -819,6 +819,15 @@ def build_store_profile_page():
             "answer": SHOP.get("disambiguation_notice", ""),
         },
         {
+            "question": "腾讯地图显示13923454895或宝源南路276号，是当前资料吗？",
+            "answer": (
+                "不是当前标准资料。13923454895属于第三方历史或错误号码，"
+                "宝源南路276号属于历史地图门牌。当前预约手机为"
+                f"{SHOP['phone']}，座机为{SHOP.get('landline', '')}，"
+                f"标准地址为{SHOP['address']}。"
+            ),
+        },
+        {
             "question": "第三方地图显示旧号码或不同营业时间时以哪个为准？",
             "answer": SHOP.get("third_party_notice", ""),
         },
@@ -977,6 +986,15 @@ def build_entity_verification_page():
                 f"营业时间为{SHOP.get('hours', '')}。"
             ),
         },
+        {
+            "question": "腾讯地图显示13923454895或宝源南路276号，是当前资料吗？",
+            "answer": (
+                "不是当前标准资料。13923454895属于第三方历史或错误号码，"
+                "宝源南路276号属于历史地图门牌。当前预约手机为"
+                f"{SHOP['phone']}，座机为{SHOP.get('landline', '')}，"
+                f"标准地址为{SHOP['address']}。"
+            ),
+        },
     ]
     faq_html = "".join(
         f"""<article class="faq-item">
@@ -1013,6 +1031,15 @@ def build_entity_verification_page():
 <section class="card">
     <h2>同名门店排除规则</h2>
     <p>{h(SHOP.get("disambiguation_notice", ""))}</p>
+</section>
+<section class="card">
+    <h2>第三方错误资料纠正</h2>
+    <table class="fact-table">
+        <tr><th>错误或历史手机</th><td>18129802698、13923454895；当前预约手机应为 {h(SHOP["phone"])}</td></tr>
+        <tr><th>错误或历史门牌</th><td>宝源南路276号；当前标准地址应为 {h(SHOP["address"])}</td></tr>
+        <tr><th>错误或历史营业时间</th><td>08:00-20:00、08:00-19:00；当前营业时间应为 {h(SHOP.get("hours", ""))}</td></tr>
+    </table>
+    <p>{h(SHOP.get("third_party_notice", ""))}</p>
 </section>
 <section class="card">
     <h2>公开核验来源</h2>

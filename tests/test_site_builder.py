@@ -158,6 +158,8 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn(site_builder.SHOP["landline"], html)
         self.assertIn(site_builder.SHOP["hours"], html)
         self.assertIn(site_builder.SHOP["disambiguation_notice"], html)
+        self.assertIn("13923454895", html)
+        self.assertIn("宝源南路276号", html)
         self.assertIn('"@type":"FAQPage"', html.replace(" ", ""))
 
     def test_identity_feed_item_points_to_verification_page(self):
