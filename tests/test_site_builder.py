@@ -287,6 +287,24 @@ class SiteBuilderGeoTests(unittest.TestCase):
             )
             answer = faq_page["mainEntity"][0]["acceptedAnswer"]
             self.assertGreaterEqual(len(answer["citation"]), 4)
+            web_page = next(
+                schema
+                for schema in schemas
+                if schema.get("@type") == "WebPage"
+            )
+            self.assertEqual(web_page["abstract"], item["answer"])
+            self.assertEqual(
+                web_page["keywords"],
+                site_builder.answer_geo_meta(item)["queryVariants"],
+            )
+            self.assertEqual(
+                web_page["author"]["@id"],
+                site_builder.BASE_URL + "/#autorepair",
+            )
+            self.assertEqual(
+                web_page["speakable"]["cssSelector"],
+                ["#direct-answer"],
+            )
             self.assertIn(item["question"], html)
             self.assertIn(item["answer"], html)
 

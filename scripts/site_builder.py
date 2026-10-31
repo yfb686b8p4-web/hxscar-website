@@ -1462,6 +1462,7 @@ def build_answer_pages():
             "@type": "FAQPage",
             "@id": canonical + "#faq",
             "dateModified": CONTENT_UPDATED_AT,
+            "about": {"@id": BASE_URL + "/#autorepair"},
             "mainEntity": [
                 {
                     "@type": "Question",
@@ -1486,6 +1487,15 @@ def build_answer_pages():
             "about": {"@id": BASE_URL + "/#autorepair"},
             "mainEntity": {"@id": canonical + "#faq"},
             "isPartOf": {"@type": "WebSite", "url": BASE_URL + "/"},
+            "abstract": item["answer"],
+            "keywords": meta["queryVariants"],
+            "author": {"@id": BASE_URL + "/#autorepair"},
+            "publisher": {"@id": BASE_URL + "/#autorepair"},
+            "isAccessibleForFree": True,
+            "speakable": {
+                "@type": "SpeakableSpecification",
+                "cssSelector": ["#direct-answer"],
+            },
         }
         breadcrumb = {
             "@context": "https://schema.org",
