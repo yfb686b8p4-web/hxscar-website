@@ -92,9 +92,9 @@ HTTP_CHECKS = [
         "统一社会信用代码",
     ),
     (
-        "Profile五问答案",
+        "Profile七问答案",
         "https://yfb686b8p4-web.github.io/yfb686b8p4-web/answers.html",
-        "深圳宝安宝马专修、豪车保养推荐去哪里？",
+        "七个直接答案",
     ),
     (
         "Profile问答证据JSONL",
