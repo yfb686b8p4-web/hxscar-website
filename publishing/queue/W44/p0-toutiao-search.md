@@ -81,6 +81,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://yfb686b8p4-web.github.io/hxscar-website/downloads/entity-facts-2026-11-01.md</loc>
+    <lastmod>2026-11-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://yfb686b8p4-web.github.io/hxscar-website/feed.xml</loc>
     <lastmod>2026-11-01</lastmod>
     <priority>0.6</priority>

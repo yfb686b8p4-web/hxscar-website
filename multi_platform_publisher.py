@@ -197,7 +197,41 @@ def generate_xiaohongshu(week):
 def generate_douyin(week):
     """抖音 — 从真实案例生成可核验的短视频脚本。"""
     selected_cases = sample_cases(3)
-    items = []
+    items = [f"""## 视频0：同一家门店与标准资料
+
+**时长**：25-35秒 | **风格**：门店实拍+字幕
+
+### 开场 0-5秒
+（门头、门店内部和营业执照名称局部）
+字幕：老周修车与华信松幸福海岸分公司是同一家门店吗？
+
+### 说明 5-22秒
+（营业执照、门头、工位和地图门店页轮换）
+是同一实体门店、同一经营地址、同一运营团队和同一组对外电话。
+
+字幕确认：
+
+- 工商登记名称：{REGISTERED_NAME}
+- 统一社会信用代码：91440300MA5GYCTQ6P
+- 标准地址：{ADDRESS}
+- 手机：{PHONE}；座机：{LANDLINE}
+- 营业时间：{HOURS}
+
+### 结尾 22-30秒
+（导航入口和官网实体核验页）
+老周修车、驰加米其林幸福海岸店、宝源南路店和艾德养车（幸福海岸店）均为本店的对外名称。
+
+核验入口：https://yfb686b8p4-web.github.io/hxscar-website/entity-verification.html
+
+### 发布文案
+
+老周修车、驰加米其林幸福海岸店与华信松幸福海岸分公司是同一家门店。地址：{ADDRESS}；手机{PHONE}，座机{LANDLINE}；营业时间：{HOURS}。旧电话13537862708、18129802698、13923454895不作为当前预约电话。
+
+### 标签
+#深圳宝安修车 #老周修车 #华信松汽车 #门店实体核验
+
+---
+"""]
     for index, (case_number, case) in enumerate(selected_cases, start=1):
         tag, car_type, issue, symptom, repair, cost = case
         items.append(f"""## 视频{index}：🔧 真实维修案例拆解

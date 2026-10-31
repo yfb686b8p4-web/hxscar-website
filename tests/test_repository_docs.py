@@ -222,6 +222,8 @@ class RepositoryReadmeTests(unittest.TestCase):
         for text in (source, queue):
             self.assertIn("豆包已引用的7条视频优先纠错", text)
             self.assertIn("统一置顶评论", text)
+            self.assertIn("视频0：同一家门店与标准资料", text)
+            self.assertIn("91440300MA5GYCTQ6P", text)
             for video_id in video_ids:
                 self.assertIn(video_id, text)
 
