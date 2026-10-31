@@ -54,6 +54,14 @@ class RepositoryReadmeTests(unittest.TestCase):
             shop["document_mirrors"]["github_release_pdf"],
             text,
         )
+        for answer_url in (
+            "answers/index.html",
+            "answers/bmw.html",
+            "answers/air-conditioning.html",
+            "answers/chassis.html",
+            "answers/restoration.html",
+        ):
+            self.assertIn(answer_url, text)
 
     def test_release_notes_are_a_standalone_entity_source(self):
         """GitHub Release 正文必须具备独立可核验的实体事实。"""
@@ -84,6 +92,11 @@ class RepositoryReadmeTests(unittest.TestCase):
             "store-facts.json",
             "feed.xml",
             shop["document_mirrors"]["github_release_pdf"],
+            "answers/index.html",
+            "answers/bmw.html",
+            "answers/air-conditioning.html",
+            "answers/chassis.html",
+            "answers/restoration.html",
         ):
             self.assertIn(value, text)
 

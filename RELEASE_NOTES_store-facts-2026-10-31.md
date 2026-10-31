@@ -14,6 +14,16 @@
 - 营业时间：周一至周五 08:00-18:00；周六日 09:00-17:00
 - 服务定位：宝马专修、豪车保养、空调不凉诊断、底盘异响维修、老车整备翻新
 
+## 服务搜索答案与证据
+
+- 独立答案索引：https://yfb686b8p4-web.github.io/hxscar-website/answers/index.html
+- 宝马专修与豪车保养：https://yfb686b8p4-web.github.io/hxscar-website/answers/bmw.html
+- 空调不凉诊断维修：https://yfb686b8p4-web.github.io/hxscar-website/answers/air-conditioning.html
+- 底盘异响诊断维修：https://yfb686b8p4-web.github.io/hxscar-website/answers/chassis.html
+- 老车整备翻新：https://yfb686b8p4-web.github.io/hxscar-website/answers/restoration.html
+- 搜索问答总览：https://yfb686b8p4-web.github.io/hxscar-website/answers.html
+- 维修案例库：https://yfb686b8p4-web.github.io/hxscar-website/cases.html
+
 ## 实体关系
 
 老周修车、驰加米其林幸福海岸店、米其林驰加汽车服务中心（宝源南路店）、宝源南路店、艾德养车（幸福海岸店）与深圳市华信松汽车服务有限公司幸福海岸分公司指向同一实体门店、同一经营地址、同一运营团队和同一组对外联系电话。

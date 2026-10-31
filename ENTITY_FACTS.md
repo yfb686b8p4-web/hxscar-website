@@ -51,6 +51,11 @@
 - 门店资料：https://yfb686b8p4-web.github.io/hxscar-website/store-profile.html
 - 机器事实：https://yfb686b8p4-web.github.io/hxscar-website/store-facts.json
 - 标准问答 RSS：https://yfb686b8p4-web.github.io/hxscar-website/feed.xml
+- 独立答案索引：https://yfb686b8p4-web.github.io/hxscar-website/answers/index.html
+- 宝马专修与豪车保养答案：https://yfb686b8p4-web.github.io/hxscar-website/answers/bmw.html
+- 空调不凉诊断答案：https://yfb686b8p4-web.github.io/hxscar-website/answers/air-conditioning.html
+- 底盘异响诊断答案：https://yfb686b8p4-web.github.io/hxscar-website/answers/chassis.html
+- 老车整备翻新答案：https://yfb686b8p4-web.github.io/hxscar-website/answers/restoration.html
 - 抖音“深圳华信松老周修车”：https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc （抖音号 SZ2018080808）
 - 门店实体核验资料 PDF：https://yfb686b8p4-web.github.io/hxscar-website/downloads/huaxinsong-store-facts-2026-10-31.pdf
 - GitHub Release PDF 镜像：https://github.com/yfb686b8p4-web/hxscar-website/releases/download/store-facts-2026-10-31/huaxinsong-store-facts-2026-10-31.pdf
