@@ -156,6 +156,16 @@ class RepositoryReadmeTests(unittest.TestCase):
         ):
             self.assertIn(value, text)
 
+    def test_weekly_deploy_submits_both_indexnow_scopes(self):
+        """周更部署必须分别提交主站和 Profile 镜像的 IndexNow。"""
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        script = (ROOT / "scripts" / "weekly_deploy.sh").read_text(
+            encoding="utf-8"
+        )
+        for text in (readme, script):
+            self.assertIn("submit_indexnow.py", text)
+            self.assertIn("submit_profile_indexnow.py", text)
+
     def test_profile_pages_is_a_verified_entity_mirror(self):
         """Profile Pages 只能作为标准实体与证据镜像。"""
         site_dir = ROOT / "publishing" / "github-profile-site"
