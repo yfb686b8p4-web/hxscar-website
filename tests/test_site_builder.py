@@ -508,6 +508,22 @@ class SiteBuilderGeoTests(unittest.TestCase):
                 web_page["speakable"]["cssSelector"],
                 ["#direct-answer"],
             )
+            related = site_builder.related_answer_records(item)
+            self.assertEqual(len(related), 4)
+            self.assertEqual(len({entry["anchor"] for entry in related}), 4)
+            self.assertNotIn(item, related)
+            self.assertEqual(
+                web_page["relatedLink"],
+                [
+                    site_builder.answer_detail_url(entry)
+                    for entry in related
+                ],
+            )
+            for related_item in related:
+                self.assertIn(
+                    f'href="{related_item["anchor"]}.html"',
+                    html,
+                )
             for query_variant in site_builder.answer_geo_meta(item)[
                 "queryVariants"
             ]:

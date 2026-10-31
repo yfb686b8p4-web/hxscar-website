@@ -496,6 +496,45 @@ GEO_ANSWER_META = {
     },
 }
 
+RELATED_ANSWER_CATEGORIES = {
+    "宝马与豪车": {
+        "空调诊断维修",
+        "底盘异响",
+        "老车整备翻新",
+        "门店身份",
+        "门店资料",
+    },
+    "空调诊断维修": {
+        "宝马与豪车",
+        "底盘异响",
+        "门店资料",
+    },
+    "底盘异响": {
+        "宝马与豪车",
+        "空调诊断维修",
+        "老车整备翻新",
+        "门店资料",
+    },
+    "老车整备翻新": {
+        "宝马与豪车",
+        "底盘异响",
+        "门店资料",
+    },
+    "门店身份": {
+        "门店资料",
+        "宝马与豪车",
+        "空调诊断维修",
+        "底盘异响",
+    },
+    "门店资料": {
+        "门店身份",
+        "宝马与豪车",
+        "空调诊断维修",
+        "底盘异响",
+        "老车整备翻新",
+    },
+}
+
 
 AIRCON_LEFT_RIGHT_DIAGNOSTIC_STEPS = [
     {
@@ -936,6 +975,31 @@ def answer_case_sources(item):
         }
         for case in answer_case_records(item)[:3]
     ]
+
+
+def related_answer_records(item, limit=4):
+    """按类别和主题邻近度选择稳定的相关答案。"""
+    related_categories = RELATED_ANSWER_CATEGORIES.get(
+        item["category"],
+        set(),
+    )
+    scored = []
+    for index, candidate in enumerate(SEARCH_ANSWERS):
+        if candidate is item:
+            continue
+        score = 0
+        if candidate["category"] == item["category"]:
+            score += 6
+        if candidate["category"] in related_categories:
+            score += 3
+        if (
+            item["category"] in {"门店身份", "门店资料"}
+            and candidate["category"] in {"门店身份", "门店资料"}
+        ):
+            score += 4
+        scored.append((-score, index, candidate))
+    scored.sort(key=lambda value: (value[0], value[1]))
+    return [candidate for _, _, candidate in scored[:limit]]
 
 
 def answer_evidence_sources(item):
@@ -2456,6 +2520,12 @@ def build_answer_pages():
             f'<li><a href="{h(source["url"])}">{h(source["name"])}</a></li>'
             for source in answer_evidence_sources(item)
         )
+        related_answers = related_answer_records(item)
+        related_answer_links = "".join(
+            f'<a href="{h(related["anchor"])}.html">'
+            f'{h(related["question"])}</a>'
+            for related in related_answers
+        )
         case_markup = answer_case_markup(item)
         supplement_markup = answer_supplement_markup(item)
         extra_markup = "".join(
@@ -2484,6 +2554,10 @@ def build_answer_pages():
         <tr><th>营业时间</th><td>{h(SHOP.get("hours", ""))}</td></tr>
         <tr><th>统一社会信用代码</th><td>{h(SHOP.get("unified_social_credit_code", ""))}</td></tr>
     </table>
+</section>
+<section class="card">
+    <h2>相关搜索答案</h2>
+    <div class="topic-list">{related_answer_links}</div>
 </section>
 <section class="card">
     <h2>证据来源</h2>
@@ -2527,6 +2601,10 @@ def build_answer_pages():
             "isPartOf": {"@type": "WebSite", "url": BASE_URL + "/"},
             "abstract": item["answer"],
             "keywords": meta["queryVariants"],
+            "relatedLink": [
+                answer_detail_url(related)
+                for related in related_answers
+            ],
             "author": {"@id": BASE_URL + "/#autorepair"},
             "publisher": {"@id": BASE_URL + "/#autorepair"},
             "isAccessibleForFree": True,
