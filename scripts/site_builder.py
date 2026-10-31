@@ -1392,7 +1392,10 @@ def local_business_schema():
             )
             if link
         ],
-        "hasMap": SHOP.get("map_links", {}).get("amap", ""),
+        "hasMap": [
+            SHOP.get("map_links", {}).get("amap", ""),
+            SHOP.get("map_links", {}).get("tencent", ""),
+        ],
         "identifier": [
             {
                 "@type": "PropertyValue",
@@ -1443,6 +1446,7 @@ def local_business_schema():
                 "closes": "17:00",
             },
         ],
+        "openingHours": SHOP.get("hours", ""),
         "contactPoint": [
             {
                 "@type": "ContactPoint",

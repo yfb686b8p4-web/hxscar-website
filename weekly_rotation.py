@@ -320,7 +320,11 @@ def build_page(config, selected_cases, week_num):
             )
             if link
         ],
-        "hasMap": SHOP_INFO.get("map_links", {}).get("amap", ""),
+        "hasMap": [
+            SHOP_INFO.get("map_links", {}).get("amap", ""),
+            SHOP_INFO.get("map_links", {}).get("tencent", ""),
+        ],
+        "openingHours": HOURS,
         "identifier": [
             {
                 "@type": "PropertyValue",

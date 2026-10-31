@@ -129,7 +129,10 @@
     "https://yfb686b8p4-web.github.io/yfb686b8p4-web/",
     "https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc"
   ],
-  "hasMap": "https://www.amap.com/detail/B0H3LSJZZC",
+  "hasMap": [
+    "https://www.amap.com/detail/B0H3LSJZZC",
+    "https://map.qq.com/?type=poi&pid=4056673834161600251"
+  ],
   "identifier": [
     {
       "@type": "PropertyValue",
@@ -184,6 +187,7 @@
       "closes": "17:00"
     }
   ],
+  "openingHours": "周一至周五 08:00-18:00；周六日 09:00-17:00",
   "contactPoint": [
     {
       "@type": "ContactPoint",

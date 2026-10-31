@@ -229,6 +229,14 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertEqual(len(store), 1)
         self.assertEqual(store[0]["dateModified"], "2026-11-01")
         self.assertEqual(store[0]["taxID"], shop["unified_social_credit_code"])
+        self.assertEqual(
+            store[0]["hasMap"],
+            [
+                shop["map_links"]["amap"],
+                shop["map_links"]["tencent"],
+            ],
+        )
+        self.assertEqual(store[0]["openingHours"], shop["hours"])
         self.assertEqual(len(store[0]["areaServed"]), 4)
         self.assertEqual(
             store[0]["areaServed"][0]["name"],

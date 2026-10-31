@@ -178,6 +178,17 @@ class SiteBuilderGeoTests(unittest.TestCase):
             site_builder.SHOP["map_links"]["tencent"],
             schema["sameAs"],
         )
+        self.assertEqual(
+            schema["hasMap"],
+            [
+                site_builder.SHOP["map_links"]["amap"],
+                site_builder.SHOP["map_links"]["tencent"],
+            ],
+        )
+        self.assertEqual(
+            schema["openingHours"],
+            site_builder.SHOP["hours"],
+        )
 
     def test_schema_declares_core_service_offers(self):
         """门店结构化数据必须声明四项核心维修服务。"""

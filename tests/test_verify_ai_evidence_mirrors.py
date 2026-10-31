@@ -30,7 +30,13 @@ class VerifyAiEvidenceMirrorsTests(unittest.TestCase):
         }
         self.assertEqual(
             names,
-            {"官网", "Profile Pages", "GitHub Release", "GitHub Gist"},
+            {
+                "本地构建",
+                "官网",
+                "Profile Pages",
+                "GitHub Release",
+                "GitHub Gist",
+            },
         )
         fact_names = {
             item["name"]
@@ -39,6 +45,8 @@ class VerifyAiEvidenceMirrorsTests(unittest.TestCase):
         self.assertEqual(
             fact_names,
             {
+                "本地门店事实",
+                "本地门店JSON-LD",
                 "官网门店事实",
                 "Release门店事实",
                 "官网门店JSON-LD",

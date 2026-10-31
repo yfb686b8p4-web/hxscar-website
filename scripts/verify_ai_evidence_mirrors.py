@@ -21,6 +21,10 @@ REPORT_MD = ROOT / "reports" / "mirror-consistency-2026-11-01.md"
 TZ = timezone(timedelta(hours=8))
 MIRRORS = [
     {
+        "name": "本地构建",
+        "path": "qa-evidence.jsonl",
+    },
+    {
         "name": "官网",
         "url": (
             "https://yfb686b8p4-web.github.io/"
@@ -53,6 +57,16 @@ MIRRORS = [
     },
 ]
 FACT_MIRRORS = [
+    {
+        "name": "本地门店事实",
+        "kind": "facts",
+        "path": "store-facts.json",
+    },
+    {
+        "name": "本地门店JSON-LD",
+        "kind": "jsonld",
+        "path": "store-facts.jsonld",
+    },
     {
         "name": "官网门店事实",
         "kind": "facts",
@@ -107,6 +121,13 @@ def fetch_bytes(url, timeout=30):
     )
     with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read()
+
+
+def read_mirror_bytes(mirror):
+    """读取本地构建或远端镜像字节。"""
+    if mirror.get("path"):
+        return (ROOT / mirror["path"]).read_bytes()
+    return fetch_bytes(mirror["url"])
 
 
 def evaluate_qa_payload(payload):
@@ -199,11 +220,12 @@ def verify_mirrors():
     for mirror in MIRRORS:
         item = {
             "name": mirror["name"],
-            "url": mirror["url"],
+            "url": mirror.get("url", ""),
+            "path": mirror.get("path", ""),
         }
         try:
             item.update(
-                evaluate_qa_payload(fetch_bytes(mirror["url"]))
+                evaluate_qa_payload(read_mirror_bytes(mirror))
             )
         except Exception as exc:
             item.update(
@@ -224,12 +246,13 @@ def verify_mirrors():
         item = {
             "name": mirror["name"],
             "kind": mirror["kind"],
-            "url": mirror["url"],
+            "url": mirror.get("url", ""),
+            "path": mirror.get("path", ""),
         }
         try:
             item.update(
                 evaluate_fact_payload(
-                    fetch_bytes(mirror["url"]),
+                    read_mirror_bytes(mirror),
                     mirror["kind"],
                 )
             )
@@ -252,6 +275,15 @@ def verify_mirrors():
         }
         for kind in ("facts", "jsonld")
     }
+    consistency_errors = []
+    if len(hashes) != 1:
+        consistency_errors.append("问答镜像 SHA-256 不一致")
+    if len(fact_hashes["facts"]) != 1:
+        consistency_errors.append("门店事实 SHA-256 不一致")
+    if len(fact_hashes["jsonld"]) != 1:
+        consistency_errors.append("门店 JSON-LD SHA-256 不一致")
+    if any(item["errors"] for item in results + fact_results):
+        consistency_errors.append("至少一个镜像未通过结构校验")
     consistent = (
         len(hashes) == 1
         and all(not item["errors"] for item in results)
@@ -265,6 +297,7 @@ def verify_mirrors():
         "consistent": consistent,
         "expected_rows": 15,
         "unique_hashes": len(hashes),
+        "consistencyErrors": consistency_errors,
         "mirrors": results,
         "factMirrors": fact_results,
         "factUniqueHashes": {
@@ -331,7 +364,7 @@ def write_report(result):
         f"{item['name']}：{error}"
         for item in result["factMirrors"]
         for error in item["errors"]
-    ]
+    ] + result["consistencyErrors"]
     lines.extend(f"- {error}" for error in errors) if errors else lines.append("- 无")
     lines.extend(
         [
