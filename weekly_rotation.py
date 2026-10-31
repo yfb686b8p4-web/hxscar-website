@@ -66,6 +66,7 @@ FACT_SHEET_URL = SITE_URL + SHOP_INFO.get(
     "downloads/huaxinsong-store-facts-2026-10-31.pdf",
 )
 SCHEMA_FACTS_URL = SITE_URL + "store-facts.jsonld"
+CASE_EVIDENCE_URL = SITE_URL + "case-evidence.json"
 REGISTRY_LINKS = SHOP_INFO.get("registry_links", {})
 EXTERNAL_PROFILE_LINKS = SHOP_INFO.get("external_profile_links", {})
 
@@ -312,6 +313,7 @@ def build_page(config, selected_cases, selected_reviews, week_num):
     <meta name="last-updated" content="{now.strftime('%Y-%m-%d')} CST Week {week_num}">
     <link rel="alternate" type="application/rss+xml" title="华信松汽车门店资料与维修问答" href="{SITE_URL}feed.xml">
     <link rel="alternate" type="application/ld+json" href="{SCHEMA_FACTS_URL}">
+    <link rel="alternate" type="application/json" title="公开维修案例数据" href="{CASE_EVIDENCE_URL}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
     <script type="application/ld+json">
 {schema_org}

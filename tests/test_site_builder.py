@@ -577,6 +577,10 @@ class SiteBuilderGeoTests(unittest.TestCase):
             f'href="{site_builder.BUSINESS_SCHEMA_FACTS}"',
             html,
         )
+        self.assertIn(
+            f'href="{site_builder.CASE_EVIDENCE_DATA}"',
+            html,
+        )
         self.assertIn('type="application/ld+json"', html)
         self.assertIn('"@type":"WebSite"', html.replace(" ", ""))
         self.assertIn(
