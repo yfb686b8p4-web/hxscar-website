@@ -982,7 +982,8 @@ def finalize(day, results_path):
     )
     previous = previous_summary(day)
     changes = compare_results(records, previous)
-    status = plan.get("status_snapshot") or collect_status()
+    # 日报必须反映生成时的真实运行状态，不能复用早上计划中的旧快照。
+    status = collect_status()
     tasks = build_tasks(records, status)
     summary = {
         "version": 1,

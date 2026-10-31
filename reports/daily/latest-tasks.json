@@ -1,5 +1,22 @@
 [
   {
+    "id": "identity-fields-地址-电话-营业时间",
+    "priority": "P0",
+    "action": "修正门店地址、电话、营业时间，并核验引用来源。",
+    "category": "门店身份",
+    "platforms": [
+      "豆包"
+    ],
+    "sources": [
+      "启信宝"
+    ],
+    "check_ids": [
+      "guard-entity",
+      "rotate-alias-07"
+    ],
+    "requires_confirmation": true
+  },
+  {
     "id": "platform-amap",
     "priority": "P0",
     "action": "2026-10-26 12:01已在高德网页版“地点报错”提交现有POI B0H3LSJZZC纠错：名称、地址、电话保持原值，目标营业时间改为周一至周五08:00-18:00、周六日09:00-17:00，并明确要求不要新建重复门店。页面返回“反馈提交成功”；尚未审核生效，公开页在复核前可能继续显示08:00-20:00。",
