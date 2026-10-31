@@ -31,6 +31,20 @@ class RepositoryReadmeTests(unittest.TestCase):
         self.assertIn("13923454895", readme)
         self.assertIn("宝源南路276号", readme)
 
+    def test_entity_facts_contains_current_store_facts(self):
+        text = (ROOT / "ENTITY_FACTS.md").read_text(encoding="utf-8")
+        shop = json.loads(
+            (ROOT / "data" / "shop_info.json").read_text(encoding="utf-8")
+        )
+        self.assertIn(shop["registered_name"], text)
+        self.assertIn(shop["unified_social_credit_code"], text)
+        self.assertIn(shop["address"], text)
+        self.assertIn(shop["phone"], text)
+        self.assertIn(shop["landline"], text)
+        self.assertIn(shop["hours"], text)
+        self.assertIn("13923454895", text)
+        self.assertIn("宝源南路276号", text)
+
 
 if __name__ == "__main__":
     unittest.main()
