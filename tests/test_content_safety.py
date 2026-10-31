@@ -62,6 +62,25 @@ class ContentSafetyTests(unittest.TestCase):
         )
         self.assertEqual(authority_queue.unverified_claim_matches("真实案例"), [])
 
+    def test_sogou_lizhi_queue_uses_prepared_application(self):
+        """立知任务必须直接使用项目内申请包，而不是虚构周更文件。"""
+        config = json.loads(
+            (
+                site_builder.ROOT
+                / "config"
+                / "external_platforms.json"
+            ).read_text(encoding="utf-8")
+        )
+        platform = next(
+            item
+            for item in config["platforms"]
+            if item["id"] == "sogou-lizhi"
+        )
+        source = authority_queue.resolve_content_source(platform, 44)
+        self.assertTrue(source.is_file())
+        self.assertEqual(source.name, "application.md")
+        self.assertIn("尚未发送", source.read_text(encoding="utf-8"))
+
     def test_homepage_uses_public_evidence_instead_of_review_excerpts(self):
         config, _ = weekly_rotation.select_config(44)
         html = weekly_rotation.build_page(

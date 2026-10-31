@@ -56,6 +56,14 @@ def unverified_claim_matches(text):
     return [marker for marker in UNVERIFIED_CLAIMS if marker in text]
 
 
+def resolve_content_source(platform, week):
+    """解析平台内容来源，支持项目内共享材料。"""
+    content_source = platform["content_source"].format(week=week)
+    if platform.get("content_source_root") == "project":
+        return ROOT / content_source
+    return ROOT / "platform_content" / f"W{week}" / content_source
+
+
 def queue_week(week):
     """生成指定周的发布队列。"""
     config = load_json(CONFIG_PATH)
@@ -69,9 +77,7 @@ def queue_week(week):
 
     for platform in config["platforms"]:
         platform_id = platform["id"]
-        source = ROOT / "platform_content" / f"W{week}" / platform[
-            "content_source"
-        ].format(week=week)
+        source = resolve_content_source(platform, week)
         source_text = (
             source.read_text(encoding="utf-8")
             if source.exists()
