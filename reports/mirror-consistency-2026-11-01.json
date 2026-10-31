@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-11-01T04:26:42.460386+08:00",
+  "consistent": true,
+  "expected_rows": 15,
+  "unique_hashes": 1,
+  "mirrors": [
+    {
+      "name": "官网",
+      "url": "https://yfb686b8p4-web.github.io/hxscar-website/qa-evidence.jsonl",
+      "bytes": 52602,
+      "sha256": "3f383cfda4aef3ff4106b57bbb18cc082fe3fc35633600066f045c13eef05748",
+      "rows": 15,
+      "unique_ids": 15,
+      "with_cases": 12,
+      "min_citations": 15,
+      "errors": []
+    },
+    {
+      "name": "Profile Pages",
+      "url": "https://yfb686b8p4-web.github.io/yfb686b8p4-web/qa-evidence.jsonl",
+      "bytes": 52602,
+      "sha256": "3f383cfda4aef3ff4106b57bbb18cc082fe3fc35633600066f045c13eef05748",
+      "rows": 15,
+      "unique_ids": 15,
+      "with_cases": 12,
+      "min_citations": 15,
+      "errors": []
+    },
+    {
+      "name": "GitHub Release",
+      "url": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/qa-evidence.jsonl",
+      "bytes": 52602,
+      "sha256": "3f383cfda4aef3ff4106b57bbb18cc082fe3fc35633600066f045c13eef05748",
+      "rows": 15,
+      "unique_ids": 15,
+      "with_cases": 12,
+      "min_citations": 15,
+      "errors": []
+    },
+    {
+      "name": "GitHub Gist",
+      "url": "https://gist.githubusercontent.com/yfb686b8p4-web/7923ef0b18ffbcce04a8b6758254a06b/raw/51d9f49a2de4747a06623369738c0376fa3aa781/qa-evidence.jsonl",
+      "bytes": 52602,
+      "sha256": "3f383cfda4aef3ff4106b57bbb18cc082fe3fc35633600066f045c13eef05748",
+      "rows": 15,
+      "unique_ids": 15,
+      "with_cases": 12,
+      "min_citations": 15,
+      "errors": []
+    }
+  ]
+}

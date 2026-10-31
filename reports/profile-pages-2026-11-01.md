@@ -7,7 +7,7 @@
 - 首页和五问答案页均新增 `qa-evidence.jsonl` 发现入口，`llms.txt` 同时链接官网与 Gist 的 15 条原子问答证据。
 - 线上验证：`OfferCatalog`、4 个服务区域、13 个 `knowsAbout` 车型实体和 QA 链接均存在。
 - Profile IndexNow 聚合端点与 Bing 直连端点对 4 个 URL 返回 HTTP 200。
-- 当前 84 项单元测试通过，站点审计通过。
+- 当前 86 项单元测试通过，站点审计通过。
 - 后续提交 `8aeef90` 已在 Profile Pages 根路径发布 `qa-evidence.jsonl`，线上 SHA-256 与官网一致；sitemap 和 `llms.txt` 已增加该入口。
 - Profile IndexNow 当前提交 5 个 URL，聚合端点与 Bing 直连端点均返回 HTTP 200。
 

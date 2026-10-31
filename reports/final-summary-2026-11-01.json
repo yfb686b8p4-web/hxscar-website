@@ -1,0 +1,298 @@
+{
+  "generated_at": "2026-11-01T01:28:45.715402+08:00",
+  "objective_end": "2026-11-01T10:00:00+08:00",
+  "daily_date": "2026-11-01",
+  "metrics": {
+    "total": 12,
+    "completed": 12,
+    "excluded": 0,
+    "pending": 0,
+    "mentioned": 6,
+    "effective_hits": 4,
+    "effective_hit_rate": 33.3,
+    "citation_rate": 100.0,
+    "entity_completed": 2,
+    "entity_correct": 1,
+    "entity_correct_rate": 50.0,
+    "full_info_correct": 0,
+    "full_info_correct_rate": 0.0,
+    "service_completed": 10,
+    "service_hits": 4,
+    "service_hit_rate": 40.0,
+    "service_citation_rate": 100.0,
+    "service_top1": 4,
+    "service_top3": 4,
+    "service_top1_rate": 40.0,
+    "service_top3_rate": 40.0
+  },
+  "guardrail_metrics": {
+    "total": 8,
+    "completed": 8,
+    "excluded": 0,
+    "pending": 0,
+    "mentioned": 5,
+    "effective_hits": 3,
+    "effective_hit_rate": 37.5,
+    "citation_rate": 100.0,
+    "entity_completed": 2,
+    "entity_correct": 1,
+    "entity_correct_rate": 50.0,
+    "full_info_correct": 0,
+    "full_info_correct_rate": 0.0,
+    "service_completed": 6,
+    "service_hits": 3,
+    "service_hit_rate": 50.0,
+    "service_citation_rate": 100.0,
+    "service_top1": 3,
+    "service_top3": 3,
+    "service_top1_rate": 50.0,
+    "service_top3_rate": 50.0
+  },
+  "rotating_metrics": {
+    "total": 4,
+    "completed": 4,
+    "excluded": 0,
+    "pending": 0,
+    "mentioned": 1,
+    "effective_hits": 1,
+    "effective_hit_rate": 25.0,
+    "citation_rate": 100.0,
+    "entity_completed": 0,
+    "entity_correct": 0,
+    "entity_correct_rate": 0.0,
+    "full_info_correct": 0,
+    "full_info_correct_rate": 0.0,
+    "service_completed": 4,
+    "service_hits": 1,
+    "service_hit_rate": 25.0,
+    "service_citation_rate": 100.0,
+    "service_top1": 1,
+    "service_top3": 1,
+    "service_top1_rate": 25.0,
+    "service_top3_rate": 25.0
+  },
+  "daily_progress": {
+    "date": "2026-11-01",
+    "planned": 12,
+    "completed": 12,
+    "excluded": 0,
+    "pending": 0
+  },
+  "changes": {
+    "previous_date": "2026-10-31",
+    "comparable": true,
+    "metric_changes": {
+      "effective_hit_rate": 0.0,
+      "citation_rate": 50.0,
+      "entity_correct_rate": 0.0,
+      "full_info_correct_rate": 0.0,
+      "service_hit_rate": 0.0,
+      "service_citation_rate": 66.7,
+      "service_top1": 0.0,
+      "service_top3": 0.0,
+      "service_top1_rate": 0.0,
+      "service_top3_rate": 0.0
+    },
+    "fixed": [],
+    "new_errors": []
+  },
+  "post_launch_rechecks": [
+    {
+      "id": "aircon-left-right-case",
+      "title": "空调左右温差真实案例",
+      "query": "汽车空调一边冷一边热怎么修",
+      "deployed_commit": "ff8fccb",
+      "measured_at": "2026-11-01T01:03:00+08:00",
+      "before_summary": "豆包参考22篇资料、元宝参考21篇资料，两个平台均未提及本店。",
+      "after_summary": "豆包参考21篇资料、元宝参考19篇资料，两个平台仍未提及本店。",
+      "outcome": "尚未观察到提及改善"
+    },
+    {
+      "id": "entity-facts",
+      "title": "门店实体与完整资料",
+      "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
+      "deployed_commit": "9a756b6",
+      "measured_at": "2026-11-01T01:10:00+08:00",
+      "before_summary": "豆包确认同一家但资料不全；元宝认为大概率是两家不同店，并引用旧年报电话。",
+      "after_summary": "豆包关系仍正确；元宝改为基本可以确定是同一家店，并给出正确手机和信用代码，但仍缺座机与当前营业时间。",
+      "outcome": "元宝实体关系部分改善，完整资料仍未通过"
+    },
+    {
+      "id": "contact-correction",
+      "title": "工商全称营业时间纠错",
+      "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 营业时间是08:00-20:00吗？地址电话是多少？",
+      "deployed_commit": "90144fa",
+      "measured_at": "2026-11-01T01:38:00+08:00",
+      "before_summary": "元宝返回08:00-19:00、宝源南路276号和13537862708。",
+      "after_summary": "发布后再次用全新会话复测，元宝仍引用同一组地图旧资料，引用9篇资料，纠错页尚未进入检索源。",
+      "outcome": "页面已发布但尚未影响平台回答，旧资料仍错误"
+    }
+  ],
+  "wrong_items": [
+    {
+      "platform": "元宝",
+      "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
+      "category": "门店身份",
+      "notes": "实体关系错误；地址简略；电话错误；营业时间缺失"
+    }
+  ],
+  "technical": {
+    "site_audit_passed": true,
+    "site_audit_counts": {
+      "faqs": 142,
+      "cases": 56,
+      "reviews": 30,
+      "answer_pages": 15,
+      "answer_hub": true,
+      "service_pages": 4,
+      "model_pages": 12
+    },
+    "online_checks_passed": 21,
+    "online_checks_total": 21,
+    "source_repo": "7c59ae6\t记录营业时间纠错页发布与索引提交（6 项未提交）",
+    "deploy_repo": "7c59ae6\t记录营业时间纠错页发布与索引提交（干净）"
+  },
+  "platform_blocks": [
+    {
+      "name": "douyin",
+      "status": "blocked",
+      "notes": "2026-10-31复核：账号“深圳华信松老周修车”为商家认证账号，抖音号SZ2018080808；复核时显示作品700、粉丝7819、获赞9796。公开主页已接入官网sameAs和机器事实。主页简介仍未完整展示标准地址、手机、座机和营业时间；编辑保存需要账号本人完成短信验证，故继续标记受阻。"
+    },
+    {
+      "name": "tencent-map",
+      "status": "blocked",
+      "notes": "2026-11-01 01:31复核：腾讯位置服务控制台显示“老周修车”个人开发者账号，但进入地图商户中心后仍被微信扫码或手机验证码登录弹层遮挡，无法读取或提交POI资料。需本人完成登录后，按2026-10-24回执要求重新提交地址，并复查营业时间为工作日08:00-18:00、周末09:00-17:00。2026-10-24原驳回原因：地址重复添加行政前缀，实际显示成“广东省深圳市宝安区深圳市宝安区新安街道海裕社区幸福海岸花园7栋104、105”。"
+    },
+    {
+      "name": "amap",
+      "status": "review",
+      "notes": "2026-10-31复核公开详情页触发高德验证码拦截，未能直接确认审核结果，状态维持review。2026-10-26 12:01已在高德网页版“地点报错”提交现有POI B0H3LSJZZC纠错：名称、地址、电话保持原值，目标营业时间改为周一至周五08:00-18:00、周六日09:00-17:00，并明确要求不要新建重复门店。页面返回“反馈提交成功”；尚未审核生效，公开页在复核前可能继续显示08:00-20:00。"
+    }
+  ],
+  "manual_actions": [
+    {
+      "priority": "P0",
+      "category": "门店身份",
+      "action": "统一门店实体证据：明确同一实体门店、同一地址、同一运营团队，并区分其他同名分店。",
+      "platforms": [
+        "元宝"
+      ]
+    },
+    {
+      "priority": "P0",
+      "category": "门店身份",
+      "action": "修正门店地址、电话、营业时间，并核验引用来源。",
+      "platforms": [
+        "豆包"
+      ]
+    },
+    {
+      "priority": "P0",
+      "category": "站外权威资料",
+      "action": "2026-10-31复核公开详情页触发高德验证码拦截，未能直接确认审核结果，状态维持review。2026-10-26 12:01已在高德网页版“地点报错”提交现有POI B0H3LSJZZC纠错：名称、地址、电话保持原值，目标营业时间改为周一至周五08:00-18:00、周六日09:00-17:00，并明确要求不要新建重复门店。页面返回“反馈提交成功”；尚未审核生效，公开页在复核前可能继续显示08:00-20:00。",
+      "platforms": [
+        "高德地图"
+      ]
+    },
+    {
+      "priority": "P0",
+      "category": "站外权威资料",
+      "action": "认领并完善门店信息，增加服务标签和真实照片",
+      "platforms": [
+        "百度地图"
+      ]
+    },
+    {
+      "priority": "P0",
+      "category": "站外权威资料",
+      "action": "更新门店介绍、服务项目、真实案例和评价回复",
+      "platforms": [
+        "大众点评"
+      ]
+    },
+    {
+      "priority": "P0",
+      "category": "站外权威资料",
+      "action": "2026-10-31复核：账号“深圳华信松老周修车”为商家认证账号，抖音号SZ2018080808；复核时显示作品700、粉丝7819、获赞9796。公开主页已接入官网sameAs和机器事实。主页简介仍未完整展示标准地址、手机、座机和营业时间；编辑保存需要账号本人完成短信验证，故继续标记受阻。",
+      "platforms": [
+        "抖音生活服务"
+      ]
+    },
+    {
+      "priority": "P0",
+      "category": "站外权威资料",
+      "action": "完善门店资料、服务套餐和真实施工图片",
+      "platforms": [
+        "美团"
+      ]
+    },
+    {
+      "priority": "P0",
+      "category": "站外权威资料",
+      "action": "2026-10-31复核：腾讯地图公开搜索使用完整门店名及“驰加汽车服务中心 宝源南路”均未返回本店；商户中心加载出“老周修车”账号身份，但页面要求微信扫码或手机验证码重新登录。需本人完成登录后，按2026-10-24回执要求重新提交地址，并复查营业时间为工作日08:00-18:00、周末09:00-17:00。2026-10-24原驳回原因：地址重复添加行政前缀，实际显示成“广东省深圳市宝安区深圳市宝安区新安街道海裕社区幸福海岸花园7栋104、105”。",
+      "platforms": [
+        "腾讯地图"
+      ]
+    },
+    {
+      "priority": "P1",
+      "category": "站外权威资料",
+      "action": "发布车型维修、整备和避坑内容，统一门店名称",
+      "platforms": [
+        "小红书"
+      ]
+    },
+    {
+      "priority": "P2",
+      "category": "站外权威资料",
+      "action": "维护商家资料、服务项目和本地服务范围",
+      "platforms": [
+        "58同城"
+      ]
+    }
+  ],
+  "commits": [
+    "3f2a82a 记录外部镜像答案入口同步后的日报",
+    "51dffff 增加Bing直连IndexNow提交",
+    "5da75a2 记录双端点提交后的每日校验",
+    "625bec0 让可见性洞察优先使用最新完成日报",
+    "5bc21ba 记录洞察数据源修复后的日报",
+    "8dc3564 启动11月1日检测并记录搜索索引状态",
+    "6874280 增强独立答案页的查询与语音语义",
+    "a91038a 记录答案查询语义上线后的日报",
+    "a1fa6ba 新增真实门店图片站点地图",
+    "a18520c 放宽大文件线上检查超时",
+    "1db09af 记录图片地图与PDF超时修复后的日报",
+    "65fbf6d 刷新图片地图上线后的最终日报",
+    "20bfabe 将真实查询变体写入答案页正文",
+    "e0bcff4 记录正文查询变体上线后的日报",
+    "96449ac 新增AI搜索冲刺最终汇总生成器",
+    "566675d 记录最终汇总工具上线后的日报",
+    "42c2cab 补全最终汇总的分子分母与待测进度",
+    "7d397de 为全站页面统一注入WebSite实体",
+    "20b2a61 记录全站WebSite实体上线后的日报",
+    "bccb0ba 修复未完成检查导致任务误关闭",
+    "2a96be7 刷新11月1日首项实测后的日报",
+    "5dbe39a 完成11月1日空调长尾双平台实测",
+    "438f192 隔离复用旧对话的不可比实测结果",
+    "193b5b8 确保排除说明幂等并刷新日报",
+    "0a99a28 完成元宝全新对话空调长尾复测",
+    "68c727d 完成11月1日双平台12项搜索实测",
+    "ff8fccb 用真实风门电机案例强化空调温差答案",
+    "3cd3891 记录空调答案部署与双端点索引提交",
+    "9a12da3 记录空调案例发布后双平台复测",
+    "7c4d44e 补全空调温差诊断流程与安全边界",
+    "4c72609 记录空调深度优化与索引提交",
+    "9a756b6 把完整门店资料并入实体核验首屏",
+    "bdf3d51 记录实体首屏优化后的双平台改善",
+    "962e027 新增营业时间与旧电话纠错答案页",
+    "7c59ae6 记录营业时间纠错页发布与索引提交",
+    "99e45ca 提高慢网巡检超时并复核21项线上页面",
+    "ff25ea1 为真实维修案例增加相关答案反链",
+    "0eae6b7 记录案例答案双向链路发布",
+    "90144fa 按工商全称纠正旧营业时间电话与门牌",
+    "fc9fb61 增加机器可读的字段级门店事实纠错"
+  ],
+  "index_status_file": "reports/index-status-2026-11-01.md",
+  "ranking_note": "IndexNow 提交和页面更新不等同于已被收录或获得排名。"
+}

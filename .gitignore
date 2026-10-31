@@ -24,6 +24,12 @@ reports/*
 !reports/site-audit.json
 !reports/site-audit.md
 !reports/recheck-*.md
+!reports/mirror-consistency-*.json
+!reports/mirror-consistency-*.md
+!reports/qa-evidence-*.md
+!reports/lizhi-application-*.md
+!reports/final-summary-*.json
+!reports/final-summary-*.md
 !reports/daily/
 !reports/daily/**
 !reports/rank-history/
