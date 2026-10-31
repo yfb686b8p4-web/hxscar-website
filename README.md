@@ -28,6 +28,7 @@
 - [搜索问答](https://yfb686b8p4-web.github.io/hxscar-website/answers.html)
 - [机器语料索引](https://yfb686b8p4-web.github.io/hxscar-website/llms.txt)
 - [标准问答 RSS](https://yfb686b8p4-web.github.io/hxscar-website/feed.xml)
+- [GitHub 实体核验资料发布](https://github.com/yfb686b8p4-web/hxscar-website/releases/tag/store-facts-2026-10-31)
 - [企查查工商登记页](https://www.qcc.com/firm/8ed6b923472b38c0bf3801b468b2d37e.html)
 - [爱企查工商登记页](https://aiqicha.baidu.com/company_detail_94051754221223)
 - [高德地图 POI](https://www.amap.com/detail/B0H3LSJZZC)
