@@ -4,33 +4,13 @@
   "@id": "https://yfb686b8p4-web.github.io/hxscar-website/douyin-video-evidence.json#videos",
   "url": "https://yfb686b8p4-web.github.io/hxscar-website/douyin-video-evidence.json",
   "name": "豆包已引用的老周修车公开维修视频",
-  "description": "以下视频来自本门店抖音公开账号，并在2026-11-01豆包实体问题的引用来源面板中出现。视频只用于核对真实维修场景；地址、电话、营业时间和同名门店关系仍以实体核验页和机器事实为准。",
+  "description": "以下视频来自本门店抖音公开账号，并在2026-11-01豆包实体问题的引用来源面板中出现。2026-11-06复核时，另有1条同名行业视频被确认属于其他账号，已从本店视频证据中排除。视频只用于核对真实维修场景；地址、电话、营业时间和同名门店关系仍以实体核验页和机器事实为准。",
   "dateModified": "2026-11-03",
-  "numberOfItems": 7,
+  "numberOfItems": 6,
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "VideoObject",
-        "@id": "https://www.iesdouyin.com/share/video/7638945775598479497",
-        "name": "底盘异响：摆臂球头与胶套维修边界",
-        "url": "https://www.iesdouyin.com/share/video/7638945775598479497",
-        "about": "底盘异响",
-        "creator": {
-          "@type": "AutoRepair",
-          "@id": "https://yfb686b8p4-web.github.io/hxscar-website/#autorepair",
-          "name": "深圳市华信松汽车服务有限公司幸福海岸分公司",
-          "sameAs": [
-            "https://yfb686b8p4-web.github.io/hxscar-website/",
-            "https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc"
-          ]
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
       "item": {
         "@type": "VideoObject",
         "@id": "https://www.iesdouyin.com/share/video/7583932086392196415",
@@ -50,7 +30,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 2,
       "item": {
         "@type": "VideoObject",
         "@id": "https://www.iesdouyin.com/share/video/7639222767086704454",
@@ -70,7 +50,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 3,
       "item": {
         "@type": "VideoObject",
         "@id": "https://www.iesdouyin.com/share/video/7571335895384565459",
@@ -90,7 +70,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 4,
       "item": {
         "@type": "VideoObject",
         "@id": "https://www.iesdouyin.com/share/video/7650438382129424198",
@@ -110,7 +90,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 5,
       "item": {
         "@type": "VideoObject",
         "@id": "https://www.iesdouyin.com/share/video/7650435103483496042",
@@ -130,7 +110,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 6,
       "item": {
         "@type": "VideoObject",
         "@id": "https://www.iesdouyin.com/share/video/7636254430954405796",

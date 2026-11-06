@@ -1,6 +1,6 @@
 # 站点质量审计
 
-- 检查时间：2026-11-03
+- 检查时间：2026-11-06
 - 结果：通过
 
 ## 页面统计
@@ -11,9 +11,9 @@
 | faq.html | 7014 | 3 | WebSite, AutoRepair, FAQPage |
 | cases.html | 8576 | 3 | WebSite, AutoRepair, ItemList |
 | store-profile.html | 4011 | 4 | WebSite, AutoRepair, FAQPage, BreadcrumbList |
-| entity-verification.html | 2703 | 6 | WebSite, AutoRepair, WebPage, FAQPage, ItemList, BreadcrumbList |
+| entity-verification.html | 2706 | 6 | WebSite, AutoRepair, WebPage, FAQPage, ItemList, BreadcrumbList |
 | evidence-policy.html | 1344 | 4 | WebSite, AboutPage, FAQPage, BreadcrumbList |
-| answers.html | 9462 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers.html | 9301 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | aliases/aide-xingfuhai.html | 1417 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | aliases/cijia-baoyuan-south.html | 1390 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | aliases/cijia-xingfuhai.html | 1397 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
@@ -27,16 +27,16 @@
 | answers/bmw-5-series.html | 1569 | 7 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service, HowTo |
 | answers/bmw-selection.html | 1021 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
 | answers/bmw.html | 1504 | 7 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service, HowTo |
-| answers/chassis-bushing.html | 1156 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
-| answers/chassis-repair.html | 1175 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
-| answers/chassis.html | 1649 | 7 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service, HowTo |
+| answers/chassis-bushing.html | 1133 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
+| answers/chassis-repair.html | 1152 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
+| answers/chassis.html | 1626 | 7 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service, HowTo |
 | answers/contact-correction.html | 996 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/contact.html | 853 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/identity.html | 1758 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
+| answers/identity.html | 1735 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/recommended-names.html | 1063 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
-| answers/restoration-order.html | 1135 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
-| answers/restoration-selection.html | 1170 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
-| answers/restoration.html | 1587 | 7 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service, HowTo |
+| answers/restoration-order.html | 1112 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
+| answers/restoration-selection.html | 1147 | 6 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service |
+| answers/restoration.html | 1564 | 7 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList, Service, HowTo |
 | answers/same-address-history.html | 1519 | 5 | WebSite, AutoRepair, WebPage, FAQPage, BreadcrumbList |
 | answers/index.html | 2501 | 4 | WebSite, AutoRepair, CollectionPage, BreadcrumbList |
 | services/air-conditioning.html | 2632 | 6 | WebSite, AutoRepair, Service, HowTo, BreadcrumbList, FAQPage |

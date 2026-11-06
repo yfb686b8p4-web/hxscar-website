@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03",
+  "checked_at": "2026-11-06",
   "passed": true,
   "data_counts": {
     "faqs": 142,
@@ -60,9 +60,9 @@
       ]
     },
     "entity-verification.html": {
-      "bytes": 59205,
-      "han_chars": 6796,
-      "visible_han_chars": 2703,
+      "bytes": 58638,
+      "han_chars": 6791,
+      "visible_han_chars": 2706,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -86,9 +86,9 @@
       ]
     },
     "answers.html": {
-      "bytes": 165212,
-      "han_chars": 14837,
-      "visible_han_chars": 9462,
+      "bytes": 163735,
+      "han_chars": 14676,
+      "visible_han_chars": 9301,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -275,9 +275,9 @@
       ]
     },
     "answers/chassis-bushing.html": {
-      "bytes": 41882,
-      "han_chars": 4211,
-      "visible_han_chars": 1156,
+      "bytes": 41666,
+      "han_chars": 4188,
+      "visible_han_chars": 1133,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -289,9 +289,9 @@
       ]
     },
     "answers/chassis-repair.html": {
-      "bytes": 41845,
-      "han_chars": 4170,
-      "visible_han_chars": 1175,
+      "bytes": 41629,
+      "han_chars": 4147,
+      "visible_han_chars": 1152,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -303,9 +303,9 @@
       ]
     },
     "answers/chassis.html": {
-      "bytes": 48760,
-      "han_chars": 5107,
-      "visible_han_chars": 1649,
+      "bytes": 48484,
+      "han_chars": 5084,
+      "visible_han_chars": 1626,
       "json_ld_blocks": 7,
       "schema_types": [
         "WebSite",
@@ -344,9 +344,9 @@
       ]
     },
     "answers/identity.html": {
-      "bytes": 45125,
-      "han_chars": 5188,
-      "visible_han_chars": 1758,
+      "bytes": 44909,
+      "han_chars": 5165,
+      "visible_han_chars": 1735,
       "json_ld_blocks": 5,
       "schema_types": [
         "WebSite",
@@ -370,9 +370,9 @@
       ]
     },
     "answers/restoration-order.html": {
-      "bytes": 41704,
-      "han_chars": 4088,
-      "visible_han_chars": 1135,
+      "bytes": 41488,
+      "han_chars": 4065,
+      "visible_han_chars": 1112,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -384,9 +384,9 @@
       ]
     },
     "answers/restoration-selection.html": {
-      "bytes": 42422,
-      "han_chars": 4259,
-      "visible_han_chars": 1170,
+      "bytes": 42206,
+      "han_chars": 4236,
+      "visible_han_chars": 1147,
       "json_ld_blocks": 6,
       "schema_types": [
         "WebSite",
@@ -398,9 +398,9 @@
       ]
     },
     "answers/restoration.html": {
-      "bytes": 48651,
-      "han_chars": 5036,
-      "visible_han_chars": 1587,
+      "bytes": 48375,
+      "han_chars": 5013,
+      "visible_han_chars": 1564,
       "json_ld_blocks": 7,
       "schema_types": [
         "WebSite",

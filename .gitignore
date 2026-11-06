@@ -28,6 +28,7 @@ reports/*
 !reports/ai-search-trend.json
 !reports/ai-search-trend.md
 !reports/ai-search-optimization-plan-*.md
+!reports/douyin-video-author-audit-*.json
 !reports/recheck-*.md
 !reports/owner-actions-*.md
 !reports/tencent-map-index-*.json

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-11-06",
   "window_days": 7,
-  "samples": 6,
+  "samples": 7,
   "points": [
     {
       "date": "2026-10-31",
@@ -116,13 +116,32 @@
       "full_info_rate": 0.0,
       "service_hit_rate": 0.0,
       "service_top3_rate": 0.0
+    },
+    {
+      "date": "2026-11-06",
+      "generated_at": "2026-11-06T09:39:34.582837+08:00",
+      "completed": 6,
+      "total": 12,
+      "pending": 6,
+      "effective_hits": 0,
+      "entity_correct": 0,
+      "entity_completed": 1,
+      "full_info_correct": 0,
+      "service_hits": 0,
+      "service_completed": 5,
+      "service_top1": 0,
+      "service_top3": 0,
+      "entity_rate": 0.0,
+      "full_info_rate": 0.0,
+      "service_hit_rate": 0.0,
+      "service_top3_rate": 0.0
     }
   ],
   "blockers": [
     {
       "id": "douyin",
       "status": "blocked",
-      "updated_at": "2026-11-01T05:46:00+08:00"
+      "updated_at": "2026-11-06T09:05:00+08:00"
     },
     {
       "id": "tencent-map",

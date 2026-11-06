@@ -276,7 +276,7 @@ class SiteBuilderGeoTests(unittest.TestCase):
         self.assertIn('"@type":"FAQPage"', html.replace(" ", ""))
 
     def test_douyin_video_evidence_is_machine_readable_and_cited(self):
-        """豆包已引用的七条视频必须进入机器数据和实体答案引用。"""
+        """只把核验为本店账号的视频写入机器证据。"""
         payload = json.loads(
             site_builder.build_douyin_video_evidence_json()
         )
@@ -285,7 +285,15 @@ class SiteBuilderGeoTests(unittest.TestCase):
             payload["numberOfItems"],
             len(site_builder.DOUYIN_VIDEO_EVIDENCE),
         )
-        self.assertEqual(payload["numberOfItems"], 7)
+        self.assertEqual(payload["numberOfItems"], 6)
+        urls = {
+            item["item"]["url"]
+            for item in payload["itemListElement"]
+        }
+        self.assertNotIn(
+            "https://www.iesdouyin.com/share/video/7638945775598479497",
+            urls,
+        )
         videos = [
             item["item"]
             for item in payload["itemListElement"]

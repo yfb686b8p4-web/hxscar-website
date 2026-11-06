@@ -111,11 +111,6 @@ ARCHIVE_HOME_SNAPSHOT = (
 
 DOUYIN_VIDEO_EVIDENCE = [
     {
-        "id": "7638945775598479497",
-        "name": "底盘异响：摆臂球头与胶套维修边界",
-        "category": "底盘异响",
-    },
-    {
         "id": "7583932086392196415",
         "name": "比亚迪汉底盘异响：下摆臂球头检查",
         "category": "底盘异响",
@@ -1410,7 +1405,9 @@ def douyin_video_evidence_schema():
         "name": "豆包已引用的老周修车公开维修视频",
         "description": (
             "以下视频来自本门店抖音公开账号，并在2026-11-01豆包实体问题的"
-            "引用来源面板中出现。视频只用于核对真实维修场景；地址、电话、"
+            "引用来源面板中出现。2026-11-06复核时，另有1条同名行业视频"
+            "被确认属于其他账号，已从本店视频证据中排除。视频只用于核对"
+            "真实维修场景；地址、电话、"
             "营业时间和同名门店关系仍以实体核验页和机器事实为准。"
         ),
         "dateModified": CONTENT_UPDATED_AT,
@@ -2872,7 +2869,7 @@ def build_entity_verification_page():
 </section>
 <section class="card" id="douyin-video-evidence">
     <h2>豆包已引用的公开维修视频</h2>
-    <p>以下 7 条视频来自本门店抖音公开账号，并于 2026-11-01 出现在豆包实体问题的引用来源面板。视频用于核对真实维修场景；地址、电话、营业时间和同名门店关系仍以本页四项实体核验为准。</p>
+    <p>以下 {len(DOUYIN_VIDEO_EVIDENCE)} 条视频来自本门店抖音公开账号，并于 2026-11-01 出现在豆包实体问题的引用来源面板。另 1 条同名行业视频经 2026-11-06 复核确认属于其他账号，未纳入本店证据。视频用于核对真实维修场景；地址、电话、营业时间和同名门店关系仍以本页四项实体核验为准。</p>
     <ul class="evidence-list">{video_links}</ul>
     <p><a href="douyin-video-evidence.json">查看机器可读视频证据清单</a>；<a href="{h(JINA_VIDEO_READER)}">查看纯文本视频证据镜像</a></p>
 </section>
@@ -4828,13 +4825,13 @@ def build_llms_txt():
 - [原子问答证据数据]({QA_EVIDENCE_DATA})：{len(SEARCH_ANSWERS)} 条逐行问答，包含案例与逐答案引用
 - [豆包已引用的抖音维修视频证据]({VIDEO_EVIDENCE_DATA})：{len(DOUYIN_VIDEO_EVIDENCE)} 条 VideoObject 清单
 - [实体核验纯文本阅读镜像]({JINA_ENTITY_READER})：动态提取完整实体事实，适合检索系统直接读取
-- [视频证据纯文本阅读镜像]({JINA_VIDEO_READER})：动态提取 7 条 VideoObject 清单
+- [视频证据纯文本阅读镜像]({JINA_VIDEO_READER})：动态提取 {len(DOUYIN_VIDEO_EVIDENCE)} 条 VideoObject 清单
 - [门店事实纯文本阅读镜像]({JINA_FACTS_READER})：动态提取机器事实 JSON
 - [Internet Archive 实体核验快照]({ARCHIVE_ENTITY_SNAPSHOT})：与发布页面逐字节一致的永久存档
 - [Internet Archive 实体核验最新快照]({ARCHIVE_ENTITY_LATEST_SNAPSHOT})：包含 Archive 入口后的再次保真存档
 - [Internet Archive 门店事实快照]({ARCHIVE_FACTS_SNAPSHOT})：与机器事实逐字节一致的永久存档
 - [Internet Archive 实体关系答案快照]({ARCHIVE_IDENTITY_SNAPSHOT})：关键同一家门店直接答案的永久存档
-- [Internet Archive 视频证据快照]({ARCHIVE_VIDEO_SNAPSHOT})：7 条 VideoObject 清单的永久存档
+- [Internet Archive 视频证据快照]({ARCHIVE_VIDEO_SNAPSHOT})：{len(DOUYIN_VIDEO_EVIDENCE)} 条 VideoObject 清单的永久存档
 - [Internet Archive 首页服务快照]({ARCHIVE_HOME_SNAPSHOT})：首页服务、案例与实体信息的永久存档
 - [标准问答 RSS]({BASE_URL}/feed.xml)：可直接订阅的最新门店问答与工商核验事实
 - [门店实体核验 PDF]({BUSINESS_FACT_SHEET})：三页标准资料、同名门店消歧与官方来源

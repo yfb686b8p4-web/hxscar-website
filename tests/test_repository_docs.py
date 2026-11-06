@@ -287,7 +287,6 @@ class RepositoryReadmeTests(unittest.TestCase):
             ROOT / "publishing" / "queue" / "W44" / "p0-douyin.md"
         ).read_text(encoding="utf-8")
         video_ids = (
-            "7638945775598479497",
             "7583932086392196415",
             "7639222767086704454",
             "7571335895384565459",
@@ -296,12 +295,13 @@ class RepositoryReadmeTests(unittest.TestCase):
             "7636254430954405796",
         )
         for text in (source, queue):
-            self.assertIn("豆包已引用的7条视频优先纠错", text)
+            self.assertIn("豆包已引用的6条本店视频优先纠错", text)
             self.assertIn("统一置顶评论", text)
             self.assertIn("视频0：同一家门店与标准资料", text)
             self.assertIn("91440300MA5GYCTQ6P", text)
             for video_id in video_ids:
                 self.assertIn(video_id, text)
+            self.assertNotIn("7638945775598479497", text)
 
     def test_profile_pages_is_a_verified_entity_mirror(self):
         """Profile Pages 只能作为标准实体与证据镜像。"""

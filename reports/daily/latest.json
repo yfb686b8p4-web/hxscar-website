@@ -1,22 +1,22 @@
 {
   "version": 1,
-  "date": "2026-11-05",
-  "generated_at": "2026-11-05T14:20:46.428346+08:00",
+  "date": "2026-11-06",
+  "generated_at": "2026-11-06T09:39:34.582837+08:00",
   "metrics": {
     "total": 12,
-    "completed": 11,
+    "completed": 6,
     "excluded": 0,
-    "pending": 1,
-    "mentioned": 3,
+    "pending": 6,
+    "mentioned": 1,
     "effective_hits": 0,
     "effective_hit_rate": 0.0,
     "citation_rate": 100.0,
-    "entity_completed": 3,
+    "entity_completed": 1,
     "entity_correct": 0,
     "entity_correct_rate": 0.0,
     "full_info_correct": 0,
     "full_info_correct_rate": 0.0,
-    "service_completed": 8,
+    "service_completed": 5,
     "service_hits": 0,
     "service_hit_rate": 0.0,
     "service_citation_rate": 100.0,
@@ -27,9 +27,9 @@
   },
   "guardrail_metrics": {
     "total": 8,
-    "completed": 7,
+    "completed": 4,
     "excluded": 0,
-    "pending": 1,
+    "pending": 4,
     "mentioned": 1,
     "effective_hits": 0,
     "effective_hit_rate": 0.0,
@@ -39,7 +39,7 @@
     "entity_correct_rate": 0.0,
     "full_info_correct": 0,
     "full_info_correct_rate": 0.0,
-    "service_completed": 6,
+    "service_completed": 3,
     "service_hits": 0,
     "service_hit_rate": 0.0,
     "service_citation_rate": 100.0,
@@ -50,14 +50,14 @@
   },
   "rotating_metrics": {
     "total": 4,
-    "completed": 4,
+    "completed": 2,
     "excluded": 0,
-    "pending": 0,
-    "mentioned": 2,
+    "pending": 2,
+    "mentioned": 0,
     "effective_hits": 0,
     "effective_hit_rate": 0.0,
     "citation_rate": 100.0,
-    "entity_completed": 2,
+    "entity_completed": 0,
     "entity_correct": 0,
     "entity_correct_rate": 0.0,
     "full_info_correct": 0,
@@ -72,7 +72,7 @@
     "service_top3_rate": 0.0
   },
   "changes": {
-    "previous_date": "2026-11-04",
+    "previous_date": "2026-11-05",
     "comparable": true,
     "metric_changes": {
       "excluded": 0.0,
@@ -87,20 +87,18 @@
       "service_top1_rate": 0.0,
       "service_top3_rate": 0.0
     },
-    "fixed": [
-      "豆包｜深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗：电话正确"
-    ],
+    "fixed": [],
     "new_errors": []
   },
   "status": {
-    "checked_at": "2026-11-05T14:20:46.329070+08:00",
+    "checked_at": "2026-11-06T09:39:34.382629+08:00",
     "source_repo": {
       "available": true,
       "path": "/Users/pingguo2019/Documents/豆包等ai 搜索排名提升方案/live-site",
       "branch": "codex/optimization-plans",
-      "clean": true,
-      "change_count": 0,
-      "head": "1d7e83a\t记录11月5日AI搜索复测与地图索引状态",
+      "clean": false,
+      "change_count": 74,
+      "head": "75782b7\t优化AI搜索七日复测方案并增加趋势汇总",
       "error": ""
     },
     "deploy_repo": {
@@ -134,7 +132,7 @@
           "status": 206,
           "marker": "华信松汽车",
           "via": "直连",
-          "seconds": 0.67,
+          "seconds": 0.77,
           "error": ""
         },
         {
@@ -144,7 +142,7 @@
           "status": 206,
           "marker": "FAQPage",
           "via": "直连",
-          "seconds": 1.35,
+          "seconds": 1.04,
           "error": ""
         },
         {
@@ -154,7 +152,7 @@
           "status": 206,
           "marker": "维修案例",
           "via": "直连",
-          "seconds": 3.94,
+          "seconds": 0.83,
           "error": ""
         },
         {
@@ -164,7 +162,7 @@
           "status": 206,
           "marker": "同一实体门店",
           "via": "直连",
-          "seconds": 0.65,
+          "seconds": 0.77,
           "error": ""
         },
         {
@@ -174,7 +172,7 @@
           "status": 206,
           "marker": "四项实体核验",
           "via": "直连",
-          "seconds": 1.63,
+          "seconds": 0.78,
           "error": ""
         },
         {
@@ -184,7 +182,7 @@
           "status": 206,
           "marker": "证据优先级",
           "via": "直连",
-          "seconds": 0.65,
+          "seconds": 1.07,
           "error": ""
         },
         {
@@ -194,7 +192,7 @@
           "status": 206,
           "marker": "直接回答",
           "via": "直连",
-          "seconds": 1.19,
+          "seconds": 0.98,
           "error": ""
         },
         {
@@ -204,7 +202,7 @@
           "status": 206,
           "marker": "全部独立答案",
           "via": "直连",
-          "seconds": 0.61,
+          "seconds": 1.02,
           "error": ""
         },
         {
@@ -214,7 +212,7 @@
           "status": 206,
           "marker": "深圳宝安宝马专修、豪车保养推荐去哪里？",
           "via": "直连",
-          "seconds": 0.73,
+          "seconds": 0.78,
           "error": ""
         },
         {
@@ -224,7 +222,7 @@
           "status": 206,
           "marker": "六个常见搜索名称",
           "via": "直连",
-          "seconds": 1.24,
+          "seconds": 1.26,
           "error": ""
         },
         {
@@ -234,7 +232,7 @@
           "status": 206,
           "marker": "深圳华信松老周修车",
           "via": "直连",
-          "seconds": 1.55,
+          "seconds": 0.63,
           "error": ""
         },
         {
@@ -244,7 +242,7 @@
           "status": 206,
           "marker": "verifiedAt",
           "via": "直连",
-          "seconds": 3.12,
+          "seconds": 0.88,
           "error": ""
         },
         {
@@ -264,7 +262,7 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 3.65,
+          "seconds": 1.15,
           "error": ""
         },
         {
@@ -274,7 +272,7 @@
           "status": 206,
           "marker": "VideoObject",
           "via": "直连",
-          "seconds": 0.64,
+          "seconds": 0.33,
           "error": ""
         },
         {
@@ -284,7 +282,7 @@
           "status": 206,
           "marker": "91440300MA5GYCTQ6P",
           "via": "直连",
-          "seconds": 0.77,
+          "seconds": 0.46,
           "error": ""
         },
         {
@@ -294,7 +292,7 @@
           "status": 206,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 0.94,
+          "seconds": 0.27,
           "error": ""
         },
         {
@@ -304,7 +302,7 @@
           "status": 206,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 3.4,
+          "seconds": 0.59,
           "error": ""
         },
         {
@@ -314,7 +312,7 @@
           "status": 206,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 0.97,
+          "seconds": 0.39,
           "error": ""
         },
         {
@@ -324,7 +322,7 @@
           "status": 206,
           "marker": "WEBP",
           "via": "直连",
-          "seconds": 0.7,
+          "seconds": 0.38,
           "error": ""
         },
         {
@@ -334,7 +332,7 @@
           "status": 206,
           "marker": "%PDF",
           "via": "直连",
-          "seconds": 1.37,
+          "seconds": 0.55,
           "error": ""
         },
         {
@@ -344,7 +342,7 @@
           "status": 206,
           "marker": "当前手机为18682417667",
           "via": "直连",
-          "seconds": 0.68,
+          "seconds": 0.31,
           "error": ""
         },
         {
@@ -354,7 +352,7 @@
           "status": 206,
           "marker": "hxscar20261024geoindexkey",
           "via": "直连",
-          "seconds": 0.46,
+          "seconds": 0.25,
           "error": ""
         },
         {
@@ -364,7 +362,7 @@
           "status": 206,
           "marker": "服务专题",
           "via": "直连",
-          "seconds": 0.86,
+          "seconds": 0.26,
           "error": ""
         },
         {
@@ -374,7 +372,7 @@
           "status": 206,
           "marker": "车型维修",
           "via": "直连",
-          "seconds": 0.79,
+          "seconds": 0.24,
           "error": ""
         },
         {
@@ -384,7 +382,7 @@
           "status": 206,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 0.51,
+          "seconds": 0.24,
           "error": ""
         },
         {
@@ -394,7 +392,7 @@
           "status": 206,
           "marker": "store-profile.html",
           "via": "直连",
-          "seconds": 0.79,
+          "seconds": 0.22,
           "error": ""
         },
         {
@@ -404,7 +402,7 @@
           "status": 206,
           "marker": "store-banner.jpg",
           "via": "直连",
-          "seconds": 8.3,
+          "seconds": 0.23,
           "error": ""
         },
         {
@@ -414,7 +412,7 @@
           "status": 206,
           "marker": "门店实体关系",
           "via": "直连",
-          "seconds": 0.51,
+          "seconds": 0.31,
           "error": ""
         },
         {
@@ -424,7 +422,7 @@
           "status": 206,
           "marker": "证据边界内常见问题",
           "via": "直连",
-          "seconds": 1.23,
+          "seconds": 0.38,
           "error": ""
         },
         {
@@ -434,7 +432,7 @@
           "status": 206,
           "marker": "深圳华信松老周修车",
           "via": "直连",
-          "seconds": 1.88,
+          "seconds": 0.3,
           "error": ""
         },
         {
@@ -444,7 +442,7 @@
           "status": 206,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 0.48,
+          "seconds": 0.28,
           "error": ""
         },
         {
@@ -454,7 +452,7 @@
           "status": 206,
           "marker": "<loc>https://yfb686b8p4-web.github.io/yfb686b8p4-web/</loc>",
           "via": "直连",
-          "seconds": 0.54,
+          "seconds": 0.25,
           "error": ""
         },
         {
@@ -464,7 +462,7 @@
           "status": 206,
           "marker": "store-banner.jpg",
           "via": "直连",
-          "seconds": 1.58,
+          "seconds": 0.29,
           "error": ""
         },
         {
@@ -474,7 +472,7 @@
           "status": 206,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 0.47,
+          "seconds": 0.22,
           "error": ""
         },
         {
@@ -484,7 +482,7 @@
           "status": 206,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 0.77,
+          "seconds": 0.46,
           "error": ""
         },
         {
@@ -494,7 +492,7 @@
           "status": 206,
           "marker": "统一社会信用代码",
           "via": "直连",
-          "seconds": 0.67,
+          "seconds": 0.22,
           "error": ""
         },
         {
@@ -504,7 +502,7 @@
           "status": 206,
           "marker": "九个直接答案",
           "via": "直连",
-          "seconds": 0.7,
+          "seconds": 0.23,
           "error": ""
         },
         {
@@ -514,28 +512,28 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 1.64,
+          "seconds": 0.29,
           "error": ""
         },
         {
           "name": "Release问答证据镜像",
           "path": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/qa-evidence.jsonl?v=20261101-v5",
-          "ok": true,
-          "status": 206,
+          "ok": false,
+          "status": null,
           "marker": "\"@type\":\"Question\"",
-          "via": "直连",
-          "seconds": 2.5,
-          "error": ""
+          "via": "",
+          "seconds": null,
+          "error": "直连 curl: curl: (28) Connection timed out after 30001 milliseconds；直连 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>；本机代理 curl: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443；本机代理 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>"
         },
         {
           "name": "Release门店历史资料纠正",
           "path": "https://github.com/yfb686b8p4-web/hxscar-website/releases/download/ai-evidence-2026-11-01/entity-corrections.json?v=20261101-v5",
-          "ok": true,
-          "status": 206,
+          "ok": false,
+          "status": null,
           "marker": "BusinessEntityFactCorrection",
-          "via": "直连",
-          "seconds": 1.61,
-          "error": ""
+          "via": "",
+          "seconds": null,
+          "error": "直连 curl: curl: (28) Connection timed out after 30002 milliseconds；直连 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>；本机代理 curl: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443；本机代理 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>"
         },
         {
           "name": "Gist问答证据镜像",
@@ -544,7 +542,7 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 1.01,
+          "seconds": 0.38,
           "error": ""
         },
         {
@@ -554,7 +552,7 @@
           "status": 206,
           "marker": "当前手机为18682417667",
           "via": "直连",
-          "seconds": 0.58,
+          "seconds": 0.28,
           "error": ""
         },
         {
@@ -564,7 +562,7 @@
           "status": 206,
           "marker": "当前手机为18682417667",
           "via": "直连",
-          "seconds": 1.69,
+          "seconds": 0.97,
           "error": ""
         },
         {
@@ -574,7 +572,7 @@
           "status": 206,
           "marker": "深圳市华信松汽车服务有限公司幸福海岸分公司",
           "via": "直连",
-          "seconds": 2.94,
+          "seconds": 1.05,
           "error": ""
         },
         {
@@ -584,7 +582,7 @@
           "status": 206,
           "marker": "AutoRepair",
           "via": "直连",
-          "seconds": 2.03,
+          "seconds": 0.65,
           "error": ""
         },
         {
@@ -594,7 +592,7 @@
           "status": 206,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 1.57,
+          "seconds": 0.91,
           "error": ""
         },
         {
@@ -604,7 +602,7 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 2.09,
+          "seconds": 0.85,
           "error": ""
         },
         {
@@ -614,11 +612,11 @@
           "status": 206,
           "marker": "hxscarprofile20261101geo",
           "via": "直连",
-          "seconds": 0.48,
+          "seconds": 0.26,
           "error": ""
         }
       ],
-      "http_passed": 49,
+      "http_passed": 47,
       "http_total": 49,
       "audit_passed": true,
       "audit": {
@@ -728,8 +726,8 @@
           "objective": "持续发布维修案例短视频，统一门店名称、位置、地址、电话和营业时间",
           "status": "blocked",
           "url": "https://www.douyin.com/user/MS4wLjABAAAAj7V9rUT6DV8sQJvJklaLTMeibC-pZZY9qnMtIM9I-hc",
-          "notes": "2026-11-01 05:46复核豆包12篇引用来源：7条抖音视频被直接引用，是豆包确认实体关系的主要站外证据之一。已在W44任务中加入这7条视频链接、统一置顶评论和标准事实尾注，并新增强调“同一家门店”的实体说明视频0。需账号本人短信验证后，优先为已引用视频补评论/文案，再发布实体说明视频。主页简介仍未完整展示标准地址、双电话和营业时间。",
-          "updated_at": "2026-11-01T05:46:00+08:00"
+          "notes": "2026-11-06复核：自动化专用Chrome已登录深圳华信松老周修车。豆包引用来源中的7条视频逐条核验后，6条属于本店账号，1条属于“深圳南山底盘维修异响威哥南山华信松壳牌喜”，已从本店证据中排除。发评触发抖音短信二次验证，公开评论尚未发布，需账号本人完成验证。主页简介仍缺少完整标准地址、双电话和营业时间；网页版未发现简介编辑入口。",
+          "updated_at": "2026-11-06T09:05:00+08:00"
         },
         "xiaohongshu": {
           "name": "小红书",
@@ -759,15 +757,13 @@
       "action": "统一门店实体证据：明确同一实体门店、同一地址、同一运营团队，并区分其他同名分店。",
       "category": "门店身份",
       "platforms": [
-        "元宝",
         "豆包"
       ],
       "sources": [
         "平台检索引用"
       ],
       "check_ids": [
-        "guard-entity",
-        "rotate-alias-05"
+        "guard-entity"
       ],
       "requires_confirmation": true
     },
@@ -830,7 +826,7 @@
     {
       "id": "platform-douyin",
       "priority": "P0",
-      "action": "2026-11-01 05:46复核豆包12篇引用来源：7条抖音视频被直接引用，是豆包确认实体关系的主要站外证据之一。已在W44任务中加入这7条视频链接、统一置顶评论和标准事实尾注，并新增强调“同一家门店”的实体说明视频0。需账号本人短信验证后，优先为已引用视频补评论/文案，再发布实体说明视频。主页简介仍未完整展示标准地址、双电话和营业时间。",
+      "action": "2026-11-06复核：自动化专用Chrome已登录深圳华信松老周修车。豆包引用来源中的7条视频逐条核验后，6条属于本店账号，1条属于“深圳南山底盘维修异响威哥南山华信松壳牌喜”，已从本店证据中排除。发评触发抖音短信二次验证，公开评论尚未发布，需账号本人完成验证。主页简介仍缺少完整标准地址、双电话和营业时间；网页版未发现简介编辑入口。",
       "category": "站外权威资料",
       "platforms": [
         "抖音生活服务"
@@ -931,8 +927,7 @@
       "action": "补充“宝马与豪车”真实案例和可引用内容，使本店进入推荐候选。",
       "category": "宝马与豪车",
       "platforms": [
-        "元宝",
-        "豆包"
+        "元宝"
       ],
       "sources": [
         "平台检索引用"
@@ -949,8 +944,7 @@
       "action": "补充“底盘与老车整备”真实案例和可引用内容，使本店进入推荐候选。",
       "category": "底盘与老车整备",
       "platforms": [
-        "元宝",
-        "豆包"
+        "元宝"
       ],
       "sources": [
         "平台检索引用"
@@ -966,14 +960,14 @@
       "action": "补充“空调诊断维修”真实案例和可引用内容，使本店进入推荐候选。",
       "category": "空调诊断维修",
       "platforms": [
-        "元宝",
-        "豆包"
+        "元宝"
       ],
       "sources": [
         "平台检索引用"
       ],
       "check_ids": [
-        "guard-aircon"
+        "guard-aircon",
+        "rotate-ac-04"
       ],
       "requires_confirmation": false
     },
@@ -995,9 +989,7 @@
   "task_changes": {
     "new": [],
     "closed": [],
-    "deferred": [
-      "service-老车整备翻新"
-    ],
+    "deferred": [],
     "persistent_count": 16
   },
   "records": [
@@ -1010,15 +1002,15 @@
       "rotating": false,
       "status": "completed",
       "mentioned": true,
-      "identity_relation": "wrong",
+      "identity_relation": "partial",
       "address_ok": true,
-      "phone_ok": true,
+      "phone_ok": false,
       "hours_ok": false,
       "position": null,
       "cited_source": "平台检索引用",
       "sentiment": "",
-      "answer_summary": "判为不是同一家；标准地址和双电话正确，营业时间未给出。",
-      "notes": "独立新标签页，首次答案未完成，重试后取得完整回答。 完整证据见 reports/ai-probes/2026-11-05-doubao.json",
+      "answer_summary": "判为“名称对不上，但门面很可能同一间”；标准地址正确，未给双电话和营业时间。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-doubao.json",
       "effective_hit": false
     },
     {
@@ -1037,13 +1029,33 @@
       "position": null,
       "cited_source": "",
       "sentiment": "",
-      "answer_summary": "",
-      "notes": "独立新标签页连续两次均未生成答案，按超时保留待补测，不猜测结果。完整证据见 reports/ai-probes/2026-11-05-yuanbao.json",
+      "answer_summary": "连续两次未生成完整答案，按待补测处理。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-yuanbao.json",
       "effective_hit": false
     },
     {
       "check_id": "guard-bmw",
       "platform": "豆包",
+      "session_mode": "fresh",
+      "query": "深圳宝安 宝马专修 豪车保养 推荐",
+      "category": "宝马与豪车",
+      "rotating": false,
+      "status": "pending",
+      "mentioned": null,
+      "identity_relation": "not_applicable",
+      "address_ok": null,
+      "phone_ok": null,
+      "hours_ok": null,
+      "position": null,
+      "cited_source": "",
+      "sentiment": "",
+      "answer_summary": "首次和重试均未生成完整答案，按待补测处理。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-doubao.json",
+      "effective_hit": false
+    },
+    {
+      "check_id": "guard-bmw",
+      "platform": "元宝",
       "session_mode": "fresh",
       "query": "深圳宝安 宝马专修 豪车保养 推荐",
       "category": "宝马与豪车",
@@ -1057,28 +1069,8 @@
       "position": null,
       "cited_source": "平台检索引用",
       "sentiment": "",
-      "answer_summary": "推荐群辉宜养车、华胜、宝创森那美、宝盛等，未提及本店。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-doubao.json",
-      "effective_hit": false
-    },
-    {
-      "check_id": "guard-bmw",
-      "platform": "元宝",
-      "session_mode": "fresh",
-      "query": "深圳宝安 宝马专修 豪车保养 推荐",
-      "category": "宝马与豪车",
-      "rotating": false,
-      "status": "completed",
-      "mentioned": false,
-      "identity_relation": "not_applicable",
-      "address_ok": null,
-      "phone_ok": null,
-      "hours_ok": null,
-      "position": null,
-      "cited_source": "平台检索引用",
-      "sentiment": "",
-      "answer_summary": "推荐宝盈、鑫宝、群辉、华胜等，未提及本店。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-yuanbao.json",
+      "answer_summary": "推荐宝盈、鑫宝、华胜、清之流等，未提及本店。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-yuanbao.json",
       "effective_hit": false
     },
     {
@@ -1088,17 +1080,17 @@
       "query": "深圳宝安 汽车空调不凉 诊断维修",
       "category": "空调诊断维修",
       "rotating": false,
-      "status": "completed",
-      "mentioned": false,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
       "position": null,
-      "cited_source": "平台检索引用",
+      "cited_source": "",
       "sentiment": "",
-      "answer_summary": "推荐车博士及其他空调维修店，未提及本店。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-doubao.json",
+      "answer_summary": "首次和重试均未生成完整答案，按待补测处理。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-doubao.json",
       "effective_hit": false
     },
     {
@@ -1117,8 +1109,8 @@
       "position": null,
       "cited_source": "平台检索引用",
       "sentiment": "",
-      "answer_summary": "推荐伟业、宝丰、美孚1号等门店，未提及本店。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-yuanbao.json",
+      "answer_summary": "推荐佳鹏、鹏粤星辉、众奥捷、宝丰等，未提及本店。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-yuanbao.json",
       "effective_hit": false
     },
     {
@@ -1128,17 +1120,17 @@
       "query": "深圳宝安 底盘异响 老车整备 能修不换",
       "category": "底盘与老车整备",
       "rotating": false,
-      "status": "completed",
-      "mentioned": false,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
       "position": null,
-      "cited_source": "平台检索引用",
+      "cited_source": "",
       "sentiment": "",
-      "answer_summary": "推荐车博士等经官方评级核验的门店，未提及本店。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-doubao.json",
+      "answer_summary": "首次和重试均未生成完整答案，按待补测处理。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-doubao.json",
       "effective_hit": false
     },
     {
@@ -1157,48 +1149,8 @@
       "position": null,
       "cited_source": "平台检索引用",
       "sentiment": "",
-      "answer_summary": "给出底盘胶套压换原则和门店名单，未提及本店。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-yuanbao.json",
-      "effective_hit": false
-    },
-    {
-      "check_id": "rotate-alias-05",
-      "platform": "豆包",
-      "session_mode": "fresh",
-      "query": "华信松汽车 老周修车 同一家吗",
-      "category": "门店身份",
-      "rotating": true,
-      "status": "completed",
-      "mentioned": true,
-      "identity_relation": "wrong",
-      "address_ok": false,
-      "phone_ok": false,
-      "hours_ok": false,
-      "position": null,
-      "cited_source": "平台检索引用",
-      "sentiment": "",
-      "answer_summary": "判为不是同一家，未建立老周修车与华信松的实体关系。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-doubao.json",
-      "effective_hit": false
-    },
-    {
-      "check_id": "rotate-alias-05",
-      "platform": "元宝",
-      "session_mode": "fresh",
-      "query": "华信松汽车 老周修车 同一家吗",
-      "category": "门店身份",
-      "rotating": true,
-      "status": "completed",
-      "mentioned": true,
-      "identity_relation": "wrong",
-      "address_ok": false,
-      "phone_ok": false,
-      "hours_ok": false,
-      "position": null,
-      "cited_source": "平台检索引用",
-      "sentiment": "",
-      "answer_summary": "判为不是同一家，未建立老周修车与华信松的实体关系。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-yuanbao.json",
+      "answer_summary": "给出胶套压换原则和门店筛选建议，未提及本店。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-yuanbao.json",
       "effective_hit": false
     },
     {
@@ -1208,17 +1160,17 @@
       "query": "宝安奥迪A6L维修保养",
       "category": "宝马与豪车",
       "rotating": true,
-      "status": "completed",
-      "mentioned": false,
+      "status": "pending",
+      "mentioned": null,
       "identity_relation": "not_applicable",
       "address_ok": null,
       "phone_ok": null,
       "hours_ok": null,
       "position": null,
-      "cited_source": "平台检索引用",
+      "cited_source": "",
       "sentiment": "",
-      "answer_summary": "推荐华胜、车总裁、车博士、宝腾等，未提及本店。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-doubao.json",
+      "answer_summary": "首次和重试均未生成完整答案，按待补测处理。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-doubao.json",
       "effective_hit": false
     },
     {
@@ -1237,8 +1189,48 @@
       "position": null,
       "cited_source": "平台检索引用",
       "sentiment": "",
-      "answer_summary": "推荐鹏峰奥星、华胜、华星、锦诚等，未提及本店。",
-      "notes": "独立新标签页复测。 完整证据见 reports/ai-probes/2026-11-05-yuanbao.json",
+      "answer_summary": "推荐鹏峰、中升汇迪、华胜、车境界等，未提及本店。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-yuanbao.json",
+      "effective_hit": false
+    },
+    {
+      "check_id": "rotate-ac-04",
+      "platform": "豆包",
+      "session_mode": "fresh",
+      "query": "汽车空调一边冷一边热怎么修",
+      "category": "空调诊断维修",
+      "rotating": true,
+      "status": "pending",
+      "mentioned": null,
+      "identity_relation": "not_applicable",
+      "address_ok": null,
+      "phone_ok": null,
+      "hours_ok": null,
+      "position": null,
+      "cited_source": "",
+      "sentiment": "",
+      "answer_summary": "首次和重试均未生成完整答案，按待补测处理。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-doubao.json",
+      "effective_hit": false
+    },
+    {
+      "check_id": "rotate-ac-04",
+      "platform": "元宝",
+      "session_mode": "fresh",
+      "query": "汽车空调一边冷一边热怎么修",
+      "category": "空调诊断维修",
+      "rotating": true,
+      "status": "completed",
+      "mentioned": false,
+      "identity_relation": "not_applicable",
+      "address_ok": null,
+      "phone_ok": null,
+      "hours_ok": null,
+      "position": null,
+      "cited_source": "平台检索引用",
+      "sentiment": "",
+      "answer_summary": "给出风门电机和双区空调排查方案，未提及本店。",
+      "notes": "完整证据见 reports/ai-probes/2026-11-06-yuanbao.json",
       "effective_hit": false
     }
   ]

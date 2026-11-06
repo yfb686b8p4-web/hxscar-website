@@ -39,7 +39,6 @@ FACT_LINKS = (
     "https://yfb686b8p4-web.github.io/hxscar-website/cases.html",
 )
 DOUYIN_CITED_VIDEO_IDS = (
-    "7638945775598479497",
     "7583932086392196415",
     "7639222767086704454",
     "7571335895384565459",
@@ -83,9 +82,9 @@ def douyin_cited_video_section():
         f"- https://www.iesdouyin.com/share/video/{video_id}"
         for video_id in DOUYIN_CITED_VIDEO_IDS
     )
-    return f"""## 豆包已引用的7条视频优先纠错
+    return f"""## 豆包已引用的{len(DOUYIN_CITED_VIDEO_IDS)}条本店视频优先纠错
 
-以下视频已出现在豆包实体问题的引用来源中。账号本人登录后，优先为每条视频补充同一条置顶评论，并更新可编辑文案：
+以下视频已出现在豆包实体问题的引用来源中，并经2026-11-06复核确认属于本店账号。账号本人登录后，优先为每条视频补充同一条置顶评论，并更新可编辑文案：
 
 {links}
 
