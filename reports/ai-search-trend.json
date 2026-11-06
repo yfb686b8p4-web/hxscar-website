@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-11-06",
+  "window_days": 7,
+  "samples": 6,
+  "points": [
+    {
+      "date": "2026-10-31",
+      "generated_at": "2026-11-01T00:25:14.441985+08:00",
+      "completed": 12,
+      "total": 12,
+      "pending": 0,
+      "effective_hits": 4,
+      "entity_correct": 2,
+      "entity_completed": 4,
+      "full_info_correct": 0,
+      "service_hits": 4,
+      "service_completed": 8,
+      "service_top1": 4,
+      "service_top3": 4,
+      "entity_rate": 50.0,
+      "full_info_rate": 0.0,
+      "service_hit_rate": 50.0,
+      "service_top3_rate": 50.0
+    },
+    {
+      "date": "2026-11-01",
+      "generated_at": "2026-11-01T10:17:09.891243+08:00",
+      "completed": 12,
+      "total": 12,
+      "pending": 0,
+      "effective_hits": 4,
+      "entity_correct": 1,
+      "entity_completed": 2,
+      "full_info_correct": 0,
+      "service_hits": 4,
+      "service_completed": 10,
+      "service_top1": 4,
+      "service_top3": 4,
+      "entity_rate": 50.0,
+      "full_info_rate": 0.0,
+      "service_hit_rate": 40.0,
+      "service_top3_rate": 40.0
+    },
+    {
+      "date": "2026-11-02",
+      "generated_at": "2026-11-02T17:43:26.635588+08:00",
+      "completed": 2,
+      "total": 12,
+      "pending": 10,
+      "effective_hits": 0,
+      "entity_correct": 1,
+      "entity_completed": 2,
+      "full_info_correct": 0,
+      "service_hits": 0,
+      "service_completed": 0,
+      "service_top1": 0,
+      "service_top3": 0,
+      "entity_rate": 50.0,
+      "full_info_rate": 0.0,
+      "service_hit_rate": 0.0,
+      "service_top3_rate": 0.0
+    },
+    {
+      "date": "2026-11-03",
+      "generated_at": "2026-11-03T20:33:31.224314+08:00",
+      "completed": 12,
+      "total": 12,
+      "pending": 0,
+      "effective_hits": 5,
+      "entity_correct": 1,
+      "entity_completed": 2,
+      "full_info_correct": 0,
+      "service_hits": 5,
+      "service_completed": 10,
+      "service_top1": 5,
+      "service_top3": 5,
+      "entity_rate": 50.0,
+      "full_info_rate": 0.0,
+      "service_hit_rate": 50.0,
+      "service_top3_rate": 50.0
+    },
+    {
+      "date": "2026-11-04",
+      "generated_at": "2026-11-04T10:25:19.975224+08:00",
+      "completed": 12,
+      "total": 12,
+      "pending": 0,
+      "effective_hits": 0,
+      "entity_correct": 0,
+      "entity_completed": 4,
+      "full_info_correct": 0,
+      "service_hits": 0,
+      "service_completed": 8,
+      "service_top1": 0,
+      "service_top3": 0,
+      "entity_rate": 0.0,
+      "full_info_rate": 0.0,
+      "service_hit_rate": 0.0,
+      "service_top3_rate": 0.0
+    },
+    {
+      "date": "2026-11-05",
+      "generated_at": "2026-11-05T14:20:46.428346+08:00",
+      "completed": 11,
+      "total": 12,
+      "pending": 1,
+      "effective_hits": 0,
+      "entity_correct": 0,
+      "entity_completed": 3,
+      "full_info_correct": 0,
+      "service_hits": 0,
+      "service_completed": 8,
+      "service_top1": 0,
+      "service_top3": 0,
+      "entity_rate": 0.0,
+      "full_info_rate": 0.0,
+      "service_hit_rate": 0.0,
+      "service_top3_rate": 0.0
+    }
+  ],
+  "blockers": [
+    {
+      "id": "douyin",
+      "status": "blocked",
+      "updated_at": "2026-11-01T05:46:00+08:00"
+    },
+    {
+      "id": "tencent-map",
+      "status": "review",
+      "updated_at": "2026-11-04T10:25:00+08:00"
+    },
+    {
+      "id": "amap",
+      "status": "review",
+      "updated_at": "2026-10-31T22:22:00+08:00"
+    },
+    {
+      "id": "sogou-lizhi",
+      "status": "blocked",
+      "updated_at": "2026-11-02T09:20:00+08:00"
+    },
+    {
+      "id": "toutiao-search",
+      "status": "blocked",
+      "updated_at": "2026-11-01T05:06:00+08:00"
+    },
+    {
+      "id": "wechat-official",
+      "status": "blocked",
+      "updated_at": "2026-11-01T05:29:00+08:00"
+    },
+    {
+      "id": "business-directories",
+      "status": "blocked",
+      "updated_at": "2026-11-01T08:33:00+08:00"
+    }
+  ],
+  "next_actions": [
+    "优先统一地图、工商聚合页和公众号中的实体关系。",
+    "优先补齐标准地址、双电话和分时营业时间。",
+    "暂停新增同义官网内容，先补真实第三方引用与本地店铺页。",
+    "继续跟踪腾讯地图标准 POI 公开索引。"
+  ]
+}

@@ -126,6 +126,7 @@ python3 scripts/final_summary.py
 node scripts/check_ai_login.mjs
 node scripts/ai_search_probe.mjs --platform yuanbao
 node scripts/ai_search_probe.mjs --platform doubao
+python3 scripts/ai_search_trend.py --days 7
 bash -n scripts/weekly_deploy.sh
 ```
 
@@ -134,6 +135,8 @@ bash -n scripts/weekly_deploy.sh
 远端 `main`；部署副本落后时自动快进，分叉或存在未提交改动时直接停止。
 `ai_search_probe.mjs` 会为每道题新建独立标签页，等待答案稳定后保存原始
 证据，默认输出到 `reports/ai-probes/`。
+`ai_search_trend.py` 汇总最近 7 天完成率、实体正确率、资料完整率和
+服务推荐表现，并生成 `reports/ai-search-trend.md`。
 
 ### 每日搜索检查
 
