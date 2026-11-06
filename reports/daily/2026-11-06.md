@@ -1,6 +1,6 @@
 # AI 搜索每日效果简报｜2026-11-06
 
-- 生成时间：2026-11-06T09:39:34.582837+08:00
+- 生成时间：2026-11-06T09:40:35.507760+08:00
 - 今日结论：已完成 6 项搜索检查，有效命中 0 项。
 - 完成检查：6/12，待补测 6，已排除 0
 - 护栏有效命中率：0.0%
@@ -35,10 +35,10 @@
 
 ## 运行状态
 
-- 线上页面：47/49 通过
+- 线上页面：48/49 通过
 - 最近站点审计：通过
 - 自动部署：已加载，最近退出码 暂无记录
-- 源仓库：75782b7	优化AI搜索七日复测方案并增加趋势汇总，有未提交改动
+- 源仓库：c47fec7	记录11月6日复测并排除非本店抖音视频，干净
 - 部署副本：305e519	同步线上主线与部署安全修复，干净
 
 ## 待执行任务
@@ -47,5 +47,4 @@
 
 ## 运行异常
 
-- Release问答证据镜像：失败 直连 curl: curl: (28) Connection timed out after 30001 milliseconds；直连 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>；本机代理 curl: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443；本机代理 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>
-- Release门店历史资料纠正：失败 直连 curl: curl: (28) Connection timed out after 30002 milliseconds；直连 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>；本机代理 curl: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443；本机代理 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>
+- Release问答证据镜像：失败 直连 curl: curl: (28) Connection timed out after 30004 milliseconds；直连 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>；本机代理 curl: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443；本机代理 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>
