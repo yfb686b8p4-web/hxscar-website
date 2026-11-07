@@ -377,24 +377,7 @@ async function probeOne(platformId, item) {
   }
 }
 
-async function main() {
-  const { platformId, output, ids, plan } = parseArgs();
-  const selectedQueries = await loadQueries(platformId, ids, plan);
-  if (!selectedQueries.length) {
-    throw new Error("当天计划中没有匹配的测试题");
-  }
-  const results = [];
-  for (const item of selectedQueries) {
-    console.log(`${platforms[platformId].label}开始测试：${item.id}`);
-    const result = await probeOne(platformId, item);
-    results.push(result);
-    console.log(
-      `${platforms[platformId].label}${item.id}：${
-        result.complete ? "完成" : `失败 ${result.error}`
-      }`,
-    );
-  }
-
+async function saveResults(output, platformId, results) {
   await mkdir(path.dirname(output), { recursive: true });
   await writeFile(
     output,
@@ -411,6 +394,27 @@ async function main() {
     )}\n`,
     "utf8",
   );
+}
+
+async function main() {
+  const { platformId, output, ids, plan } = parseArgs();
+  const selectedQueries = await loadQueries(platformId, ids, plan);
+  if (!selectedQueries.length) {
+    throw new Error("当天计划中没有匹配的测试题");
+  }
+  const results = [];
+  for (const item of selectedQueries) {
+    console.log(`${platforms[platformId].label}开始测试：${item.id}`);
+    const result = await probeOne(platformId, item);
+    results.push(result);
+    await saveResults(output, platformId, results);
+    console.log(
+      `${platforms[platformId].label}${item.id}：${
+        result.complete ? "完成" : `失败 ${result.error}`
+      }`,
+    );
+  }
+
   console.log(`结果已保存：${output}`);
 }
 

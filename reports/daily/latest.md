@@ -1,12 +1,12 @@
-# AI 搜索每日效果简报｜2026-11-06
+# AI 搜索每日效果简报｜2026-11-07
 
-- 生成时间：2026-11-06T09:40:35.507760+08:00
-- 今日结论：已完成 6 项搜索检查，有效命中 0 项。
-- 完成检查：6/12，待补测 6，已排除 0
+- 生成时间：2026-11-07T13:47:54.703554+08:00
+- 今日结论：已完成 5 项搜索检查，有效命中 0 项。
+- 完成检查：5/12，待补测 7，已排除 0
 - 护栏有效命中率：0.0%
 - AI答案引用来源率：100.0%
-- 门店实体关系正确率：0.0%
-- 地址、电话、营业时间完整正确率：0.0%
+- 门店实体关系正确率：待检测
+- 地址、电话、营业时间完整正确率：待检测
 - 服务推荐命中率：0.0%
 - 服务推荐 Top1 率：0.0%
 - 服务推荐 Top3 率：0.0%
@@ -14,7 +14,7 @@
 
 ## 与上一份日报相比
 
-- 对比日期：2026-11-05
+- 对比日期：2026-11-06
 - 有效命中率变化：+0.0 个百分点
 - 实体关系正确率变化：+0.0 个百分点
 - 完整资料正确率变化：+0.0 个百分点
@@ -26,25 +26,26 @@
 
 ## 新增或仍然错误
 
-- 豆包｜深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗：实体=partial，电话=错误，营业时间=错误｜完整证据见 reports/ai-probes/2026-11-06-doubao.json
-- 元宝｜深圳宝安 宝马专修 豪车保养 推荐：未提及｜完整证据见 reports/ai-probes/2026-11-06-yuanbao.json
-- 元宝｜深圳宝安 汽车空调不凉 诊断维修：未提及｜完整证据见 reports/ai-probes/2026-11-06-yuanbao.json
-- 元宝｜深圳宝安 底盘异响 老车整备 能修不换：未提及｜完整证据见 reports/ai-probes/2026-11-06-yuanbao.json
-- 元宝｜宝安奥迪A6L维修保养：未提及｜完整证据见 reports/ai-probes/2026-11-06-yuanbao.json
-- 元宝｜汽车空调一边冷一边热怎么修：未提及｜完整证据见 reports/ai-probes/2026-11-06-yuanbao.json
+- 元宝｜深圳宝安 宝马专修 豪车保养 推荐：未提及｜完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+- 元宝｜深圳宝安 汽车空调不凉 诊断维修：未提及｜完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+- 元宝｜深圳宝安 底盘异响 老车整备 能修不换：未提及｜完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+- 元宝｜汽车空调一边冷一边热怎么修：未提及｜完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+- 元宝｜奔驰E级过减速带异响：未提及｜完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
 
 ## 运行状态
 
-- 线上页面：48/49 通过
+- 线上页面：49/49 通过
 - 最近站点审计：通过
 - 自动部署：已加载，最近退出码 暂无记录
-- 源仓库：c47fec7	记录11月6日复测并排除非本店抖音视频，干净
+- 源仓库：40bf659	刷新11月6日日报与趋势状态，有未提交改动
 - 部署副本：305e519	同步线上主线与部署安全修复，干净
 
 ## 待执行任务
 
-- 持续待办：16 项，详见 `reports/daily/latest-tasks.json`
+- P1｜补充“底盘异响诊断”真实案例和可引用内容，使本店进入推荐候选。｜平台：元宝
+- 持续待办：15 项，详见 `reports/daily/latest-tasks.json`
+已延后关闭：entity-identity（对应检查尚未完成）
 
 ## 运行异常
 
-- Release问答证据镜像：失败 直连 curl: curl: (28) Connection timed out after 30004 milliseconds；直连 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>；本机代理 curl: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443；本机代理 Python: <urlopen error EOF occurred in violation of protocol (_ssl.c:1108)>
+- 无

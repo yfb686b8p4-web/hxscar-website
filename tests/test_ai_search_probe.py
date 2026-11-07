@@ -24,6 +24,7 @@ class AiSearchProbeTests(unittest.TestCase):
         self.assertIn("180000", script)
         self.assertIn("答案生成超时或未成功提交", script)
         self.assertIn("answerText", script)
+        self.assertIn("saveResults(output, platformId, results)", script)
         self.assertIn("text.length >= 500", script)
         self.assertIn("completeMarker", script)
         self.assertIn("正在思考", script)

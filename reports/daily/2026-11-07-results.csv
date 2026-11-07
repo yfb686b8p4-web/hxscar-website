@@ -1,0 +1,13 @@
+﻿check_id,platform,session_mode,query,category,mentioned,identity_relation,address_ok,phone_ok,hours_ok,position,cited_source,sentiment,answer_summary,notes
+guard-entity,豆包,fresh,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,豆包额度不足，未执行。,完整证据见 reports/ai-probes/2026-11-07-doubao.json
+guard-entity,元宝,fresh,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,首次和重试均未生成完整答案，按待补测处理。,完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+guard-bmw,豆包,fresh,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,,not_applicable,,,,,,,豆包额度不足，未执行。,完整证据见 reports/ai-probes/2026-11-07-doubao.json
+guard-bmw,元宝,fresh,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,False,not_applicable,,,,,平台检索引用,,推荐宝盈、鑫宝、华胜、清之流等，未提及本店。,完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+guard-aircon,豆包,fresh,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,,not_applicable,,,,,,,豆包额度不足，未执行。,完整证据见 reports/ai-probes/2026-11-07-doubao.json
+guard-aircon,元宝,fresh,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,False,not_applicable,,,,,平台检索引用,,推荐佳鹏、鹏粤星辉、众奥捷、宝丰等，未提及本店。,完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+guard-chassis-restore,豆包,fresh,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,,not_applicable,,,,,,,豆包额度不足，未执行。,完整证据见 reports/ai-probes/2026-11-07-doubao.json
+guard-chassis-restore,元宝,fresh,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,False,not_applicable,,,,,平台检索引用,,给出胶套压换和门店筛选建议，未提及本店。,完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+rotate-ac-04,豆包,fresh,汽车空调一边冷一边热怎么修,空调诊断维修,,not_applicable,,,,,,,豆包额度不足，未执行。,完整证据见 reports/ai-probes/2026-11-07-doubao.json
+rotate-ac-04,元宝,fresh,汽车空调一边冷一边热怎么修,空调诊断维修,False,not_applicable,,,,,平台检索引用,,给出双区空调风门电机排查方案，未提及本店。,完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
+rotate-chassis-03,豆包,fresh,奔驰E级过减速带异响,底盘异响诊断,,not_applicable,,,,,,,豆包额度不足，未执行。,完整证据见 reports/ai-probes/2026-11-07-doubao.json
+rotate-chassis-03,元宝,fresh,奔驰E级过减速带异响,底盘异响诊断,False,not_applicable,,,,,平台检索引用,,给出底盘异响排查思路，未提及本店。,完整证据见 reports/ai-probes/2026-11-07-yuanbao.json
