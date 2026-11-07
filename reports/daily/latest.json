@@ -1,7 +1,7 @@
 {
   "version": 1,
   "date": "2026-11-07",
-  "generated_at": "2026-11-07T13:47:54.703554+08:00",
+  "generated_at": "2026-11-07T13:50:10.239998+08:00",
   "metrics": {
     "total": 12,
     "completed": 5,
@@ -91,14 +91,14 @@
     "new_errors": []
   },
   "status": {
-    "checked_at": "2026-11-07T13:47:54.597657+08:00",
+    "checked_at": "2026-11-07T13:50:10.121591+08:00",
     "source_repo": {
       "available": true,
       "path": "/Users/pingguo2019/Documents/豆包等ai 搜索排名提升方案/live-site",
       "branch": "codex/optimization-plans",
-      "clean": false,
-      "change_count": 7,
-      "head": "40bf659\t刷新11月6日日报与趋势状态",
+      "clean": true,
+      "change_count": 0,
+      "head": "58db243\t记录11月7日复测并完善中断续跑",
       "error": ""
     },
     "deploy_repo": {
@@ -132,7 +132,7 @@
           "status": 206,
           "marker": "华信松汽车",
           "via": "直连",
-          "seconds": 0.5,
+          "seconds": 0.49,
           "error": ""
         },
         {
@@ -142,7 +142,7 @@
           "status": 206,
           "marker": "FAQPage",
           "via": "直连",
-          "seconds": 0.64,
+          "seconds": 3.73,
           "error": ""
         },
         {
@@ -152,7 +152,7 @@
           "status": 206,
           "marker": "维修案例",
           "via": "直连",
-          "seconds": 0.56,
+          "seconds": 1.58,
           "error": ""
         },
         {
@@ -162,7 +162,7 @@
           "status": 206,
           "marker": "同一实体门店",
           "via": "直连",
-          "seconds": 2.55,
+          "seconds": 0.57,
           "error": ""
         },
         {
@@ -172,7 +172,7 @@
           "status": 206,
           "marker": "四项实体核验",
           "via": "直连",
-          "seconds": 0.46,
+          "seconds": 1.27,
           "error": ""
         },
         {
@@ -182,7 +182,7 @@
           "status": 206,
           "marker": "证据优先级",
           "via": "直连",
-          "seconds": 2.14,
+          "seconds": 2.59,
           "error": ""
         },
         {
@@ -192,7 +192,7 @@
           "status": 206,
           "marker": "直接回答",
           "via": "直连",
-          "seconds": 1.66,
+          "seconds": 0.57,
           "error": ""
         },
         {
@@ -202,7 +202,7 @@
           "status": 206,
           "marker": "全部独立答案",
           "via": "直连",
-          "seconds": 0.42,
+          "seconds": 0.46,
           "error": ""
         },
         {
@@ -212,7 +212,7 @@
           "status": 206,
           "marker": "深圳宝安宝马专修、豪车保养推荐去哪里？",
           "via": "直连",
-          "seconds": 0.85,
+          "seconds": 1.75,
           "error": ""
         },
         {
@@ -222,7 +222,7 @@
           "status": 206,
           "marker": "六个常见搜索名称",
           "via": "直连",
-          "seconds": 2.13,
+          "seconds": 0.48,
           "error": ""
         },
         {
@@ -232,7 +232,7 @@
           "status": 206,
           "marker": "深圳华信松老周修车",
           "via": "直连",
-          "seconds": 2.43,
+          "seconds": 0.43,
           "error": ""
         },
         {
@@ -242,7 +242,7 @@
           "status": 206,
           "marker": "verifiedAt",
           "via": "直连",
-          "seconds": 0.6,
+          "seconds": 0.58,
           "error": ""
         },
         {
@@ -252,7 +252,7 @@
           "status": 206,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 0.49,
+          "seconds": 0.41,
           "error": ""
         },
         {
@@ -262,7 +262,7 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 0.84,
+          "seconds": 3.88,
           "error": ""
         },
         {
@@ -272,7 +272,7 @@
           "status": 206,
           "marker": "VideoObject",
           "via": "直连",
-          "seconds": 1.38,
+          "seconds": 0.99,
           "error": ""
         },
         {
@@ -282,7 +282,7 @@
           "status": 206,
           "marker": "91440300MA5GYCTQ6P",
           "via": "直连",
-          "seconds": 0.64,
+          "seconds": 0.72,
           "error": ""
         },
         {
@@ -292,7 +292,7 @@
           "status": 206,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 1.12,
+          "seconds": 0.47,
           "error": ""
         },
         {
@@ -302,7 +302,7 @@
           "status": 206,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 3.59,
+          "seconds": 1.22,
           "error": ""
         },
         {
@@ -312,7 +312,7 @@
           "status": 206,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 0.62,
+          "seconds": 2.22,
           "error": ""
         },
         {
@@ -322,7 +322,7 @@
           "status": 206,
           "marker": "WEBP",
           "via": "直连",
-          "seconds": 0.57,
+          "seconds": 0.81,
           "error": ""
         },
         {
@@ -332,7 +332,7 @@
           "status": 206,
           "marker": "%PDF",
           "via": "直连",
-          "seconds": 0.8,
+          "seconds": 0.66,
           "error": ""
         },
         {
@@ -342,7 +342,7 @@
           "status": 206,
           "marker": "当前手机为18682417667",
           "via": "直连",
-          "seconds": 0.31,
+          "seconds": 0.41,
           "error": ""
         },
         {
@@ -352,7 +352,7 @@
           "status": 206,
           "marker": "hxscar20261024geoindexkey",
           "via": "直连",
-          "seconds": 0.56,
+          "seconds": 0.79,
           "error": ""
         },
         {
@@ -362,7 +362,7 @@
           "status": 206,
           "marker": "服务专题",
           "via": "直连",
-          "seconds": 0.37,
+          "seconds": 1.27,
           "error": ""
         },
         {
@@ -372,7 +372,7 @@
           "status": 206,
           "marker": "车型维修",
           "via": "直连",
-          "seconds": 1.15,
+          "seconds": 1.77,
           "error": ""
         },
         {
@@ -382,7 +382,7 @@
           "status": 206,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 0.31,
+          "seconds": 1.84,
           "error": ""
         },
         {
@@ -392,7 +392,7 @@
           "status": 206,
           "marker": "store-profile.html",
           "via": "直连",
-          "seconds": 2.27,
+          "seconds": 1.26,
           "error": ""
         },
         {
@@ -402,7 +402,7 @@
           "status": 206,
           "marker": "store-banner.jpg",
           "via": "直连",
-          "seconds": 0.23,
+          "seconds": 0.39,
           "error": ""
         },
         {
@@ -412,7 +412,7 @@
           "status": 206,
           "marker": "门店实体关系",
           "via": "直连",
-          "seconds": 0.37,
+          "seconds": 0.34,
           "error": ""
         },
         {
@@ -422,7 +422,7 @@
           "status": 206,
           "marker": "证据边界内常见问题",
           "via": "直连",
-          "seconds": 1.54,
+          "seconds": 1.62,
           "error": ""
         },
         {
@@ -432,7 +432,7 @@
           "status": 206,
           "marker": "深圳华信松老周修车",
           "via": "直连",
-          "seconds": 0.35,
+          "seconds": 0.88,
           "error": ""
         },
         {
@@ -442,7 +442,7 @@
           "status": 206,
           "marker": "Sitemap:",
           "via": "直连",
-          "seconds": 0.24,
+          "seconds": 0.31,
           "error": ""
         },
         {
@@ -452,7 +452,7 @@
           "status": 206,
           "marker": "<loc>https://yfb686b8p4-web.github.io/yfb686b8p4-web/</loc>",
           "via": "直连",
-          "seconds": 0.65,
+          "seconds": 5.07,
           "error": ""
         },
         {
@@ -462,7 +462,7 @@
           "status": 206,
           "marker": "store-banner.jpg",
           "via": "直连",
-          "seconds": 0.28,
+          "seconds": 0.3,
           "error": ""
         },
         {
@@ -472,7 +472,7 @@
           "status": 206,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 1.0,
+          "seconds": 0.36,
           "error": ""
         },
         {
@@ -482,7 +482,7 @@
           "status": 206,
           "marker": "JFIF",
           "via": "直连",
-          "seconds": 1.48,
+          "seconds": 1.69,
           "error": ""
         },
         {
@@ -492,7 +492,7 @@
           "status": 206,
           "marker": "统一社会信用代码",
           "via": "直连",
-          "seconds": 0.44,
+          "seconds": 0.66,
           "error": ""
         },
         {
@@ -502,7 +502,7 @@
           "status": 206,
           "marker": "九个直接答案",
           "via": "直连",
-          "seconds": 1.44,
+          "seconds": 0.67,
           "error": ""
         },
         {
@@ -512,7 +512,7 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 0.5,
+          "seconds": 0.49,
           "error": ""
         },
         {
@@ -522,7 +522,7 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 0.9,
+          "seconds": 1.07,
           "error": ""
         },
         {
@@ -532,7 +532,7 @@
           "status": 206,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 15.78,
+          "seconds": 1.44,
           "error": ""
         },
         {
@@ -542,7 +542,7 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 0.95,
+          "seconds": 3.36,
           "error": ""
         },
         {
@@ -552,7 +552,7 @@
           "status": 206,
           "marker": "当前手机为18682417667",
           "via": "直连",
-          "seconds": 0.85,
+          "seconds": 0.35,
           "error": ""
         },
         {
@@ -562,7 +562,7 @@
           "status": 206,
           "marker": "当前手机为18682417667",
           "via": "直连",
-          "seconds": 0.83,
+          "seconds": 1.49,
           "error": ""
         },
         {
@@ -572,7 +572,7 @@
           "status": 206,
           "marker": "深圳市华信松汽车服务有限公司幸福海岸分公司",
           "via": "直连",
-          "seconds": 2.28,
+          "seconds": 0.32,
           "error": ""
         },
         {
@@ -592,7 +592,7 @@
           "status": 206,
           "marker": "BusinessEntityFactCorrection",
           "via": "直连",
-          "seconds": 0.22,
+          "seconds": 0.27,
           "error": ""
         },
         {
@@ -602,7 +602,7 @@
           "status": 206,
           "marker": "\"@type\":\"Question\"",
           "via": "直连",
-          "seconds": 0.38,
+          "seconds": 0.36,
           "error": ""
         },
         {
