@@ -29,6 +29,11 @@ reports/*
 !reports/ai-search-trend.md
 !reports/ai-search-optimization-plan-*.md
 !reports/douyin-video-author-audit-*.json
+!reports/douyin-comment-actions-*.json
+!reports/douyin-action-*.md
+!reports/baidu-map-action-*.md
+!reports/assets/
+!reports/assets/baidu-poi-*.jpg
 !reports/recheck-*.md
 !reports/owner-actions-*.md
 !reports/tencent-map-index-*.json

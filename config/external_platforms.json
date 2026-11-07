@@ -30,7 +30,7 @@
       "id": "baidu-map",
       "name": "百度地图",
       "priority": "P0",
-      "action_url": "https://bsy.baidu.com/",
+      "action_url": "https://didian.baidu.com/lbc/auth/bgcswitchpage",
       "content_source": "map_W{week}.md",
       "objective": "认领并完善门店信息，增加服务标签和真实照片"
     },
