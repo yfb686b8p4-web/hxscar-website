@@ -22,9 +22,10 @@
 
 ## 仍需人工处理
 
-- `douyin`：blocked（2026-11-06T09:05:00+08:00）
+- `douyin`：review（2026-11-07T15:00:00+08:00）
 - `tencent-map`：review（2026-11-04T10:25:00+08:00）
 - `amap`：review（2026-10-31T22:22:00+08:00）
+- `baidu-map`：blocked（2026-11-07T15:00:00+08:00）
 - `sogou-lizhi`：blocked（2026-11-02T09:20:00+08:00）
 - `toutiao-search`：blocked（2026-11-01T05:06:00+08:00）
 - `wechat-official`：blocked（2026-11-01T05:29:00+08:00）
