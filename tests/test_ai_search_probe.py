@@ -28,6 +28,8 @@ class AiSearchProbeTests(unittest.TestCase):
         self.assertIn("text.length >= 500", script)
         self.assertIn("completeMarker", script)
         self.assertIn("正在思考", script)
+        self.assertIn("近.?7.?天免费额度已用完", script)
+        self.assertIn("开通豆包订阅", script)
         self.assertIn("--ids", script)
         self.assertIn("loadQueries", script)
         self.assertIn("reports", script)

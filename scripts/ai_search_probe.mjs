@@ -292,7 +292,11 @@ async function waitForAnswer(client, initialText, platformId) {
         answerText: (yuanbaoRoot?.innerText || doubaoRoot?.innerText || "").trim()
       };
     })()`);
-    if (/算力紧张|当前排队人数较多|请稍后再试/.test(page.answerText)) {
+    if (
+      /算力紧张|当前排队人数较多|请稍后再试|近.?7.?天免费额度已用完|免费额度已用完|开通豆包订阅/.test(
+        `${page.answerText}\n${page.bodyText}`,
+      )
+    ) {
       return {
         text: page.answerText,
         bodyText: page.bodyText,
