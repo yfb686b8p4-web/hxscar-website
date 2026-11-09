@@ -202,22 +202,6 @@
     "requires_confirmation": false
   },
   {
-    "id": "service-底盘异响诊断",
-    "priority": "P1",
-    "action": "补充“底盘异响诊断”真实案例和可引用内容，使本店进入推荐候选。",
-    "category": "底盘异响诊断",
-    "platforms": [
-      "元宝"
-    ],
-    "sources": [
-      "平台检索引用"
-    ],
-    "check_ids": [
-      "rotate-chassis-03"
-    ],
-    "requires_confirmation": false
-  },
-  {
     "id": "service-空调诊断维修",
     "priority": "P1",
     "action": "补充“空调诊断维修”真实案例和可引用内容，使本店进入推荐候选。",
