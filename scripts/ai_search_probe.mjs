@@ -309,12 +309,22 @@ async function waitForAnswer(client, initialText, platformId, query) {
     const busy = /正在思考|深度思考中|正在搜索相关资料|停止生成/.test(text);
     const completeMarker =
       platformId === "doubao" ? /共用时/.test(text) : text.length >= 500;
-    const queryVisible = text.includes(query);
+    const queryTokens = query
+      .split(/[^\p{L}\p{N}]+/u)
+      .map((token) => token.trim())
+      .filter((token) => token.length >= 2);
+    const matchedTokens = queryTokens.filter((token) =>
+      text.includes(token),
+    ).length;
+    const queryRelevant =
+      text.includes(query) ||
+      (queryTokens.length > 1 &&
+        matchedTokens >= Math.ceil(queryTokens.length * 0.6));
     const grew =
       text.length >= 500 &&
       completeMarker &&
       !busy &&
-      queryVisible &&
+      queryRelevant &&
       page.bodyText.length > initialText.length + 300;
     if (grew && text === previousText) {
       stableCount += 1;

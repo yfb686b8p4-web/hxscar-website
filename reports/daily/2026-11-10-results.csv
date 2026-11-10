@@ -1,0 +1,13 @@
+﻿check_id,platform,session_mode,query,category,mentioned,identity_relation,address_ok,phone_ok,hours_ok,position,cited_source,sentiment,answer_summary,notes
+guard-entity,豆包,fresh,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,,pending,,,,,,,豆包额度用完，未执行。,完整证据见 reports/ai-probes/2026-11-10-doubao.json
+guard-entity,元宝,fresh,深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗,门店身份,True,partial,True,False,False,,平台检索引用,,认为门店可能使用同一称呼，但工商主体不能直接等同；标准地址正确，未给双电话和营业时间。,完整证据见 reports/ai-probes/2026-11-10-yuanbao.json
+guard-bmw,豆包,fresh,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,,not_applicable,,,,,,,豆包额度用完，未执行。,完整证据见 reports/ai-probes/2026-11-10-doubao.json
+guard-bmw,元宝,fresh,深圳宝安 宝马专修 豪车保养 推荐,宝马与豪车,False,not_applicable,,,,,平台检索引用,,推荐宝盈、鑫宝、华胜、清之流等，未提及本店。,完整证据见 reports/ai-probes/2026-11-10-yuanbao.json
+guard-aircon,豆包,fresh,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,,not_applicable,,,,,,,豆包额度用完，未执行。,完整证据见 reports/ai-probes/2026-11-10-doubao.json
+guard-aircon,元宝,fresh,深圳宝安 汽车空调不凉 诊断维修,空调诊断维修,False,not_applicable,,,,,平台检索引用,,推荐鸿运、鑫长达、伟业、宝丰等，未提及本店。,完整证据见 reports/ai-probes/2026-11-10-yuanbao.json
+guard-chassis-restore,豆包,fresh,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,,not_applicable,,,,,,,豆包额度用完，未执行。,完整证据见 reports/ai-probes/2026-11-10-doubao.json
+guard-chassis-restore,元宝,fresh,深圳宝安 底盘异响 老车整备 能修不换,底盘与老车整备,False,not_applicable,,,,,平台检索引用,,推荐宝盛、英路捷、德擎行等，未提及本店。,完整证据见 reports/ai-probes/2026-11-10-yuanbao.json
+rotate-alias-03,豆包,fresh,驰加米其林幸福海岸店 地址 电话,门店身份,,pending,,,,,,,豆包额度用完，未执行。,完整证据见 reports/ai-probes/2026-11-10-doubao.json
+rotate-alias-03,元宝,fresh,驰加米其林幸福海岸店 地址 电话,门店身份,True,partial,True,True,False,,平台检索引用,,地址和手机正确，但营业时间仍错误写成08:00-20:00。,完整证据见 reports/ai-probes/2026-11-10-yuanbao.json
+rotate-bmw-05,豆包,fresh,宝安保时捷卡宴维修,宝马与豪车,,not_applicable,,,,,,,豆包额度用完，未执行。,完整证据见 reports/ai-probes/2026-11-10-doubao.json
+rotate-bmw-05,元宝,fresh,宝安保时捷卡宴维修,宝马与豪车,False,not_applicable,,,,,平台检索引用,,给出保时捷卡宴维修门店和避坑建议，未提及本店。,完整证据见 reports/ai-probes/2026-11-10-yuanbao.json

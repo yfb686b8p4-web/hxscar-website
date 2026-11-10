@@ -1,0 +1,73 @@
+{
+  "platform": "doubao",
+  "label": "豆包",
+  "generatedAt": "2026-11-10T09:20:00+08:00",
+  "results": [
+    {
+      "id": "guard-entity",
+      "query": "深圳市华信松汽车服务有限公司幸福海岸分公司 老周修车 同一家吗",
+      "startedAt": "",
+      "completedAt": "",
+      "complete": false,
+      "url": "",
+      "text": "",
+      "bodyText": "",
+      "error": "豆包近7天免费额度已用完，待恢复后补测"
+    },
+    {
+      "id": "guard-bmw",
+      "query": "深圳宝安 宝马专修 豪车保养 推荐",
+      "startedAt": "",
+      "completedAt": "",
+      "complete": false,
+      "url": "",
+      "text": "",
+      "bodyText": "",
+      "error": "豆包近7天免费额度已用完，待恢复后补测"
+    },
+    {
+      "id": "guard-aircon",
+      "query": "深圳宝安 汽车空调不凉 诊断维修",
+      "startedAt": "",
+      "completedAt": "",
+      "complete": false,
+      "url": "",
+      "text": "",
+      "bodyText": "",
+      "error": "豆包近7天免费额度已用完，待恢复后补测"
+    },
+    {
+      "id": "guard-chassis-restore",
+      "query": "深圳宝安 底盘异响 老车整备 能修不换",
+      "startedAt": "",
+      "completedAt": "",
+      "complete": false,
+      "url": "",
+      "text": "",
+      "bodyText": "",
+      "error": "豆包近7天免费额度已用完，待恢复后补测"
+    },
+    {
+      "id": "rotate-alias-03",
+      "query": "驰加米其林幸福海岸店 地址 电话",
+      "startedAt": "",
+      "completedAt": "",
+      "complete": false,
+      "url": "",
+      "text": "",
+      "bodyText": "",
+      "error": "豆包近7天免费额度已用完，待恢复后补测"
+    },
+    {
+      "id": "rotate-bmw-05",
+      "query": "宝安保时捷卡宴维修",
+      "startedAt": "",
+      "completedAt": "",
+      "complete": false,
+      "url": "",
+      "text": "",
+      "bodyText": "",
+      "error": "豆包近7天免费额度已用完，待恢复后补测"
+    }
+  ]
+}
